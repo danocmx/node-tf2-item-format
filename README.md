@@ -1,3 +1,8 @@
+# TF2 Item Format
+formats strings/objects same way backpack.tf does
+
+## Example
+```js
 const itemFormatting = require("./index");
 
 const objectDefaults = { name: 'Attendant',
@@ -18,3 +23,4 @@ itemFormatting.stringify(objectDefaults)
 const stringDefeaults = "Non-Craftable Strange Jazzy Genuine Green Energy Festivized Specialized Killstreak Australium Attendant (Field-Tested)";
 // outpost objectDefaults
 itemFormatting.parse(stringDefeaults)
+```
