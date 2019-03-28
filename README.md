@@ -3,7 +3,7 @@ formats strings/objects same way backpack.tf does
 
 ## Example
 ```js
-const itemFormatting = require("./index");
+const itemFormatting = require("tf2-item-format");
 
 const objectDefaults = { name: 'Attendant',
     originalName: 'Non-Craftable Strange Jazzy Genuine Green Energy Festivized Specialized Killstreak Australium Attendant (Field-Tested)',

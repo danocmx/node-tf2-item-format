@@ -1,4 +1,4 @@
-const itemFormatting = require("./index");
+const itemFormatting = require("../index");
 
 const objectDefaults = { name: 'Attendant',
     originalName: 'Non-Craftable Strange Jazzy Genuine Green Energy Festivized Specialized Killstreak Australium Attendant (Field-Tested)',
