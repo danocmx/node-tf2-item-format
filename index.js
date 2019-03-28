@@ -4,14 +4,11 @@ const defaults = require("defaults");
 const objectPrettify = require("object-prettify");
 /*  TODO:
     - remake in REGEX
-    - name variables better
-    - add skins
-    - add exceptions [Strange Filter, Strange Count Transfer Tool, Strange Part, Strange Bacon Grease] 
-    */
+*/
 const effects = require("./resources/UEffects");
 const killstreaks = require("./resources/UKillstreaks");
 const qualities = require("./resources/UQualities");
-const skins = require("./resources/USkins");
+const skins = require("./resources/UTextures");
 const wearTiers = require("./resources/UWearTiers");
 
 const TEMPLATE = {
@@ -113,7 +110,15 @@ exports.stringify = function({ name, quality, elevated, australium, effect, kill
         itemName += "Australium "
     }
     if (texture) {
-        itemName += `${skins[texture]} `;
+        if (typeof texture == "object") {
+            texture = texture.id;
+        }
+        if (isNum(texture)) {
+            const skin = findSkin(texture, "id")
+            if (skin) texture = skin.name;
+        }
+
+        itemName += `${texture} `;
     }
     itemName += name;
     if (wearTier) {
@@ -126,9 +131,9 @@ exports.stringify = function({ name, quality, elevated, australium, effect, kill
 // elevated included    
 function getQuality(item, attributes) {
     const itemQualities = {quality: null, elevated: null}
-    const q = [ "Normal", "Genuine", "Vintage", "Unique", "Unusual", "Self-Made", "Haunted", "Collector's" ]
-    for (let qq = 0; qq < q.length; qq++) {
-        let quality = q[qq];
+    const nameQualities = [ "Normal", "Genuine", "Vintage", "Unique", "Unusual", "Self-Made", "Haunted", "Collector's" ]
+    for (let nq = 0; nq < nameQualities.length; nq++) {
+        let quality = nameQualities[nq];
         if (!item.includes(quality + " ")) {
             continue;
         }
@@ -211,6 +216,16 @@ function getSkin(item) {
         itemSkin = skin;
     }
     return itemSkin;
+}
+
+function findSkin(search, type) {
+    for (let s = 0; s < skins.length; s++) {
+        let skin = skins[s];
+        if (skin[type] != search) {
+            continue;
+        }
+        return skin;
+    }
 }
 
 function searchExceptions(search) {
