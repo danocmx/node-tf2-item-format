@@ -10,7 +10,7 @@ const objectDefaults = { name: 'Attendant',
     effect: 9,
     killstreak: 2,
     wearTier: 3,
-    texture: { id: '230', name: 'Jazzy' } 
+    texture: { id: '230', name: 'Jazzy' }  // or just Jazzy or 230
 }
 // outputs stringDefeaults
 itemFormatting.stringify(objectDefaults)

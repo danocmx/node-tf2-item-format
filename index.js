@@ -27,6 +27,10 @@ const TEMPLATE = {
 
 const EXCEPTIONS = [ "Strange Bacon Grease", "Strange Filter: ", "Strange Count Transfer Tool", "Strange Part: " ]
 
+/** Parses item name into item object
+ * @param {String} name item string
+ * @return {Object} parsed item object
+ */
 exports.parse = function(name) {
     if (typeof name != "string") {
         throw Error("item must be string got " + typeof itemName + " instead.");
@@ -83,6 +87,20 @@ exports.parse = function(name) {
     return parsedItem;
 }
 
+/**
+ * Stringifies item object into item name
+ * @param {String} name pure name of the item
+ * @param {Number} quality item quality
+ * @param {Number} elevated second item quality
+ * @param {Number} australium if item is australium
+ * @param {Number} killstreak item killstreak
+ * @param {Number} effect item effect
+ * @param {Boolean} festivized if item is festivized
+ * @param {Object, String, Number} texture item texture
+ * @param {Number} wearTier item wear
+ * @param {Number} craftable if item is craftable
+ * @return {String} item name 
+*/
 exports.stringify = function({ name, quality, elevated, australium, effect, killstreak, festivized, texture, wearTier, craftable }) {
     let itemName = "";
 
