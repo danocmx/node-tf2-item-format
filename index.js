@@ -104,7 +104,7 @@ exports.parse = function(name) {
 exports.stringify = function({ name, quality, elevated, australium, effect, killstreak, festivized, texture, wearTier, craftable }) {
     let itemName = "";
 
-    if (craftable == 0) {
+    if (craftable == 0 || craftable == -1) {
         itemName += "Non-Craftable ";
     }
     if (elevated) {
@@ -124,7 +124,7 @@ exports.stringify = function({ name, quality, elevated, australium, effect, kill
     if (killstreak) {
         itemName += `${killstreaks[killstreak]} `;
     }
-    if (australium) {
+    if (australium && australium != -1) {
         itemName += "Australium "
     }
     if (texture) {
