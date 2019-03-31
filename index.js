@@ -4,7 +4,9 @@ const defaults = require("defaults");
 const objectPrettify = require("object-prettify");
 /*  TODO:
     - remake in REGEX
-*/
+    - add targeted items
+    - support kits, fabricators, stragifiers, unusulifiers, chem kits
+https://backpack.tf/classifieds?item_type=target&craftable=-1*/
 const effects = require("./resources/UEffects");
 const killstreaks = require("./resources/UKillstreaks");
 const qualities = require("./resources/UQualities");
@@ -12,14 +14,14 @@ const skins = require("./resources/UTextures");
 const wearTiers = require("./resources/UWearTiers");
 
 const TEMPLATE = {
-    name: "",
+    item: "",
     originalName: "",
     quality: 0,
     elevated: false,
     craftable: 1,
     australium: 0,
     festivized: false,
-    effect: 0,
+    particle: 0,
     killstreak: 0,
     wearTier: 0,
     texture: null
@@ -39,7 +41,7 @@ exports.parse = function(name) {
 
     const item = {
         originalName: name,
-        effect: getEffect(itemName),
+        particle: getEffect(itemName),
         killstreak: getKillstreak(itemName),
         texture: getSkin(itemName),
         wearTier: getWearTier(itemName),
@@ -65,9 +67,9 @@ exports.parse = function(name) {
         itemName = itemName.replace("Strange ", "");
         item.elevated = true;
     }
-    if (item.effect) {
+    if (item.particle) {
         itemName = itemName.replace(`${item.effect} `, "");
-        item.effect = effects[item.effect];
+        item.particle = effects[item.particle];
     }
     if (item.killstreak) {
         itemName = itemName.replace(`${item.killstreak} `, "");
@@ -80,7 +82,7 @@ exports.parse = function(name) {
     if (item.texture) {
         itemName = itemName.replace(`${item.texture.name} `, "");
     }
-    item.name = itemName;
+    item.item = itemName;
 
     const parsedItem = objectPrettify(defaults(item, TEMPLATE), TEMPLATE);
 
@@ -89,19 +91,19 @@ exports.parse = function(name) {
 
 /**
  * Stringifies item object into item name
- * @param {String} name pure name of the item
+ * @param {String} item pure name of the item
  * @param {Number} quality item quality
  * @param {Number} elevated second item quality
  * @param {Number} australium if item is australium
  * @param {Number} killstreak item killstreak
- * @param {Number} effect item effect
+ * @param {Number} particle item effect
  * @param {Boolean} festivized if item is festivized
  * @param {Object, String, Number} texture item texture
  * @param {Number} wearTier item wear
  * @param {Number} craftable if item is craftable
  * @return {String} item name 
 */
-exports.stringify = function({ name, quality, elevated, australium, effect, killstreak, festivized, texture, wearTier, craftable }) {
+exports.stringify = function({ item, quality, elevated, australium, particle, killstreak, festivized, texture, wearTier, craftable }) {
     let itemName = "";
 
     if (craftable == 0 || craftable == -1) {
@@ -115,8 +117,8 @@ exports.stringify = function({ name, quality, elevated, australium, effect, kill
     if (qualityEffectCheckOne || qualityEffectCheckTwo) {
         itemName += `${qualities[quality]} `;
     }
-    if (effect) {
-        itemName += `${effects[effect]} `;
+    if (particle) {
+        itemName += `${effects[particle]} `;
     }
     if (festivized) {
         itemName += "Festivized ";
@@ -138,7 +140,7 @@ exports.stringify = function({ name, quality, elevated, australium, effect, kill
 
         itemName += `${texture} `;
     }
-    itemName += name;
+    itemName += item;
     if (wearTier) {
         itemName += ` (${wearTiers[wearTier]})`;
     }
