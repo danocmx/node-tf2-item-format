@@ -14,8 +14,8 @@ const objectDefaults = {
     texture: { id: '230', name: 'Jazzy' }  // or just Jazzy or 230
 }
 // output -> stringDefeaults
-itemFormatting.stringify(objectDefaults)
+itemFormatting.stringify(objectDefaults);
 
 const stringDefeaults = "Non-Craftable Strange Jazzy Genuine Green Energy Festivized Specialized Killstreak Australium Attendant (Field-Tested)";
 // output -> objectDefaults
-itemFormatting.parse(stringDefeaults)
+itemFormatting.parse(stringDefeaults);

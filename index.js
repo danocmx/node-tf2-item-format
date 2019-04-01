@@ -4,14 +4,13 @@ const defaults = require("defaults");
 const objectPrettify = require("object-prettify");
 /*  TODO:
     - remake in REGEX
-    - add targeted items
-    - support kits, fabricators, stragifiers, unusulifiers, chem kits
-https://backpack.tf/classifieds?item_type=target&craftable=-1*/
-const effects = require("./resources/UEffects");
-const killstreaks = require("./resources/UKillstreaks");
-const qualities = require("./resources/UQualities");
-const skins = require("./resources/UTextures");
-const wearTiers = require("./resources/UWearTiers");
+    - add targeted items - support kits, fabricators, stragifiers, unusulifiers, chem kits - https://backpack.tf/classifieds?item_type=target&craftable=-1
+*/
+const effects = exports.UEffects = require("./resources/UEffects");
+const killstreaks = exports.UKillstreaks = require("./resources/UKillstreaks");
+const qualities =  exports.UQualities = require("./resources/UQualities");
+const skins = exports.UTextures = require("./resources/UTextures");
+const wearTiers = exports.UWearTiers = require("./resources/UWearTiers");   
 
 const TEMPLATE = {
     item: "",
