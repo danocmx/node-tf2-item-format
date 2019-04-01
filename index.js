@@ -46,6 +46,7 @@ exports.parse = function(name) {
         texture: getSkin(itemName),
         wearTier: getWearTier(itemName),
     }
+
     if (itemName.includes("Non-Craftable ")) {
         item.craftable = 0;
         itemName = itemName.replace("Non-Craftable ", "");
@@ -68,7 +69,7 @@ exports.parse = function(name) {
         item.elevated = true;
     }
     if (item.particle) {
-        itemName = itemName.replace(`${item.effect} `, "");
+        itemName = itemName.replace(`${item.particle} `, "");
         item.particle = effects[item.particle];
     }
     if (item.killstreak) {
@@ -112,8 +113,8 @@ exports.stringify = function({ item, quality, elevated, australium, particle, ki
     if (elevated) {
         itemName += "Strange ";
     }
-    const qualityEffectCheckOne = quality != 5 && effect;
-    const qualityEffectCheckTwo = quality && !effect;
+    const qualityEffectCheckOne = quality != 5 && particle;
+    const qualityEffectCheckTwo = quality && !particle;
     if (qualityEffectCheckOne || qualityEffectCheckTwo) {
         itemName += `${qualities[quality]} `;
     }
@@ -198,11 +199,9 @@ function getEffect(item) {
 
 function getKillstreak(item) {
     let itemKillstreak = 0;
-    for (let k in killstreaks) {
-        let killstreak = killstreaks[k];
-        if (isNum(killstreak)) {
-            continue;
-        }
+    let killstreakNames = ["Killstreak", "Specialized Killstreak", "Professional Killstreak"];
+    for (let k = 0; k < killstreakNames.length; k++) {
+        let killstreak = killstreakNames[k];
         if (!item.includes(killstreak)) {
             continue;
         }

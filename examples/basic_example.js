@@ -1,20 +1,21 @@
 const itemFormatting = require("../index");
 
-const objectDefaults = { name: 'Attendant',
+const objectDefaults = { 
+    name: 'Attendant',
     originalName: 'Non-Craftable Strange Jazzy Genuine Green Energy Festivized Specialized Killstreak Australium Attendant (Field-Tested)',
-        quality: 1,
+    quality: 1,
     elevated: true,
     craftable: 0,
     australium: 1,
     festivized: true,
-    effect: 9,
+    particle: 9,
     killstreak: 2,
     wearTier: 3,
     texture: { id: '230', name: 'Jazzy' }  // or just Jazzy or 230
 }
-// outputs stringDefeaults
+// output -> stringDefeaults
 itemFormatting.stringify(objectDefaults)
 
 const stringDefeaults = "Non-Craftable Strange Jazzy Genuine Green Energy Festivized Specialized Killstreak Australium Attendant (Field-Tested)";
-// outpost objectDefaults
+// output -> objectDefaults
 itemFormatting.parse(stringDefeaults)
