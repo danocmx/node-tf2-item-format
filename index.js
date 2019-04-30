@@ -33,11 +33,10 @@ const EXCEPTIONS = [ "Strange Bacon Grease", "Strange Filter: ", "Strange Count 
  * @return {Object} parsed item object
  */
 exports.parse = function(name) {
-    if (typeof name != "string") {
-        throw Error("item must be string got " + typeof itemName + " instead.");
-    }
-    let itemName = name;
+    if (typeof name == "object") return name
+    else if (typeof name != "string") throw Error("item must be string got " + typeof itemName + " instead.");
 
+    let itemName = name;
     const item = {
         originalName: name,
         particle: getEffect(itemName),
@@ -91,21 +90,25 @@ exports.parse = function(name) {
 
 /**
  * Stringifies item object into item name
- * @param {String} item pure name of the item
- * @param {Number} quality item quality
- * @param {Number} elevated second item quality
- * @param {Number} australium if item is australium
- * @param {Number} killstreak item killstreak
- * @param {Number} particle item effect
- * @param {Boolean} festivized if item is festivized
- * @param {Object, String, Number} texture item texture
- * @param {Number} wearTier item wear
- * @param {Number} craftable if item is craftable
- * @return {String} item name 
+ * @param {String} itemObject.item pure name of the item
+ * @param {Number} itemObject.quality item quality
+ * @param {Number} itemObject.elevated second item quality
+ * @param {Number} itemObject.australium if item is australium
+ * @param {Number} itemObject.killstreak item killstreak
+ * @param {Number} itemObject.particle item effect
+ * @param {Boolean} itemObject.festivized if item is festivized
+ * @param {Object, String, Number} itemObject.texture item texture
+ * @param {Number} itemObject.wearTier item wear
+ * @param {Number} itemObject.craftable if item is craftable
+ * @return {String} strigified item name
 */
-exports.stringify = function({ item, quality, elevated, australium, particle, killstreak, festivized, texture, wearTier, craftable }) {
-    let itemName = "";
+exports.stringify = function(itemObject) {
+    if (typeof itemObject == "string") return itemObject;
+    else if (typeof itemObject != "object") throw new Error("itemObject has to be object, received " + typeof itemObject + " instead.")
 
+    let { item, quality, elevated, australium, particle, killstreak, festivized, texture, wearTier, craftable } = itemObject;
+
+    let itemName = "";
     if (craftable == 0 || craftable == -1) {
         itemName += "Non-Craftable ";
     }
@@ -148,7 +151,6 @@ exports.stringify = function({ item, quality, elevated, australium, particle, ki
     return itemName
 }
 
-// elevated included    
 function getQuality(item, attributes) {
     const itemQualities = {quality: null, elevated: null}
     const nameQualities = [ "Normal", "Genuine", "Vintage", "Unique", "Unusual", "Self-Made", "Haunted", "Collector's" ]
