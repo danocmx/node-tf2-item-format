@@ -3,8 +3,6 @@
 const defaults = require("defaults");
 const objectPrettify = require("object-prettify");
 
-/*TODO: maybe add a bit more regex syntax */
-
 const UEffects = exports.UEffects = require("./resources/UEffects");
 const UKillstreaks = exports.UKillstreaks = require("./resources/UKillstreaks");
 const UQualities =  exports.UQualities = require("./resources/UQualities");
