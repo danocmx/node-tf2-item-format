@@ -1,5 +1,8 @@
+// basic_example.js
+
 const itemFormatting = require("../index");
 
+// Just an example, the string is not possible in TF2
 const objectDefaults = { 
     name: 'Attendant',
     originalName: 'Non-Craftable Strange Jazzy Genuine Green Energy Festivized Specialized Killstreak Australium Attendant (Field-Tested)',
@@ -11,12 +14,11 @@ const objectDefaults = {
     particle: 9,
     killstreak: 2,
     wearTier: 3,
-    texture: { id: '230', name: 'Jazzy' },  // or just Jazzy or 230
-    item_type: "Kit Fabricator"
+    texture: { id: '230', name: 'Jazzy' }  // or just Jazzy or 230
 }
 // output -> stringDefeaults
 itemFormatting.stringify(objectDefaults);
 
-const stringDefeaults = "Non-Craftable Strange Jazzy Genuine Green Energy Festivized Specialized Killstreak Australium Attendant (Field-Tested) Kit Fabricator";
+const stringDefeaults = "Non-Craftable Strange Jazzy Genuine Green Energy Festivized Specialized Killstreak Australium Attendant (Field-Tested)";
 // output -> objectDefaults
 itemFormatting.parse(stringDefeaults);
