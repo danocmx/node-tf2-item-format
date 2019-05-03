@@ -1,0 +1,29 @@
+{
+  "name": "tf2-item-format",
+  "version": "1.0.1",
+  "description": "Format's TF2 items like backpack.tf does",
+  "main": "index.js",
+  "directories": {
+    "examples": "basic_example.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danocmx/node-tf2-item-format.git"
+  },
+  "keywords": [
+    "tf2",
+    "node",
+    "backpacktf"
+  ],
+  "author": "danocmx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danocmx/node-tf2-item-format/issues"
+  },
+  "homepage": "https://github.com/danocmx/node-tf2-item-format#readme",
+  "dependencies": {
+    "clone": "^1.0.4",
+    "defaults": "^1.0.3",
+    "object-prettify": "^1.0.0"
+  }
+}

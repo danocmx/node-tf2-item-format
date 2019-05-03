@@ -2,15 +2,19 @@
 
 const defaults = require("defaults");
 const objectPrettify = require("object-prettify");
-/*  TODO:
-    - remake in REGEX
-    - add targeted items - support kits, fabricators, stragifiers, unusulifiers, chem kits - https://backpack.tf/classifieds?item_type=target&craftable=-1
+
+/*  item_type:
+    - target - fabricators, strangifiers, killstreak kits - Specialized Killstreak Unarmed Combat Kit Fabricator , 
+                                                            Cleaner's Carbine Strangifier , 
+                                                            Non-Craftable Professional Killstreak Rocket Launcher Kit 
+    - output - chemistry sets - Collector's Gunboats Chemistry Set, 
+                                Foppish Physician Strangifier Chemistry Set 
 */
-const effects = exports.UEffects = require("./resources/UEffects");
-const killstreaks = exports.UKillstreaks = require("./resources/UKillstreaks");
-const qualities =  exports.UQualities = require("./resources/UQualities");
-const skins = exports.UTextures = require("./resources/UTextures");
-const wearTiers = exports.UWearTiers = require("./resources/UWearTiers");   
+const UEffects = exports.UEffects = require("./resources/UEffects");
+const UKillstreaks = exports.UKillstreaks = require("./resources/UKillstreaks");
+const UQualities =  exports.UQualities = require("./resources/UQualities");
+const UTextures = exports.UTextures = require("./resources/UTextures");
+const UWearTiers = exports.UWearTiers = require("./resources/UWearTiers");   
 
 const TEMPLATE = {
     item: "",
@@ -26,7 +30,99 @@ const TEMPLATE = {
     texture: null
 }
 
-const EXCEPTIONS = [ "Strange Bacon Grease", "Strange Filter: ", "Strange Count Transfer Tool", "Strange Part: " ]
+const TARGET_ITEMS = ["Kit Fabricator", "Strangifier", "Kit"] // end
+const OUTPUT_ITEMS = ["Chemistry Set", "Strangifier Chemistry Set"] // end
+
+const STRANGE_EXCEPTIONS = [ "Strange Bacon Grease", "Strange Filter: ", "Strange Count Transfer Tool", "Strange Part: " ]
+const VINTAGE_EXCEPTIONS = ["Vintage Tyrolean", "Vintage Merryweather"]
+
+/**
+ * Stringifies item object into item name
+ * @param {String} itemObject item stats
+ * @param {Number} itemObject.item_type item type we want to stringify
+ * @param {Number} itemObject.item_type_object has to be included when item_type is output or target, its one of TARGET_ITEMS
+ * @return {String} strigified item name
+*/
+exports.stringify = function(itemObject) {
+    if (typeof itemObject == "string") return itemObject;
+    else if (typeof itemObject != "object") throw new Error("itemObject has to be object, received " + typeof itemObject + " instead.")
+
+    let item;
+    if (itemObject.item_type == "target") {
+        item = stringifyTarget(itemObject);
+    } else if (itemObject.item_type == "output") {
+        item = stringifyOutput(itemObject);
+    } else {
+        item = stringifyItem(itemObject)
+    }
+
+    return item;
+}
+
+function stringifyTarget(item) {
+    /* {craftable} {killstreak} {item} {target} */
+}
+
+function stringifyOutput(item) {
+
+}
+
+/**
+ * Stringifies item object into item name
+ * @param {String} itemObject.item pure name of the item
+ * @param {Number} itemObject.quality item quality
+ * @param {Number} itemObject.elevated second item quality
+ * @param {Number} itemObject.australium if item is australium
+ * @param {Number} itemObject.killstreak item killstreak
+ * @param {Number} itemObject.particle item effect
+ * @param {Boolean} itemObject.festivized if item is festivized
+ * @param {Object, String, Number} itemObject.texture item texture
+ * @param {Number} itemObject.wearTier item wear
+ * @param {Number} itemObject.craftable if item is craftable
+ * @return {String} strigified item name
+*/
+function stringifyItem(item) {
+    let { name, item_type, quality, elevated, australium, particle, 
+        killstreak, festivized, texture, wearTier, craftable } = item;
+
+    if (item_type && item_type == "") {}
+
+    let itemName = "";
+    if (craftable == 0 || craftable == -1) {
+        itemName += "Non-Craftable ";
+    }
+    if (elevated) {
+        itemName += "Strange ";
+    }
+    // Quality is name with particle when quality is not Unusual
+    const qualityEffectCheckOne = quality != 5 && particle; 
+    const qualityEffectCheckTwo = quality && !particle; 
+    if (((qualityEffectCheckOne || qualityEffectCheckTwo) && (quality != UQualities["Unique"] || elevated)) && quality != UQualities["Decorated Weapon"]) {
+        itemName += `${UQualities[quality]} `;
+    }
+    if (particle) {
+        itemName += `${UEffects[particle]} `;
+    }
+    if (festivized) {
+        itemName += "Festivized ";
+    }
+    if (killstreak) {
+        itemName += `${UKillstreaks[killstreak]} `;
+    }
+    if (australium && australium != -1) {
+        itemName += "Australium "
+    }
+    if (texture) {
+        if (typeof texture != "String") texture = typeof texture == "object" ? texture.name : findSkin(texture);
+        itemName += `${texture} `;
+    }
+    itemName += name;
+    if (wearTier) {
+        itemName += ` (${UWearTiers[wearTier]})`;
+    }
+
+    return itemName
+}
 
 /** Parses item name into item object
  * @param {String} name item string
@@ -60,7 +156,7 @@ exports.parse = function(name) {
     const quality = getQuality(itemName, item);
     if (quality.quality) {
         itemName = itemName.replace(`${quality.quality} `, "");
-        item.quality = qualities[quality.quality];
+        item.quality = UQualities[quality.quality];
     }
     if (quality.elevated) {
         itemName = itemName.replace("Strange ", "");
@@ -68,197 +164,103 @@ exports.parse = function(name) {
     }
     if (item.particle) {
         itemName = itemName.replace(`${item.particle} `, "");
-        item.particle = effects[item.particle];
+        item.particle = UEffects[item.particle];
     }
-    if (item.killstreak) {
+    if (item.killstreak && item.killstreak != "None") {
         itemName = itemName.replace(`${item.killstreak} `, "");
-        item.killstreak = killstreaks[item.killstreak];
+        item.killstreak = UKillstreaks[item.killstreak];
     }
     if (item.wearTier) {
         itemName = itemName.replace(` (${item.wearTier})`, "");
-        item.wearTier = wearTiers[item.wearTier];
+        item.wearTier = UWearTiers[item.wearTier];
     }
     if (item.texture) {
         itemName = itemName.replace(`${item.texture.name} `, "");
     }
     item.item = itemName;
-
     const parsedItem = objectPrettify(defaults(item, TEMPLATE), TEMPLATE);
 
     return parsedItem;
 }
 
-/**
- * Stringifies item object into item name
- * @param {String} itemObject.item pure name of the item
- * @param {Number} itemObject.quality item quality
- * @param {Number} itemObject.elevated second item quality
- * @param {Number} itemObject.australium if item is australium
- * @param {Number} itemObject.killstreak item killstreak
- * @param {Number} itemObject.particle item effect
- * @param {Boolean} itemObject.festivized if item is festivized
- * @param {Object, String, Number} itemObject.texture item texture
- * @param {Number} itemObject.wearTier item wear
- * @param {Number} itemObject.craftable if item is craftable
- * @return {String} strigified item name
-*/
-exports.stringify = function(itemObject) {
-    if (typeof itemObject == "string") return itemObject;
-    else if (typeof itemObject != "object") throw new Error("itemObject has to be object, received " + typeof itemObject + " instead.")
+function getQuality(item, attributes) {
+    const itemQuality = {quality: null, elevated: null}
+    const Qualities = (item.match(/(Normal|Genuine|Vintage|Unique|Strange|Unusual|Self-Made|Haunted|Collector's)\s/g) || [])
+                      .map(quality => quality.replace(/\s/g, ""));
 
-    let { item, quality, elevated, australium, particle, killstreak, festivized, texture, wearTier, craftable } = itemObject;
-
-    let itemName = "";
-    if (craftable == 0 || craftable == -1) {
-        itemName += "Non-Craftable ";
+    if (VINTAGE_EXCEPTIONS.some(EXCEPTION => item.includes(EXCEPTION))) {
+        Qualities.splice(Qualities.indexOf("Vintage"), 1);
     }
-    if (elevated) {
-        itemName += "Strange ";
-    }
-    const qualityEffectCheckOne = quality != 5 && particle;
-    const qualityEffectCheckTwo = quality && !particle;
-    if (qualityEffectCheckOne || qualityEffectCheckTwo) {
-        itemName += `${qualities[quality]} `;
-    }
-    if (particle) {
-        itemName += `${effects[particle]} `;
-    }
-    if (festivized) {
-        itemName += "Festivized ";
-    }
-    if (killstreak) {
-        itemName += `${killstreaks[killstreak]} `;
-    }
-    if (australium && australium != -1) {
-        itemName += "Australium "
-    }
-    if (texture) {
-        if (typeof texture == "object") {
-            texture = texture.id;
+    if (Qualities.includes("Strange")) {
+        if (STRANGE_EXCEPTIONS.some(EXCEPTION => item.includes(EXCEPTION))) {
+            Qualities.splice(Qualities.indexOf("Strange"), 1);
+        } else if (Qualities.length > 1) {
+            itemQuality.elevated = true;
+            Qualities.splice(Qualities.indexOf("Strange"), 1);
         }
-        if (isNum(texture)) {
-            const skin = findSkin(texture, "id")
-            if (skin) texture = skin.name;
-        }
-
-        itemName += `${texture} `;
-    }
-    itemName += item;
-    if (wearTier) {
-        itemName += ` (${wearTiers[wearTier]})`;
     }
 
-    return itemName
+    if (Qualities.length == 0) {
+        if (attributes.texture) itemQuality.quality = "Decorated Weapon";
+        else if (attributes.effect) itemQuality.quality = "Unusual";
+        else if (!itemQuality.qualityEffectCheckOne) itemQuality.quality = "Unique";
+    } else {
+        itemQuality.quality = Qualities[0];
+    }
+
+    return itemQuality;
 }
 
-function getQuality(item, attributes) {
-    const itemQualities = {quality: null, elevated: null}
-    const nameQualities = [ "Normal", "Genuine", "Vintage", "Unique", "Unusual", "Self-Made", "Haunted", "Collector's" ]
-    for (let nq = 0; nq < nameQualities.length; nq++) {
-        let quality = nameQualities[nq];
-        if (!item.includes(quality + " ")) {
-            continue;
-        }
-        itemQualities.quality = quality;
-    }
-    if (attributes.effect && !itemQualities.quality) {
-        itemQualities.quality = "Unusual";
-    }
-    const strangeCheck = searchExceptions(item);
-    if (item.includes("Strange ") && !strangeCheck) {
-        if (!itemQualities.quality) {
-            itemQualities.quality = "Strange";
-        }
-        else {
-            itemQualities.elevated = true;
-        }
-    }
-    if (!itemQualities.quality && attributes.texture) {
-        itemQualities.quality = "Decorated Weapon";
-    }
-    if (!itemQualities.quality) {
-        itemQualities.quality = "Unique";
-    }
+function getKillstreak(item) {
+    let Killstreak = item.match(/(Professional Killstreak|Specialized Killstreak|Killstreak)\s/);
+    Killstreak = Killstreak ? Killstreak[0].substring(0, Killstreak[0].length - 1) : "None";
+    return Killstreak;
+}
 
-    return itemQualities;
+function getWearTier(item) { 
+    let WearTier = item.match(/\((Factory New|Minimal Wear|Field-Tested|Well-Worn|Battle Scarred)\)/);
+    WearTier = WearTier ? WearTier[0].replace(/[()]+/g, "") : null;
+    return WearTier;
 }
 
 function getEffect(item) {
-    let itemEffect = 0;
-    for (let e in effects) {
-        let effect = effects[e];
-        if (isNum(effect)) {
-            continue;
-        }
-        if (!item.includes(effect + " ")) {
-            continue;
-        }
+    let itemEffect = null;
+    for (let effect in UEffects) {
+        if (isNum(effect)) continue;
+        if (!item.includes(effect)) continue;
         itemEffect = effect;
     }
     return itemEffect;
 }
 
-function getKillstreak(item) {
-    let itemKillstreak = 0;
-    let killstreakNames = ["Killstreak", "Specialized Killstreak", "Professional Killstreak"];
-    for (let k = 0; k < killstreakNames.length; k++) {
-        let killstreak = killstreakNames[k];
-        if (!item.includes(killstreak)) {
-            continue;
-        }
-        itemKillstreak = killstreak;
-    }
-    return itemKillstreak;
-}
-
-function getWearTier(item) {
-    let itemWearTier = null
-    for (let w in wearTiers) {
-        let wearTier = wearTiers[w];
-        if (isNum(wearTier)) {
-            continue;
-        }
-        if (!item.includes("(" + wearTier + ")")) {
-            continue
-        }
-        itemWearTier = wearTier;
-    }
-    return itemWearTier;
-}
-
 function getSkin(item) {
-    let itemSkin = null
-    for (let s = 0; s < skins.length; s++) {
-        let skin = skins[s]; // find name of the property
-        if (!item.includes(skin.name)) {
-            continue;
-        }
+    let itemSkin = null;
+    for (let i = 0; i < UTextures.length; i++) {
+        let skin = UTextures[i] || {};
+        if (!item.includes(skin.name)) continue;
         itemSkin = skin;
     }
     return itemSkin;
 }
 
-function findSkin(search, type) {
-    for (let s = 0; s < skins.length; s++) {
-        let skin = skins[s];
-        if (skin[type] != search) {
-            continue;
-        }
-        return skin;
-    }
-}
+/**
+ * @param {Number, String} search - what are we looking for name or defindex
+ * @return {String, Number} returns skin we are looking for
+ */
+function findSkin(search) {
+    const isNumber = isNum(search);
 
-function searchExceptions(search) {
-    for (let e = 0; e < EXCEPTIONS.length; e++) {
-        let EXCEPTION = EXCEPTIONS[e];
-        if (!search.includes(EXCEPTION)) {
-            continue;
+    const current = isNumber ? "id" : "name";
+    const opposite = isNumber ? "name" : "id"
+    
+    for (let i = 0; i < UTextures.length; i++) {
+        let texture = UTextures[i] || {};
+        if (texture[current] == search) {
+            return texture[opposite];
         }
-        return true;
     }
-    return false;
 }
 
 function isNum (test) {
-    return /^-{0,1}\d+$/.test(test);
+    return /^\s*[-+]?[0-9]+[\.\,]?[0-9]*\s*$/.test(test);
 }
