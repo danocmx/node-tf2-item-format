@@ -3,13 +3,8 @@
 const defaults = require("defaults");
 const objectPrettify = require("object-prettify");
 
-/*  item_type:
-    - target - fabricators, strangifiers, killstreak kits - Specialized Killstreak Unarmed Combat Kit Fabricator , 
-                                                            Cleaner's Carbine Strangifier , 
-                                                            Non-Craftable Professional Killstreak Rocket Launcher Kit 
-    - output - chemistry sets - Collector's Gunboats Chemistry Set, 
-                                Foppish Physician Strangifier Chemistry Set 
-*/
+/*TODO: maybe add a bit more regex syntax */
+
 const UEffects = exports.UEffects = require("./resources/UEffects");
 const UKillstreaks = exports.UKillstreaks = require("./resources/UKillstreaks");
 const UQualities =  exports.UQualities = require("./resources/UQualities");
@@ -17,7 +12,7 @@ const UTextures = exports.UTextures = require("./resources/UTextures");
 const UWearTiers = exports.UWearTiers = require("./resources/UWearTiers");   
 
 const TEMPLATE = {
-    item: "",
+    name: "",
     originalName: "",
     quality: 0,
     elevated: false,
@@ -27,63 +22,34 @@ const TEMPLATE = {
     particle: 0,
     killstreak: 0,
     wearTier: 0,
-    texture: null
+    item_type: null
 }
 
-const TARGET_ITEMS = ["Kit Fabricator", "Strangifier", "Kit"] // end
-const OUTPUT_ITEMS = ["Chemistry Set", "Strangifier Chemistry Set"] // end
+const TARGETS = ["Kit Fabricator", "Strangifier", "Kit", "Chemistry Set", "Strangifier Chemistry Set"]
 
 const STRANGE_EXCEPTIONS = [ "Strange Bacon Grease", "Strange Filter: ", "Strange Count Transfer Tool", "Strange Part: " ]
 const VINTAGE_EXCEPTIONS = ["Vintage Tyrolean", "Vintage Merryweather"]
 
-/**
- * Stringifies item object into item name
- * @param {String} itemObject item stats
- * @param {Number} itemObject.item_type item type we want to stringify
- * @param {Number} itemObject.item_type_object has to be included when item_type is output or target, its one of TARGET_ITEMS
- * @return {String} strigified item name
+/** Stringifies item object into item name
+ * @param {String} item.item pure name of the item
+ * @param {String} item.item_type target of the item
+ * @param {Number} item.quality item quality
+ * @param {Number} item.elevated second item quality
+ * @param {Number} item.australium if item is australium
+ * @param {Number} item.killstreak item killstreak
+ * @param {Number} item.particle item effect
+ * @param {Boolean} item.festivized if item is festivized
+ * @param {Object, String, Number} item.texture item texture
+ * @param {Number} item.wearTier item wear
+ * @param {Number} item.craftable if item is craftable
+ * @return {String} item name with all attributes
 */
-exports.stringify = function(itemObject) {
-    if (typeof itemObject == "string") return itemObject;
-    else if (typeof itemObject != "object") throw new Error("itemObject has to be object, received " + typeof itemObject + " instead.")
-
-    let item;
-    if (itemObject.item_type == "target") {
-        item = stringifyTarget(itemObject);
-    } else if (itemObject.item_type == "output") {
-        item = stringifyOutput(itemObject);
-    } else {
-        item = stringifyItem(itemObject)
-    }
-
-    return item;
-}
-
-function stringifyTarget(item) {
-    /* {craftable} {killstreak} {item} {target} */
-}
-
-function stringifyOutput(item) {
-
-}
-
-/**
- * Stringifies item object into item name
- * @param {String} itemObject.item pure name of the item
- * @param {Number} itemObject.quality item quality
- * @param {Number} itemObject.elevated second item quality
- * @param {Number} itemObject.australium if item is australium
- * @param {Number} itemObject.killstreak item killstreak
- * @param {Number} itemObject.particle item effect
- * @param {Boolean} itemObject.festivized if item is festivized
- * @param {Object, String, Number} itemObject.texture item texture
- * @param {Number} itemObject.wearTier item wear
- * @param {Number} itemObject.craftable if item is craftable
- * @return {String} strigified item name
-*/
-function stringifyItem(item) {
+exports.stringify = function(item) {
+    if (typeof item == "string") return item;
+    else if (typeof item != "object") throw new Error("itemObject has to be object, received " + typeof item + " instead.")
+    
     let { name, item_type, quality, elevated, australium, particle, 
-        killstreak, festivized, texture, wearTier, craftable } = item;
+          killstreak, festivized, texture, wearTier, craftable } = item;
 
     if (item_type && item_type == "") {}
 
@@ -117,6 +83,9 @@ function stringifyItem(item) {
         itemName += `${texture} `;
     }
     itemName += name;
+    if (item_type) {
+        itemName += ` ${item_type}`;
+    }
     if (wearTier) {
         itemName += ` (${UWearTiers[wearTier]})`;
     }
@@ -139,6 +108,7 @@ exports.parse = function(name) {
         killstreak: getKillstreak(itemName),
         texture: getSkin(itemName),
         wearTier: getWearTier(itemName),
+        item_type: getItemType(itemName)
     }
 
     if (itemName.includes("Non-Craftable ")) {
@@ -170,6 +140,9 @@ exports.parse = function(name) {
         itemName = itemName.replace(`${item.killstreak} `, "");
         item.killstreak = UKillstreaks[item.killstreak];
     }
+    if (item.item_type) {
+        itemName = itemName.replace(` ${item.item_type}`, "");
+    }
     if (item.wearTier) {
         itemName = itemName.replace(` (${item.wearTier})`, "");
         item.wearTier = UWearTiers[item.wearTier];
@@ -177,7 +150,7 @@ exports.parse = function(name) {
     if (item.texture) {
         itemName = itemName.replace(`${item.texture.name} `, "");
     }
-    item.item = itemName;
+    item.name = itemName;
     const parsedItem = objectPrettify(defaults(item, TEMPLATE), TEMPLATE);
 
     return parsedItem;
@@ -241,6 +214,14 @@ function getSkin(item) {
         itemSkin = skin;
     }
     return itemSkin;
+}
+
+function getItemType(item) {
+    for (let i = 0; i < TARGETS.length; i++) {
+        let itemType = TARGETS[i];
+        if (!item.endsWith(itemType)) continue;
+        return itemType;
+    }
 }
 
 /**
