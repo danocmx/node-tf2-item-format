@@ -20,11 +20,12 @@ const TEMPLATE = {
     particle: 0,
     killstreak: 0,
     wearTier: null,
-    item_type: null
+    texture: null,
+    item_type: null,
+    craft_number: 0,
+    crate: 0,
+    medal: 0
 }
-
-const STRANGE_EXCEPTIONS = [ "Strange Bacon Grease", "Strange Filter: ", "Strange Count Transfer Tool", "Strange Part: " ]
-const VINTAGE_EXCEPTIONS = ["Vintage Tyrolean", "Vintage Merryweather"]
 
 /** Stringifies item object into item name
  * @param {String} item.item pure name of the item
@@ -38,6 +39,7 @@ const VINTAGE_EXCEPTIONS = ["Vintage Tyrolean", "Vintage Merryweather"]
  * @param {Object, String, Number} item.texture item texture
  * @param {Number} item.wearTier item wear
  * @param {Number} item.craftable if item is craftable
+ * @param {Number} item.crate number for create
  * @return {String} item name with all attributes
 */
 exports.stringify = function(item) {
@@ -45,9 +47,10 @@ exports.stringify = function(item) {
     else if (typeof item != "object") throw new Error("itemObject has to be object, received " + typeof item + " instead.")
     
     let { name, item_type, quality, elevated, australium, particle, 
-          killstreak, festivized, texture, wearTier, craftable } = item;
+          killstreak, festivized, texture, wearTier, craftable, crate, craft_number, medal } = item;
 
-    if (item_type && item_type == "") {}
+    const CRAFT_NUMBER_PLACEHOLDER = 100;
+    const numeric = craft_number < CRAFT_NUMBER_PLACEHOLDER ? craft_number : crate | medal;
 
     let itemName = "";
     if (craftable == 0 || craftable == -1) {
@@ -75,12 +78,15 @@ exports.stringify = function(item) {
         itemName += "Australium "
     }
     if (texture) {
-        if (typeof texture != "String") texture = typeof texture == "object" ? texture.name : findSkin(texture);
+        if (typeof texture != "string") texture = typeof texture == "object" ? texture.name : findSkin(texture);
         itemName += `${texture} `;
     }
     itemName += name;
     if (item_type) {
         itemName += ` ${item_type}`;
+    }
+    if (numeric) {
+        itemName += ` #${numeric}`;
     }
     if (wearTier) {
         itemName += ` (${UWearTiers[wearTier]})`;
@@ -104,7 +110,8 @@ exports.parse = function(name) {
         killstreak: getKillstreak(itemName),
         texture: getSkin(itemName),
         wearTier: getWearTier(itemName),
-        item_type: getItemType(itemName)
+        item_type: getItemType(itemName),
+        numeric: getNumericField(itemName)
     }
 
     if (itemName.includes("Non-Craftable ")) {
@@ -139,6 +146,11 @@ exports.parse = function(name) {
     if (item.item_type) {
         itemName = itemName.replace(` ${item.item_type}`, "");
     }
+    if (item.numeric) {
+        itemName = itemName.replace(` #${item.numeric.number}`, "");
+        item[item.numeric.type] = item.numeric.number;
+        delete item.numeric;
+    }
     if (item.wearTier) {
         itemName = itemName.replace(` (${item.wearTier})`, "");
         item.wearTier = UWearTiers[item.wearTier];
@@ -154,21 +166,19 @@ exports.parse = function(name) {
 
 function getQuality(item, attributes) {
     const itemQuality = {quality: null, elevated: null}
-    const Qualities = (item.match(/(Normal|Genuine|Vintage|Unique|Strange|Unusual|Self-Made|Haunted|Collector's)\s/g) || [])
-                      .map(quality => quality.replace(/\s/g, ""));
-
-    if (VINTAGE_EXCEPTIONS.some(EXCEPTION => item.includes(EXCEPTION))) {
+    const Qualities = item.match(/(Normal|Genuine|Vintage|Unique|Strange|Unusual|Self-Made|Haunted|Collector's)\b/g) || [];
+    
+    if (/Vintage\s(Tyrolean|Merryweather)/.test(item)) {
         Qualities.splice(Qualities.indexOf("Vintage"), 1);
     }
     if (Qualities.includes("Strange")) {
-        if (STRANGE_EXCEPTIONS.some(EXCEPTION => item.includes(EXCEPTION))) {
+        if (/(Strange Bacon Grease|Strange Filter: |Strange Count Transfer Tool|Strange Part: )/.test(item)) {
             Qualities.splice(Qualities.indexOf("Strange"), 1);
         } else if (Qualities.length > 1) {
             itemQuality.elevated = true;
             Qualities.splice(Qualities.indexOf("Strange"), 1);
         }
     }
-
     if (Qualities.length == 0) {
         if (attributes.texture) itemQuality.quality = "Decorated Weapon";
         else if (attributes.particle) itemQuality.quality = "Unusual";
@@ -181,9 +191,8 @@ function getQuality(item, attributes) {
 }
 
 function getKillstreak(item) {
-    let Killstreak = item.match(/(Professional Killstreak|Specialized Killstreak|Killstreak)\s/);
-    Killstreak = Killstreak ? Killstreak[0].substring(0, Killstreak[0].length - 1) : "None";
-    return Killstreak;
+    let Killstreak = item.match(/(Professional Killstreak|Specialized Killstreak|Killstreak)\b/); 
+    return Killstreak ? Killstreak[0] : 0;
 }
 
 function getWearTier(item) { 
@@ -213,9 +222,18 @@ function getSkin(item) {
 }
 
 function getItemType(item) {
-    if (/(Killer's Kit|Coffin Kit|Summer Starter Kit)/.test()) return;
-    const itemType = item.match(/\s(Kit Fabricator|Strangifier|Kit|Strangifier Chemistry Set|Chemistry Set)/); 
+    if (/(Killer's Kit|Coffin Kit|Summer Starter Kit)/.test(item)) return;
+    const itemType = item.match(/\b(Kit Fabricator|Kit|Strangifier Chemistry Set|Chemistry Set|Strangifier)/); 
     return itemType ? itemType[0] : null;
+}
+
+function getNumericField(item) {
+    const numeric = item.match(/\b(?<=#)\d+/);
+    if (!numeric) return;
+    let type = item.match(/\b(Medal|Crate|Case)\b/);
+    type = type ? type[0].toLowerCase() : "craft_number";
+    type = type == "case" ? "crate" : type;
+    return { type: type, number: numeric[0] };
 }
 
 /**

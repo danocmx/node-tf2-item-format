@@ -13,7 +13,7 @@ module.exports = {
     "Completed": 12,
     "Haunted": 13,
     "Collector's": 14,
-    "Decorated Weapon": 1,
+    "Decorated Weapon": 15,
 
     '0': 'Normal',
     '1': 'Genuine',
