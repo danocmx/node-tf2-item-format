@@ -6,9 +6,9 @@ Formats strings/objects same way backpack.tf does.
 
 ## Example
 ```js
-// basic_example.js¨
+// basic_example.js
 
-const itemFormatting = require("tf2-item-format");
+const itemFormatting = require("../index");
 
 // Just an example, the string is not possible in TF2
 const objectDefaults = { 
@@ -22,7 +22,11 @@ const objectDefaults = {
     particle: 9,
     killstreak: 2,
     wearTier: 3,
-    texture: { id: '230', name: 'Jazzy' }  // or just Jazzy or 230
+    texture: { id: '230', name: 'Jazzy' },  // or just Jazzy or 230
+    target_item: null,
+    crate: 0,
+    medal: 0,
+    craft_number: 0
 }
 // output -> stringDefeaults
 itemFormatting.stringify(objectDefaults);

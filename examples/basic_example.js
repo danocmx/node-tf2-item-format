@@ -14,7 +14,11 @@ const objectDefaults = {
     particle: 9,
     killstreak: 2,
     wearTier: 3,
-    texture: { id: '230', name: 'Jazzy' }  // or just Jazzy or 230
+    texture: { id: '230', name: 'Jazzy' },  // or just Jazzy or 230
+    target_item: null,
+    crate: 0,
+    medal: 0,
+    craft_number: 0
 }
 // output -> stringDefeaults
 itemFormatting.stringify(objectDefaults);
