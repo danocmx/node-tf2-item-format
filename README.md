@@ -13,7 +13,7 @@ const itemFormatting = require("../index");
 // Just an example, the string is not possible in TF2
 const objectDefaults = { 
     name: 'Attendant',
-    originalName: 'Non-Craftable Strange Jazzy Genuine Green Energy Festivized Specialized Killstreak Australium Attendant (Field-Tested)',
+    originalName: 'Non-Craftable Strange Genuine Green Energy Festivized Specialized Killstreak Australium Jazzy Attendant (Field-Tested)',
     quality: 1,
     elevated: true,
     craftable: 0,
@@ -31,7 +31,7 @@ const objectDefaults = {
 // output -> stringDefeaults
 itemFormatting.stringify(objectDefaults);
 
-const stringDefeaults = "Non-Craftable Strange Jazzy Genuine Green Energy Festivized Specialized Killstreak Australium Attendant (Field-Tested)";
+const stringDefeaults = "Non-Craftable Strange Genuine Green Energy Festivized Specialized Killstreak Australium Jazzy Attendant (Field-Tested)";
 // output -> objectDefaults
 itemFormatting.parse(stringDefeaults);
 ```
@@ -46,3 +46,6 @@ let item = "Festivized Strange Australium Killstreak Jazzy Attendant (Field-Test
 item = itemFormatting.stringify( itemFormatting.parse(item) )
 
 ```
+
+### More examples
+Look to the unit tests folder for new examples, if you want to try them out use jest for unit testing
