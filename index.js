@@ -23,9 +23,8 @@ const TEMPLATE = {
     texture: null,
     item_type: null,
     target_item: null,
-    craft_number: 0,
-    crate: 0,
-    medal: 0
+    numeric: 0,
+    numeric_type: null
 }
 
 /** Stringifies item object into item name
@@ -48,10 +47,10 @@ exports.stringify = function(item) {
     else if (typeof item != "object") throw new Error("itemObject has to be object, received " + typeof item + " instead.")
     
     let { name, target_item, quality, elevated, australium, particle, 
-          killstreak, festivized, texture, wearTier, craftable, crate, craft_number, medal } = item;
+          killstreak, festivized, texture, wearTier, craftable, numeric, numeric_type } = item;
 
     const CRAFT_NUMBER_PLACEHOLDER = 100;
-    const numeric = craft_number < CRAFT_NUMBER_PLACEHOLDER ? craft_number : crate | medal;
+    numeric = numeric_type == "craft_number" && numeric < CRAFT_NUMBER_PLACEHOLDER ? numeric : null;
 
     let itemName = "";
     if (craftable == 0 || craftable == -1) {
@@ -150,8 +149,8 @@ exports.parse = function(name) {
     }
     if (item.numeric) {
         itemName = itemName.replace(` #${item.numeric.number}`, "");
-        item[item.numeric.type] = item.numeric.number;
-        delete item.numeric;
+        item.numeric_type = item.numeric.type;
+        item.numeric = item.numeric.number;
     }
     if (item.wearTier) {
         itemName = itemName.replace(` (${item.wearTier})`, "");

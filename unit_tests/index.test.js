@@ -30,9 +30,8 @@ test("Regular item test, String to Object.", () => {
         texture: null,
         item_type: null,
         target_item: null,
-        crate: 0,
-        craft_number: 0,
-        medal: 0
+        numeric: 0,
+        numeric_type: null
     });
 })
 
@@ -69,9 +68,8 @@ test("Skin item test, String to Object.", () => {
         },
         item_type: null,
         target_item: null,
-        crate: 0,
-        craft_number: 0,
-        medal: 0
+        numeric: 0,
+        numeric_type: null
     });
 })
 
@@ -79,7 +77,8 @@ test("Numeric item test, Object to String.", () => {
     const stringifiedItemObject = stringify({
         name: "Backwards Ballcap",
         quality: 6,
-        medal: 98
+        numeric: 98,
+        numeric_type: "craft_number"
     });
     expect(stringifiedItemObject).toBe("Backwards Ballcap #98");
 });
@@ -101,9 +100,8 @@ test("Numeric item test, String to Object.", () => {
         texture: null,
         item_type: null,
         target_item: null,
-        medal: "1033",
-        craft_number: 0,
-        crate: 0
+        numeric: "1033",
+        numeric_type: "medal"
     });
 })
 
@@ -135,8 +133,7 @@ test("Item type test, String to Object.", () => {
         texture: null,
         target_item: "Strangifier",
         item_type: "target",
-        medal: 0,
-        craft_number: 0,
-        crate: 0
+        numeric: 0,
+        numeric_type: null
     });
 })
