@@ -4,6 +4,7 @@ Formats strings/objects same way backpack.tf does.
 # TODO
 - thinking of adding more regular expressions, dunno if it has any more use
 - idk about item_type naming, maybe should another property with the item_type type (haha) eg. item_type: "target" or "output" && target: "Fabricator Kit"
+- Crate Support
 
 ## Example
 ```js

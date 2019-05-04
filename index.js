@@ -19,11 +19,9 @@ const TEMPLATE = {
     festivized: false,
     particle: 0,
     killstreak: 0,
-    wearTier: 0,
+    wearTier: null,
     item_type: null
 }
-
-const TARGETS = ["Kit Fabricator", "Strangifier", "Kit", "Chemistry Set", "Strangifier Chemistry Set"]
 
 const STRANGE_EXCEPTIONS = [ "Strange Bacon Grease", "Strange Filter: ", "Strange Count Transfer Tool", "Strange Part: " ]
 const VINTAGE_EXCEPTIONS = ["Vintage Tyrolean", "Vintage Merryweather"]
@@ -173,8 +171,8 @@ function getQuality(item, attributes) {
 
     if (Qualities.length == 0) {
         if (attributes.texture) itemQuality.quality = "Decorated Weapon";
-        else if (attributes.effect) itemQuality.quality = "Unusual";
-        else if (!itemQuality.qualityEffectCheckOne) itemQuality.quality = "Unique";
+        else if (attributes.particle) itemQuality.quality = "Unusual";
+        else if (!itemQuality.quality) itemQuality.quality = "Unique";
     } else {
         itemQuality.quality = Qualities[0];
     }
@@ -195,7 +193,7 @@ function getWearTier(item) {
 }
 
 function getEffect(item) {
-    let itemEffect = null;
+    let itemEffect = 0;
     for (let effect in UEffects) {
         if (isNum(effect)) continue;
         if (!item.includes(effect)) continue;
@@ -215,11 +213,9 @@ function getSkin(item) {
 }
 
 function getItemType(item) {
-    for (let i = 0; i < TARGETS.length; i++) {
-        let itemType = TARGETS[i];
-        if (!item.endsWith(itemType)) continue;
-        return itemType;
-    }
+    if (/(Killer's Kit|Coffin Kit|Summer Starter Kit)/.test()) return;
+    const itemType = item.match(/\s(Kit Fabricator|Strangifier|Kit|Strangifier Chemistry Set|Chemistry Set)/); 
+    return itemType ? itemType[0] : null;
 }
 
 /**
