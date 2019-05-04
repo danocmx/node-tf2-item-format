@@ -22,6 +22,7 @@ const TEMPLATE = {
     wearTier: null,
     texture: null,
     item_type: null,
+    target_item: null,
     craft_number: 0,
     crate: 0,
     medal: 0
@@ -29,7 +30,7 @@ const TEMPLATE = {
 
 /** Stringifies item object into item name
  * @param {String} item.item pure name of the item
- * @param {String} item.item_type target of the item
+ * @param {String} item.target_item target of the item, eg. Kit Fabricator
  * @param {Number} item.quality item quality
  * @param {Number} item.elevated second item quality
  * @param {Number} item.australium if item is australium
@@ -46,7 +47,7 @@ exports.stringify = function(item) {
     if (typeof item == "string") return item;
     else if (typeof item != "object") throw new Error("itemObject has to be object, received " + typeof item + " instead.")
     
-    let { name, item_type, quality, elevated, australium, particle, 
+    let { name, target_item, quality, elevated, australium, particle, 
           killstreak, festivized, texture, wearTier, craftable, crate, craft_number, medal } = item;
 
     const CRAFT_NUMBER_PLACEHOLDER = 100;
@@ -82,8 +83,8 @@ exports.stringify = function(item) {
         itemName += `${texture} `;
     }
     itemName += name;
-    if (item_type) {
-        itemName += ` ${item_type}`;
+    if (target_item) {
+        itemName += ` ${target_item}`;
     }
     if (numeric) {
         itemName += ` #${numeric}`;
@@ -110,7 +111,7 @@ exports.parse = function(name) {
         killstreak: getKillstreak(itemName),
         texture: getSkin(itemName),
         wearTier: getWearTier(itemName),
-        item_type: getItemType(itemName),
+        target_item: getItemType(itemName),
         numeric: getNumericField(itemName)
     }
 
@@ -143,8 +144,9 @@ exports.parse = function(name) {
         itemName = itemName.replace(`${item.killstreak} `, "");
         item.killstreak = UKillstreaks[item.killstreak];
     }
-    if (item.item_type) {
-        itemName = itemName.replace(` ${item.item_type}`, "");
+    if (item.target_item) {
+        itemName = itemName.replace(` ${item.target_item}`, "");
+        item.item_type = item.item_type == "Chemistry Set" || item.item_type == "Strangifier Chemistry Set" ? "output" : "target";
     }
     if (item.numeric) {
         itemName = itemName.replace(` #${item.numeric.number}`, "");

@@ -14,21 +14,22 @@ test("Regular item test, Object to String.", () => {
 });
 
 test("Regular item test, String to Object.", () => {
-    const item = "Strange Festivized Professional Killstreak Australium Rocket Launcher";
+    const item = "Strange Genuine Anger";
     const parsedItemString = parse(item);
     expect(parsedItemString).toEqual({
-        name: "Rocket Launcher",
+        name: "Anger",
         originalName: item,
-        quality: 11,
-        elevated: false,
+        quality: 1,
+        elevated: true,
         craftable: 1,
-        australium: 1,
-        festivized: true,
+        australium: 0,
+        festivized: false,
         particle: 0,
-        killstreak: 3,
+        killstreak: 0,
         wearTier: null,
         texture: null,
         item_type: null,
+        target_item: null,
         crate: 0,
         craft_number: 0,
         medal: 0
@@ -37,15 +38,15 @@ test("Regular item test, String to Object.", () => {
 
 test("Skin item test, Object to String.", () => {
     const stringifiedItemObject = stringify({
-        name: "Rocket Launcher",
-        quality: 15,
-        craftable: 1,
-        festivized: true,
-        killstreak: 3,
-        wearTier: 3,
-        texture: "Jazzy",
+        name: "Scattergun",
+        quality: 11,
+        craftable: 0,
+        festivized: false,
+        killstreak: 1,
+        wearTier: 1,
+        texture: "Civic Duty Mk.II",
     });
-    expect(stringifiedItemObject).toBe("Festivized Professional Killstreak Jazzy Rocket Launcher (Field-Tested)");
+    expect(stringifiedItemObject).toBe("Non-Craftable Strange Killstreak Civic Duty Mk.II Scattergun (Factory New)");
 });
 
 test("Skin item test, String to Object.", () => {
@@ -67,6 +68,7 @@ test("Skin item test, String to Object.", () => {
             "name": "Jazzy"
         },
         item_type: null,
+        target_item: null,
         crate: 0,
         craft_number: 0,
         medal: 0
@@ -75,11 +77,11 @@ test("Skin item test, String to Object.", () => {
 
 test("Numeric item test, Object to String.", () => {
     const stringifiedItemObject = stringify({
-        name: "Medal",
-        quality: 3,
-        medal: 1033
+        name: "Backwards Ballcap",
+        quality: 6,
+        medal: 98
     });
-    expect(stringifiedItemObject).toBe("Vintage Medal #1033");
+    expect(stringifiedItemObject).toBe("Backwards Ballcap #98");
 });
 
 test("Numeric item test, String to Object.", () => {
@@ -98,6 +100,7 @@ test("Numeric item test, String to Object.", () => {
         wearTier: null,
         texture: null,
         item_type: null,
+        target_item: null,
         medal: "1033",
         craft_number: 0,
         crate: 0
@@ -110,7 +113,7 @@ test("Item type test, Object to String.", () => {
         quality: 6,
         killstreak: 2,
         craftable: 0,
-        item_type: "Kit Fabricator"
+        target_item: "Kit Fabricator"
     });
     expect(stringifiedItemObject).toBe("Non-Craftable Specialized Killstreak Gunboats Kit Fabricator");
 });
@@ -130,7 +133,8 @@ test("Item type test, String to Object.", () => {
         killstreak: 0,
         wearTier: null,
         texture: null,
-        item_type: "Strangifier",
+        target_item: "Strangifier",
+        item_type: "target",
         medal: 0,
         craft_number: 0,
         crate: 0
