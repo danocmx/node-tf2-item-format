@@ -1,13 +1,13 @@
 {
   "name": "tf2-item-format",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "description": "Format's TF2 items like backpack.tf does",
   "main": "index.js",
   "scripts": {
     "test": "jest"
   },
   "directories": {
-    "examples": "basic_example.js"
+    "examples": "basic-example.js"
   },
   "repository": {
     "type": "git",
@@ -27,9 +27,13 @@
   "dependencies": {
     "clone": "^1.0.4",
     "defaults": "^1.0.3",
+    "lodash": "^4.17.15",
     "object-prettify": "^1.0.0"
   },
-  "optionalDevDependencies": {
-    "jest": "^24.7.1"
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "jest": "^24.9.0"
   }
 }
