@@ -1,4 +1,4 @@
-const isAustralium = require('./fromName/isAustralium');
+const isAustralium = require('./getNameAttributes/isAustralium');
 
 /**
  * @typedef {nameAttributes}
@@ -15,13 +15,9 @@ module.exports = function (item) {
 	/**
 	 * @type {nameAttributes}
 	 */
-	const usedName = item.market_name || item.name || item.market_hash_name;
-
 	const attributes = {
-		australium: false,
+		australium: isAustralium(item),
 	};
-
-	if (isAustralium(usedName)) attributes.australium = true;
 
 	return attributes;
 };

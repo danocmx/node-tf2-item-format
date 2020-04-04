@@ -1,4 +1,4 @@
-const isStrange = require('./fromProperties/isStrange');
+const getElevated = require('./getPropertyAttributes/getElevated');
 
 /**
  * @typedef propertyAttributes
@@ -13,14 +13,13 @@ const isStrange = require('./fromProperties/isStrange');
  * @param {object} item
  * @return {propertyAttributes}
  */
-module.exports = function (item) {
+module.exports = function ({ item, tags }) {
 	/**
 	 * @type {propertyAttributes}
 	 */
 	const attributes = {
-		fullName: item.market_name || item.name || item.market_hash_name,
-		img: item.icon_url,
-		strange: isStrange(item),
+		elevated: getElevated(item, tags),
+
 		// Inverts numeric values into booleans
 		tradable: !!item.tradable,
 		marketable: !!item.marketable,

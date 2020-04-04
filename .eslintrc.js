@@ -21,6 +21,8 @@ module.exports = {
         "object-curly-newline": 0,
         "func-names": 0,
         "no-use-before-define": 0,
-        "strict": 0
+        "strict": 0,
+        "no-underscore-dangle": 0,
+        "global-require": 0,
     }
 };
