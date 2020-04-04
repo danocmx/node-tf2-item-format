@@ -1,9 +1,9 @@
-const getAttributesFromDescriptions = require('./parseEconItem/getAttributes/fromDescriptions');
-const getAttributesFromName = require('./parseEconItem/getAttributes/fromName');
-const getAttributesFromProperties = require('./parseEconItem/getAttributes/fromProperties');
-const getAttributesFromTags = require('./parseEconItem/getAttributes/fromTags');
+const getAttributesFromDescriptions = require('./parseEconItem/ParsedEcon/getDescriptions');
+const getAttributesFromName = require('./parseEconItem/ParsedEcon/getNameAttributes');
+const getAttributesFromProperties = require('./parseEconItem/ParsedEcon/getPropertyAttributes');
+const getAttributesFromTags = require('./parseEconItem/ParsedEcon/getTags');
 
-const getName = require('./parseEconItem/getName');
+const getName = require('./parseEconItem/ParsedEcon/getFullName');
 const fixElevated = require('./parseEconItem/fixElevated');
 
 /**

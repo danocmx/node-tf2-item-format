@@ -1,9 +1,9 @@
-const { isQuality, getQuality } = require('./fromTags/quality');
-const { isType, getType } = require('./fromTags/type');
-const { isClass, getClass } = require('./fromTags/class');
-const { isGrade, getGrade } = require('./fromTags/grade');
-const { isCollection, getCollection } = require('./fromTags/collection');
-const { isWear, getWear } = require('./fromTags/wear');
+const { isQuality, getQuality } = require('./getTags/quality');
+const { isType, getType } = require('./getTags/type');
+const { isClass, getClass } = require('./getTags/class');
+const { isGrade, getGrade } = require('./getTags/grade');
+const { isCollection, getCollection } = require('./getTags/collection');
+const { isWear, getWear } = require('./getTags/wear');
 
 /**
  * @typedef {tagAttributes}
