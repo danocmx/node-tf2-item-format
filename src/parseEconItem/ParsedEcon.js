@@ -19,33 +19,46 @@ class ParsedEcon {
 		this.nameAttrs = getNameAttributes(this);
 	}
 
+	/**
+	 * Gets name from ECON.
+	 * @return {string}
+	 */
 	get name() {
 		return this.item.market_name || this.itemitem.name || this.itemitem.market_hash_name;
 	}
 
+	/**
+	 * Gets fully fixed name with all attributes.
+	 * @todo add tradable, effect
+	 * @return {string}
+	 */
+	get fullName() {
+		return this.descriptions.craftable ? this.name : `Non-Craftable ${this.name}`;
+	}
+
+	/**
+	 * Gets name without any attributes.
+	 * @return {string}
+	 */
 	getItemName() {
-		// TODO: messure time
 		const { resources } = require('../index');
 
 		const { australium, wear, killstreak,
 			texture, elevated, festivized, quality } = this.getNameAttributes();
 
-		return this.name
-			.replace(australium ? 'Australium ' : '', '')
-			.replace(festivized ? 'Festivized ' : '', '')
-			.replace(elevated ? 'Strange ' : '', '')
-			.replace(texture || '', '')
-			.replace(resources.getKillstreakValue(killstreak), '')
-			.replace(resources.getWearValue(wear), '')
-			.replace(resources.getQualityValue(quality), '')
-			.trim();
+		let { name } = this;
+
+		if (australium) name = name.replace('Australium ', '');
+		if (festivized) name = name.replace('Festivized ', '');
+		if (elevated) name = name.replace('Strange ', '');
+		if (texture) name = name.replace(`${texture} `, '');
+		if (killstreak) name = name.replace(`${resources.getKillstreakValue(killstreak)} `, '');
+		if (wear) name = name.replace(`${resources.getWearValue(wear)} `, '');
+		if (quality !== resources.qualities.Unique) name = name.replace(`${resources.getQualityValue(quality)} `, '');
+
+		return name;
 	}
 
-	get fullName() {
-		return this.descriptions.craftable ? this.name : `Non-Craftable ${this.name}`;
-	}
-
-	// TODO: update resources
 	getImageURL() {
 		return `https://steamcommunity-a.akamaihd.net/economy/image/${this.item.icon_url}/`;
 	}

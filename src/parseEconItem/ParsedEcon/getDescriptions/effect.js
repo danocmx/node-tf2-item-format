@@ -21,9 +21,9 @@ function canQualityBeUnusual({ quality }) {
  * @return {number}
  */
 exports.getEffect = function (description) {
-	const { effects } = require('../../../index').resources;
+	const { resources } = require('../../../index');
 
-	return effects[
-		description.value.replace('★ Unusual Effect: ', '')
-	];
+	return resources.getEffectValue(
+		description.value.replace('★ Unusual Effect: ', ''),
+	);
 };
