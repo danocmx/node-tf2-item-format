@@ -1,4 +1,4 @@
-const UWears = require('../../../../resources/UWearTiers');
+const wears = require('../../../../resources/UWearTiers');
 
 /**
  * Checks if tag is a wear
@@ -15,5 +15,5 @@ exports.isWear = function (tag) {
  * @return {boolean}
  */
 exports.getWear = function (tag) {
-	return UWears[tag.name];
+	return wears[tag.name];
 };

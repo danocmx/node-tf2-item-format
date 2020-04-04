@@ -1,11 +1,12 @@
-const { isFestivized } = require('./fromDescriptions/festivized');
-const { isEffect, getEffect } = require('./fromDescriptions/effect');
-const { isKillstreaker, getKillstreaker, isSheen, getSheen, isKillstreak, setKillstreak } = require('./fromDescriptions/killstreak');
-const { isSpell, getSpell } = require('./fromDescriptions/spell');
-const { isPart, getPart } = require('./fromDescriptions/part');
-const { isPaint, getPaint } = require('./fromDescriptions/paint');
-const { isCraftable } = require('./fromDescriptions/craftable');
-const { isOurTexture, getTexture } = require('./fromDescriptions/texture');
+const { isFestivized } = require('./getDescriptions/festivized');
+const { isEffect, getEffect } = require('./getDescriptions/effect');
+const { isSpell, getSpell } = require('./getDescriptions/spell');
+const { isPart, getPart } = require('./getDescriptions/part');
+const { isPaint, getPaint } = require('./getDescriptions/paint');
+const { isCraftable } = require('./getDescriptions/craftable');
+const { isItemsTexture, getTexture } = require('./getDescriptions/texture');
+
+const Killstreak = require('./getDescriptions/Killstreak');
 
 /**
  * @typedef {descriptionAttributes}
@@ -28,14 +29,18 @@ const { isOurTexture, getTexture } = require('./fromDescriptions/texture');
  * @param {string} type tags type
  * @return {descriptionAttributes}
  */
-module.exports = function ({ descriptions }, name, { type }) {
+module.exports = function ({ item, tags }) {
+	const { descriptions = [] } = item;
+
+	const killstreak = new Killstreak();
+
 	/**
 	 * @type {descriptionAttributes}
 	 */
 	const attributes = {
 		craftable: true,
 		effect: 0,
-		killstreak: 0,
+		killstreak,
 		spells: [],
 		parts: [],
 	};
@@ -47,24 +52,20 @@ module.exports = function ({ descriptions }, name, { type }) {
 
 		else if (isPaint(description)) attributes.paint = getPaint(description);
 
-		else if (isEffect(description)) attributes.effect = getEffect(description);
+		else if (isEffect(description, tags)) attributes.effect = getEffect(description);
 
 		else if (isFestivized(description)) attributes.festivized = true;
 
 		else if (isSpell(description)) attributes.spells.push(getSpell(description));
 
-		else if (isKillstreaker(description)) attributes.killstreaker = getKillstreaker(description);
-		else if (isSheen(description)) attributes.sheen = getSheen(description);
-		else if (isKillstreak(description)) attributes.killstreak = 1;
+		else if (Killstreak.isKillstreaker(description)) killstreak.setKillstreaker(description);
+		else if (Killstreak.isSheen(description)) killstreak.setSheen(description);
+		else if (Killstreak.isKillstreak(description)) killstreak.setKillstreak(description);
 
-		else if (isOurTexture(description, name, type)) attributes.texture = getTexture(description);
+		else if (isItemsTexture(description, item)) attributes.texture = getTexture(description);
 
 		else if (!isCraftable(description)) attributes.craftable = false;
 	}
-
-	// TODO: add target?
-	// Here we correct the killstreak from sheen & killstreaker
-	setKillstreak(attributes);
 
 	return attributes;
 };

@@ -1,5 +1,3 @@
-const UQualities = require('../../../../resources/UQualities');
-
 /**
  * Checks if tag is a quality
  * @param {Object} tag
@@ -15,5 +13,7 @@ exports.isQuality = function (tag) {
  * @return {boolean}
  */
 exports.getQuality = function (tag) {
-	return UQualities[tag.name];
+	const { qualities } = require('../../../index').resources;
+
+	return qualities[tag.name];
 };

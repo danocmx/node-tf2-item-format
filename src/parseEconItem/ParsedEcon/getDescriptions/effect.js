@@ -1,0 +1,29 @@
+/**
+ * Checks if description contains effect.
+ * @param {object} description
+ * @return {boolean}
+ */
+exports.isEffect = function (description, tags) {
+	return description.value.startsWith('★ Unusual Effect: ') && isRightColour(description) && canQualityBeUnusual(tags);
+};
+
+function isRightColour({ color }) {
+	return color === 'ffd7000';
+}
+
+function canQualityBeUnusual({ quality }) {
+	return quality !== 6;
+}
+
+/**
+ * Gets effect number.
+ * @param {object} description
+ * @return {number}
+ */
+exports.getEffect = function (description) {
+	const { effects } = require('../../../index').resources;
+
+	return effects[
+		description.value.replace('★ Unusual Effect: ', '')
+	];
+};

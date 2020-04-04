@@ -20,7 +20,9 @@ const { isWear, getWear } = require('./getTags/wear');
  * @param {Object} tags
  * @return {tagAttributes}
  */
-module.exports = function ({ tags }) {
+module.exports = function ({ item }) {
+	const { tags = [] } = item;
+
 	/**
 	 * @type {tagAttributes}
 	 */
