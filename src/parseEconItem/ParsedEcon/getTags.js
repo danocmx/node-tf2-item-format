@@ -29,12 +29,13 @@ module.exports = function ({ item }) {
 	const attributes = {
 		quality: 6,
 		wear: 0,
+		classes: [],
 	};
 
 	for (let i = 0; i < tags.length; i++) {
 		const tag = tags[i];
 
-		if (isQuality(tag)) attributes.quality = getQuality(tag);
+		if (isQuality(tag)) attributes.quality.push(getQuality(tag));
 		else if (isType(tag)) attributes.type = getType(tag);
 		else if (isClass(tag)) attributes.class = getClass(tag);
 		else if (isGrade(tag)) attributes.grade = getGrade(tag);
