@@ -1,9 +1,5 @@
-const { isQuality, getQuality } = require('./getTags/quality');
-const { isType, getType } = require('./getTags/type');
-const { isClass, getClass } = require('./getTags/class');
-const { isGrade, getGrade } = require('./getTags/grade');
-const { isCollection, getCollection } = require('./getTags/collection');
-const { isWear, getWear } = require('./getTags/wear');
+const { isType, getType, isClass, getClass, isGrade, getGrade, isCollection, getCollection } = require('./getTags/tags');
+const { isQuality, getQuality, isWear, getWear } = require('./getTags/resourceTags');
 
 /**
  * @typedef {tagAttributes}
@@ -35,12 +31,13 @@ module.exports = function ({ item }) {
 	for (let i = 0; i < tags.length; i++) {
 		const tag = tags[i];
 
-		if (isQuality(tag)) attributes.quality.push(getQuality(tag));
-		else if (isType(tag)) attributes.type = getType(tag);
+		// The position is saved.
+		if (isQuality(tag)) attributes.quality.push(getQuality(tag)); // diff
+		else if (isType(tag)) attributes.type = getType(tag);	// diff
 		else if (isClass(tag)) attributes.class = getClass(tag);
 		else if (isGrade(tag)) attributes.grade = getGrade(tag);
 		else if (isCollection(tag)) attributes.collection = getCollection(tag);
-		else if (isWear(tag)) attributes.wear = getWear(tag);
+		else if (isWear(tag)) attributes.wear = getWear(tag); // diff
 	}
 
 	return attributes;
