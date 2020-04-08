@@ -1,8 +1,8 @@
 {
   "name": "tf2-item-format",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Format's TF2 items like backpack.tf does",
-  "main": "index.js",
+  "main": "./src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/danocmx/node-tf2-item-format.git"
