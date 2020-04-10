@@ -6,5 +6,13 @@ const ParsedEcon = require('./parseEconItem/ParsedEcon');
  * @return {Object}
  */
 module.exports = function (item) {
-	return new ParsedEcon(item);
+	const parsedEcon = new ParsedEcon(item);
+
+	return {
+		name: parsedEcon.name,
+		id: parsedEcon.id,
+		img: parsedEcon.getImageURL(),
+		imgLarge: parsedEcon.getLargeImageURL(),
+		...parsedEcon.getAttributes(),
+	};
 };

@@ -8,3 +8,5 @@ module.exports = {
 module.exports.parseEconItem = require('./parseEconItem');
 module.exports.parseString = require('./parseString');
 module.exports.stringify = require('./stringify');
+
+module.exports.ParsedEcon = require('./parseEconItem/ParsedEcon');
