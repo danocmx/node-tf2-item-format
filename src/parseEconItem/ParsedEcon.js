@@ -22,6 +22,10 @@ class ParsedEcon {
 		this.nameAttrs = getNameAttributes(this);
 	}
 
+	get id() {
+		return this.item.assetid;
+	}
+
 	/**
 	 * Gets name from ECON.
 	 * @return {string}
