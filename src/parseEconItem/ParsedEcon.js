@@ -57,6 +57,7 @@ class ParsedEcon {
 			elevated: this.properties.elevated,
 			australium: this.nameAttrs.australium,
 			festivized: this.descriptions.festivized,
+			effect: this.descriptions.effect,
 		};
 	}
 
