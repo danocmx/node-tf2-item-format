@@ -12,9 +12,9 @@
  * @return {itemNumber}
  */
 module.exports = function (name) {
-	const value = getValue(name);
+	const value = getValue(name);	
 	if (!value) return {};
-
+	
 	return { 
 		type: getType(name),
 		value,
@@ -28,5 +28,5 @@ function getType(name) {
 }
 
 function getValue(name) {
-	return (name.match(/\b(?<=#)\d+/) || [])[1];
+	return (name.match(/ #(\d+)/) || [])[1];
 }

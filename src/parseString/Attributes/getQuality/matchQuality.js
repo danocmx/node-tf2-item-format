@@ -6,7 +6,7 @@
 module.exports = function (name) {
 	// Does not include strangee and vintage for exception reasons.
 	const match = name.match(/(Normal|Genuine|Unique|Unusual|Self-Made|Haunted|Collector's) /) || [];
-	const [quality] = match;
+	const [_, quality] = match;
 
 	return quality;
 };

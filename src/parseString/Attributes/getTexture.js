@@ -4,18 +4,16 @@
  * @return {number} effect code
  */
 module.exports = function (name) {
-	const { Resources }	= require('../../index');
-	const { textures } = Resources;
+	const { resources }	= require('../../index');
+	const { textures } = resources;
 
-	for (let i = 0; i < Object.keys(textures); i++) {
+	for (let i = 0; i < textures.length; i++) {
 		const texture = textures[i];
 
-		if (typeof texture === 'number' || name.includes(`${texture} `)) {
+		if (!name.includes(`${texture.name} `)) {
 			continue;
 		}
 
-		return textures[effect];
+		return texture.name;
 	}
-
-	return 0;
 }

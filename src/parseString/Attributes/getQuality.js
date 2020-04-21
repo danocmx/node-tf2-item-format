@@ -19,7 +19,7 @@ module.exports = function (name, attributes) {
 	// This is true for all target/output items
 	if (attributes.usableItem) {
 		return {
-			quality: 'Unique',
+			value: 'Unique',
 			elevated: false,
 		}
 	}

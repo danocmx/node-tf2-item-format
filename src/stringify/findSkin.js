@@ -1,7 +1,6 @@
 /* eslint-disable consistent-return */
 const UTextures = require('../../resources/UTextures');
 
-const isNum = require('../parseString/isNum');
 
 /**
  * @param {Number, String} search - what are we looking for name or defindex

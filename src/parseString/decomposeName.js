@@ -13,19 +13,26 @@ module.exports = function (name, attributes) {
 	if (festivized) itemName = itemName.replace('Festivized ', '');
 
 	// So we keep killstreak name for kits and fabricators
-	if (usableItem) itemName = itemName.replace(` ${getUsableItemToRemove(attributes)}`, '');
-	else if (killstreak) itemName = itemName.replace(`${killstreak} `, '');
+	if (usableItem) {
+		const toRemove = getUsableItemToRemove(attributes);
+
+		itemName = itemName
+			.replace(` ${toRemove}`, '')
+			// A cheap fix for fabricators and kits
+			.replace(` ${toRemove} `, '')
+			// A cheap fix for strangifiers
+			.replace(`${toRemove} `, '');
+	} else if (killstreak) itemName = itemName.replace(`${killstreak} `, '');
 	
-	if (wear) itemName = itemName.replace(`(${wear}) `, '');
+	if (wear) itemName = itemName.replace(` (${wear})`, '');
 
 	if (effect) itemName = itemName.replace(`${effect} `, '');
 	if (texture) itemName = itemName.replace(`${texture} `, '');
 
-	if (itemNumber) itemName = itemName.replace(` #${itemNumber.value}`);
+	if (itemNumber) itemName = itemName.replace(` #${itemNumber.value}`, '');
 	
-	const { quality, elevated } = attributes.quality;
-	itemName = itemName.replace(`${quality} `, '');
-	if (elevated) itemName = itemName.replace('Strange ', '');
+	itemName = itemName.replace(`${quality.value} `, '');
+	if (quality.elevated) itemName = itemName.replace('Strange ', '');
 
 	return itemName;
 };
@@ -39,5 +46,5 @@ function getUsableItemToRemove(attributes) {
 	const { target, output, outputQuality } = attributes.usableItem;
 
 	return target 
-		|| outputQuality != 'Unique' ? `${outputQuality} ${output}` : output
+		|| (outputQuality != 'Unique' ? `${outputQuality} ${output}` : output)
 }

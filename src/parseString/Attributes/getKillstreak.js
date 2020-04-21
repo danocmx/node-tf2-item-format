@@ -15,6 +15,4 @@ module.exports = function (name) {
 	if (name.includes('Killstreak ')) {
 		return 'Killstreak';	
 	}
-
-	return;
 }

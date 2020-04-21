@@ -14,19 +14,21 @@ module.exports = function (name) {
 		name: itemName,
 		
 		craftable: attributes.craftable,
-		australium: attributes.australium,
-		festivized: attributes.festivized,
 
-		killstreak: attributes.killstreak,
-		wear: attributes.wear,
-		effect: attributes.effect,
-		texture: attributes.texture,
+		// Only when present.
+		...attributes.australium,
+		...attributes.festivized,
 
-		itemNumber: attributes.itemNumber,
+		...(attributes.killstreak ? { killstreak: attributes.killstreak } : {}),
+		...(attributes.wear ? { wear: attributes.wear } : {}),
+		...(attributes.texture ? { texture: attributes.texture } : {}),
+		...(attributes.effect ? { effect: attributes.effect } : {}),
 
 		// Incase they're not present
-		...(_.isEmpty(attributes.usableItem) ? attributes.usableItem : {}),
+		...(!_.isEmpty(attributes.usableItem) ? attributes.usableItem : {}),
+		...(!_.isEmpty(attributes.itemNumber) ? { itemNumber: attributes.itemNumber } : {}),
 		
-		...attributes.quality,
+		quality: attributes.quality.value,
+		...(attributes.quality.elevated ? { elevated: attributes.quality.elevated } : {}),
 	};
 };

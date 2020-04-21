@@ -5,24 +5,22 @@
  */
 module.exports = function (name) {
 	if (name.includes('(Battle Scarred)')) {
-		return 5
+		return 'Battle Scarred'
 	}
 
 	if (name.includes('(Well-Worn)')) {
-		return 4
+		return 'Well-Worn'
 	}
 
 	if (name.includes('(Field-Tested)')) {
-		return 3
+		return 'Field-Tested'
 	}
 
 	if (name.includes('(Minimal Wear)')) {
-		return 2
+		return 'Minimal Wear'
 	}
 
 	if (name.includes('(Factory New)')) {
-		return 1
+		return 'Factory New'
 	}
-
-	return 0;
 }

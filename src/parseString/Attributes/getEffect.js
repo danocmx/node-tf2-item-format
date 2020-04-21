@@ -4,8 +4,8 @@
  * @return {number} effect code
  */
 module.exports = function (name) {
-	const { Resources }	= require('../../index');
-	const { effects } = Resources;
+	const { resources }	= require('../../index');
+	const { effects } = resources;
 
 	for (let i = 0; i < Object.keys(effects); i++) {
 		const effect = effects[i];

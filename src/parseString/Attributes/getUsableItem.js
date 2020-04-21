@@ -34,7 +34,9 @@ module.exports = function (name) {
 		return {
 			target: name
 				.replace(` ${item}`, '')
-				.replace(`${getKillstreak(name)} `, ''),
+				.replace(`${getKillstreak(name)} `, '')
+				// Incase its uncraftable
+				.replace('Non-Craftable ', ''),
 		}
 	}
 
