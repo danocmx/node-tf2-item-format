@@ -15,14 +15,9 @@ module.exports = function (name, attributes) {
 	// So we keep killstreak name for kits and fabricators
 	if (usableItem) {
 		const toRemove = getUsableItemToRemove(attributes);
-
-		itemName = itemName
-			.replace(` ${toRemove}`, '')
-			// A cheap fix for fabricators and kits
-			.replace(` ${toRemove} `, '')
-			// A cheap fix for strangifiers
-			.replace(`${toRemove} `, '');
-	} else if (killstreak) itemName = itemName.replace(`${killstreak} `, '');
+		itemName = itemName.replace(new RegExp(`(( ${toRemove})|(${toRemove} ))`), '')
+	}
+	else if (killstreak) itemName = itemName.replace(`${killstreak} `, '');
 	
 	if (wear) itemName = itemName.replace(` (${wear})`, '');
 
