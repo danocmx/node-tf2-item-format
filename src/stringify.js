@@ -1,6 +1,7 @@
-/* eslint-disable prefer-const */
-/* eslint-disable camelcase */
 const findSkin = require('./stringify/findSkin');
+
+const shouldSetNumber = require('./stringify/shouldSetNumber');
+const shouldSetQuality = require('./stringify/shouldSetQuality');
 
 const UEffects = require('../resources/UEffects');
 const UKillstreaks = require('../resources/UKillstreaks');
@@ -22,52 +23,63 @@ const UWearTiers = require('../resources/UWearTiers');
  * @param {Number} item.crate number for create
  * @return {String} item name with all attributes
 */
-module.exports = function (item) {
-	let { name, target_item, quality, elevated, australium, particle,
-		killstreak, festivized, texture, wearTier, craftable, numeric, numeric_type } = item;
-
-	const CRAFT_NUMBER_PLACEHOLDER = 100;
-	numeric = numeric_type === 'craft_number' && numeric < CRAFT_NUMBER_PLACEHOLDER ? numeric : null;
-
+module.exports = function ({ name, craftable, australium, festivized, killstreak, wear, texture, effect, target, output, outputQuality, itemNumber }) {
 	let itemName = '';
-	if (craftable === 0 || craftable === -1) {
+	
+	if (!craftable) {
 		itemName += 'Non-Craftable ';
 	}
+
 	if (elevated) {
 		itemName += 'Strange ';
 	}
-	// Quality is name with particle when quality is not Unusual
-	const qualityEffectCheckOne = quality !== 5 && particle;
-	const qualityEffectCheckTwo = quality && !particle;
-	if (((qualityEffectCheckOne || qualityEffectCheckTwo) && (quality !== UQualities.Unique || elevated)) && quality !== UQualities['Decorated Weapon']) {
-		itemName += `${UQualities[quality]} `;
+
+	if (shouldSetQuality(quality, elevated, effect)) {
+		itemName += `${quality} `;
 	}
-	if (particle) {
-		itemName += `${UEffects[particle]} `;
+	
+	if (effect) {
+		itemName += `${effect} `;
 	}
+	
 	if (festivized) {
 		itemName += 'Festivized ';
 	}
+	
 	if (killstreak) {
-		itemName += `${UKillstreaks[killstreak]} `;
+		itemName += `${killstreak} `;
 	}
+	
 	if (australium && australium !== -1) {
 		itemName += 'Australium ';
 	}
+	
 	if (texture) {
-		if (typeof texture !== 'string') texture = typeof texture === 'object' ? texture.name : findSkin(texture);
 		itemName += `${texture} `;
 	}
+	
 	itemName += name;
-	if (target_item) {
+	
+	/* TODO: Killstreak kits/fabs */
+	if (target) {
 		itemName += ` ${target_item}`;
 	}
-	if (numeric) {
-		itemName += ` #${numeric}`;
+
+	if (quality) {
+		
 	}
-	if (wearTier) {
-		itemName += ` (${UWearTiers[wearTier]})`;
+
+	if (wear) {
+		itemName += ` (${wear})`;
+	}
+
+	if (shouldSetNumber(itemNumber)) {
+		itemName += ` #${numeric}`;
 	}
 
 	return itemName;
 };
+
+function shouldSetQuality(quality, elevated, effect) {
+
+}
