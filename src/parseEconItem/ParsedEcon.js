@@ -22,6 +22,10 @@ class ParsedEcon {
 		this.nameAttrs = getNameAttributes(this);
 	}
 
+	get id() {
+		return this.item.assetid;
+	}
+
 	/**
 	 * Gets name from ECON.
 	 * @return {string}
@@ -53,6 +57,7 @@ class ParsedEcon {
 			elevated: this.properties.elevated,
 			australium: this.nameAttrs.australium,
 			festivized: this.descriptions.festivized,
+			effect: this.descriptions.effect,
 		};
 	}
 
