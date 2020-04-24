@@ -24,6 +24,9 @@ module.exports = function (name) {
 function getType(name) {
 	const match = name.match(/\b(Medal|Crate|Case)\b/);
 
+	// Same thing, different name.
+	if (match == "Case") return "crate";
+
 	return match ? match[1].toLowerCase() : 'craft';
 }
 

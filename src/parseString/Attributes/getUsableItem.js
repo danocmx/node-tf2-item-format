@@ -28,7 +28,6 @@ module.exports = function (name) {
 		}
 	}
 
-	// TODO: fix killstreak kits and fabricators
 	const item = getItemIfTarget(name);
 	if (item) {
 		return {
