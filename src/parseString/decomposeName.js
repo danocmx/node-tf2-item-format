@@ -1,7 +1,7 @@
 /**
  * Uses attributes to decompose the name to it's original.
  * @param {string} name
- * @param {Object} attributes
+ * @param {object} attributes
  * @return {string} Pure name
  */
 module.exports = function (name, attributes) {
@@ -17,6 +17,7 @@ module.exports = function (name, attributes) {
 		const toRemove = getUsableItemToRemove(attributes);
 		itemName = itemName.replace(new RegExp(`(( ${toRemove})|(${toRemove} ))`), '')
 	}
+	// Killstreak stat is kept
 	else if (killstreak) itemName = itemName.replace(`${killstreak} `, '');
 	
 	if (wear) itemName = itemName.replace(` (${wear})`, '');
