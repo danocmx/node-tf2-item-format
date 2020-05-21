@@ -16,9 +16,8 @@ module.exports = function (name) {
 		craftable: attributes.craftable,
 
 		// Only when present.
-		...attributes.australium,
-		...attributes.festivized,
-
+		...(attributes.australium ? { australium: attributes.australium } : {}),
+		...(attributes.festivized ? { festivized: attributes.festivized } : {}),
 		...(attributes.killstreak ? { killstreak: attributes.killstreak } : {}),
 		...(attributes.wear ? { wear: attributes.wear } : {}),
 		...(attributes.texture ? { texture: attributes.texture } : {}),

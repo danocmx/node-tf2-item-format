@@ -6,6 +6,7 @@ const wears = require('../../resources/UWearTiers');
 
 /**
  * Manages resources for parsers.
+ * @todo This shit is stupid af, im gonna remake it in new version.
  */
 class Resources {
 	constructor(resources = {}) {

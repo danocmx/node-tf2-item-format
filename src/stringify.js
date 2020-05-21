@@ -1,29 +1,26 @@
-const findSkin = require('./stringify/findSkin');
 
 const shouldSetNumber = require('./stringify/shouldSetNumber');
 const shouldSetQuality = require('./stringify/shouldSetQuality');
+const addTargetToName = require('./stringify/addTargetToName');
 
-const UEffects = require('../resources/UEffects');
-const UKillstreaks = require('../resources/UKillstreaks');
-const UQualities = require('../resources/UQualities');
-const UWearTiers = require('../resources/UWearTiers');
+const getOutput = require('./shared/getOutput');
 
 /** Stringifies item object into item name
- * @param {String} item.item pure name of the item
- * @param {String} item.target_item target of the item, eg. Kit Fabricator
- * @param {Number} item.quality item quality
- * @param {Number} item.elevated second item quality
- * @param {Number} item.australium if item is australium
- * @param {Number} item.killstreak item killstreak
- * @param {Number} item.particle item effect
- * @param {Boolean} item.festivized if item is festivized
- * @param {Object, String, Number} item.texture item texture
- * @param {Number} item.wearTier item wear
- * @param {Number} item.craftable if item is craftable
- * @param {Number} item.crate number for create
- * @return {String} item name with all attributes
+ * @param {string} item.item pure name of the item
+ * @param {string} item.target_item target of the item, eg. Kit Fabricator
+ * @param {string} item.quality item quality
+ * @param {boolean} item.elevated second item quality
+ * @param {boolean} item.australium if item is australium
+ * @param {string} item.killstreak item killstreak
+ * @param {string} item.effect item effect
+ * @param {boolean} item.festivized if item is festivized
+ * @param {string} item.texture item texture
+ * @param {string} item.wearTier item wear
+ * @param {boolean} item.craftable if item is craftable
+ * @param {number} item.crate number for create
+ * @return {string} item name with all attributes
 */
-module.exports = function ({ name, craftable, australium, festivized, killstreak, wear, texture, effect, target, output, outputQuality, itemNumber }) {
+module.exports = function ({ name, craftable, australium, festivized, killstreak, elevated, quality, wear, texture, effect, target, output, outputQuality, itemNumber }) {
 	let itemName = '';
 	
 	if (!craftable) {
@@ -46,11 +43,11 @@ module.exports = function ({ name, craftable, australium, festivized, killstreak
 		itemName += 'Festivized ';
 	}
 	
-	if (killstreak) {
+	if (canAddKillstreak(killstreak, target)) {
 		itemName += `${killstreak} `;
 	}
 	
-	if (australium && australium !== -1) {
+	if (isAustralium(australium)) {
 		itemName += 'Australium ';
 	}
 	
@@ -58,28 +55,43 @@ module.exports = function ({ name, craftable, australium, festivized, killstreak
 		itemName += `${texture} `;
 	}
 	
-	itemName += name;
-	
-	/* TODO: Killstreak kits/fabs */
-	if (target) {
-		itemName += ` ${target_item}`;
+	if (isKillstreakKitOrFabricator(name, target)) {
+		name = addTargetToName(name, target);
+	} else if (target || output) {
+		// There can be both target and output, target is prefered thus the check.
+		// getOutput constructs full output name if quality present.
+		// target has no quality
+		itemName += `${output && !target ? getOutput(output, outputQuality) : target} `;
 	}
 
-	if (quality) {
-		
-	}
+	itemName += name;
 
 	if (wear) {
 		itemName += ` (${wear})`;
 	}
 
 	if (shouldSetNumber(itemNumber)) {
-		itemName += ` #${numeric}`;
+		itemName += ` #${itemNumber.value}`;
 	}
 
 	return itemName;
 };
 
-function shouldSetQuality(quality, elevated, effect) {
+function isAustralium(australium) {
+	return australium && australium !== -1;
+}
 
+/**
+ * Checks if we can add killstreak to the name,
+ * killstreak stays present on target items such as kits and fabricators.
+ * @param {*} killstreak 
+ * @param {string} target 
+ * @return {boolean}
+ */
+function canAddKillstreak(killstreak, target) {
+	return killstreak && !target;
+}
+
+function isKillstreakKitOrFabricator(name, target) {
+	return target && / Kit/.test(name);	// This checks for fabricator too.
 }

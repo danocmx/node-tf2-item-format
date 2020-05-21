@@ -7,13 +7,13 @@ module.exports = function (name) {
 	const { resources }	= require('../../index');
 	const { textures } = resources;
 
-	for (let i = 0; i < textures.length; i++) {
-		const texture = textures[i];
+	for (let i = 0; i < Object.values(textures).length; i++) {
+		const texture = Object.values(textures)[i];
 
-		if (!name.includes(`${texture.name} `)) {
+		if (typeof texture === 'number' || !name.includes(`${texture} `)) {
 			continue;
 		}
 
-		return texture.name;
+		return texture;
 	}
 }

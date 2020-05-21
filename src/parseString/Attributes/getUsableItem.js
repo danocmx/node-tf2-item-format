@@ -1,4 +1,4 @@
-const getKillstreak = require('./getKillstreak');
+const getKillstreak = require('../../shared/getKillstreak');
 
 /**
  * Finds out which usable item it is

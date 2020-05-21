@@ -1,9 +1,18 @@
-function shouldSetQuality(quality, elevated, effect) {
-	return isQualityAddableToName() && isStrangeUnique() && !isDecorated();
+/**
+ * Checks if quality should be set on name by few checks.
+ * @param {number} quality
+ * @param {boolean} elevated
+ * @param {number} effect
+ * @return {boolean}
+ */
+module.exports = function (quality, elevated, effect) {
+	return checkForEffectAndUnusual(quality, effect) 
+		&& isntUniqueOrElevated(quality, elevated) 
+		&& !isDecorated(quality);
 }
 
-function isQualityAddableToName() {
-	return isntUnusualWithEffect() || hasQualityWithoutEffect();
+function checkForEffectAndUnusual(quality, effect) {
+	return isNonUnusualWithEffect(quality, effect) || hasNoEffect(quality, effect);
 }
 
 /**
@@ -11,22 +20,22 @@ function isQualityAddableToName() {
  * We add to 
  * @return {boolean}
  */
-function isntUnusualWithEffect() {
-
+function isNonUnusualWithEffect(quality, effect) {
+	return quality !== 'Unusual' && effect;
 }
 
 /**
  * Has quality without effect
  * 
  */
-function hasQualityWithoutEffect() {
-
+function hasNoEffect(quality, effect) {
+	return quality && !effect;
 }
 
-function isStrangeUnique() {
-
+function isntUniqueOrElevated(quality, elevated) {
+	return quality !== 'Unique' || elevated;
 }
 
-function isDecorated() {
-
+function isDecorated(quality) {
+	return quality === 'Decorated Weapon';
 }

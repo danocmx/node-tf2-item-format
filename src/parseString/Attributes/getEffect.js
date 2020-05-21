@@ -1,21 +1,19 @@
 /**
  * Iterates over effects object to get matching effect.
  * @param {string} name
- * @return {number} effect code
+ * @return {string} effect name
  */
 module.exports = function (name) {
 	const { resources }	= require('../../index');
 	const { effects } = resources;
 
-	for (let i = 0; i < Object.keys(effects); i++) {
-		const effect = effects[i];
+	for (let i = 0; i < Object.values(effects).length; i++) {
+		const effect = Object.values(effects)[i];
 
-		if (typeof effect === 'number' || name.includes(`${effect} `)) {
+		if (typeof effect === 'number' || !name.includes(`${effect} `)) {
 			continue;
 		}
 
-		return effects[effect];
+		return effect;
 	}
-
-	return 0;
 }

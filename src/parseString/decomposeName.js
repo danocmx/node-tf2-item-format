@@ -1,3 +1,5 @@
+const getOutput = require('../shared/getOutput');
+
 /**
  * Uses attributes to decompose the name to it's original.
  * @param {string} name
@@ -42,5 +44,5 @@ function getUsableItemToRemove(attributes) {
 	const { target, output, outputQuality } = attributes.usableItem;
 
 	return target 
-		|| (outputQuality != 'Unique' ? `${outputQuality} ${output}` : output)
+		|| (outputQuality != 'Unique' ? getOutput(output, outputQuality) : output)
 }

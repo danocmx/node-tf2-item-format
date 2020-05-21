@@ -2,7 +2,6 @@ const isCraftable = require('./Attributes/isCraftable');
 const isAustralium = require('./Attributes/isAustralium');
 const isFestivized = require('./Attributes/isFestivized');
 
-const getKillstreak = require('./Attributes/getKillstreak');
 const getWear = require('./Attributes/getWear');
 const getItemNumber = require('./Attributes/getItemNumber');
 const getQuality = require('./Attributes/getQuality');
@@ -10,6 +9,8 @@ const getUsableItem = require('./Attributes/getUsableItem');
 
 const getEffect = require('./Attributes/getEffect');
 const getTexture = require('./Attributes/getTexture');
+
+const getKillstreak = require('../shared/getKillstreak');
 
 /**
  * Holds all attributes we received from name.
