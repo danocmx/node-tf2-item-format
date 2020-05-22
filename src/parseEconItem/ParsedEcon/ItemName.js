@@ -8,8 +8,9 @@ const isTextureDefindex = require('./ItemName/isTextureDefindex');
  * Class that handles name.
  */
 class ItemName {
-	constructor(item) {
-		this.item = item;
+	constructor(econ) {
+		this.econ = econ;
+		this.item = econ.item;
 		this.origin = this.getOrigin();
 	}
 
@@ -21,7 +22,7 @@ class ItemName {
 		const { resources } = require('../../index');
 
 		const { australium, wear, killstreak,
-			texture, elevated, festivized, quality } = this.item.getNameAttributes();
+			texture, elevated, festivized, quality } = this.econ.getNameAttributes();
 
 		let name = this.origin;
 
@@ -57,7 +58,7 @@ class ItemName {
 
 		let name = this.origin;
 
-		const { wear, craftable, tradable, texture, quality, effect } = this.item.getNameAttributes();
+		const { wear, craftable, tradable, texture, quality, effect } = this.econ.getNameAttributes();
 
 		if (wear) name = `name (${resources.getWearValue(wear)})`;
 
