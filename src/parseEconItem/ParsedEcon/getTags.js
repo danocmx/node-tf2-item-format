@@ -34,7 +34,7 @@ module.exports = function ({ item }) {
 		// The position is saved.
 		if (isClass(tag)) attributes.classes.push(getClass(tag));
 		else if (isType(tag)) attributes.type = getType(tag);
-		else if (isQuality(tag)) attributes.class = getQuality(tag);
+		else if (isQuality(tag)) attributes.quality = getQuality(tag);
 		else if (isGrade(tag)) attributes.grade = getGrade(tag);
 		else if (isCollection(tag)) attributes.collection = getCollection(tag);
 		else if (isWear(tag)) attributes.wear = getWear(tag);
