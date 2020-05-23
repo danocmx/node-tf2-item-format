@@ -11,7 +11,7 @@ const isAustralium = require('./getNameAttributes/isAustralium');
  * @property {Object} item
  * @return {nameAttributes}
  */
-module.exports = function (item) {
+module.exports = function ({ item }) {
 	/**
 	 * @type {nameAttributes}
 	 */
