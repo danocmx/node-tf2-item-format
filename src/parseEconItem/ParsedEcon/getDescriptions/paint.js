@@ -13,5 +13,5 @@ exports.isPaint = function (description) {
  * @return {string}
  */
 exports.getPaint = function (description) {
-	return description.value.replace('Halloween: ', '');
+	return description.value.replace('Paint Color: ', '');
 };
