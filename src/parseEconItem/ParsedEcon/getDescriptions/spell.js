@@ -4,7 +4,7 @@
  * @return {boolean}
  */
 exports.isSpell = function (description) {
-	return /Halloween: .*/.test(description.value);
+	return /^Halloween: .*/.test(description.value);
 };
 
 /**
