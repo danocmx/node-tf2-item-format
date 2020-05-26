@@ -1,8 +1,9 @@
+const decomposeName = require('../../shared/decomposeName');
+
 const isStrangeTexture = require('./ItemName/isStrangeTexture');
 const isUncraftableUnique = require('./ItemName/isUncraftableUnique');
 const isUnusual = require('./ItemName/isUnusual');
-const isUnique = require('./ItemName/isUnique');
-const isTextureDefindex = require('./ItemName/isTextureDefindex');
+const getTextureName = require('./ItemName/getTextureName');
 
 /**
  * Class that handles name.
@@ -19,33 +20,23 @@ class ItemName {
 	}
 
 	getShort() {
+		const { australium, wear, killstreak,
+			texture, elevated, festivized, quality, isUniqueHat } = this.econ.getNameAttributes();
+
 		const { resources } = require('../../index');
 
-		const { australium, wear, killstreak,
-			texture, elevated, festivized, quality } = this.econ.getNameAttributes();
-
-		let name = this.origin;
-
-		/**
-		 * If any of the resources fail
-		 * You can check it thanks to this var.
-		 * @type {boolean}
-		 */
-		let shortenedName = true;
-
-		if (australium) name = name.replace('Australium ', '');
-		if (festivized) name = name.replace('Festivized ', '');
-		if (elevated) name = name.replace('Strange ', '');
-		if (killstreak) name = name.replace(`${resources.getKillstreakValue(killstreak)} `, '');
-		if (wear) name = name.replace(`${resources.getWearValue(wear)} `, '');
-
-		if (isTextureDefindex(texture)) name = name.replace(`${texture} `, '');
-		else shortenedName = false;
-
-		if (isUnique(quality)) name = name.replace(/^The /, '');
-		else name = name.replace(`${resources.getQualityValue(quality)} `, '');
-
-		return { name, shortenedName };
+		return decomposeName(
+			this.origin,
+			{
+				quality: { value: resources.getQualityValue(quality), elevated },
+				australium,
+				festivized,
+				isUniqueHat,
+				killstreak: killstreak ? resources.getKillstreakValue(killstreak) : null,
+				wear: wear ? resources.getWearValue(wear) : null,
+				texture: texture ? getTextureName(texture) : null,
+			},
+		);
 	}
 
 	/**
@@ -53,7 +44,6 @@ class ItemName {
 	 * @return {string}
 	 */
 	getFull() {
-		// TODO: change with better management
 		const { resources } = require('../../index');
 
 		let name = this.origin;

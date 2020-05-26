@@ -4,7 +4,7 @@
  * @return {boolean}
  */
 exports.isPaint = function (description) {
-	return /Paint Color: /.test(description.value);
+	return /^Paint Color: /.test(description.value);
 };
 
 /**

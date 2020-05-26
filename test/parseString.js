@@ -1,10 +1,12 @@
 const { assert } = require('chai');
 
-const { stringify } = require('..');
+const { parseString } = require('..');
 
-describe('stringify', () => {
+describe('parseString', () => {
 	it('Case #1', () => {
-		const itemString = stringify({
+		const itemObject = parseString('Cool Killstreak Aqua Marine Rocket Launcher (Battle Scarred)');
+
+		assert.deepEqual(itemObject, {
 			name: 'Rocket Launcher',
 			craftable: true,
 			killstreak: 'Killstreak',
@@ -13,36 +15,36 @@ describe('stringify', () => {
 			effect: 'Cool',
 			quality: 'Unusual'
 		});
-
-		assert.equal(itemString, 'Cool Killstreak Aqua Marine Rocket Launcher (Battle Scarred)');
 	});
 
 	it('Case #2', () => {
-		const itemString = stringify({
+		const itemObject = parseString('Strange High Roller\'s Rocket Launcher (Factory New)');
+
+		assert.deepEqual(itemObject, {
 			name: 'Rocket Launcher',
 			craftable: true,
 			wear: 'Factory New',
 			texture: 'High Roller\'s',
 			quality: 'Strange'
 		});
-
-		assert.equal(itemString, 'Strange High Roller\'s Rocket Launcher (Factory New)');
 	});
 
 	it('Case #3', () => {
-		const itemString = stringify({
+		const itemObject = parseString('Collector\'s Battalion\'s Backup Chemistry Set');
+
+		assert.deepEqual(itemObject, {
 			name: 'Chemistry Set',
 			craftable: true,
 			output: 'Battalion\'s Backup',
 			outputQuality: 'Collector\'s',
 			quality: 'Unique'
 		});
-
-		assert.equal(itemString, 'Collector\'s Battalion\'s Backup Chemistry Set');
 	});
 
 	it('Case #4', () => {
-		const itemString = stringify({
+		const itemObject = parseString('Strange Festivized Professional Killstreak Australium Scattergun');
+
+		assert.deepEqual(itemObject, {
 			name: 'Scattergun',
 			craftable: true,
 			australium: true,
@@ -50,47 +52,47 @@ describe('stringify', () => {
 			killstreak: 'Professional Killstreak',
 			quality: 'Strange'
 		});
-
-		assert.equal(itemString, 'Strange Festivized Professional Killstreak Australium Scattergun');
 	});
 
 	it('Case #5', () => {
-		const itemString = stringify({
+		const itemObject = parseString('Demonflame Modest Pile of Hat');
+
+		assert.deepEqual(itemObject, {
 			name: 'Modest Pile of Hat',
 			craftable: true,
 			effect: 'Demonflame',
 			quality: 'Unusual'
 		});
-
-		assert.equal(itemString, 'Demonflame Modest Pile of Hat');
 	});
 
 	it('Case #6', () => {
-		const itemString = stringify({
+		const itemObject = parseString('Strange Omniscient Orb Balloonihoodie');
+
+		assert.deepEqual(itemObject, {
 			name: 'Balloonihoodie',
 			craftable: true,
 			effect: 'Omniscient Orb',
 			quality: 'Unusual',
 			elevated: true
 		});
-
-		assert.equal(itemString, 'Strange Omniscient Orb Balloonihoodie');
 	});
 
 	it('Case #7', () => {
-		const itemString = stringify({
+		const itemObject = parseString('Non-Craftable Specialized Killstreak Gunboats Kit Fabricator');
+
+		assert.deepEqual(itemObject, {
 			name: 'Specialized Killstreak Kit Fabricator',
 			craftable: false,
 			killstreak: 'Specialized Killstreak',
 			target: 'Gunboats',
 			quality: 'Unique'
 		});
-
-		assert.equal(itemString, 'Non-Craftable Specialized Killstreak Gunboats Kit Fabricator');
 	});
 
 	it('Case #8', () => {
-		const itemString = stringify({
+		const itemObject = parseString('Archimedes Strangifier Chemistry Set');
+
+		assert.deepEqual(itemObject, {
 			name: 'Strangifier Chemistry Set',
 			craftable: true,
 			target: 'Archimedes',
@@ -98,85 +100,83 @@ describe('stringify', () => {
 			outputQuality: 'Unique',
 			quality: 'Unique'
 		});
-
-		assert.equal(itemString, 'Archimedes Strangifier Chemistry Set');
 	});
 
 	it('Case #9', () => {
-		const itemString = stringify({
+		const itemObject = parseString('Strange Backwards Ballcap');
+
+		assert.deepEqual(itemObject, {
 			name: 'Backwards Ballcap',
 			craftable: true,
 			quality: 'Strange'
 		});
-
-		assert.equal(itemString, 'Strange Backwards Ballcap');
 	});
 
 	it('Case #10', () => {
-		const itemString = stringify({
+		const itemObject = parseString('Professional Killstreak Iron Curtain Kit Fabricator');
+
+		assert.deepEqual(itemObject, {
 			name: 'Professional Killstreak Kit Fabricator',
 			craftable: true,
 			killstreak: 'Professional Killstreak',
 			target: 'Iron Curtain',
 			quality: 'Unique'
 		});
-
-		assert.equal(itemString, 'Professional Killstreak Iron Curtain Kit Fabricator');
 	});
 
 	it('Case #11', () => {
-		const itemString = stringify({
+		const itemObject = parseString('Strange Professional Killstreak Festive Grenade Launcher');
+
+		assert.deepEqual(itemObject, {
 			name: 'Festive Grenade Launcher',
 			craftable: true,
 			killstreak: 'Professional Killstreak',
 			quality: 'Strange'
 		});
-
-		assert.equal(itemString, 'Strange Professional Killstreak Festive Grenade Launcher');
 	});
 
 	it('Case #12', () => {
-		const itemString = stringify({
+		const itemObject = parseString('Strange Unique Sniper Rifle');
+
+		assert.deepEqual(itemObject, {
 			name: 'Sniper Rifle',
 			craftable: true,
 			quality: 'Unique',
 			elevated: true
 		});
-
-		assert.equal(itemString, 'Strange Unique Sniper Rifle');
 	});
 
 	it('Case #13', () => {
-		const itemString = stringify({ name: 'Australium Gold', craftable: true, quality: 'Unique' });
+		const itemObject = parseString('Australium Gold');
 
-		assert.equal(itemString, 'Australium Gold');
+		assert.deepEqual(itemObject, { name: 'Australium Gold', craftable: true, quality: 'Unique' });
 	});
 
 	it('Case #14', () => {
-		const itemString = stringify({
+		const itemObject = parseString('Blue Moon Case #118');
+
+		assert.deepEqual(itemObject, {
 			name: 'Blue Moon Case',
 			craftable: true,
 			itemNumber: { type: 'case', value: '118' },
 			quality: 'Unique'
 		});
-
-		assert.equal(itemString, 'Blue Moon Case #118');
 	});
 
 	it('Case #15', () => {
-		const itemString = stringify({
+		const itemObject = parseString('Hat #25');
+
+		assert.deepEqual(itemObject, {
 			name: 'Hat',
 			craftable: true,
 			itemNumber: { type: 'craft', value: '25' },
 			quality: 'Unique'
 		});
-
-		assert.equal(itemString, 'Hat #25');
 	});
 
 	it('Case #16', () => {
-		const itemString = stringify({ name: 'Tartan Shade', craftable: true, quality: 'Unique', isUniqueHat: true });
+		const itemObject = parseString('The Tartan Shade');
 
-		assert.deepEqual(itemString, 'The Tartan Shade');
+		assert.deepEqual(itemObject, { name: 'Tartan Shade', craftable: true, quality: 'Unique', isUniqueHat: true });
 	})
 })

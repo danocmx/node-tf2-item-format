@@ -6,7 +6,7 @@ const getKillstreak = require('../shared/getKillstreak');
  * @param {string} target
  * @return {string}
  */
-module.exports = function(name, target) {
+module.exports = function (name, target) {
 	const killstreak = getKillstreak(name);
 
 	return insertTarget(name, target, killstreak);
@@ -14,9 +14,9 @@ module.exports = function(name, target) {
 
 /**
  * Inserts the target into name.
- * @param {string} name 
- * @param {string} target 
- * @param {string} killstreak 
+ * @param {string} name
+ * @param {string} target
+ * @param {string} killstreak
  * @return {string}
  */
 function insertTarget(name, target, killstreak) {

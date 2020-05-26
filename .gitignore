@@ -2,3 +2,4 @@ node_modules/
 /d.json
 /tests
 /package-lock.json
+/test/test.js

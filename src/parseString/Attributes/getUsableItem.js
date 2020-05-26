@@ -15,7 +15,7 @@ module.exports = function (name) {
 
 			output: 'Strangifier',
 			outputQuality: 'Unique',
-		}
+		};
 	}
 
 	if (isChemistrySet(name)) {
@@ -23,9 +23,9 @@ module.exports = function (name) {
 			output: name
 				.replace(' Chemistry Set', '')
 				.replace('Collector\'s ', ''),
-			
+
 			outputQuality: 'Collector\'s',
-		}
+		};
 	}
 
 	const item = getItemIfTarget(name);
@@ -36,7 +36,7 @@ module.exports = function (name) {
 				.replace(`${getKillstreak(name)} `, '')
 				// Incase its uncraftable
 				.replace('Non-Craftable ', ''),
-		}
+		};
 	}
 
 	return null;
@@ -49,9 +49,10 @@ function isStrangifierChemistrySet(name) {
 function getItemIfTarget(name) {
 	if (/(Killer's Kit|Coffin Kit|Summer Starter Kit)/.test(name)) return;
 
+	// eslint-disable-next-line consistent-return
 	return (name.match(/ (Kit Fabricator|Kit|Strangifier)/, '') || [])[1];
 }
 
 function isChemistrySet(name) {
-	return / Chemistry Set/.test(name); 
+	return / Chemistry Set/.test(name);
 }

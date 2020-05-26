@@ -12,10 +12,10 @@
  * @return {itemNumber}
  */
 module.exports = function (name) {
-	const value = getValue(name);	
+	const value = getValue(name);
 	if (!value) return {};
-	
-	return { 
+
+	return {
 		type: getType(name),
 		value,
 	};
@@ -25,7 +25,7 @@ function getType(name) {
 	const match = name.match(/\b(Medal|Crate|Case)\b/);
 
 	// Same thing, different name.
-	if (match == "Case") return "crate";
+	if (match === 'Case') return 'crate';
 
 	return match ? match[1].toLowerCase() : 'craft';
 }

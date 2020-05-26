@@ -47,17 +47,23 @@ class ParsedEcon {
 	 * @return {Object}
 	 */
 	getNameAttributes() {
+		const texture = this.descriptions.texture || this.nameAttrs.texture;
+
 		return {
 			tradable: this.properties.tradable,
 			craftable: this.descriptions.craftable,
 			quality: this.tags.quality,
-			wear: this.tags.wear,
-			killstreak: this.descriptions.killstreak.value,
-			texture: this.descriptions.texture,
-			elevated: this.properties.elevated,
-			australium: this.nameAttrs.australium,
-			festivized: this.descriptions.festivized,
-			effect: this.descriptions.effect,
+
+			// Only append if exists
+			...(texture ? { texture } : {}),
+			...(this.descriptions.wear ? { wear: this.descriptions.wear } : {}),
+			...(this.descriptions.elevated ? { elevated: this.descriptions.elevated } : {}),
+			...(this.descriptions.australium ? { australium: this.descriptions.australium } : {}),
+			...(this.descriptions.festivized ? { festivized: this.descriptions.festivized } : {}),
+			...(this.descriptions.effect ? { effect: this.descriptions.effect } : {}),
+			...(this.nameAttrs.isUniqueHat ? { isUniqueHat: this.nameAttrs.isUniqueHat } : {}),
+			...(this.descriptions.killstreak.value
+				? { killstreak: this.descriptions.killstreak.value } : {}),
 		};
 	}
 
@@ -65,12 +71,14 @@ class ParsedEcon {
 		return {
 			...this.getNameAttributes(),
 
-			class: this.tags.class,
-			collection: this.tags.collection,
-			grade: this.tags.grade,
+			classes: this.tags.classes,
 			type: this.tags.type,
 
-			paint: this.descriptions.paint,
+			// Only append if exists
+			...(this.tags.collection ? { collection: this.tags.collection } : {}),
+			...(this.tags.grade ? { grade: this.tags.grade } : {}),
+			...(this.tags.paint ? { paint: this.tags.paint } : {}),
+
 			parts: this.descriptions.parts,
 			spells: this.descriptions.spells,
 
