@@ -53,7 +53,7 @@ class ParsedEcon {
 			quality: this.tags.quality,
 			wear: this.tags.wear,
 			killstreak: this.descriptions.killstreak.value,
-			texture: this.descriptions.texture,
+			texture: this.descriptions.texture || this.nameAttrs.texture,
 			elevated: this.properties.elevated,
 			australium: this.nameAttrs.australium,
 			festivized: this.descriptions.festivized,

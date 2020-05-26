@@ -19,7 +19,7 @@ function isSkin({ tags }) {
 }
 
 exports.getTexture = function (description) {
-	const { textures } = require('../../../index').resources;
+	const { resources } = require('../../../index');
 
-	return description.app_data ? textures[description.app_data.def_index] : description.value;
+	return description.app_data ? resources.getTextureValue(description.app_data.def_index) : description.value;
 };

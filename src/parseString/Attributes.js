@@ -8,8 +8,8 @@ const getQuality = require('./Attributes/getQuality');
 const getUsableItem = require('./Attributes/getUsableItem');
 
 const getEffect = require('./Attributes/getEffect');
-const getTexture = require('./Attributes/getTexture');
 
+const getTexture = require('../shared/getTexture');
 const getKillstreak = require('../shared/getKillstreak');
 
 /**

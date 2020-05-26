@@ -4,7 +4,7 @@
  * @return {number} effect code
  */
 module.exports = function (name) {
-	const { resources }	= require('../../index');
+	const { resources }	= require('../index');
 	const { textures } = resources;
 
 	for (let i = 0; i < Object.values(textures).length; i++) {

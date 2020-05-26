@@ -19,6 +19,7 @@ class ItemName {
 	}
 
 	getShort() {
+		// TODO: interchange with parseString after usageItems are added to econItem.
 		const { resources } = require('../../index');
 
 		const { australium, wear, killstreak,
@@ -26,26 +27,21 @@ class ItemName {
 
 		let name = this.origin;
 
-		/**
-		 * If any of the resources fail
-		 * You can check it thanks to this var.
-		 * @type {boolean}
-		 */
-		let shortenedName = true;
-
 		if (australium) name = name.replace('Australium ', '');
 		if (festivized) name = name.replace('Festivized ', '');
 		if (elevated) name = name.replace('Strange ', '');
 		if (killstreak) name = name.replace(`${resources.getKillstreakValue(killstreak)} `, '');
-		if (wear) name = name.replace(`${resources.getWearValue(wear)} `, '');
+		if (wear) name = name.replace(` (${resources.getWearValue(wear)})`, '');
 
-		if (isTextureDefindex(texture)) name = name.replace(`${texture} `, '');
-		else shortenedName = false;
+		if (texture) {
+			if (isTextureDefindex(texture)) texture = resources.gettTextureValue(texture);
+			name = name.replace(`${texture} `, '')
+		};
 
 		if (isUnique(quality)) name = name.replace(/^The /, '');
 		else name = name.replace(`${resources.getQualityValue(quality)} `, '');
 
-		return { name, shortenedName };
+		return name;
 	}
 
 	/**
