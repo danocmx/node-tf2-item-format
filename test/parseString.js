@@ -173,4 +173,10 @@ describe('parseString', () => {
 			quality: 'Unique'
 		});
 	});
+
+	it('Case #16', () => {
+		const itemObject = parseString('The Tartan Shade');
+
+		assert.deepEqual(itemObject, { name: 'Tartan Shade', craftable: true, quality: 'Unique' });
+	})
 })

@@ -30,6 +30,7 @@ module.exports = function (name, attributes) {
 	if (itemNumber) itemName = itemName.replace(` #${itemNumber.value}`, '');
 	
 	itemName = itemName.replace(`${quality.value} `, '');
+	if (isUnique(quality)) itemName = itemName.replace('The ', '');
 	if (quality.elevated) itemName = itemName.replace('Strange ', '');
 
 	return itemName;
@@ -45,4 +46,8 @@ function getUsableItemToRemove(attributes) {
 
 	return target 
 		|| (outputQuality != 'Unique' ? getOutput(output, outputQuality) : output)
+}
+
+function isUnique({ value }) {
+	return value === 'Unique';
 }
