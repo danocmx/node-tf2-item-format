@@ -9,7 +9,7 @@ module.exports = function (item) {
 	const parsedEcon = new ParsedEcon(item);
 
 	return {
-		name: parsedEcon.itemName.getShort(),
+		name: parsedEcon.itemName.getShort().name,
 		id: parsedEcon.id,
 		img: parsedEcon.getImageURL(),
 		imgLarge: parsedEcon.getLargeImageURL(),

@@ -8,7 +8,7 @@ exports.isEffect = function (description, tags) {
 };
 
 function isRightColour({ color }) {
-	return color === 'ffd7000';
+	return color === 'ffd700';
 }
 
 function canQualityBeUnusual({ quality }) {
