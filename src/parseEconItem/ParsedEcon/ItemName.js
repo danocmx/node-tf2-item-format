@@ -23,7 +23,7 @@ class ItemName {
 		const { resources } = require('../../index');
 
 		const { australium, wear, killstreak,
-			texture, elevated, festivized, quality } = this.econ.getNameAttributes();
+			texture, elevated, festivized, quality, isUniqueHat } = this.econ.getNameAttributes();
 
 		let name = this.origin;
 
@@ -38,8 +38,8 @@ class ItemName {
 			name = name.replace(`${texture} `, '')
 		};
 
-		if (isUnique(quality)) name = name.replace(/^The /, '');
-		else name = name.replace(`${resources.getQualityValue(quality)} `, '');
+		if (isUniqueHat) name = name.replace(/^The /, '');
+		name = name.replace(`${resources.getQualityValue(quality)} `, '');
 
 		return name;
 	}

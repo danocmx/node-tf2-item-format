@@ -1,5 +1,6 @@
 const isAustralium = require('./getNameAttributes/isAustralium');
 
+const isUniqueHat = require('../../shared/isUniqueHat');
 const getTexture = require('../../shared/getTexture');
 
 /**
@@ -22,6 +23,7 @@ module.exports = function (econ) {
 	 */
 	const attributes = {
 		australium: isAustralium(item),
+		isUniqueHat: isUniqueHat(item.name),
 	};
 
 	if (!texture) {

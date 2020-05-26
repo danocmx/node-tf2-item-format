@@ -9,7 +9,7 @@ const getUsableItem = require('./Attributes/getUsableItem');
 
 const getEffect = require('./Attributes/getEffect');
 
-const isUniqueHat = require('./Attributes/isUniqueHat');
+const isUniqueHat = require('../shared/isUniqueHat');
 
 const getTexture = require('../shared/getTexture');
 const getKillstreak = require('../shared/getKillstreak');
