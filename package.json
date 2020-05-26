@@ -3,6 +3,9 @@
   "version": "2.3.5",
   "description": "Format's TF2 items like backpack.tf does",
   "main": "./src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/danocmx/node-tf2-item-format.git"
