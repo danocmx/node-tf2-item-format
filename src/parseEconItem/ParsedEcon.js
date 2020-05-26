@@ -65,7 +65,7 @@ class ParsedEcon {
 		return {
 			...this.getNameAttributes(),
 
-			class: this.tags.class,
+			classes: this.tags.classes,
 			collection: this.tags.collection,
 			grade: this.tags.grade,
 			type: this.tags.type,
