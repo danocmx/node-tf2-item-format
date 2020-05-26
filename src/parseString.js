@@ -1,7 +1,7 @@
 const _ = require('lodash');
 
 const Attributes = require('./parseString/Attributes');
-const decomposeName = require('./parseString/decomposeName');
+const decomposeName = require('./shared/decomposeName');
 
 /**
  * Parses name string into attributes.

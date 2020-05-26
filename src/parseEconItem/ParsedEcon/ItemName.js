@@ -1,8 +1,9 @@
+const decomposeName = require('../../shared/decomposeName');
+
 const isStrangeTexture = require('./ItemName/isStrangeTexture');
 const isUncraftableUnique = require('./ItemName/isUncraftableUnique');
 const isUnusual = require('./ItemName/isUnusual');
-const isUnique = require('./ItemName/isUnique');
-const isTextureDefindex = require('./ItemName/isTextureDefindex');
+const getTextureName = require('./ItemName/getTextureName');
 
 /**
  * Class that handles name.
@@ -19,29 +20,23 @@ class ItemName {
 	}
 
 	getShort() {
-		// TODO: interchange with parseString after usageItems are added to econItem.
-		const { resources } = require('../../index');
-
 		const { australium, wear, killstreak,
 			texture, elevated, festivized, quality, isUniqueHat } = this.econ.getNameAttributes();
 
-		let name = this.origin;
+		const { resources } = require('../../index');
 
-		if (australium) name = name.replace('Australium ', '');
-		if (festivized) name = name.replace('Festivized ', '');
-		if (elevated) name = name.replace('Strange ', '');
-		if (killstreak) name = name.replace(`${resources.getKillstreakValue(killstreak)} `, '');
-		if (wear) name = name.replace(` (${resources.getWearValue(wear)})`, '');
-
-		if (texture) {
-			if (isTextureDefindex(texture)) texture = resources.gettTextureValue(texture);
-			name = name.replace(`${texture} `, '')
-		};
-
-		if (isUniqueHat) name = name.replace(/^The /, '');
-		name = name.replace(`${resources.getQualityValue(quality)} `, '');
-
-		return name;
+		return decomposeName(
+			this.origin,
+			{
+				quality: { value: resources.getQualityValue(quality), elevated },
+				australium,
+				festivized,
+				isUniqueHat,
+				killstreak: killstreak ? resources.getKillstreakValue(killstreak) : null,
+				wear: wear ? resources.getWearValue(wear) : null,
+				texture: texture ? getTextureName(texture) : null,
+			}
+		);
 	}
 
 	/**
@@ -49,7 +44,6 @@ class ItemName {
 	 * @return {string}
 	 */
 	getFull() {
-		// TODO: change with better management
 		const { resources } = require('../../index');
 
 		let name = this.origin;

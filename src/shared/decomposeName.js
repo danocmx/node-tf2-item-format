@@ -1,4 +1,4 @@
-const getOutput = require('../shared/getOutput');
+const getOutput = require('./getOutput');
 
 /**
  * Uses attributes to decompose the name to it's original.
