@@ -44,8 +44,7 @@ module.exports = function (name, attributes) {
 function getUsableItemToRemove(attributes) {
 	const { target, output, outputQuality } = attributes.usableItem;
 
-	return target 
-		|| (outputQuality != 'Unique' ? getOutput(output, outputQuality) : output)
+	return target || getOutput(output, outputQuality)
 }
 
 function isUnique({ value }) {
