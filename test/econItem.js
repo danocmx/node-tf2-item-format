@@ -1,4 +1,5 @@
 const { assert } = require('chai');
+
 const { parseEconItem } = require('../');
 
 describe('parseEconItem', () => {
