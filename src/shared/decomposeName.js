@@ -1,4 +1,4 @@
-const getOutput = require('../shared/getOutput');
+const getOutput = require('./getOutput');
 
 /**
  * Uses attributes to decompose the name to it's original.
@@ -7,8 +7,8 @@ const getOutput = require('../shared/getOutput');
  * @return {string} Pure name
  */
 module.exports = function (name, attributes) {
-	const { craftable, australium, festivized, killstreak,
-		wear, effect, texture, itemNumber, usableItem, quality } = attributes;
+	const { craftable, australium, festivized, killstreak, wear, effect,
+		texture, itemNumber, usableItem, quality, isUniqueHat } = attributes;
 	let itemName = name;
 
 	if (!craftable) itemName = itemName.replace('Non-Craftable ', '');
@@ -29,7 +29,7 @@ module.exports = function (name, attributes) {
 	if (itemNumber) itemName = itemName.replace(` #${itemNumber.value}`, '');
 
 	itemName = itemName.replace(`${quality.value} `, '');
-	if (isUnique(quality)) itemName = itemName.replace('The ', '');
+	if (isUniqueHat) itemName = itemName.replace(/^The /, '');
 	if (quality.elevated) itemName = itemName.replace('Strange ', '');
 
 	return itemName;
@@ -43,10 +43,5 @@ module.exports = function (name, attributes) {
 function getUsableItemToRemove(attributes) {
 	const { target, output, outputQuality } = attributes.usableItem;
 
-	return target
-		|| (outputQuality !== 'Unique' ? getOutput(output, outputQuality) : output);
-}
-
-function isUnique({ value }) {
-	return value === 'Unique';
+	return target || getOutput(output, outputQuality);
 }

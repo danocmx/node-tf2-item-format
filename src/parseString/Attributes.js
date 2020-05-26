@@ -9,6 +9,8 @@ const getUsableItem = require('./Attributes/getUsableItem');
 
 const getEffect = require('./Attributes/getEffect');
 
+const isUniqueHat = require('../shared/isUniqueHat');
+
 const getTexture = require('../shared/getTexture');
 const getKillstreak = require('../shared/getKillstreak');
 
@@ -33,6 +35,7 @@ class Attributes {
 		this.itemNumber = getItemNumber(name);
 		this.usableItem = getUsableItem(name);
 
+		this.isUniqueHat = isUniqueHat(name);
 		this.quality = getQuality(name, this);
 	}
 }

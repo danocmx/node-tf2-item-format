@@ -1,7 +1,7 @@
 const _ = require('lodash');
 
 const Attributes = require('./parseString/Attributes');
-const decomposeName = require('./parseString/decomposeName');
+const decomposeName = require('./shared/decomposeName');
 
 /**
  * Parses name string into attributes.
@@ -14,6 +14,9 @@ module.exports = function (name) {
 		name: itemName,
 
 		craftable: attributes.craftable,
+
+		// Signalizes if `The` was in name.
+		...(attributes.isUniqueHat ? { isUniqueHat: true } : {}),
 
 		// Only when present.
 		...(attributes.australium ? { australium: attributes.australium } : {}),

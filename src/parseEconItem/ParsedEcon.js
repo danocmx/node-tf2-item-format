@@ -61,6 +61,7 @@ class ParsedEcon {
 			...(this.descriptions.australium ? { australium: this.descriptions.australium } : {}),
 			...(this.descriptions.festivized ? { festivized: this.descriptions.festivized } : {}),
 			...(this.descriptions.effect ? { effect: this.descriptions.effect } : {}),
+			...(this.nameAttrs.isUniqueHat ? { isUniqueHat: this.nameAttrs.isUniqueHat } : {}),
 			...(this.descriptions.killstreak.value
 				? { killstreak: this.descriptions.killstreak.value } : {}),
 		};

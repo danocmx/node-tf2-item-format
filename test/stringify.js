@@ -173,4 +173,10 @@ describe('stringify', () => {
 
 		assert.equal(itemString, 'Hat #25');
 	});
+
+	it('Case #16', () => {
+		const itemString = stringify({ name: 'Tartan Shade', craftable: true, quality: 'Unique', isUniqueHat: true });
+
+		assert.deepEqual(itemString, 'The Tartan Shade');
+	})
 })

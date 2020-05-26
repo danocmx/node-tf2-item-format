@@ -18,10 +18,11 @@ const getOutput = require('./shared/getOutput');
  * @param {string} item.wearTier item wear
  * @param {boolean} item.craftable if item is craftable
  * @param {number} item.crate number for create
+ * @param {boolean} item.isUniqueHat signalizes if 'The' should be in the name
  * @return {string} item name with all attributes
 */
-module.exports = function ({ name, craftable, australium, festivized, killstreak,
-	elevated, quality, wear, texture, effect, target, output, outputQuality, itemNumber }) {
+module.exports = function ({ name, craftable, australium, festivized, killstreak, elevated,
+	quality, wear, texture, effect, target, output, outputQuality, itemNumber, isUniqueHat }) {
 	let itemName = '';
 
 	if (!craftable) {
@@ -64,6 +65,10 @@ module.exports = function ({ name, craftable, australium, festivized, killstreak
 		// getOutput constructs full output name if quality present.
 		// target has no quality
 		itemName += `${output && !target ? getOutput(output, outputQuality) : target} `;
+	}
+
+	if (isUniqueHat) {
+		itemName += 'The ';
 	}
 
 	itemName += name;
