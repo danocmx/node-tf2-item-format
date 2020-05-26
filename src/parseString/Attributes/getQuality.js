@@ -1,7 +1,7 @@
 const matchQuality = require('./getQuality/matchQuality');
-const isStrange = require('./getQuality/isStrange')
-const isVintage = require('./getQuality/isVintage')
-const selectQuality = require('./getQuality/selectQuality')
+const isStrange = require('./getQuality/isStrange');
+const isVintage = require('./getQuality/isVintage');
+const selectQuality = require('./getQuality/selectQuality');
 
 /**
  * @typedef {Object} Quality
@@ -13,7 +13,7 @@ const selectQuality = require('./getQuality/selectQuality')
  * Gets quality by providing data to selectQuality
  * @param {string} name
  * @param {Object} attributes
- * @return {Quality} 
+ * @return {Quality}
  */
 module.exports = function (name, attributes) {
 	// This is true for all target/output items
@@ -21,7 +21,7 @@ module.exports = function (name, attributes) {
 		return {
 			value: 'Unique',
 			elevated: false,
-		}
+		};
 	}
 
 	return selectQuality({
@@ -29,5 +29,5 @@ module.exports = function (name, attributes) {
 		isVintage: isVintage(name), // Because of exceptions
 		otherQuality: matchQuality(name), // Matches every other quality
 		attributes, // Current attributes
-	})
+	});
 };

@@ -47,21 +47,22 @@ class ParsedEcon {
 	 * @return {Object}
 	 */
 	getNameAttributes() {
-		let texture = this.descriptions.texture || this.nameAttrs.texture
+		const texture = this.descriptions.texture || this.nameAttrs.texture;
 
 		return {
 			tradable: this.properties.tradable,
 			craftable: this.descriptions.craftable,
 			quality: this.tags.quality,
-			
+
 			// Only append if exists
 			...(texture ? { texture } : {}),
 			...(this.descriptions.wear ? { wear: this.descriptions.wear } : {}),
-			...(this.descriptions.killstreak.value ? { killstreak: this.descriptions.killstreak.value } : {}),
 			...(this.descriptions.elevated ? { elevated: this.descriptions.elevated } : {}),
 			...(this.descriptions.australium ? { australium: this.descriptions.australium } : {}),
 			...(this.descriptions.festivized ? { festivized: this.descriptions.festivized } : {}),
 			...(this.descriptions.effect ? { effect: this.descriptions.effect } : {}),
+			...(this.descriptions.killstreak.value
+				? { killstreak: this.descriptions.killstreak.value } : {}),
 		};
 	}
 

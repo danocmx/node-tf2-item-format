@@ -6,10 +6,10 @@
  * @return {boolean}
  */
 module.exports = function (quality, elevated, effect) {
-	return checkForEffectAndUnusual(quality, effect) 
-		&& isntUniqueOrElevated(quality, elevated) 
+	return checkForEffectAndUnusual(quality, effect)
+		&& isntUniqueOrElevated(quality, elevated)
 		&& !isDecorated(quality);
-}
+};
 
 function checkForEffectAndUnusual(quality, effect) {
 	return isNonUnusualWithEffect(quality, effect) || hasNoEffect(quality, effect);
@@ -17,7 +17,7 @@ function checkForEffectAndUnusual(quality, effect) {
 
 /**
  * Isnt unusual quality with effect
- * We add to 
+ * We add it to name.
  * @return {boolean}
  */
 function isNonUnusualWithEffect(quality, effect) {
@@ -26,7 +26,6 @@ function isNonUnusualWithEffect(quality, effect) {
 
 /**
  * Has quality without effect
- * 
  */
 function hasNoEffect(quality, effect) {
 	return quality && !effect;

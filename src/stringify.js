@@ -20,9 +20,10 @@ const getOutput = require('./shared/getOutput');
  * @param {number} item.crate number for create
  * @return {string} item name with all attributes
 */
-module.exports = function ({ name, craftable, australium, festivized, killstreak, elevated, quality, wear, texture, effect, target, output, outputQuality, itemNumber }) {
+module.exports = function ({ name, craftable, australium, festivized, killstreak,
+	elevated, quality, wear, texture, effect, target, output, outputQuality, itemNumber }) {
 	let itemName = '';
-	
+
 	if (!craftable) {
 		itemName += 'Non-Craftable ';
 	}
@@ -34,28 +35,29 @@ module.exports = function ({ name, craftable, australium, festivized, killstreak
 	if (shouldSetQuality(quality, elevated, effect)) {
 		itemName += `${quality} `;
 	}
-	
+
 	if (effect) {
 		itemName += `${effect} `;
 	}
-	
+
 	if (festivized) {
 		itemName += 'Festivized ';
 	}
-	
+
 	if (canAddKillstreak(killstreak, target)) {
 		itemName += `${killstreak} `;
 	}
-	
+
 	if (isAustralium(australium)) {
 		itemName += 'Australium ';
 	}
-	
+
 	if (texture) {
 		itemName += `${texture} `;
 	}
-	
+
 	if (isKillstreakKitOrFabricator(name, target)) {
+		// eslint-disable-next-line no-param-reassign
 		name = addTargetToName(name, target);
 	} else if (target || output) {
 		// There can be both target and output, target is prefered thus the check.
@@ -84,8 +86,8 @@ function isAustralium(australium) {
 /**
  * Checks if we can add killstreak to the name,
  * killstreak stays present on target items such as kits and fabricators.
- * @param {*} killstreak 
- * @param {string} target 
+ * @param {*} killstreak
+ * @param {string} target
  * @return {boolean}
  */
 function canAddKillstreak(killstreak, target) {

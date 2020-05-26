@@ -12,7 +12,7 @@ module.exports = function (name) {
 
 	return {
 		name: itemName,
-		
+
 		craftable: attributes.craftable,
 
 		// Only when present.
@@ -26,7 +26,7 @@ module.exports = function (name) {
 		// Incase they're not present
 		...(!_.isEmpty(attributes.usableItem) ? attributes.usableItem : {}),
 		...(!_.isEmpty(attributes.itemNumber) ? { itemNumber: attributes.itemNumber } : {}),
-		
+
 		quality: attributes.quality.value,
 		...(attributes.quality.elevated ? { elevated: attributes.quality.elevated } : {}),
 	};

@@ -22,8 +22,11 @@ class ItemName {
 		// TODO: interchange with parseString after usageItems are added to econItem.
 		const { resources } = require('../../index');
 
+		const attributes = this.econ.getNameAttributes();
+
+		let { texture } = attributes;
 		const { australium, wear, killstreak,
-			texture, elevated, festivized, quality } = this.econ.getNameAttributes();
+			elevated, festivized, quality } = attributes;
 
 		let name = this.origin;
 
@@ -35,8 +38,8 @@ class ItemName {
 
 		if (texture) {
 			if (isTextureDefindex(texture)) texture = resources.gettTextureValue(texture);
-			name = name.replace(`${texture} `, '')
-		};
+			name = name.replace(`${texture} `, '');
+		}
 
 		if (isUnique(quality)) name = name.replace(/^The /, '');
 		else name = name.replace(`${resources.getQualityValue(quality)} `, '');
