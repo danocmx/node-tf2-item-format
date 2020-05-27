@@ -35,7 +35,7 @@ class Resources {
 			: '';
 	}
 
-	gettTextureValue(texture) {
+	getTextureValue(texture) {
 		return this.textures
 			? this.textures[texture] || ''
 			: '';
