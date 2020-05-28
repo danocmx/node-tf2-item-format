@@ -10,6 +10,7 @@ module.exports = function (item) {
 
 	return {
 		name: parsedEcon.itemName.getShort(),
+		fullName: parsedEcon.itemName.getFull(),
 		id: parsedEcon.id,
 		img: parsedEcon.getImageURL(),
 		...parsedEcon.getAttributes(),
