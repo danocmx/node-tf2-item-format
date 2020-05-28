@@ -1,3 +1,5 @@
+const isNumber = require('../util/isNumber');
+
 /**
  * Iterates over effects object to get matching effect.
  * @param {string} name
@@ -11,7 +13,7 @@ module.exports = function (name) {
 	for (let i = 0; i < Object.values(textures).length; i++) {
 		const texture = Object.values(textures)[i];
 
-		if (typeof texture === 'number' || !name.includes(`${texture} `)) {
+		if (isNumber(texture) || !name.includes(`${texture} `)) {
 			// eslint-disable-next-line no-continue
 			continue;
 		}
