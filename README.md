@@ -19,12 +19,13 @@ item | `object` | https://github.com/DoctorMcKay/node-steamcommunity/wiki/CEconI
 Property | Type | Description
 -------- | ---- | -----------
 name | `string` | shortened name of the item
+fullName | `string` | full name of the item
 id | `string` | item id
 img | `string` | image url
 tradable | `boolean` | is item tradable?
 craftable | `boolean` | is item craftable?
 quality | `number` | quality of the item
-texture | `string` |number` |
+texture | `string` |
 [wear] | `number` |
 [elevated] | `boolean` |
 [australium] | `boolean` |
