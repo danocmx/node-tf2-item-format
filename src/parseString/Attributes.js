@@ -1,5 +1,4 @@
 const isCraftable = require('./Attributes/isCraftable');
-const isAustralium = require('./Attributes/isAustralium');
 const isFestivized = require('./Attributes/isFestivized');
 
 const getWear = require('./Attributes/getWear');
@@ -11,6 +10,7 @@ const getEffect = require('./Attributes/getEffect');
 
 const isUniqueHat = require('../shared/isUniqueHat');
 
+const isAustralium = require('../shared/isAustralium');
 const getTexture = require('../shared/getTexture');
 const getKillstreak = require('../shared/getKillstreak');
 

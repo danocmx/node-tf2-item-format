@@ -1,7 +1,6 @@
 const decomposeName = require('../../shared/decomposeName');
 
 const isStrangeTexture = require('./ItemName/isStrangeTexture');
-const isUncraftableUnique = require('./ItemName/isUncraftableUnique');
 const isUnusual = require('./ItemName/isUnusual');
 const getTextureName = require('./ItemName/getTextureName');
 
@@ -48,21 +47,17 @@ class ItemName {
 
 		let name = this.origin;
 
-		const { wear, craftable, tradable, texture, quality, effect } = this.econ.getNameAttributes();
-
-		if (wear) name = `name (${resources.getWearValue(wear)})`;
+		const { craftable, tradable, texture, quality, effect } = this.econ.getNameAttributes();
 
 		if (effect) {
-			if (isUnusual(quality)) name = name.replace('Unusual ', resources.getEffectValue(effect));
+			if (isUnusual(quality)) name = name.replace('Unusual ', `${resources.getEffectValue(effect)} `);
 			else {
-				name.replace(
+				name = name.replace(
 					`${resources.getQualityValue(quality)} `,
 					`${resources.getQualityValue(quality)} ${resources.getEffectValue(effect)}`,
 				);
 			}
 		}
-
-		if (isUncraftableUnique(quality, craftable)) name = name.replace(/^The /, '');
 
 		if (isStrangeTexture(quality, texture)) name += 'Strange ';
 		if (!tradable) name += 'Non-Tradable ';

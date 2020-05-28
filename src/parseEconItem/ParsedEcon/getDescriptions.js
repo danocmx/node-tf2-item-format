@@ -29,8 +29,9 @@ const Killstreak = require('./getDescriptions/Killstreak');
  * @param {string} type tags type
  * @return {descriptionAttributes}
  */
-module.exports = function ({ item, tags }) {
-	const { descriptions = [] } = item;
+module.exports = function (econ) {
+	const { tags } = econ;
+	const { descriptions = [] } = econ.item;
 
 	const killstreak = new Killstreak();
 
@@ -62,7 +63,7 @@ module.exports = function ({ item, tags }) {
 		else if (Killstreak.isSheen(description)) killstreak.setSheen(description);
 		else if (Killstreak.isKillstreak(description)) killstreak.setKillstreak(description);
 
-		else if (isItemsTexture(description, item)) attributes.texture = getTexture(description);
+		else if (isItemsTexture(description, econ)) attributes.texture = getTexture(description);
 
 		else if (!isCraftable(description)) attributes.craftable = false;
 	}

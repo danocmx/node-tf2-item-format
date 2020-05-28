@@ -56,7 +56,7 @@ class ParsedEcon {
 
 			// Only append if exists
 			...(texture ? { texture } : {}),
-			...(this.descriptions.wear ? { wear: this.descriptions.wear } : {}),
+			...(this.tags.wear ? { wear: this.tags.wear } : {}),
 			...(this.descriptions.elevated ? { elevated: this.descriptions.elevated } : {}),
 			...(this.descriptions.australium ? { australium: this.descriptions.australium } : {}),
 			...(this.descriptions.festivized ? { festivized: this.descriptions.festivized } : {}),

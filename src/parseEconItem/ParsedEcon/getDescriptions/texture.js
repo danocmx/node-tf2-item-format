@@ -5,22 +5,23 @@
  * @param {string} type
  */
 exports.isItemsTexture = function (description, item) {
-	return description.value.startsWith('\u2714 ') && (matchesName(description, item) || isSkin(item));
+	return description.value.startsWith('\u2714 ') && (matchesName(description, item) || isCurrentItemSkin(item));
 };
 
-function matchesName(description, { name }) {
-	return name.includes(
-		description.value.replace('\u2714 '),
+function matchesName(description, { itemName }) {
+	return itemName.origin.includes(
+		description.value.replace('\u2714 ', ''),
 	);
 }
 
-function isSkin({ tags }) {
+function isCurrentItemSkin({ tags }) {
 	return !!tags.wear;
 }
 
 exports.getTexture = function (description) {
 	const { resources } = require('../../../index');
 
+	// Only set texture when app_data present.
 	return description.app_data
-		? resources.getTextureValue(description.app_data.def_index) : description.value;
+		? resources.getTextureValue(description.app_data.def_index) : undefined;
 };
