@@ -59,9 +59,9 @@ class ItemName {
 			}
 		}
 
-		if (isStrangeTexture(quality, texture)) name += 'Strange ';
-		if (!tradable) name += 'Non-Tradable ';
-		if (!craftable) name += 'Non-Craftable ';
+		if (isStrangeTexture(quality, texture)) name = `Strange ${name}`;
+		if (!tradable) name = `Non-Tradable ${name}`;
+		if (!craftable) name = `Non-Craftable ${name}`;
 
 		return name;
 	}
