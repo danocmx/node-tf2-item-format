@@ -57,8 +57,8 @@ class ParsedEcon {
 			// Only append if exists
 			...(texture ? { texture } : {}),
 			...(this.tags.wear ? { wear: this.tags.wear } : {}),
-			...(this.descriptions.elevated ? { elevated: this.descriptions.elevated } : {}),
-			...(this.descriptions.australium ? { australium: this.descriptions.australium } : {}),
+			...(this.properties.elevated ? { elevated: this.properties.elevated } : {}),
+			...(this.nameAttrs.australium ? { australium: this.nameAttrs.australium } : {}),
 			...(this.descriptions.festivized ? { festivized: this.descriptions.festivized } : {}),
 			...(this.descriptions.effect ? { effect: this.descriptions.effect } : {}),
 			...(this.nameAttrs.isUniqueHat ? { isUniqueHat: this.nameAttrs.isUniqueHat } : {}),

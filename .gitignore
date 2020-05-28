@@ -3,3 +3,4 @@ node_modules/
 /tests
 /package-lock.json
 /test/test.js
+/.vscode
