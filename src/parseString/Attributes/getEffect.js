@@ -25,8 +25,8 @@ module.exports = function (name) {
 const EXCEPTIONS = [["Cool Breeze", "Cool"]];
 
 function isException(name, effect) {
-	return EXCEPTIONS.some((exception) => 
+	return EXCEPTIONS.some((exception) => {
 		const [exceptionName, exceptionEffect] = exception;
-		return name.includes(exceptionName) && effect === exceptionEffect;	     
-	}
+		return name.includes(exceptionName) && effect === exceptionEffect;
+	})
 }
