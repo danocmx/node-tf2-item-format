@@ -13,11 +13,20 @@ module.exports = function (name) {
 	for (let i = 0; i < Object.values(effects).length; i++) {
 		const effect = Object.values(effects)[i];
 
-		if (isNumber(effect) || !name.includes(`${effect} `)) {
-			// eslint-disable-next-line no-continue
-			continue;
+		if (!isNumber(effect) && name.includes(`${effect} `) && !isException(name, effect)) {
+			return effect;
 		}
-
-		return effect;
 	}
 };
+
+/**
+ * Which item and effect cannot exist together.
+ */
+const EXCEPTIONS = [["Cool Breeze", "Cool"]];
+
+function isException(name, effect) {
+	return EXCEPTIONS.some((exception) => 
+		const [exceptionName, exceptionEffect] = exception;
+		return name.includes(exceptionName) && effect === exceptionEffect;	     
+	}
+}
