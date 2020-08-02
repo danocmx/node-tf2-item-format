@@ -179,4 +179,10 @@ describe('parseString', () => {
 
 		assert.deepEqual(itemObject, { name: 'Tartan Shade', craftable: true, quality: 'Unique', isUniqueHat: true });
 	})
+
+	it('Case #17', () => {
+		const itemObject = parseString('Strange Cool Breeze');
+
+		assert.deepEqual(itemObject, { name: 'Cool Breeze', craftable: true, quality: 'Strange'});
+	})
 })
