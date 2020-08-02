@@ -28,5 +28,5 @@ function isException(name, effect) {
 	return EXCEPTIONS.some((exception) => {
 		const [exceptionName, exceptionEffect] = exception;
 		return name.includes(exceptionName) && effect === exceptionEffect;
-	})
+	});
 }
