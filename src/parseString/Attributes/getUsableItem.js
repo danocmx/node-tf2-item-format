@@ -35,7 +35,9 @@ module.exports = function (name) {
 				.replace(` ${item}`, '')
 				.replace(`${getKillstreak(name)} `, '')
 				// Incase its uncraftable
-				.replace('Non-Craftable ', ''),
+				.replace('Non-Craftable ', '')
+				// For Unusualifiers
+				.replace('Unusual ', ''),
 		};
 	}
 
@@ -50,7 +52,7 @@ function getItemIfTarget(name) {
 	if (/(Killer's Kit|Coffin Kit|Summer Starter Kit)/.test(name)) return;
 
 	// eslint-disable-next-line consistent-return
-	return (name.match(/ (Kit Fabricator|Kit|Strangifier)/, '') || [])[1];
+	return (name.match(/ (Kit Fabricator|Kit|Strangifier|Unusualifier)/, '') || [])[1];
 }
 
 function isChemistrySet(name) {

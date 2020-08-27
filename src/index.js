@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-const Resources = require('./index/Resources');
+const Resources = require('./schema/Resources');
 
 module.exports = {
 	resources: new Resources(),

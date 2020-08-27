@@ -19,7 +19,8 @@ module.exports = function (name, attributes) {
 	// This is true for all target/output items
 	if (attributes.usableItem) {
 		return {
-			value: 'Unique',
+			// Weird work around, will fix later.
+			value: name.includes('Unusual') ? 'Unusual' : 'Unique',
 			elevated: false,
 		};
 	}

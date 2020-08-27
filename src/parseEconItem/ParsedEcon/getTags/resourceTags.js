@@ -4,7 +4,7 @@
 const isTag = require('./functions/isTag');
 const getTag = require('./functions/getTag');
 
-const Resources = require('../../../index/Resources');
+const Resources = require('../../../schema/Resources');
 const { resources } = require('../../../index');
 
 exports.isWear = isTag('Exterior');
