@@ -39,6 +39,12 @@ class Schema {
 		return null;
 	}
 
+	getName(search) {
+		if (!this.itemNames) this.itemNames = requireStatic('item-names');
+
+		return this.itemNames[search];
+	}
+
 	getQuality(search) {
 		if (!this.qualities) this.qualities = requireStatic('qualities');
 

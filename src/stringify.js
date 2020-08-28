@@ -1,9 +1,12 @@
+const schema = require('./schema/Schema');
 
 const shouldSetNumber = require('./stringify/shouldSetNumber');
 const shouldSetQuality = require('./stringify/shouldSetQuality');
 const addTargetToName = require('./stringify/addTargetToName');
 
 const getOutput = require('./shared/getOutput');
+
+const isNumber = require('./util/isNumber');
 
 /** Stringifies item object into item name
  * @param {string} item.item pure name of the item
@@ -21,8 +24,10 @@ const getOutput = require('./shared/getOutput');
  * @param {boolean} item.isUniqueHat signalizes if 'The' should be in the name
  * @return {string} item name with all attributes
 */
-module.exports = function ({ name, craftable, australium, festivized, killstreak, elevated,
-	quality, wear, texture, effect, target, output, outputQuality, itemNumber, isUniqueHat }) {
+module.exports = function ({
+	name, craftable, australium, festivized, killstreak, elevated,
+	quality, wear, texture, effect, target, output, outputQuality, itemNumber, isUniqueHat,
+}) {
 	let itemName = '';
 
 	if (!craftable) {
@@ -34,11 +39,11 @@ module.exports = function ({ name, craftable, australium, festivized, killstreak
 	}
 
 	if (shouldSetQuality(quality, elevated, effect)) {
-		itemName += `${quality} `;
+		itemName += `${getQualityString(quality)} `;
 	}
 
 	if (effect) {
-		itemName += `${effect} `;
+		itemName += `${getEffectString(effect)} `;
 	}
 
 	if (festivized) {
@@ -46,7 +51,7 @@ module.exports = function ({ name, craftable, australium, festivized, killstreak
 	}
 
 	if (canAddKillstreak(killstreak, target)) {
-		itemName += `${killstreak} `;
+		itemName += `${getKillstreakString(killstreak)} `;
 	}
 
 	if (isAustralium(australium)) {
@@ -54,7 +59,7 @@ module.exports = function ({ name, craftable, australium, festivized, killstreak
 	}
 
 	if (texture) {
-		itemName += `${texture} `;
+		itemName += `${getTextureString(texture)} `;
 	}
 
 	if (isKillstreakKitOrFabricator(name, target)) {
@@ -64,7 +69,7 @@ module.exports = function ({ name, craftable, australium, festivized, killstreak
 		// There can be both target and output, target is prefered thus the check.
 		// getOutput constructs full output name if quality present.
 		// target has no quality
-		itemName += `${output && !target ? getOutput(output, outputQuality) : target} `;
+		itemName += `${output && !target ? getOutput(getDefindexName(output), outputQuality) : getDefindexName(target)} `;
 	}
 
 	if (isUniqueHat) {
@@ -74,7 +79,7 @@ module.exports = function ({ name, craftable, australium, festivized, killstreak
 	itemName += name;
 
 	if (wear) {
-		itemName += ` (${wear})`;
+		itemName += ` (${getWearString(wear)})`;
 	}
 
 	if (shouldSetNumber(itemNumber)) {
@@ -101,4 +106,28 @@ function canAddKillstreak(killstreak, target) {
 
 function isKillstreakKitOrFabricator(name, target) {
 	return target && / Kit/.test(name);	// This checks for fabricator too.
+}
+
+function getQualityString(search) {
+	return isNumber(search) ? schema.getQuality(search) : search;
+}
+
+function getEffectString(search) {
+	return isNumber(search) ? schema.getEffect(search) : search;
+}
+
+function getKillstreakString(search) {
+	return isNumber(search) ? schema.getKillstreak(search) : search;
+}
+
+function getTextureString(search) {
+	return isNumber(search) ? schema.getTexture(search) : search;
+}
+
+function getDefindexName(search) {
+	return isNumber(search) ? schema.getName(search) : search;
+}
+
+function getWearString(search) {
+	return isNumber(search) ? schema.getWear(search) : search;
 }
