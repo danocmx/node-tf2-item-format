@@ -8,7 +8,7 @@ module.exports = function (item) {
 	return {
 		quality: getQuality(item),
 		craftable: item.craftable ? 1 : 0,
-		item: getItem(item),
+		item_name: getItem(item),
 		priceindex: getPriceindex(item),
 	};
 };
