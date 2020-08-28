@@ -2,7 +2,9 @@ const isEmpty = require('lodash/isEmpty');
 const schema = require('./schema/Schema');
 
 const Attributes = require('./parseString/Attributes');
+
 const decomposeName = require('./shared/decomposeName');
+const convertStringToIntAttrs = require('./shared/convertStringToIntAttrs');
 
 /**
  * Parses name string into attributes.
@@ -15,7 +17,10 @@ module.exports = function (name, { inNumbers = false, useDefindexes = false } = 
 	let attributes = new Attributes(name);
 	const itemName = decomposeName(name, attributes);
 
-	if (inNumbers) attributes = convert(attributes);
+	attributes.elevated = attributes.quality.elevated;
+	attributes.quality = attributes.quality.value;
+
+	if (inNumbers) attributes = convertStringToIntAttrs(attributes);
 
 	let defindexes = {};
 	if (useDefindexes) {
@@ -44,24 +49,10 @@ module.exports = function (name, { inNumbers = false, useDefindexes = false } = 
 		...(!isEmpty(attributes.usableItem) ? attributes.usableItem : {}),
 		...(!isEmpty(attributes.itemNumber) ? { itemNumber: attributes.itemNumber } : {}),
 
-		quality: attributes.quality.value,
-		...(attributes.quality.elevated ? { elevated: attributes.quality.elevated } : {}),
+		quality: attributes.quality,
+		...(attributes.elevated ? { elevated: attributes.elevated } : {}),
 	};
 };
-
-function convert(item) {
-	return {
-		...item,
-		killstreak: schema.getKillstreak(item.killstreak),
-		wear: schema.getWear(item.wear),
-		texture: schema.getTexture(item.texture),
-		effect: schema.getEffect(item.effect),
-		quality: {
-			value: schema.getQuality(item.quality.value),
-			elevated: item.quality.elevated,
-		},
-	};
-}
 
 function getDefindexes(name, attributes) {
 	const usableItem = {};

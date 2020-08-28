@@ -1,3 +1,3 @@
 module.exports = function (quality) {
-	return quality === 5;
+	return quality === 'Unusual';
 };

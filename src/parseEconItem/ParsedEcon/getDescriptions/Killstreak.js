@@ -1,11 +1,9 @@
-const killstreaks = require('../../../../resources/UKillstreaks');
-
 /**
  * Handles killstreak actions
  */
 class Killstreak {
 	constructor() {
-		this.value = killstreaks.None;
+		this.value = null;
 	}
 
 	get killstreak() {
@@ -55,7 +53,7 @@ class Killstreak {
 	 */
 	setKillstreaker(description) {
 		this.killstreaker = description.value.replace('Killstreaker: ', '');
-		this.killstreak = killstreaks['Professional Killstreak'];
+		this.killstreak = 'Professional Killstreak';
 	}
 
 	/**
@@ -65,7 +63,7 @@ class Killstreak {
 	 */
 	setSheen(description) {
 		this.sheen = description.value.replace('Sheen: ', '');
-		this.killstreak = killstreaks['Specialized Killstreak'];
+		this.killstreak = 'Specialized Killstreak';
 	}
 
 	/**
@@ -73,7 +71,7 @@ class Killstreak {
 	 * @param {object} attributes
 	 */
 	setKillstreak() {
-		this.killstreak = killstreaks.Killstreak;
+		this.killstreak = 'Killstreak';
 	}
 }
 

@@ -1,3 +1,5 @@
+const schema = require('tf2-static-schema');
+
 /**
  * Checks if texture is the one on the item.
  * @param {Object} description
@@ -19,9 +21,7 @@ function isCurrentItemSkin({ tags }) {
 }
 
 exports.getTexture = function (description) {
-	const { resources } = require('../../../index');
-
 	// Only set texture when app_data present.
 	return description.app_data
-		? resources.getTextureValue(description.app_data.def_index) : undefined;
+		? schema.getTexture(description.app_data.def_index) : undefined;
 };

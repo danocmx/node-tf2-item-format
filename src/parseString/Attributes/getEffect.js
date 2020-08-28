@@ -1,3 +1,6 @@
+const { requireStatic } = require('tf2-static-schema');
+
+const schema = require('../../schema/Schema');
 const isNumber = require('../../util/isNumber');
 
 /**
@@ -7,11 +10,11 @@ const isNumber = require('../../util/isNumber');
  */
 // eslint-disable-next-line consistent-return
 module.exports = function (name) {
-	const { resources }	= require('../../index');
-	const { effects } = resources;
+	if (!schema.effects) schema.effects = requireStatic('effects');
 
-	for (let i = 0; i < Object.values(effects).length; i++) {
-		const effect = Object.values(effects)[i];
+	const effectsKeys = Object.keys(schema.effects);
+	for (let i = 0; i < effectsKeys.length; i++) {
+		const effect = effectsKeys[i];
 
 		if (!isNumber(effect) && name.includes(`${effect} `) && !isException(name, effect)) {
 			return effect;

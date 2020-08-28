@@ -2,7 +2,6 @@ const decomposeName = require('../../shared/decomposeName');
 
 const isStrangeTexture = require('./ItemName/isStrangeTexture');
 const isUnusual = require('./ItemName/isUnusual');
-const getTextureName = require('./ItemName/getTextureName');
 
 /**
  * Class that handles name.
@@ -22,18 +21,16 @@ class ItemName {
 		const { australium, wear, killstreak,
 			texture, elevated, festivized, quality, isUniqueHat } = this.econ.getNameAttributes();
 
-		const { resources } = require('../../index');
-
 		return decomposeName(
 			this.origin,
 			{
-				quality: { value: resources.getQualityValue(quality), elevated },
+				quality: { value: quality, elevated },
 				australium,
 				festivized,
 				isUniqueHat,
-				killstreak: killstreak ? resources.getKillstreakValue(killstreak) : null,
-				wear: wear ? resources.getWearValue(wear) : null,
-				texture: texture ? getTextureName(texture) : null,
+				killstreak,
+				wear,
+				texture,
 			},
 		);
 	}
@@ -43,18 +40,16 @@ class ItemName {
 	 * @return {string}
 	 */
 	getFull() {
-		const { resources } = require('../../index');
-
 		let name = this.origin;
 
 		const { craftable, tradable, texture, quality, effect } = this.econ.getNameAttributes();
 
 		if (effect) {
-			if (isUnusual(quality)) name = name.replace('Unusual ', `${resources.getEffectValue(effect)} `);
+			if (isUnusual(quality)) name = name.replace('Unusual ', `${effect} `);
 			else {
 				name = name.replace(
-					`${resources.getQualityValue(quality)} `,
-					`${resources.getQualityValue(quality)} ${resources.getEffectValue(effect)}`,
+					`${quality} `,
+					`${quality} ${effect} `,
 				);
 			}
 		}

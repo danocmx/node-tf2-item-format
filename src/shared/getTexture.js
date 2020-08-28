@@ -1,3 +1,6 @@
+const { requireStatic } = require('tf2-static-schema');
+
+const schema = require('../schema/Schema');
 const isNumber = require('../util/isNumber');
 
 /**
@@ -7,11 +10,11 @@ const isNumber = require('../util/isNumber');
  */
 // eslint-disable-next-line consistent-return
 module.exports = function (name) {
-	const { resources }	= require('../index');
-	const { textures } = resources;
+	if (!schema.textures) schema.textures = requireStatic('paint-kits');
 
-	for (let i = 0; i < Object.values(textures).length; i++) {
-		const texture = Object.values(textures)[i];
+	const textureKeys = Object.keys(schema.textures);
+	for (let i = 0; i < textureKeys.length; i++) {
+		const texture = textureKeys[i];
 
 		if (isNumber(texture) || !name.includes(`${texture} `)) {
 			// eslint-disable-next-line no-continue

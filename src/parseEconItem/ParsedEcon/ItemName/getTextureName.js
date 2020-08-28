@@ -1,7 +1,7 @@
-module.exports = function (texture) {
-	const { resources } = require('../../../index');
+const schema = require('../../../schema/Schema');
 
-	return isTextureDefindex(texture) ? resources.getTextureValue(texture) : texture;
+module.exports = function (texture) {
+	return isTextureDefindex(texture) ? schema.getTexture(texture) : texture;
 };
 
 function isTextureDefindex(texture) {

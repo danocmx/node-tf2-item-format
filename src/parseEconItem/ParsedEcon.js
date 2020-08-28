@@ -7,11 +7,13 @@ const getPropertyAttributes = require('./ParsedEcon/getPropertyAttributes');
 const getNameAttributes = require('./ParsedEcon/getNameAttributes');
 const getDescriptions = require('./ParsedEcon/getDescriptions');
 
+const convertStringToIntAttrs = require('../shared/convertStringToIntAttrs');
+
 /**
  * Parser class.
  */
 class ParsedEcon {
-	constructor(item) {
+	constructor(item, options) {
 		this.item = { ...item };
 		this.itemName = new ItemName(this);
 		this.fullEcon = hasAppData(this.item);
@@ -20,6 +22,8 @@ class ParsedEcon {
 		this.descriptions = getDescriptions(this);
 		this.properties = getPropertyAttributes(this);
 		this.nameAttrs = getNameAttributes(this);
+
+		this.options = options;
 	}
 
 	get id() {
@@ -46,10 +50,10 @@ class ParsedEcon {
 	 * Gets attributes that are included in the name.
 	 * @return {Object}
 	 */
-	getNameAttributes() {
+	getNameAttributes({ inNumbers = false } = {}) {
 		const texture = this.descriptions.texture || this.nameAttrs.texture;
 
-		return {
+		let attrs = {
 			tradable: this.properties.tradable,
 			craftable: this.descriptions.craftable,
 			quality: this.tags.quality,
@@ -65,11 +69,15 @@ class ParsedEcon {
 			...(this.descriptions.killstreak.value
 				? { killstreak: this.descriptions.killstreak.value } : {}),
 		};
+
+		if (inNumbers) attrs = convertStringToIntAttrs(attrs);
+
+		return removeUndefined(attrs);
 	}
 
 	getAttributes() {
 		return {
-			...this.getNameAttributes(),
+			...this.getNameAttributes(this.options),
 
 			classes: this.tags.classes,
 			type: this.tags.type,
@@ -89,3 +97,17 @@ class ParsedEcon {
 }
 
 module.exports = ParsedEcon;
+
+function removeUndefined(obj) {
+	const newObj = {};
+
+	const keys = Object.keys(obj);
+	for (let i = 0; i < keys.length; i++) {
+		const key = keys[i];
+		const value = obj[key];
+
+		if (value) newObj[key] = value;
+	}
+
+	return newObj;
+}
