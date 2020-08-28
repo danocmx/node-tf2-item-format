@@ -1,5 +1,5 @@
 const isEmpty = require('lodash/isEmpty');
-const schema = require('./schema/Schema');
+const schema = require('./schema');
 
 const Attributes = require('./parseString/Attributes');
 
@@ -64,7 +64,7 @@ function getDefindexes(name, attributes) {
 
 		if (attributes.usableItem.output) {
 			usableItem.output = schema.getDefindex(attributes.usableItem.output);
-			usableItem.outputQuality = schema.getQuality(attributes.usableItem.outputQuality);
+			usableItem.outputQuality = schema.getQualityEnum(attributes.usableItem.outputQuality);
 		}
 	}
 

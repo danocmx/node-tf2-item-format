@@ -1,12 +1,10 @@
-const schema = require('./schema/Schema');
+const schema = require('./schema');
 
 const shouldSetNumber = require('./stringify/shouldSetNumber');
 const shouldSetQuality = require('./stringify/shouldSetQuality');
 const addTargetToName = require('./stringify/addTargetToName');
 
 const getOutput = require('./shared/getOutput');
-
-const isNumber = require('./util/isNumber');
 
 /** Stringifies item object into item name
  * @param {string} item.item pure name of the item
@@ -39,11 +37,11 @@ module.exports = function ({
 	}
 
 	if (shouldSetQuality(quality, elevated, effect)) {
-		itemName += `${getQualityString(quality)} `;
+		itemName += `${schema.getQualityName(quality)} `;
 	}
 
 	if (effect) {
-		itemName += `${getEffectString(effect)} `;
+		itemName += `${schema.getEffectName(effect)} `;
 	}
 
 	if (festivized) {
@@ -51,7 +49,7 @@ module.exports = function ({
 	}
 
 	if (canAddKillstreak(killstreak, target)) {
-		itemName += `${getKillstreakString(killstreak)} `;
+		itemName += `${schema.getKillstreakName(killstreak)} `;
 	}
 
 	if (isAustralium(australium)) {
@@ -59,7 +57,7 @@ module.exports = function ({
 	}
 
 	if (texture) {
-		itemName += `${getTextureString(texture)} `;
+		itemName += `${schema.getTextureName(texture)} `;
 	}
 
 	if (isKillstreakKitOrFabricator(name, target)) {
@@ -69,7 +67,7 @@ module.exports = function ({
 		// There can be both target and output, target is prefered thus the check.
 		// getOutput constructs full output name if quality present.
 		// target has no quality
-		itemName += `${output && !target ? getOutput(getDefindexName(output), outputQuality) : getDefindexName(target)} `;
+		itemName += `${output && !target ? getOutput(schema.getName(output), outputQuality) : schema.getName(target)} `;
 	}
 
 	if (isUniqueHat) {
@@ -79,7 +77,7 @@ module.exports = function ({
 	itemName += name;
 
 	if (wear) {
-		itemName += ` (${getWearString(wear)})`;
+		itemName += ` (${schema.getWearName(wear)})`;
 	}
 
 	if (shouldSetNumber(itemNumber)) {
@@ -106,28 +104,4 @@ function canAddKillstreak(killstreak, target) {
 
 function isKillstreakKitOrFabricator(name, target) {
 	return target && / Kit/.test(name);	// This checks for fabricator too.
-}
-
-function getQualityString(search) {
-	return isNumber(search) ? schema.getQuality(search) : search;
-}
-
-function getEffectString(search) {
-	return isNumber(search) ? schema.getEffect(search) : search;
-}
-
-function getKillstreakString(search) {
-	return isNumber(search) ? schema.getKillstreak(search) : search;
-}
-
-function getTextureString(search) {
-	return isNumber(search) ? schema.getTexture(search) : search;
-}
-
-function getDefindexName(search) {
-	return isNumber(search) ? schema.getName(search) : search;
-}
-
-function getWearString(search) {
-	return isNumber(search) ? schema.getWear(search) : search;
 }

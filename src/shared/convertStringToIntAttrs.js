@@ -1,12 +1,12 @@
-const schema = require('../schema/Schema');
+const schema = require('../schema');
 
 module.exports = function (item) {
 	return {
 		...item,
-		killstreak: schema.getKillstreak(item.killstreak),
-		wear: schema.getWear(item.wear),
-		texture: schema.getTexture(item.texture),
-		effect: schema.getEffect(item.effect),
-		quality: schema.getQuality(item.quality),
+		killstreak: schema.getKillstreakEnum(item.killstreak),
+		wear: schema.getWearEnum(item.wear),
+		texture: schema.getTextureEnum(item.texture),
+		effect: schema.getEffectEnum(item.effect),
+		quality: schema.getQualityEnum(item.quality),
 	};
 };

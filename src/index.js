@@ -1,14 +1,9 @@
 /* eslint-disable global-require */
-const Resources = require('./schema/Resources');
 
-module.exports = {
-	resources: new Resources(),
-};
-
-module.exports.parseEconItem = require('./parseEconItem');
-module.exports.parseString = require('./parseString');
-module.exports.stringify = require('./stringify');
-
+exports.parseEconItem = require('./parseEconItem');
+exports.parseString = require('./parseString');
+exports.stringify = require('./stringify');
+exports.createBPListing = require('./createBPListing');
 /**
  * Fixes the order of attributes in your name,
  * 	this is highly exrimental due to the
@@ -17,6 +12,6 @@ module.exports.stringify = require('./stringify');
  * @param {string} name
  * @return {string}
  */
-module.exports.fixName = (name) => module.exports.stringify(module.exports.parseString(name));
+exports.fixName = (name) => exports.stringify(exports.parseString(name));
 
-module.exports.ParsedEcon = require('./parseEconItem/ParsedEcon');
+exports.ParsedEcon = require('./parseEconItem/ParsedEcon');

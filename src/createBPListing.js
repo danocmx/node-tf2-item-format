@@ -1,4 +1,5 @@
 const stringify = require('./stringify');
+const schema = require('./schema');
 
 /**
  * Creates a listing object that you can sent to backpack.tf
@@ -18,23 +19,32 @@ function getQuality({ quality, elevated }) {
 
 function getItem(item) {
 	return stringify({
-		name: item.name,
+		name: getRightName(item),
 		australium: item.australium,
 		// Don't add it if it's already in the name.
-		killstreak: isKillstreakOrFabricator(item) ? 0 : item.killstreak,
+		killstreak: isKillstreakKit(item) || isFabricator(item) ? 0 : item.killstreak,
+		craftable: true,
 	});
 }
 
+function getRightName(item) {
+	// We keep kit in the name but backpack.tf does not accept it.
+	if (isFabricator(item)) return item.name.replace('Kit ', '');
+
+	return item.name;
+}
+
 function getPriceindex(item) {
-	if (item.effect) return item.effect; // As int
+	if (item.effect) return schema.getEffectEnum(item.effect); // As int
 	if (isCrate(item)) return item.itemNumber.value;
-	if (isUnusualfierOrStrangifier(item.name)) return item.target; // as defindex
+	if (isUnusualfierOrStrangifier(item.name)) return schema.getDefindex(item.target); // as defindex
 	if (isChemistrySet(item)) {
-		let priceindex = `${item.output}-${item.outputQuality}`;
-		if (isUnusualfierOrStrangifier(item.target)) priceindex += `-${item.target}`;
+		let priceindex = `${schema.getDefindex(item.output)}-${schema.getQualityEnum(item.outputQuality)}`;
+		if (isUnusualfierOrStrangifier(item.target)) priceindex += `-${schema.getDefindex(item.target)}`;
 		return priceindex;
 	}
-	if (isKillstreakOrFabricator(item)) return `${item.killstreak}-${item.target}`; // as defindex
+	if (isKillstreakKit(item)) return `${schema.getKillstreakEnum(item.killstreak)}-${schema.getDefindex(item.target)}`; // as defindex
+	if (isFabricator(item)) return `${getKitDefindex(item)}-6-${schema.getDefindex(item.target)}`;
 
 	return 0;
 }
@@ -51,6 +61,14 @@ function isChemistrySet({ name }) {
 	return name.includes('Chemistry Set');
 }
 
-function isKillstreakOrFabricator(item) {
-	return item.name.match(/Kit|Fabricator/);
+function isKillstreakKit(item) {
+	return item.name.includes('Kit') && !isFabricator(item);
+}
+
+function isFabricator(item) {
+	return item.name.includes('Fabricator');
+}
+
+function getKitDefindex(item) {
+	return schema.getDefindex(stringify({ name: 'Kit', killstreak: item.killstreak, craftable: true }));
 }

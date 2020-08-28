@@ -1,6 +1,6 @@
 const { requireStatic } = require('tf2-static-schema');
 
-const schema = require('../schema/Schema');
+const schema = require('../schema');
 const isNumber = require('../util/isNumber');
 
 /**
