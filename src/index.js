@@ -4,6 +4,9 @@ exports.parseEconItem = require('./parseEconItem');
 exports.parseString = require('./parseString');
 exports.stringify = require('./stringify');
 exports.createBPListing = require('./createBPListing');
+exports.toSKU = require('./toSKU');
+exports.parseSKU = require('./parseSKU');
+
 /**
  * Fixes the order of attributes in your name,
  * 	this is highly exrimental due to the

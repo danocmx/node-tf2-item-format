@@ -58,9 +58,9 @@ module.exports = {
 		return this.textures[search];
 	},
 
-	getName(search) {
+	getDefindex(search) {
 		if (!this.itemNames) this.loadItemNames();
-		if (!isNumber(search)) return search;
+		if (isNumber(search)) return search;
 
 		const itemNamesDefindexes = Object.keys(this.itemNames);
 		for (let i = 0; i < itemNamesDefindexes.length; i++) {
@@ -73,10 +73,10 @@ module.exports = {
 		return null;
 	},
 
-	getDefindex(search) {
+	getName(search) {
 		if (!this.itemNames) this.loadItemNames();
 
-		return this.itemNames[search];
+		return isNumber(search) ? this.itemNames[search] : search;
 	},
 
 	getQuality(search) {
