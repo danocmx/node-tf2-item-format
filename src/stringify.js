@@ -23,7 +23,7 @@ const getOutput = require('./shared/getOutput');
  * @return {string} item name with all attributes
 */
 module.exports = function ({
-	name, craftable, australium, festivized, killstreak, elevated,
+	name, craftable, australium, festivized, killstreak, elevated, defindex,
 	quality, wear, texture, effect, target, output, outputQuality, itemNumber, isUniqueHat,
 }) {
 	let itemName = '';
@@ -74,7 +74,7 @@ module.exports = function ({
 		itemName += 'The ';
 	}
 
-	itemName += name;
+	itemName += name || schema.getName(defindex);
 
 	if (wear) {
 		itemName += ` (${schema.getWearName(wear)})`;
