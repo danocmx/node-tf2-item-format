@@ -8,7 +8,8 @@ const decomposeName = require('./shared/decomposeName');
  * Parses name string into attributes.
  * @param {string} name
  * @param {object} options
- * @param {boolean} inNumbers specifies if you want response in corresponding enums.
+ * @param {boolean} options.inNumbers specifies if you want response in corresponding enums.
+ * @param {boolean} options.useDefindexes adds defindexes
  */
 module.exports = function (name, { inNumbers = false, useDefindexes = false } = {}) {
 	let attributes = new Attributes(name);
@@ -18,7 +19,7 @@ module.exports = function (name, { inNumbers = false, useDefindexes = false } = 
 
 	let defindexes = {};
 	if (useDefindexes) {
-		defindexes = getDefindexes(name, attributes);
+		defindexes = getDefindexes(itemName, attributes);
 		attributes.usableItem = defindexes.usableItem;
 	}
 
@@ -63,18 +64,21 @@ function convert(item) {
 }
 
 function getDefindexes(name, attributes) {
-	const target = attributes.usableItem.target ? schema.getDefindex(attributes.target) : null;
-	const output = attributes.usableItem.output ? schema.getDefindex(attributes.output) : null;
-	const outputQuality = attributes.usableItem.outputQuality
-		? schema.getQuality(attributes.usableItem.outputQuality)
-		: null;
+	const usableItem = {};
+
+	if (attributes.usableItem) {
+		if (attributes.usableItem.target) {
+			usableItem.targetDefindex = schema.getDefindex(attributes.usableItem.target);
+		}
+
+		if (attributes.usableItem.output) {
+			usableItem.output = schema.getDefindex(attributes.usableItem.output);
+			usableItem.outputQuality = schema.getQuality(attributes.usableItem.outputQuality);
+		}
+	}
 
 	return {
 		defindex: schema.getDefindex(name),
-		usableItem: {
-			target,
-			output,
-			outputQuality,
-		},
+		usableItem,
 	};
 }
