@@ -21,7 +21,7 @@ function checkForEffectAndUnusual(quality, effect) {
  * @return {boolean}
  */
 function isNonUnusualWithEffect(quality, effect) {
-	return quality !== 'Unusual' && effect;
+	return isUnusual(quality) && effect;
 }
 
 /**
@@ -32,9 +32,17 @@ function hasNoEffect(quality, effect) {
 }
 
 function isntUniqueOrElevated(quality, elevated) {
-	return quality !== 'Unique' || elevated;
+	return isUnique(quality) || elevated;
 }
 
 function isDecorated(quality) {
-	return quality === 'Decorated Weapon';
+	return quality === 'Decorated Weapon' || quality === 15;
+}
+
+function isUnusual(quality) {
+	return quality === 'Unusual' || quality === 5;
+}
+
+function isUnique(quality) {
+	return quality === 'Unique' || quality === 6;
 }

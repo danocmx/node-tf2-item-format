@@ -1,6 +1,6 @@
 {
   "name": "tf2-item-format",
-  "version": "2.8.0",
+  "version": "2.8.1",
   "description": "Format's TF2 items like backpack.tf does",
   "main": "./src/index.js",
   "scripts": {
