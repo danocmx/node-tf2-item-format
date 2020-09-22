@@ -25,7 +25,7 @@ module.exports = function (name) {
 /**
  * Which item and effect cannot exist together.
  */
-const EXCEPTIONS = [['Cool Breeze', 'Cool'], ['Hot Heels', 'Hot'], ['Hot Case', 'Hot']];
+const EXCEPTIONS = [['Cool Breeze', 'Cool'], ['Hot Heels', 'Hot'], ['Hot Case', 'Hot'], ['A Head Full of Hot Air', 'Hot']];
 
 function isException(name, effect) {
 	return EXCEPTIONS.some((exception) => {

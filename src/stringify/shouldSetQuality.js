@@ -6,11 +6,12 @@
  * @return {boolean}
  */
 module.exports = function (quality, elevated, effect) {
-	return checkForEffectAndUnusual(quality, effect)
-		&& isntUniqueOrElevated(quality, elevated)
-		&& !isDecorated(quality);
+	if (isStrangeUnique(quality, elevated)) return true;
+
+	return checkForEffectAndUnusual(quality, effect) && !isUnique(quality) && !isDecorated(quality);
 };
 
+// TODO: rename
 function checkForEffectAndUnusual(quality, effect) {
 	return isNonUnusualWithEffect(quality, effect) || hasNoEffect(quality, effect);
 }
@@ -21,7 +22,7 @@ function checkForEffectAndUnusual(quality, effect) {
  * @return {boolean}
  */
 function isNonUnusualWithEffect(quality, effect) {
-	return isUnusual(quality) && effect;
+	return !isUnusual(quality) && !!effect;
 }
 
 /**
@@ -31,8 +32,8 @@ function hasNoEffect(quality, effect) {
 	return quality && !effect;
 }
 
-function isntUniqueOrElevated(quality, elevated) {
-	return isUnique(quality) || elevated;
+function isStrangeUnique(quality, elevated) {
+	return isUnique(quality) && !!(elevated);
 }
 
 function isDecorated(quality) {

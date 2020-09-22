@@ -27,7 +27,7 @@ module.exports = {
 	},
 
 	loadDefindexes() {
-		this.loadItemNames();
+		this.items = requireStatic('items');
 	},
 
 	loadQualities() {
@@ -58,19 +58,29 @@ module.exports = {
 		return this.textures[search];
 	},
 
+	/**
+	 * @todo https://github.com/Nicklason/tf2-automatic/blob/master/src/lib/items.ts
+	 * @param {string} search
+	 * @return {number}
+	 */
 	getDefindex(search) {
-		if (!this.itemNames) this.loadItemNames();
+		if (!this.items) this.loadDefindexes();
 		if (isNumber(search)) return search;
 
-		const itemNamesDefindexes = Object.keys(this.itemNames);
-		for (let i = 0; i < itemNamesDefindexes.length; i++) {
-			const defindex = itemNamesDefindexes[i];
-			const name = this.itemNames[defindex];
+		let upgradeableDfx = null;
+		for (let i = 0; i < this.items.length; i++) {
+			const item = this.items[i];
+			const name = selectName(item);
+			if (name === search) {
+				if (!hasUpgradeable(item) || isUpgradeable(item.name)) {
+					return item.defindex;
+				}
 
-			if (name === search) return defindex;
+				upgradeableDfx = item.defindex;
+			}
 		}
 
-		return null;
+		return upgradeableDfx;
 	},
 
 	getName(search) {
@@ -125,3 +135,24 @@ module.exports = {
 		return isNumber(quality) ? quality : this.getQuality(quality);
 	},
 };
+
+/**
+ * @todo get from schema
+ * @param {object} item
+ * @return {string}
+ */
+function selectName(item) {
+	if (item.item_name === 'Kit') return item.item_type_name;
+	// Due to BackpackTF naming colisions.
+	if (item.defindex === 20003) return 'Professional Killstreak Fabricator';
+	if (item.defindex === 20002) return 'Specialized Killstreak Fabricator';
+	return item.item_name;
+}
+
+function isUpgradeable(name) {
+	return name.startsWith('Upgradeable ');
+}
+
+function hasUpgradeable(item) {
+	return item.name.includes(item.item_class.toUpperCase());
+}
