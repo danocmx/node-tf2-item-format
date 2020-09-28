@@ -158,7 +158,7 @@ describe('parseString', () => {
 		assert.deepEqual(itemObject, {
 			name: 'Blue Moon Case',
 			craftable: true,
-			itemNumber: { type: 'case', value: '118' },
+			itemNumber: { type: 'crate', value: 118 },
 			quality: 'Unique'
 		});
 	});
@@ -169,7 +169,7 @@ describe('parseString', () => {
 		assert.deepEqual(itemObject, {
 			name: 'Hat',
 			craftable: true,
-			itemNumber: { type: 'craft', value: '25' },
+			itemNumber: { type: 'craft', value: 25 },
 			quality: 'Unique'
 		});
 	});

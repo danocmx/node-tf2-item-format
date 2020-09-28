@@ -1,5 +1,5 @@
 # TF2 Item Format
-Formatting for TF2  items.
+Formatting for TF2 items.
 
 ## Features
 - Parses item name into attribute object

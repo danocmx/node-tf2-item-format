@@ -140,7 +140,7 @@ describe('parseEconItem', () => {
 			tradable: true,
 			craftable: true,
 			quality: 5,
-			texture: '9',
+			texture: 'Forest Fire',
 			wear: 2,
 			killstreak: 2,
 			festivized: true,
@@ -588,7 +588,7 @@ describe('parseEconItem', () => {
 			tradable: true,
 			craftable: true,
 			quality: 15,
-			texture: '6',
+			texture: 'Woodland Warrior',
 			wear: 3,
 			festivized: true,
 			killstreak: 2,
@@ -792,7 +792,8 @@ describe('parseEconItem', () => {
 			parts: [],
 			spells: ['Spectral Spectrum'],
 			marketable: true,
-			commodity: false
+			commodity: false,
+			paint: "Noble Hatter's Violet"
 		})
 	})
 

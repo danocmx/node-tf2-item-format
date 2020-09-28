@@ -1,0 +1,3 @@
+export default function (name: string): boolean {
+	return name.includes('Australium ') && !name.includes('Australium Gold');
+};
