@@ -5,6 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const tf2_static_schema_1 = require("tf2-static-schema");
 const isNumber_1 = __importDefault(require("../util/isNumber"));
+const DEFINDEXES = {
+    // Local naming
+    'Strangifier Chemistry Set': 20000,
+    'Specialized Killstreak Kit Fabricator': 20002,
+    'Professional Killstreak Kit Fabricator': 20003,
+};
 class Schema {
     constructor() { }
     loadEffects() {
@@ -58,6 +64,8 @@ class Schema {
             this.loadDefindexes();
         if (typeof search === 'number')
             return search;
+        if (DEFINDEXES[search])
+            return DEFINDEXES[search];
         let upgradeableDfx = null;
         for (let i = 0; i < this.items.length; i++) {
             const item = this.items[i];
@@ -126,7 +134,7 @@ class Schema {
     getTextureEnum(texture) {
         if (isNumber_1.default(texture))
             return texture;
-        return this.getTexture(texture);
+        return parseInt(this.getTexture(texture));
     }
     getQualityEnum(quality) {
         if (isNumber_1.default(quality))

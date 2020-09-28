@@ -146,7 +146,7 @@ export type ParsedEconNameAtributes = {
     tradable: boolean;
     craftable: boolean;
     quality: string|number;
-    texture?: string;
+    texture?: string|number;
     wear?: number;
     australium?: boolean;
     festivized?: boolean;
@@ -162,6 +162,7 @@ export type ConvertableAttributes = {
     effect?: string|number|void;
     quality: string|number;
     outputQuality?: string|number|void|null;
+    texture?: string|number|void;
 }
 
 export type EconAttributes = ParsedEconNameAtributes & {

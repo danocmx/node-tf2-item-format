@@ -28,10 +28,16 @@ export default function (name: string, { inNumbers = false, useDefindexes = fals
 			wear: attributes.wear,
 			effect: attributes.effect,
 			quality: attributes.quality.value,
-			outputQuality: attributes.usableItem && attributes.usableItem.outputQuality
+			outputQuality: attributes.usableItem && attributes.usableItem.outputQuality,
+			texture: attributes.texture,
 		});
-		
-		if (convertedAttributes.outputQuality === 0) delete convertedAttributes.outputQuality;
+
+		if (!convertedAttributes.killstreak) delete convertedAttributes.killstreak;
+		if (!convertedAttributes.wear) delete convertedAttributes.wear;
+		if (!convertedAttributes.effect) delete convertedAttributes.effect;
+		if (!convertedAttributes.texture) delete convertedAttributes.texture;
+		if (!convertedAttributes.outputQuality) delete convertedAttributes.outputQuality;
+
 		Object.assign(parsedAttributes, convertedAttributes);
 	}
 
@@ -42,10 +48,10 @@ export default function (name: string, { inNumbers = false, useDefindexes = fals
 	if (attributes.isUniqueHat) parsedAttributes.isUniqueHat = attributes.isUniqueHat;
 	if (attributes.australium) parsedAttributes.australium = attributes.australium;
 	if (attributes.festivized) parsedAttributes.festivized = attributes.festivized;
-	if (attributes.killstreak) parsedAttributes.killstreak = attributes.killstreak;
-	if (attributes.wear) parsedAttributes.wear = attributes.wear;
-	if (attributes.texture) parsedAttributes.texture = attributes.texture;
-	if (attributes.effect) parsedAttributes.effect = attributes.effect;
+	if (attributes.killstreak && !parsedAttributes.killstreak) parsedAttributes.killstreak = attributes.killstreak;
+	if (attributes.wear && !parsedAttributes.wear) parsedAttributes.wear = attributes.wear;
+	if (attributes.texture && !parsedAttributes.texture) parsedAttributes.texture = attributes.texture;
+	if (attributes.effect && !parsedAttributes.effect) parsedAttributes.effect = attributes.effect;
 	
 	if (attributes.usableItem && !isEmpty(attributes.usableItem)) {
 		if (attributes.usableItem.target) parsedAttributes.target = attributes.usableItem.target;

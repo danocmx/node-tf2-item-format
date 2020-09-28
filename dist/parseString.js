@@ -25,9 +25,18 @@ function default_1(name, { inNumbers = false, useDefindexes = false } = {}) {
             wear: attributes.wear,
             effect: attributes.effect,
             quality: attributes.quality.value,
-            outputQuality: attributes.usableItem && attributes.usableItem.outputQuality
+            outputQuality: attributes.usableItem && attributes.usableItem.outputQuality,
+            texture: attributes.texture,
         });
-        if (convertedAttributes.outputQuality === 0)
+        if (!convertedAttributes.killstreak)
+            delete convertedAttributes.killstreak;
+        if (!convertedAttributes.wear)
+            delete convertedAttributes.wear;
+        if (!convertedAttributes.effect)
+            delete convertedAttributes.effect;
+        if (!convertedAttributes.texture)
+            delete convertedAttributes.texture;
+        if (!convertedAttributes.outputQuality)
             delete convertedAttributes.outputQuality;
         Object.assign(parsedAttributes, convertedAttributes);
     }
@@ -42,13 +51,13 @@ function default_1(name, { inNumbers = false, useDefindexes = false } = {}) {
         parsedAttributes.australium = attributes.australium;
     if (attributes.festivized)
         parsedAttributes.festivized = attributes.festivized;
-    if (attributes.killstreak)
+    if (attributes.killstreak && !parsedAttributes.killstreak)
         parsedAttributes.killstreak = attributes.killstreak;
-    if (attributes.wear)
+    if (attributes.wear && !parsedAttributes.wear)
         parsedAttributes.wear = attributes.wear;
-    if (attributes.texture)
+    if (attributes.texture && !parsedAttributes.texture)
         parsedAttributes.texture = attributes.texture;
-    if (attributes.effect)
+    if (attributes.effect && !parsedAttributes.effect)
         parsedAttributes.effect = attributes.effect;
     if (attributes.usableItem && !isEmpty_1.default(attributes.usableItem)) {
         if (attributes.usableItem.target)

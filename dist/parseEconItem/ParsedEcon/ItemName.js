@@ -28,7 +28,7 @@ class ItemName {
             // We know it's a string here:
             killstreak: killstreak,
             wear: wear,
-            texture,
+            texture: texture,
             craftable: true,
         });
     }

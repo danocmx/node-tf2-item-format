@@ -5,4 +5,5 @@ export default function (item: ConvertableAttributes): {
     effect?: number;
     quality: number;
     outputQuality?: number;
+    texture?: number;
 };

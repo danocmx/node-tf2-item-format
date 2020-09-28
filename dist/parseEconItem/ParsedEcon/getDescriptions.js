@@ -52,7 +52,6 @@ function default_1(econ) {
         else if (!craftable_1.isCraftable(description))
             attributes.craftable = false;
     }
-    console.log(econ.itemName.origin, attributes.killstreak);
     return attributes;
 }
 exports.default = default_1;

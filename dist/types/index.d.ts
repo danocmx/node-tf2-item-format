@@ -141,7 +141,7 @@ export declare type ParsedEconNameAtributes = {
     tradable: boolean;
     craftable: boolean;
     quality: string | number;
-    texture?: string;
+    texture?: string | number;
     wear?: number;
     australium?: boolean;
     festivized?: boolean;
@@ -156,6 +156,7 @@ export declare type ConvertableAttributes = {
     effect?: string | number | void;
     quality: string | number;
     outputQuality?: string | number | void | null;
+    texture?: string | number | void;
 };
 export declare type EconAttributes = ParsedEconNameAtributes & {
     classes: string[];

@@ -180,3 +180,7 @@ describe('stringify', () => {
 		assert.deepEqual(itemString, 'The Tartan Shade');
 	})
 })
+
+describe('stringify from defindexes', () => {
+
+});

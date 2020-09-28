@@ -2,6 +2,13 @@ import { requireStatic, SchemaEnum, DefindexToName, SchemaItem } from 'tf2-stati
 
 import isNumber from '../util/isNumber';
 
+const DEFINDEXES: { [name: string]: number } = {
+	// Local naming
+	'Strangifier Chemistry Set': 20000,
+	'Specialized Killstreak Kit Fabricator': 20002,
+	'Professional Killstreak Kit Fabricator': 20003,
+}
+
 class Schema {
 	public effects!: SchemaEnum;
 	public wears!: SchemaEnum;
@@ -73,6 +80,7 @@ class Schema {
 	getDefindex(search: number|string): number|null {
 		if (!this.items) this.loadDefindexes();
 		if (typeof search === 'number') return search;
+		if (DEFINDEXES[search]) return DEFINDEXES[search];
 
 		let upgradeableDfx: number|null = null;
 		for (let i = 0; i < this.items.length; i++) {
@@ -154,7 +162,7 @@ class Schema {
 	getTextureEnum(texture: number|string): number {
 		if (isNumber(texture)) return texture as number;
 
-		return this.getTexture(texture as string) as number;
+		return parseInt(this.getTexture(texture as string) as string);
 	}
 
 	getQualityEnum(quality: number|string): number {

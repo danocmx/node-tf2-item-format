@@ -11,6 +11,7 @@ function default_1(item) {
         effect: item.effect ? schema_1.default.getEffectEnum(item.effect) : undefined,
         quality: schema_1.default.getQualityEnum(item.quality),
         outputQuality: item.outputQuality ? schema_1.default.getQualityEnum(item.outputQuality) : 0,
+        texture: item.texture ? schema_1.default.getTextureEnum(item.texture) : undefined,
     };
 }
 exports.default = default_1;

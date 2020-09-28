@@ -54,7 +54,5 @@ export default function (econ: ParsedEcon): DescriptionAttributes {
 		else if (!isCraftable(description)) attributes.craftable = false;
 	}
 
-	console.log(econ.itemName.origin, attributes.killstreak)
-
 	return attributes;
 };

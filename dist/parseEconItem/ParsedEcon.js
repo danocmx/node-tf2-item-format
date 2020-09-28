@@ -64,6 +64,7 @@ class ParsedEcon {
             attrs.wear = convertedAttributes.wear;
             attrs.effect = convertedAttributes.effect;
             attrs.quality = convertedAttributes.quality;
+            attrs.texture = convertedAttributes.texture;
         }
         ;
         return removeUndefined(attrs);

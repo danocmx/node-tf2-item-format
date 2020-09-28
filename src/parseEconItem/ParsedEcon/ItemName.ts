@@ -38,7 +38,7 @@ export default class ItemName {
 				// We know it's a string here:
 				killstreak: killstreak as string,
 				wear: wear as unknown as string,
-				texture,
+				texture: texture as string,
 				craftable: true,
 			},
 		);
