@@ -7,6 +7,10 @@ import createBPListing from './createBPListing';
 import toSKU from './toSKU';
 import parseSKU from './parseSKU';
 
+import schema from './shared/schema';
+
+export * from './types';
+
 /**
  * Fixes the order of attributes in your name,
  * 	this is highly exrimental due to the
@@ -23,4 +27,5 @@ export {
     toSKU,
     parseSKU,
     fixName,
+    schema,
 }

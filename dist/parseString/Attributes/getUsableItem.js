@@ -12,6 +12,7 @@ const getKillstreak_1 = __importDefault(require("../../shared/getKillstreak"));
  * @return {Object}
  */
 function default_1(name) {
+    // TODO: add series to itemNumber.
     // For chemistry sets the quality is predefined
     if (isStrangifierChemistrySet(name)) {
         return {

@@ -21,27 +21,43 @@ export default class ItemName {
 	}
 
 	getOrigin() {
-		return this.item.market_name || this.item.market_hash_name || this.item.name;
+		return (
+			this.item.market_name ||
+			this.item.market_hash_name ||
+			this.item.name
+		);
 	}
 
 	getShort() {
-		const { australium, wear, killstreak,
-			texture, elevated, festivized, quality, isUniqueHat } = this.econ.getNameAttributes();
+		const {
+			australium,
+			wear,
+			killstreak,
+			texture,
+			elevated,
+			festivized,
+			quality,
+			isUniqueHat,
+			output,
+			outputQuality,
+			target,
+			itemNumber
+		} = this.econ.getNameAttributes();
 
-		return decomposeName(
-			this.origin,
-			{
-				quality: { value: quality as string, elevated: !!elevated },
-				australium,
-				festivized,
-				isUniqueHat,
-				// We know it's a string here:
-				killstreak: killstreak as string,
-				wear: wear as unknown as string,
-				texture: texture as string,
-				craftable: true,
-			},
-		);
+		return decomposeName(this.origin, {
+			quality: { value: quality as string, elevated: !!elevated },
+			australium,
+			festivized,
+			isUniqueHat,
+			// We know it's a string here:
+			killstreak: killstreak as string,
+			wear: (wear as unknown) as string,
+			texture: texture as string,
+			craftable: true,
+			itemNumber,
+
+			...(output || target ? { usableItem: { output, target, outputQuality: outputQuality as string } } : {}),
+		});
 	}
 
 	/**
@@ -51,19 +67,24 @@ export default class ItemName {
 	getFull() {
 		let name = this.origin;
 
-		const { craftable, tradable, texture, quality, effect } = this.econ.getNameAttributes();
+		const {
+			craftable,
+			tradable,
+			texture,
+			quality,
+			effect,
+		} = this.econ.getNameAttributes();
 
 		if (effect) {
-			if (isUnusual(quality as string)) name = name.replace('Unusual ', `${effect} `);
+			if (isUnusual(quality as string))
+				name = name.replace('Unusual ', `${effect} `);
 			else {
-				name = name.replace(
-					`${quality} `,
-					`${quality} ${effect} `,
-				);
+				name = name.replace(`${quality} `, `${quality} ${effect} `);
 			}
 		}
 
-		if (isStrangeTexture(quality as string, texture as string)) name = `Strange ${name}`;
+		if (isStrangeTexture(quality as string, texture as string))
+			name = `Strange ${name}`;
 		if (!tradable) name = `Non-Tradable ${name}`;
 		if (!craftable) name = `Non-Craftable ${name}`;
 

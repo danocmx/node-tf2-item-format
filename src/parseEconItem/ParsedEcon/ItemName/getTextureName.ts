@@ -1,4 +1,4 @@
-import schema from '../../../schema';
+import schema from '../../../shared/schema';
 
 export default function (texture: number|string): string {
 	return schema.getTextureName(texture);

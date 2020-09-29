@@ -1,4 +1,4 @@
-import { ItemNumber } from '../types/index';
+import { ItemNumber } from '../types';
 
 /**
  * Checks if number can on items name.

@@ -1,13 +1,18 @@
 import Killstreak from '../parseEconItem/ParsedEcon/getDescriptions/Killstreak';
+export declare type NameOrDefindex = {
+    name: string;
+} | {
+    defindex: number;
+};
 export declare type ItemAttributes = {
     name: string;
+    defindex?: number;
     quality: number | string;
     craftable: boolean;
     australium?: boolean;
     festivized?: boolean;
     killstreak?: number | string;
     elevated?: boolean;
-    defindex?: number;
     wear?: number | string;
     texture?: number | string;
     effect?: number | string;
@@ -133,9 +138,14 @@ export declare type NameAttributes = {
     australium: boolean;
     isUniqueHat: boolean;
     texture?: string | void;
+    target?: string;
+    output?: string;
+    outputQuality?: string;
+    itemNumber?: ItemNumber;
 };
 export declare type ParsedEconOptions = {
     inNumbers?: boolean;
+    useDefindexes?: boolean;
 };
 export declare type ParsedEconNameAtributes = {
     tradable: boolean;
@@ -149,6 +159,13 @@ export declare type ParsedEconNameAtributes = {
     isUniqueHat?: boolean;
     killstreak?: string | number;
     elevated?: boolean;
+    target?: string;
+    output?: string;
+    outputQuality?: string | number;
+    itemNumber?: ItemNumber;
+    defindex?: number;
+    outputDefindex?: number;
+    targetDefindex?: number;
 };
 export declare type ConvertableAttributes = {
     killstreak?: string | number | void;
@@ -187,4 +204,9 @@ export declare type DecomposeAttributes = {
     quality: StringQuality;
     killstreak?: string | void;
     usableItem?: Partial<TargetOutputItem> | null;
+};
+export declare type Defindexes = {
+    defindex?: number | null;
+    targetDefindex?: number;
+    outputDefindex?: number;
 };

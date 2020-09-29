@@ -16,21 +16,17 @@ class ItemName {
         this.origin = this.getOrigin();
     }
     getOrigin() {
-        return this.item.market_name || this.item.market_hash_name || this.item.name;
+        return (this.item.market_name ||
+            this.item.market_hash_name ||
+            this.item.name);
     }
     getShort() {
-        const { australium, wear, killstreak, texture, elevated, festivized, quality, isUniqueHat } = this.econ.getNameAttributes();
-        return decomposeName_1.default(this.origin, {
-            quality: { value: quality, elevated: !!elevated },
-            australium,
+        const { australium, wear, killstreak, texture, elevated, festivized, quality, isUniqueHat, output, outputQuality, target, itemNumber } = this.econ.getNameAttributes();
+        return decomposeName_1.default(this.origin, Object.assign({ quality: { value: quality, elevated: !!elevated }, australium,
             festivized,
-            isUniqueHat,
+            isUniqueHat, 
             // We know it's a string here:
-            killstreak: killstreak,
-            wear: wear,
-            texture: texture,
-            craftable: true,
-        });
+            killstreak: killstreak, wear: wear, texture: texture, craftable: true, itemNumber }, (output || target ? { usableItem: { output, target, outputQuality: outputQuality } } : {})));
     }
     /**
      * Returns full name like backpack.tf
@@ -38,7 +34,7 @@ class ItemName {
      */
     getFull() {
         let name = this.origin;
-        const { craftable, tradable, texture, quality, effect } = this.econ.getNameAttributes();
+        const { craftable, tradable, texture, quality, effect, } = this.econ.getNameAttributes();
         if (effect) {
             if (isUnusual_1.default(quality))
                 name = name.replace('Unusual ', `${effect} `);

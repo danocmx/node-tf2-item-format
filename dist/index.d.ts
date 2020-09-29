@@ -4,6 +4,8 @@ import stringify from './stringify';
 import createBPListing from './createBPListing';
 import toSKU from './toSKU';
 import parseSKU from './parseSKU';
+import schema from './shared/schema';
+export * from './types';
 /**
  * Fixes the order of attributes in your name,
  * 	this is highly exrimental due to the
@@ -11,4 +13,4 @@ import parseSKU from './parseSKU';
  * 	they're put in inside the name.
  */
 declare const fixName: (name: string) => string;
-export { parseEconItem, parseString, stringify, createBPListing, toSKU, parseSKU, fixName, };
+export { parseEconItem, parseString, stringify, createBPListing, toSKU, parseSKU, fixName, schema, };

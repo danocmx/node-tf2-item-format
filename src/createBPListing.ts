@@ -1,4 +1,4 @@
-import schema from './schema';
+import schema from './shared/schema';
 
 import stringify from './stringify';
 

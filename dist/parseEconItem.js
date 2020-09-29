@@ -13,7 +13,8 @@ const ParsedEcon_1 = __importDefault(require("./parseEconItem/ParsedEcon"));
  */
 function default_1(item, options = { inNumbers: true }) {
     const parsedEcon = new ParsedEcon_1.default(item, options);
-    return Object.assign({ name: parsedEcon.itemName.getShort(), fullName: parsedEcon.itemName.getFull(), id: parsedEcon.id, img: parsedEcon.getImageURL() }, parsedEcon.getAttributes());
+    const name = parsedEcon.itemName.getShort();
+    return Object.assign({ name, fullName: parsedEcon.itemName.getFull(), id: parsedEcon.id, img: parsedEcon.getImageURL() }, parsedEcon.getAttributes(name));
 }
 exports.default = default_1;
 ;

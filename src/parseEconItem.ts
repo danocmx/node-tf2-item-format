@@ -12,11 +12,13 @@ import { ParsedEconOptions, EconItem, ParsedEconItem } from './types';
 export default function (item: EconItem, options: ParsedEconOptions = { inNumbers: true }): ParsedEconItem {
 	const parsedEcon = new ParsedEcon(item, options);
 
+	const name = parsedEcon.itemName.getShort();
+
 	return {
-		name: parsedEcon.itemName.getShort(),
+		name,
 		fullName: parsedEcon.itemName.getFull(),
 		id: parsedEcon.id,
 		img: parsedEcon.getImageURL(),
-		...parsedEcon.getAttributes(),
+		...parsedEcon.getAttributes(name),
 	};
 };

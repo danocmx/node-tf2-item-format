@@ -10,6 +10,7 @@ import { TargetOutputItem } from '../../types';
  * @return {Object}
  */
 export default function (name: string): Partial<TargetOutputItem>|null {
+	// TODO: add series to itemNumber.
 	// For chemistry sets the quality is predefined
 	if (isStrangifierChemistrySet(name)) {
 		return {

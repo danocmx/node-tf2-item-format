@@ -1,29 +1,43 @@
 import isAustralium from '../../shared/isAustralium';
 import isUniqueHat from '../../shared/isUniqueHat';
 import getTexture from '../../shared/getTexture';
+import removeItemNumber from '../../shared/removeItemNumber';
+import getUsableItem from '../../parseString/Attributes/getUsableItem';
+import getItemNumber from '../../parseString/Attributes/getItemNumber';
 
 import ParsedEcon from '../ParsedEcon';
 
-import { NameAttributes, EconItem } from '../../types';
+import { NameAttributes } from '../../types';
 
 /**
  * Gets attributes from Name
  * Currently only australium
  */
 export default function (econ: ParsedEcon): NameAttributes {
+	const name = econ.itemName.origin;
 	let { texture } = econ.descriptions;
 
 	/**
 	 * @type {nameAttributes}
 	 */
 	const attributes: NameAttributes = {
-		australium: isAustralium(econ.itemName.origin),
-		isUniqueHat: isUniqueHat(econ.itemName.origin),
+		australium: isAustralium(name),
+		isUniqueHat: isUniqueHat(name),
 	};
 
 	if (!texture) {
-		texture = getTexture(econ.itemName.origin);
+		texture = getTexture(name);
 		if (texture) attributes.texture = texture;
+	}
+
+	const itemNumber = getItemNumber(name);
+	if (itemNumber) {
+		attributes.itemNumber = itemNumber;
+	}
+
+	const usableItem = getUsableItem(itemNumber ? removeItemNumber(name, itemNumber) : name);
+	if (usableItem) {
+		Object.assign(attributes, usableItem);
 	}
 
 	return attributes;

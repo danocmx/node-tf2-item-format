@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const getOutput_1 = __importDefault(require("./getOutput"));
+const removeItemNumber_1 = __importDefault(require("./removeItemNumber"));
 /**
  * Uses attributes to decompose the name to it's original.
  * @param {string} name
@@ -11,7 +12,7 @@ const getOutput_1 = __importDefault(require("./getOutput"));
  * @return {string} Pure name
  */
 function default_1(name, attributes) {
-    const { craftable, australium, festivized, killstreak, wear, effect, texture, itemNumber, usableItem, quality, isUniqueHat } = attributes;
+    const { craftable, australium, festivized, killstreak, wear, effect, texture, itemNumber, usableItem, quality, isUniqueHat, } = attributes;
     let itemName = name;
     if (!craftable)
         itemName = itemName.replace('Non-Craftable ', '');
@@ -19,6 +20,9 @@ function default_1(name, attributes) {
         itemName = itemName.replace('Australium ', '');
     if (festivized)
         itemName = itemName.replace('Festivized ', '');
+    if (itemNumber) {
+        itemName = removeItemNumber_1.default(itemName, itemNumber);
+    }
     // So we keep killstreak name for kits and fabricators
     if (usableItem) {
         const toRemove = getUsableItemToRemove(attributes);
@@ -32,8 +36,6 @@ function default_1(name, attributes) {
         itemName = itemName.replace(`${effect} `, '');
     if (texture)
         itemName = itemName.replace(`${texture} `, '');
-    if (itemNumber)
-        itemName = itemName.replace(` #${itemNumber.value}`, '');
     itemName = itemName.replace(`${quality.value} `, '');
     if (isUniqueHat)
         itemName = itemName.replace(/^The /, '');
@@ -42,7 +44,6 @@ function default_1(name, attributes) {
     return itemName;
 }
 exports.default = default_1;
-;
 /**
  * Chooses output or target item to remove from name.
  * @param {Object} attributes

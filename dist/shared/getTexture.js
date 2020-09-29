@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const schema_1 = __importDefault(require("../schema"));
+const schema_1 = __importDefault(require("./schema"));
 const isNumber_1 = __importDefault(require("../util/isNumber"));
 /**
  * Iterates over effects object to get matching effect.

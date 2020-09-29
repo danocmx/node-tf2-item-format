@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getTexture = exports.isItemsTexture = void 0;
-const schema_1 = __importDefault(require("../../../schema"));
+const schema_1 = __importDefault(require("../../../shared/schema"));
 /**
  * Checks if texture is the one on the item.
  */

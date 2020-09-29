@@ -3,10 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const schema_1 = __importDefault(require("./schema"));
 const Attributes_1 = __importDefault(require("./parseString/Attributes"));
 const decomposeName_1 = __importDefault(require("./shared/decomposeName"));
 const getConvertedIntAttributes_1 = __importDefault(require("./shared/getConvertedIntAttributes"));
+const getDefindexes_1 = __importDefault(require("./shared/getDefindexes"));
 const isEmpty_1 = __importDefault(require("./util/isEmpty"));
 /**
  * Parses name string into attributes.
@@ -40,7 +40,7 @@ function default_1(name, { inNumbers = false, useDefindexes = false } = {}) {
             delete convertedAttributes.outputQuality;
         Object.assign(parsedAttributes, convertedAttributes);
     }
-    const defindexes = useDefindexes ? getDefindexes(itemName, attributes) : {};
+    const defindexes = useDefindexes ? getDefindexes_1.default(itemName, attributes.usableItem || undefined) : {};
     if (defindexes.defindex)
         parsedAttributes.defindex = defindexes.defindex;
     if (attributes.quality.elevated)
@@ -78,19 +78,3 @@ function default_1(name, { inNumbers = false, useDefindexes = false } = {}) {
 }
 exports.default = default_1;
 ;
-function getDefindexes(name, attributes) {
-    const defindexes = { defindex: schema_1.default.getDefindex(name) };
-    if (attributes.usableItem) {
-        if (attributes.usableItem.target) {
-            const targetDefindex = schema_1.default.getDefindex(attributes.usableItem.target);
-            if (targetDefindex)
-                defindexes.targetDefindex = targetDefindex;
-        }
-        if (attributes.usableItem.output) {
-            const outputDefindex = schema_1.default.getDefindex(attributes.usableItem.output);
-            if (outputDefindex)
-                defindexes.outputDefindex = outputDefindex;
-        }
-    }
-    return defindexes;
-}

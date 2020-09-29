@@ -10,6 +10,7 @@ const getPropertyAttributes_1 = __importDefault(require("./ParsedEcon/getPropert
 const getNameAttributes_1 = __importDefault(require("./ParsedEcon/getNameAttributes"));
 const getDescriptions_1 = __importDefault(require("./ParsedEcon/getDescriptions"));
 const getConvertedIntAttributes_1 = __importDefault(require("../shared/getConvertedIntAttributes"));
+const getDefindexes_1 = __importDefault(require("../shared/getDefindexes"));
 /**
  * Parser class.
  */
@@ -43,9 +44,9 @@ class ParsedEcon {
     /**
      * Gets attributes that are included in the name.
      */
-    getNameAttributes({ inNumbers = false } = {}) {
+    getNameAttributes({ inNumbers = false, useDefindexes = false, name } = {}) {
         const texture = this.descriptions.texture || this.nameAttrs.texture;
-        let attrs = Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ tradable: this.properties.tradable, craftable: this.descriptions.craftable, quality: this.tags.quality }, (texture ? { texture } : {})), (this.tags.wear ? { wear: this.tags.wear } : {})), (this.properties.elevated
+        let attrs = Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ tradable: this.properties.tradable, craftable: this.descriptions.craftable, quality: this.tags.quality }, (texture ? { texture } : {})), (this.tags.wear ? { wear: this.tags.wear } : {})), (this.properties.elevated
             ? { elevated: this.properties.elevated }
             : {})), (this.nameAttrs.australium
             ? { australium: this.nameAttrs.australium }
@@ -57,6 +58,14 @@ class ParsedEcon {
             ? { isUniqueHat: this.nameAttrs.isUniqueHat }
             : {})), (this.descriptions.killstreak.value
             ? { killstreak: this.descriptions.killstreak.value }
+            : {})), (this.nameAttrs.target
+            ? { target: this.nameAttrs.target }
+            : {})), (this.nameAttrs.output
+            ? { output: this.nameAttrs.output }
+            : {})), (this.nameAttrs.outputQuality
+            ? { outputQuality: this.nameAttrs.outputQuality }
+            : {})), (this.nameAttrs.itemNumber
+            ? { itemNumber: this.nameAttrs.itemNumber }
             : {}));
         if (inNumbers) {
             const convertedAttributes = getConvertedIntAttributes_1.default(attrs);
@@ -65,14 +74,28 @@ class ParsedEcon {
             attrs.effect = convertedAttributes.effect;
             attrs.quality = convertedAttributes.quality;
             attrs.texture = convertedAttributes.texture;
+            attrs.outputQuality = convertedAttributes.outputQuality;
         }
-        ;
+        if (useDefindexes) {
+            // Add them here.
+            const defindexes = getDefindexes_1.default(name, this.nameAttrs.output || this.nameAttrs.target
+                ? { target: this.nameAttrs.target, output: this.nameAttrs.output, outputQuality: this.nameAttrs.outputQuality }
+                : undefined);
+            if (defindexes.defindex)
+                attrs.defindex = defindexes.defindex;
+            if (defindexes.outputDefindex)
+                attrs.outputDefindex = defindexes.outputDefindex;
+            if (defindexes.targetDefindex)
+                attrs.targetDefindex = defindexes.targetDefindex;
+        }
         return removeUndefined(attrs);
     }
-    getAttributes() {
-        return Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({}, this.getNameAttributes(this.options)), { classes: this.tags.classes, type: this.tags.type }), (this.tags.collection
+    getAttributes(shortName) {
+        return Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({}, this.getNameAttributes(Object.assign(Object.assign({}, this.options), { name: shortName }))), { classes: this.tags.classes, type: this.tags.type }), (this.tags.collection
             ? { collection: this.tags.collection }
-            : {})), (this.tags.grade ? { grade: this.tags.grade } : {})), (this.descriptions.paint ? { paint: this.descriptions.paint } : {})), { parts: this.descriptions.parts, spells: this.descriptions.spells, marketable: this.properties.marketable, commodity: this.properties.commodity });
+            : {})), (this.tags.grade ? { grade: this.tags.grade } : {})), (this.descriptions.paint
+            ? { paint: this.descriptions.paint }
+            : {})), { parts: this.descriptions.parts, spells: this.descriptions.spells, marketable: this.properties.marketable, commodity: this.properties.commodity });
     }
 }
 exports.default = ParsedEcon;

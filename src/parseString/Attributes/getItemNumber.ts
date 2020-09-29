@@ -24,7 +24,7 @@ export default function (name: string): ItemNumber|null {
 };
 
 function getType(name: string): string {
-	const [_, type] = name.match(/\b(Medal|Crate|Case)\b/) || [];
+	const [_, type] = name.match(/\b(Medal|Crate|Case|Series)\b/) || [];
 
 	// Same thing, different name.
 	if (type === 'Case') return 'crate';

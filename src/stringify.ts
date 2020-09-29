@@ -1,4 +1,4 @@
-import schema from './schema';
+import schema from './shared/schema';
 
 import shouldSetNumber from './stringify/shouldSetNumber';
 import shouldSetQuality from './stringify/shouldSetQuality';
@@ -6,14 +6,28 @@ import addTargetToName from './stringify/addTargetToName';
 
 import getOutput from './shared/getOutput';
 
-import { ItemAttributes } from './types/index';
+import { ItemAttributes } from './types';
 
-/** 
+/**
  * Stringifies item object into item name
-*/
+ */
 export default function ({
-	name, craftable, australium, festivized, killstreak, elevated, defindex,
-	quality, wear, texture, effect, target, output, outputQuality, itemNumber, isUniqueHat,
+	name,
+	craftable,
+	australium,
+	festivized,
+	killstreak,
+	elevated,
+	defindex,
+	quality,
+	wear,
+	texture,
+	effect,
+	target,
+	output,
+	outputQuality,
+	itemNumber,
+	isUniqueHat,
 }: ItemAttributes): string {
 	let itemName = '';
 
@@ -56,7 +70,14 @@ export default function ({
 		// There can be both target and output, target is prefered thus the check.
 		// getOutput constructs full output name if quality present.
 		// target has no quality
-		itemName += `${output && !target ? getOutput(schema.getName(output), schema.getQualityName(outputQuality as number)) : schema.getName(target as string)} `;
+		itemName += `${
+			output && !target
+				? getOutput(
+						schema.getName(output),
+						schema.getQualityName(outputQuality as number)
+				  )
+				: schema.getName(target as string)
+		} `;
 	}
 
 	if (isUniqueHat) {
@@ -71,13 +92,15 @@ export default function ({
 	}
 
 	if (itemNumber && shouldSetNumber(itemNumber)) {
-		itemName += ` #${itemNumber.value}`;
+		if (itemNumber.type === 'series')
+			itemName += ` Series #${itemNumber.value}`;
+		else itemName += ` #${itemNumber.value}`;
 	}
 
 	return itemName;
-};
+}
 
-function isAustralium(australium?: number|boolean): boolean {
+function isAustralium(australium?: number | boolean): boolean {
 	return !!(australium && australium !== -1);
 }
 
@@ -88,10 +111,13 @@ function isAustralium(australium?: number|boolean): boolean {
  * @param {string} target
  * @return {boolean}
  */
-function canAddKillstreak(killstreak?: number|string, target?: string): boolean {
+function canAddKillstreak(
+	killstreak?: number | string,
+	target?: string
+): boolean {
 	return !!(killstreak && !target);
 }
 
 function isKillstreakKitOrFabricator(name: string, target?: string): boolean {
-	return !!(target && / Kit/.test(name));	// This checks for fabricator too.
+	return !!(target && / Kit/.test(name)); // This checks for fabricator too.
 }

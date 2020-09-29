@@ -24,7 +24,7 @@ function default_1(name) {
 exports.default = default_1;
 ;
 function getType(name) {
-    const [_, type] = name.match(/\b(Medal|Crate|Case)\b/) || [];
+    const [_, type] = name.match(/\b(Medal|Crate|Case|Series)\b/) || [];
     // Same thing, different name.
     if (type === 'Case')
         return 'crate';

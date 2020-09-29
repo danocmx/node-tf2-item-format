@@ -1,12 +1,13 @@
 {
   "name": "tf2-item-format",
-  "version": "2.8.2",
+  "version": "3.1.0",
   "description": "Format's TF2 items like backpack.tf does",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "test": "mocha ./test",
-    "lint": "eslint ./src/"
+    "lint": "npx eslint ./src/",
+    "build": "npx tsc"
   },
   "repository": {
     "type": "git",

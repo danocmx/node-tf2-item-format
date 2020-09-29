@@ -8,6 +8,7 @@ import getNameAttributes from './ParsedEcon/getNameAttributes';
 import getDescriptions from './ParsedEcon/getDescriptions';
 
 import getConvertedIntAttributes from '../shared/getConvertedIntAttributes';
+import getDefindexes from '../shared/getDefindexes';
 
 import {
 	EconItem,
@@ -69,7 +70,7 @@ export default class ParsedEcon {
 	/**
 	 * Gets attributes that are included in the name.
 	 */
-	getNameAttributes({ inNumbers = false } = {}): ParsedEconNameAtributes {
+	getNameAttributes({ inNumbers = false, useDefindexes = false, name }: { name?: string, inNumbers?: boolean, useDefindexes?: boolean } = {}): ParsedEconNameAtributes {
 		const texture = this.descriptions.texture || this.nameAttrs.texture;
 
 		let attrs: ParsedEconNameAtributes = {
@@ -98,24 +99,53 @@ export default class ParsedEcon {
 			...(this.descriptions.killstreak.value
 				? { killstreak: this.descriptions.killstreak.value }
 				: {}),
+
+			...(this.nameAttrs.target
+				? { target: this.nameAttrs.target }
+				: {}),
+			...(this.nameAttrs.output
+				? { output: this.nameAttrs.output }
+				: {}),
+			...(this.nameAttrs.outputQuality
+				? { outputQuality: this.nameAttrs.outputQuality }
+				: {}),
+			
+			...(this.nameAttrs.itemNumber
+				? { itemNumber: this.nameAttrs.itemNumber }
+				: {}), 
 		};
 
 		if (inNumbers) {
 			const convertedAttributes = getConvertedIntAttributes(attrs);
 
-			attrs.killstreak = convertedAttributes.killstreak;	
+			attrs.killstreak = convertedAttributes.killstreak;
 			attrs.wear = convertedAttributes.wear;
 			attrs.effect = convertedAttributes.effect;
 			attrs.quality = convertedAttributes.quality;
 			attrs.texture = convertedAttributes.texture;
-		};
+			attrs.outputQuality = convertedAttributes.outputQuality;
+		}
+
+		if (useDefindexes) {
+			// Add them here.
+			const defindexes = getDefindexes(
+				name as string,
+				this.nameAttrs.output || this.nameAttrs.target
+					? { target: this.nameAttrs.target as string, output: this.nameAttrs.output, outputQuality: this.nameAttrs.outputQuality } 
+					: undefined
+			);
+
+			if (defindexes.defindex) attrs.defindex = defindexes.defindex;
+			if (defindexes.outputDefindex) attrs.outputDefindex = defindexes.outputDefindex;
+			if (defindexes.targetDefindex) attrs.targetDefindex = defindexes.targetDefindex;
+		}
 
 		return removeUndefined(attrs) as ParsedEconNameAtributes;
 	}
 
-	getAttributes(): EconAttributes {
+	getAttributes(shortName?: string): EconAttributes {
 		return {
-			...this.getNameAttributes(this.options),
+			...this.getNameAttributes({ ...this.options, name: shortName }),
 
 			classes: this.tags.classes,
 			type: this.tags.type,
@@ -125,7 +155,9 @@ export default class ParsedEcon {
 				? { collection: this.tags.collection }
 				: {}),
 			...(this.tags.grade ? { grade: this.tags.grade } : {}),
-			...(this.descriptions.paint ? { paint: this.descriptions.paint } : {}),
+			...(this.descriptions.paint
+				? { paint: this.descriptions.paint }
+				: {}),
 
 			parts: this.descriptions.parts,
 			spells: this.descriptions.spells,
@@ -141,7 +173,7 @@ function removeUndefined<T extends object>(obj: T): NonNullable<T> {
 
 	const keys = Object.keys(obj);
 	for (let i = 0; i < keys.length; i++) {
-		const key: string|number = keys[i];
+		const key: string | number = keys[i];
 
 		// TODO: fix.
 		// @ts-ignore

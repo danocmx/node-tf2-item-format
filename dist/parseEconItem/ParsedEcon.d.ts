@@ -24,8 +24,10 @@ export default class ParsedEcon {
     /**
      * Gets attributes that are included in the name.
      */
-    getNameAttributes({ inNumbers }?: {
-        inNumbers?: boolean | undefined;
+    getNameAttributes({ inNumbers, useDefindexes, name }?: {
+        name?: string;
+        inNumbers?: boolean;
+        useDefindexes?: boolean;
     }): ParsedEconNameAtributes;
-    getAttributes(): EconAttributes;
+    getAttributes(shortName?: string): EconAttributes;
 }
