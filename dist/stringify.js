@@ -13,6 +13,8 @@ const getOutput_1 = __importDefault(require("./shared/getOutput"));
  */
 function default_1({ name, craftable, australium, festivized, killstreak, elevated, defindex, quality, wear, texture, effect, target, output, outputQuality, itemNumber, isUniqueHat, }) {
     let itemName = '';
+    if (!name && defindex)
+        name = getName(defindex);
     if (!craftable) {
         itemName += 'Non-Craftable ';
     }
@@ -39,9 +41,10 @@ function default_1({ name, craftable, australium, festivized, killstreak, elevat
     }
     if (target && isKillstreakKitOrFabricator(name, target)) {
         // eslint-disable-next-line no-param-reassign
-        name = addTargetToName_1.default(name, target);
+        name = addTargetToName_1.default(name, schema_1.default.getName(target));
     }
     else if (target || (output && outputQuality)) {
+        console.log(target);
         // There can be both target and output, target is prefered thus the check.
         // getOutput constructs full output name if quality present.
         // target has no quality
@@ -53,7 +56,7 @@ function default_1({ name, craftable, australium, festivized, killstreak, elevat
         itemName += 'The ';
     }
     // Either we have name or defindex.
-    itemName += name || schema_1.default.getName(defindex);
+    itemName += name;
     if (wear) {
         itemName += ` (${schema_1.default.getWearName(wear)})`;
     }
@@ -66,6 +69,13 @@ function default_1({ name, craftable, australium, festivized, killstreak, elevat
     return itemName;
 }
 exports.default = default_1;
+function getName(defindex) {
+    const name = schema_1.default.getName(defindex);
+    if (name.includes(' Fabricator')) {
+        return name.replace(' Fabricator', ' Kit Fabricator');
+    }
+    return name;
+}
 function isAustralium(australium) {
     return !!(australium && australium !== -1);
 }
@@ -80,5 +90,5 @@ function canAddKillstreak(killstreak, target) {
     return !!(killstreak && !target);
 }
 function isKillstreakKitOrFabricator(name, target) {
-    return !!(target && / Kit/.test(name)); // This checks for fabricator too.
+    return !!(target && (/ Kit/.test(name) || / Fabricator/.test(name))); // This checks for fabricator too.
 }

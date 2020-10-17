@@ -31,6 +31,8 @@ export default function ({
 }: ItemAttributes): string {
 	let itemName = '';
 
+	if (!name && defindex) name = getName(defindex as number);
+
 	if (!craftable) {
 		itemName += 'Non-Craftable ';
 	}
@@ -65,8 +67,9 @@ export default function ({
 
 	if (target && isKillstreakKitOrFabricator(name, target)) {
 		// eslint-disable-next-line no-param-reassign
-		name = addTargetToName(name, target);
+		name = addTargetToName(name, schema.getName(target as string));
 	} else if (target || (output && outputQuality)) {
+		console.log(target);
 		// There can be both target and output, target is prefered thus the check.
 		// getOutput constructs full output name if quality present.
 		// target has no quality
@@ -85,7 +88,7 @@ export default function ({
 	}
 
 	// Either we have name or defindex.
-	itemName += name || schema.getName(defindex as number);
+	itemName += name;
 
 	if (wear) {
 		itemName += ` (${schema.getWearName(wear)})`;
@@ -98,6 +101,16 @@ export default function ({
 	}
 
 	return itemName;
+}
+
+function getName(defindex: number): string {
+	const name = schema.getName(defindex);
+
+	if (name.includes(' Fabricator')) {
+		return name.replace(' Fabricator', ' Kit Fabricator');
+	}
+
+	return name;
 }
 
 function isAustralium(australium?: number | boolean): boolean {
@@ -119,5 +132,5 @@ function canAddKillstreak(
 }
 
 function isKillstreakKitOrFabricator(name: string, target?: string): boolean {
-	return !!(target && / Kit/.test(name)); // This checks for fabricator too.
+	return !!(target && (/ Kit/.test(name) || / Fabricator/.test(name))); // This checks for fabricator too.
 }

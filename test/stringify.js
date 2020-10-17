@@ -182,5 +182,15 @@ describe('stringify', () => {
 })
 
 describe('stringify from defindexes', () => {
+	it('Case #1', () => {
+		const itemString = stringify({
+			defindex: 20003,
+			quality: 6,
+			craftable: true,
+			killstreak: 3,
+			target: 1151
+		})
 
+		assert.equal(itemString, 'Professional Killstreak Iron Bomber Kit Fabricator');
+	});
 });
