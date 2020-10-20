@@ -7,7 +7,7 @@ exports.getSpell = exports.isSpell = void 0;
  * @return {boolean}
  */
 function isSpell(description) {
-    return /^Halloween: .*/.test(description.value);
+    return /^Halloween: .*/.test(description.value) && description.color === '7ea9d1';
 }
 exports.isSpell = isSpell;
 ;

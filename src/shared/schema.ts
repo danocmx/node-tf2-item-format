@@ -7,7 +7,18 @@ const DEFINDEXES: { [name: string]: number } = {
 	'Strangifier Chemistry Set': 20000,
 	'Specialized Killstreak Kit Fabricator': 20002,
 	'Professional Killstreak Kit Fabricator': 20003,
+	'Chemistry Set': 20005,
 }
+
+/* TODO: Set boundaries between these.
+	"20000":"Chemistry Set",
+	"20001":"Chemistry Set",
+	"20005":"Chemistry Set",
+	"20006":"Chemistry Set",
+	"20007":"Chemistry Set",
+	"20008":"Chemistry Set",
+	"20009":"Chemistry Set"
+*/
 
 class Schema {
 	public effects!: SchemaEnum;

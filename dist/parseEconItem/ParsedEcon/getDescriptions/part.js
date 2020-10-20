@@ -10,7 +10,7 @@ function isPart(description) {
      * 1) '(Airborne Enemy Kills: 4)'
      * 2) '     Airborne Enemy Kill: 4'
      */
-    return / {5}.+: \d+|\(.+: \d+\)/.test(description.value);
+    return /^( {5}(.+): \d+)|(\((.+): \d+\))$/.test(description.value);
 }
 exports.isPart = isPart;
 ;

@@ -22,9 +22,9 @@ export default class ItemName {
 
 	getOrigin() {
 		return (
-			this.item.market_name ||
-			this.item.market_hash_name ||
-			this.item.name
+			this.item.market_name
+			|| this.item.market_hash_name
+			// || this.item.name
 		);
 	}
 

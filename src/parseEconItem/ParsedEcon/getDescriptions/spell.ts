@@ -6,7 +6,7 @@ import { EconDescription } from '../../../types';
  * @return {boolean}
  */
 export function isSpell(description: EconDescription): boolean {
-	return /^Halloween: .*/.test(description.value);
+	return /^Halloween: .*/.test(description.value) && description.color === '7ea9d1';
 };
 
 /**

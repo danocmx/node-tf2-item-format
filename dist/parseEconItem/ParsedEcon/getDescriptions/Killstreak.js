@@ -23,7 +23,7 @@ class Killstreak {
      * @return {boolean}
      */
     static isKillstreaker(description) {
-        return description.value.startsWith('Killstreaker: ');
+        return description.value.startsWith('Killstreaker: ') && description.color === '7ea9d1';
     }
     /**
      * Checks if description includes sheen
@@ -31,7 +31,7 @@ class Killstreak {
      * @return {boolean}
      */
     static isSheen(description) {
-        return description.value.startsWith('Sheen: ');
+        return description.value.startsWith('Sheen: ') && description.color === '7ea9d1';
     }
     /**
      * Checks if item is killstreak from description
@@ -39,7 +39,7 @@ class Killstreak {
      * @return {boolean}
      */
     static isKillstreak(description) {
-        return description.value === 'Killstreaks Active';
+        return description.value === 'Killstreaks Active' && description.color === '7ea9d1';
     }
     /**
      * Sets killstreaker from description

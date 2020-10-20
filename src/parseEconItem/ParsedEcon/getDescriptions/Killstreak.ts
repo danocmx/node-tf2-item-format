@@ -27,7 +27,7 @@ export default class Killstreak {
  	 * @return {boolean}
  	 */
 	static isKillstreaker(description: EconDescription): boolean {
-		return description.value.startsWith('Killstreaker: ');
+		return description.value.startsWith('Killstreaker: ') && description.color === '7ea9d1';
 	}
 
 	/**
@@ -36,7 +36,7 @@ export default class Killstreak {
  	 * @return {boolean}
  	 */
 	static isSheen(description: EconDescription): boolean {
-		return description.value.startsWith('Sheen: ');
+		return description.value.startsWith('Sheen: ') && description.color === '7ea9d1';
 	}
 
 	/**
@@ -45,7 +45,7 @@ export default class Killstreak {
  	 * @return {boolean}
  	 */
 	static isKillstreak(description: EconDescription): boolean {
-		return description.value === 'Killstreaks Active';
+		return description.value === 'Killstreaks Active' && description.color === '7ea9d1';
 	}
 
 	/**

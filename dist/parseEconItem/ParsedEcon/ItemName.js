@@ -16,9 +16,10 @@ class ItemName {
         this.origin = this.getOrigin();
     }
     getOrigin() {
-        return (this.item.market_name ||
-            this.item.market_hash_name ||
-            this.item.name);
+        return (this.item.market_name
+            || this.item.market_hash_name
+        // || this.item.name
+        );
     }
     getShort() {
         const { australium, wear, killstreak, texture, elevated, festivized, quality, isUniqueHat, output, outputQuality, target, itemNumber } = this.econ.getNameAttributes('', false, false);

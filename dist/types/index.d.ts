@@ -103,12 +103,12 @@ export declare type EconAction = {
     name: string;
 };
 export declare type EconTag = {
-    name: string;
+    name?: string;
     category: string;
     internal_name: string;
     localized_category_name?: string;
     localized_tag_name?: string;
-    color: string;
+    color?: string;
 };
 export declare type EconDescription = {
     value: string;
@@ -118,29 +118,33 @@ export declare type EconDescription = {
     };
 };
 export declare type EconItem = {
-    appid: number;
-    contextid: string;
     assetid: string;
-    classid: string;
-    instanceid: string;
-    amount: string;
-    currency: number;
-    icon_url: string;
-    icon_url_large: string;
     descriptions: EconDescription[];
     tradable: number;
-    actions: EconAction[];
     name: string;
     type: string;
     market_name: string;
     market_hash_name: string;
-    market_actions: EconAction[];
     commodity: number;
     marketable: number;
     tags: EconTag[];
     app_data?: {
         def_index: number;
     };
+    icon_url?: string;
+    icon_url_large?: string;
+    appid?: number;
+    contextid?: string;
+    instanceid?: string;
+    classid?: string;
+    amount?: string;
+    currency?: number;
+    actions?: EconAction[];
+    market_actions?: EconAction[];
+    background_color?: string;
+    name_color?: string;
+    market_tradable_restriction?: number;
+    market_marketable_restriction?: number;
 };
 export declare type TagAttributes = {
     quality: string;

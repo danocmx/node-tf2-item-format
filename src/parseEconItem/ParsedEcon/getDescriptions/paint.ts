@@ -4,7 +4,7 @@ import { EconDescription } from '../../../types';
  * Checks if description includes paint
  */
 export function isPaint(description: EconDescription): boolean {
-	return /^Paint Color: /.test(description.value);
+	return /^Paint Color: /.test(description.value) && description.color === '756b5e';
 };
 
 /**
