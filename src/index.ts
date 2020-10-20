@@ -17,7 +17,7 @@ export * from './types';
  * 	nature of attributes being parsed in way
  * 	they're put in inside the name.
  */
-const fixName = (name: string) => stringify(parseString(name));
+const fixName = (name: string) => stringify(parseString(name, false, false));
 
 export {
     parseEconItem,

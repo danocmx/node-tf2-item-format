@@ -8,12 +8,11 @@ const decomposeName_1 = __importDefault(require("./shared/decomposeName"));
 const getConvertedIntAttributes_1 = __importDefault(require("./shared/getConvertedIntAttributes"));
 const getDefindexes_1 = __importDefault(require("./shared/getDefindexes"));
 const isEmpty_1 = __importDefault(require("./util/isEmpty"));
-/**
- * Parses name string into attributes.
- */
-function default_1(name, { inNumbers = false, useDefindexes = false } = {}) {
+// Default behaviour should never happen.
+function parseString(name, inNumbers = false, useDefindexes = false) {
     let attributes = new Attributes_1.default(name);
     const itemName = decomposeName_1.default(name, attributes);
+    // TODO: change this with overloads.
     const parsedAttributes = {
         name: itemName,
         craftable: attributes.craftable,
@@ -76,5 +75,5 @@ function default_1(name, { inNumbers = false, useDefindexes = false } = {}) {
     // Move convertor to the last step.
     return parsedAttributes;
 }
-exports.default = default_1;
 ;
+exports.default = parseString;

@@ -2,77 +2,98 @@ import schema from './shared/schema';
 
 import stringify from './stringify';
 
-import { ItemAttributes, BackpackTFListing, ItemNumber } from './types';
+import { nameTypeGuard, skuTypeGuard } from './types/guards';
+import { ItemAttributes, BackpackTFListing, ItemNumber, StrigifySKUAttributes } from './types';
 
 /**
  * Creates a listing object that you can sent to backpack.tf
+ * @todo work with SKU attributes
  */
-export default function (item: ItemAttributes): BackpackTFListing {
+export default function (item: ItemAttributes|StrigifySKUAttributes): BackpackTFListing {
+	let name: string;
+	if (skuTypeGuard(item)) {
+		name = schema.getName(item.defindex);
+	} else if (nameTypeGuard(item)) {
+		name = item.name;
+	} else {
+		throw new Error('Defindex or Name is missing.');
+	}
+	
 	return {
 		quality: getQuality(item),
 		craftable: item.craftable ? 1 : 0,
-		item_name: getItem(item),
-		priceindex: getPriceindex(item),
+		item_name: getItem(name, item),
+		priceindex: getPriceindex(name, item),
 	};
 };
 
-function getQuality({ quality, elevated }: ItemAttributes): string|number {
+function getQuality({ quality, elevated }: { quality: string|number, elevated?: boolean }): string|number {
 	return elevated ? `Strange ${schema.getQualityName(quality)}` : quality;
 }
 
-function getItem(item: ItemAttributes): string {
+function getItem(name: string, item: ItemAttributes|StrigifySKUAttributes): string {
 	return stringify({
-		name: getRightName(item),
+		name: getRightName(name),
 		australium: item.australium,
 		// Don't add it if it's already in the name.
-		killstreak: isKillstreakKit(item) || isFabricator(item) ? 0 : item.killstreak,
+		killstreak: isKillstreakKit(name) || isFabricator(name) ? 0 : item.killstreak,
 		craftable: true,
 		quality: 6
 	});
 }
 
-function getRightName(item: ItemAttributes): string {
+function getRightName(name: string): string {
 	// We keep kit in the name but backpack.tf does not accept it.
-	if (isFabricator(item)) return item.name.replace('Kit ', '');
+	if (isFabricator(name)) return name.replace('Kit ', '');
 
-	return item.name;
+	return name;
 }
 
-function getPriceindex(item: ItemAttributes): number|string|void {
-	if (item.effect) return schema.getEffectEnum(item.effect); // As int
-	if (isCrate(item)) return (item.itemNumber as ItemNumber).value;
-	if (isUnusualfierOrStrangifier(item.name)) return (schema.getDefindex(item.target as string) as number); // as defindex
-	if (isChemistrySet(item)) {
-		let priceindex = `${schema.getDefindex(item.output as string)}-${schema.getQualityEnum(item.outputQuality as number)}`;
-		if (isUnusualfierOrStrangifier(item.target)) priceindex += `-${schema.getDefindex(item.target as string)}`;
+function getPriceindex(name: string, item: ItemAttributes|StrigifySKUAttributes): number|string|void {
+	let targetDefindex;
+	let outputDefindex;
+	if (skuTypeGuard(item)) {
+		targetDefindex = item.targetDefindex;
+		outputDefindex = item.outputDefindex;
+	} else if (nameTypeGuard(item)) {
+		targetDefindex = item.targetDefindex || (item.target && schema.getDefindex(item.target));
+		outputDefindex = item.outputDefindex || (item.output && schema.getDefindex(item.output));
+	}
+
+	if (item.effect) return schema.getEffectEnum(item.effect);
+	if (item.itemNumber && isCrate(item.itemNumber)) return (item.itemNumber as ItemNumber).value;
+	if (isUnusualfierOrStrangifier(name)) return (targetDefindex as number);
+	if (isChemistrySet(name)) {
+		let priceindex = `${outputDefindex}-${schema.getQualityEnum(item.outputQuality as number)}`;
+		if (isUnusualfierOrStrangifier(name)) priceindex += `-${targetDefindex}`;
 		return priceindex;
 	}
-	if (isKillstreakKit(item)) return `${schema.getKillstreakEnum(item.killstreak as string)}-${schema.getDefindex(item.target as string)}`; // as defindex
-	if (isFabricator(item)) return `${getKitDefindex(item)}-6-${schema.getDefindex(item.target as string)}`;
+	if (isKillstreakKit(name)) return `${schema.getKillstreakEnum(item.killstreak as string)}-${targetDefindex}`; // as defindex
+	if (isFabricator(name)) return `${getKitDefindex(item)}-6-${targetDefindex}`;
 
 	return 0;
 }
 
-function isCrate(item: ItemAttributes): boolean {
-	return !!(item.itemNumber && item.itemNumber.type === 'crate');
+function isCrate(itemNumber: ItemNumber): boolean {
+	return itemNumber.type === 'crate';
 }
 
 function isUnusualfierOrStrangifier(name?: string): boolean {
 	return !!(name && (name === 'Unusualifier' || name === 'Strangifier'));
 }
 
-function isChemistrySet({ name }: ItemAttributes): boolean {
+function isChemistrySet(name: string): boolean {
 	return name.includes('Chemistry Set');
 }
 
-function isKillstreakKit(item: ItemAttributes): boolean {
-	return item.name.includes('Kit') && !isFabricator(item);
+function isKillstreakKit(name: string): boolean {
+	return name.includes('Kit') && !isFabricator(name);
 }
 
-function isFabricator(item: ItemAttributes): boolean {
-	return item.name.includes('Fabricator');
+function isFabricator(name: string): boolean {
+	return name.includes('Fabricator');
 }
 
-function getKitDefindex(item: ItemAttributes): number|null {
+function getKitDefindex(item: ItemAttributes|StrigifySKUAttributes): number|null {
 	return schema.getDefindex(stringify({ name: 'Kit', killstreak: item.killstreak, craftable: true, quality: 6 }));
 }

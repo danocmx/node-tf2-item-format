@@ -188,7 +188,7 @@ describe('stringify from defindexes', () => {
 			quality: 6,
 			craftable: true,
 			killstreak: 3,
-			target: 1151
+			targetDefindex: 1151
 		})
 
 		assert.equal(itemString, 'Professional Killstreak Iron Bomber Kit Fabricator');

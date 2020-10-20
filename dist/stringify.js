@@ -8,13 +8,29 @@ const shouldSetNumber_1 = __importDefault(require("./stringify/shouldSetNumber")
 const shouldSetQuality_1 = __importDefault(require("./stringify/shouldSetQuality"));
 const addTargetToName_1 = __importDefault(require("./stringify/addTargetToName"));
 const getOutput_1 = __importDefault(require("./shared/getOutput"));
+const guards_1 = require("./types/guards");
 /**
  * Stringifies item object into item name
  */
-function default_1({ name, craftable, australium, festivized, killstreak, elevated, defindex, quality, wear, texture, effect, target, output, outputQuality, itemNumber, isUniqueHat, }) {
+function default_1(attributes) {
+    const { craftable, australium, festivized, killstreak, elevated, quality, wear, texture, effect, outputQuality, itemNumber, isUniqueHat, } = attributes;
+    let name;
+    let target;
+    let output;
+    if (guards_1.nameTypeGuard(attributes)) {
+        name = attributes.name;
+        target = attributes.target;
+        output = attributes.output;
+    }
+    else if (guards_1.skuTypeGuard(attributes)) {
+        name = getName(attributes.defindex);
+        target = attributes.targetDefindex ? schema_1.default.getName(attributes.targetDefindex) : '';
+        output = attributes.outputDefindex ? schema_1.default.getName(attributes.outputDefindex) : '';
+    }
+    else {
+        throw new Error('Defindex or Name is missing.');
+    }
     let itemName = '';
-    if (!name && defindex)
-        name = getName(defindex);
     if (!craftable) {
         itemName += 'Non-Craftable ';
     }
@@ -44,7 +60,6 @@ function default_1({ name, craftable, australium, festivized, killstreak, elevat
         name = addTargetToName_1.default(name, schema_1.default.getName(target));
     }
     else if (target || (output && outputQuality)) {
-        console.log(target);
         // There can be both target and output, target is prefered thus the check.
         // getOutput constructs full output name if quality present.
         // target has no quality

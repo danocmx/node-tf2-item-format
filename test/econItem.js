@@ -133,7 +133,7 @@ describe('parseEconItem', () => {
 					localized_tag_name: 'Minimal Wear',
 				},
 			],
-		});
+		}, true, false);
 
 		assert.deepEqual(econItem, {
 			name: 'Flame Thrower',
@@ -229,7 +229,7 @@ describe('parseEconItem', () => {
 					localized_tag_name: 'Soldier',
 				},
 			],
-		});
+		}, true, false);
 
 		assert.deepEqual(econItem, {
 			name: 'Brain Bucket',
@@ -359,7 +359,7 @@ describe('parseEconItem', () => {
 					localized_tag_name: 'Spooky Spoils Collection',
 				},
 			],
-		});
+		}, true, false);
 
 		assert.deepEqual(econItem, {
 			name: 'Skullbrero',
@@ -449,7 +449,7 @@ describe('parseEconItem', () => {
 					localized_tag_name: 'Pyro',
 				},
 			],
-		});
+		}, true, false);
 
 		assert.deepEqual(econItem, {
 			name: "Prancer's Pride",
@@ -607,7 +607,7 @@ describe('parseEconItem', () => {
 					localized_tag_name: 'Field-Tested',
 				},
 			],
-		});
+		}, true, false);
 
 		assert.deepEqual(econItem, {
 			name: 'Rocket Launcher',
@@ -710,7 +710,7 @@ describe('parseEconItem', () => {
 					localized_tag_name: 'Pyro',
 				},
 			],
-		});
+		}, true, false);
 
 		assert.deepEqual(econItem, {
 			name: 'PY-40 Incinibot',
@@ -815,7 +815,7 @@ describe('parseEconItem', () => {
 					localized_tag_name: 'Heavy',
 				},
 			],
-		});
+		}, true, false);
 
 		assert.deepEqual(econItem, {
 			name: 'K-9 Mane',
@@ -917,7 +917,7 @@ describe('parseEconItem', () => {
 					localized_tag_name: 'Medic',
 				},
 			],
-		});
+		}, true, false);
 
 		assert.deepEqual(econItem, {
 			name: 'Foppish Physician',
@@ -1084,7 +1084,7 @@ describe('Econ Item in Numbers', () => {
 					},
 				],
 			},
-			{ inNumbers: false }
+			false, false
 		);
 
 		assert.deepEqual(econItem, {
@@ -1186,7 +1186,7 @@ describe('Econ Item in Numbers', () => {
 					},
 				],
 			},
-			{ inNumbers: false }
+			false, false
 		);
 
 		assert.deepEqual(
@@ -1208,7 +1208,7 @@ describe('Econ Item in Numbers', () => {
 				marketable: true,
 				commodity: false,
 			},
-			{ inNumbers: false }
+			false, false
 		);
 	});
 
@@ -1323,7 +1323,7 @@ describe('Econ Item in Numbers', () => {
 					},
 				],
 			},
-			{ inNumbers: false }
+			false, false
 		);
 
 		assert.deepEqual(econItem, {
@@ -1416,7 +1416,7 @@ describe('Econ Item in Numbers', () => {
 					},
 				],
 			},
-			{ inNumbers: false }
+			false, false
 		);
 
 		assert.deepEqual(econItem, {
@@ -1589,7 +1589,7 @@ describe('Econ Item in Numbers', () => {
 					},
 				],
 			},
-			{ inNumbers: false }
+			false, false
 		);
 
 		assert.deepEqual(econItem, {
@@ -1730,7 +1730,7 @@ describe('Econ item with defindexes', () => {
 					},
 				],
 			},
-			{ useDefindexes: true }
+			false, true
 		);
 
 		assert.deepEqual(econItem, {
@@ -1824,7 +1824,7 @@ describe('Econ item with defindexes', () => {
 					},
 				],
 			},
-			{ useDefindexes: true }
+			false, true
 		);
 
 		assert.deepEqual(econItem, {
@@ -1998,7 +1998,7 @@ describe('Econ item with defindexes', () => {
 					},
 				],
 			},
-			{ useDefindexes: true }
+			false, true
 		);
 
 		assert.deepEqual(econItem, {
@@ -2105,7 +2105,7 @@ describe('Econ item with defindexes', () => {
 					},
 				],
 			},
-			{ useDefindexes: true }
+			false, true
 		);
 
 		assert.deepEqual(econItem, {
@@ -2214,7 +2214,7 @@ describe('Econ item with defindexes', () => {
 					},
 				],
 			},
-			{ useDefindexes: true }
+			false, true
 		);
 
 		assert.deepEqual(econItem, {
@@ -2320,7 +2320,7 @@ describe('Econ item with defindexes', () => {
 					},
 				],
 			},
-			{ useDefindexes: true }
+			false, true
 		);
 
 		assert.deepEqual(econItem, {
@@ -2419,7 +2419,7 @@ describe('Econ item with defindexes', () => {
 				},
 			],
 			app_data: { quantity: '1', def_index: '20005', quality: '6' },
-		}, { useDefindexes: true, inNumbers: true });
+		}, true, true);
 
 		assert.deepEqual(econItem, {
 			name: 'Strangifier Chemistry Set',

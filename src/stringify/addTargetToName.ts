@@ -6,6 +6,7 @@ import getKillstreak from '../shared/getKillstreak';
 export default function (name: string, target: string) {
 	const killstreak = getKillstreak(name);
 
+	// We know killstreak is defined.
 	return insertTarget(name, target, killstreak as string);
 };
 

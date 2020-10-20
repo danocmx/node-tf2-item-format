@@ -18,11 +18,15 @@ import {
 	NameAttributes,
 	ParsedEconOptions,
 	ParsedEconNameAtributes,
-	EconAttributes,
+	ItemDefindexes,
+	ItemAttributesInNumbers,
+	PlaceholderEconNameAttributes,
+	MetaEconAttributes
 } from '../types';
 
 /**
  * Parser class.
+ * @todo Remove this entirely with better types.
  */
 export default class ParsedEcon {
 	public item: EconItem;
@@ -32,9 +36,8 @@ export default class ParsedEcon {
 	public descriptions: DescriptionAttributes;
 	public properties: PropertyAttributes;
 	public nameAttrs: NameAttributes;
-	public options: ParsedEconOptions;
 
-	constructor(item: EconItem, options: ParsedEconOptions) {
+	constructor(item: EconItem) {
 		this.item = { ...item };
 		this.itemName = new ItemName(this);
 		this.fullEcon = hasAppData(this.item);
@@ -43,8 +46,6 @@ export default class ParsedEcon {
 		this.descriptions = getDescriptions(this);
 		this.properties = getPropertyAttributes(this);
 		this.nameAttrs = getNameAttributes(this);
-
-		this.options = options;
 	}
 
 	get id(): string {
@@ -70,10 +71,14 @@ export default class ParsedEcon {
 	/**
 	 * Gets attributes that are included in the name.
 	 */
-	getNameAttributes({ inNumbers = false, useDefindexes = false, name }: { name?: string, inNumbers?: boolean, useDefindexes?: boolean } = {}): ParsedEconNameAtributes {
+	getNameAttributes(name: string, inNumbers: false, useDefindexes: true): ParsedEconNameAtributes & ItemDefindexes;
+	getNameAttributes(name: string, inNumbers: false, useDefindexes: false): ParsedEconNameAtributes;
+	getNameAttributes(name: string, inNumbers: true, useDefindexes: true): ParsedEconNameAtributes & ItemDefindexes & ItemAttributesInNumbers;
+	getNameAttributes(name: string, inNumbers: true, useDefindexes: false): ParsedEconNameAtributes & ItemAttributesInNumbers;
+	getNameAttributes(name: string, inNumbers: boolean, useDefindexes: boolean): ParsedEconNameAtributes {
 		const texture = this.descriptions.texture || this.nameAttrs.texture;
 
-		let attrs: ParsedEconNameAtributes = {
+		let attrs: PlaceholderEconNameAttributes = {
 			tradable: this.properties.tradable,
 			craftable: this.descriptions.craftable,
 			quality: this.tags.quality,
@@ -143,9 +148,24 @@ export default class ParsedEcon {
 		return removeUndefined(attrs) as ParsedEconNameAtributes;
 	}
 
-	getAttributes(shortName?: string): EconAttributes {
+	getAttributes(shortName: string, inNumbers: false, useDefindexes: true): ParsedEconNameAtributes & ItemDefindexes & MetaEconAttributes;
+	getAttributes(shortName: string, inNumbers: true, useDefindexes: false): ParsedEconNameAtributes & ItemAttributesInNumbers & MetaEconAttributes;
+	getAttributes(shortName: string, inNumbers: true, useDefindexes: true): ParsedEconNameAtributes & ItemDefindexes & ItemAttributesInNumbers & MetaEconAttributes;
+	getAttributes(shortName: string, inNumbers: false, useDefindexes: false): ParsedEconNameAtributes & MetaEconAttributes;
+	getAttributes(shortName: string, inNumbers: boolean, useDefindex: boolean): any {
+		// Types are silent now.
+		let attributes: any;
+		if (inNumbers === true) {
+			if (useDefindex) attributes = this.getNameAttributes(shortName, true, true);
+			else attributes = this.getNameAttributes(shortName, true, false);
+		} else if (useDefindex === true) {
+			attributes = this.getNameAttributes(shortName, false, true);
+		} else {
+			attributes = this.getNameAttributes(shortName, false, false);
+		}
+		
 		return {
-			...this.getNameAttributes({ ...this.options, name: shortName }),
+			...attributes,
 
 			classes: this.tags.classes,
 			type: this.tags.type,
@@ -168,6 +188,9 @@ export default class ParsedEcon {
 	}
 }
 
+/**
+ * Fix.
+ */
 function removeUndefined<T extends object>(obj: T): NonNullable<T> {
 	const newObj: object = {};
 

@@ -6,32 +6,44 @@ import addTargetToName from './stringify/addTargetToName';
 
 import getOutput from './shared/getOutput';
 
-import { ItemAttributes } from './types';
+import { nameTypeGuard, skuTypeGuard } from './types/guards';
+import { ItemAttributes, StrigifySKUAttributes } from './types';
 
 /**
  * Stringifies item object into item name
  */
-export default function ({
-	name,
-	craftable,
-	australium,
-	festivized,
-	killstreak,
-	elevated,
-	defindex,
-	quality,
-	wear,
-	texture,
-	effect,
-	target,
-	output,
-	outputQuality,
-	itemNumber,
-	isUniqueHat,
-}: ItemAttributes): string {
+export default function (attributes: StrigifySKUAttributes|ItemAttributes): string {
+	const {
+		craftable,
+		australium,
+		festivized,
+		killstreak,
+		elevated,
+		quality,
+		wear,
+		texture,
+		effect,
+		outputQuality,
+		itemNumber,
+		isUniqueHat,
+	} = attributes;
+	
+	let name;
+	let target;
+	let output;
+	if (nameTypeGuard(attributes)) {
+		name = attributes.name;
+		target = attributes.target;
+		output = attributes.output;
+	} else if (skuTypeGuard(attributes)) {
+		name = getName(attributes.defindex);
+		target = attributes.targetDefindex ? schema.getName(attributes.targetDefindex) : '';
+		output = attributes.outputDefindex ? schema.getName(attributes.outputDefindex) : '';
+	} else {
+		throw new Error('Defindex or Name is missing.');
+	}
+	
 	let itemName = '';
-
-	if (!name && defindex) name = getName(defindex as number);
 
 	if (!craftable) {
 		itemName += 'Non-Craftable ';
@@ -69,7 +81,6 @@ export default function ({
 		// eslint-disable-next-line no-param-reassign
 		name = addTargetToName(name, schema.getName(target as string));
 	} else if (target || (output && outputQuality)) {
-		console.log(target);
 		// There can be both target and output, target is prefered thus the check.
 		// getOutput constructs full output name if quality present.
 		// target has no quality

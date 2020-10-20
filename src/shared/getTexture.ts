@@ -13,7 +13,6 @@ export default function (name: string): string|void {
 	for (let i = 0; i < textureKeys.length; i++) {
 		const texture: number|string = textureKeys[i];
 
-		// @ts-ignore
 		if (isNumber(texture) || !name.includes(`${texture} `)) {
 			// eslint-disable-next-line no-continue
 			continue;

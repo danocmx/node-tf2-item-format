@@ -21,7 +21,7 @@ class ItemName {
             this.item.name);
     }
     getShort() {
-        const { australium, wear, killstreak, texture, elevated, festivized, quality, isUniqueHat, output, outputQuality, target, itemNumber } = this.econ.getNameAttributes();
+        const { australium, wear, killstreak, texture, elevated, festivized, quality, isUniqueHat, output, outputQuality, target, itemNumber } = this.econ.getNameAttributes('', false, false);
         return decomposeName_1.default(this.origin, Object.assign({ quality: { value: quality, elevated: !!elevated }, australium,
             festivized,
             isUniqueHat, 
@@ -34,7 +34,7 @@ class ItemName {
      */
     getFull() {
         let name = this.origin;
-        const { craftable, tradable, texture, quality, effect, } = this.econ.getNameAttributes();
+        const { craftable, tradable, texture, quality, effect, } = this.econ.getNameAttributes('', false, false);
         if (effect) {
             if (isUnusual_1.default(quality))
                 name = name.replace('Unusual ', `${effect} `);

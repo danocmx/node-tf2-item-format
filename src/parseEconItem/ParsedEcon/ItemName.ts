@@ -42,7 +42,7 @@ export default class ItemName {
 			outputQuality,
 			target,
 			itemNumber
-		} = this.econ.getNameAttributes();
+		} = this.econ.getNameAttributes('', false, false);
 
 		return decomposeName(this.origin, {
 			quality: { value: quality as string, elevated: !!elevated },
@@ -73,7 +73,7 @@ export default class ItemName {
 			texture,
 			quality,
 			effect,
-		} = this.econ.getNameAttributes();
+		} = this.econ.getNameAttributes('', false, false);
 
 		if (effect) {
 			if (isUnusual(quality as string))

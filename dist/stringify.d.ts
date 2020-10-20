@@ -1,5 +1,5 @@
-import { ItemAttributes } from './types';
+import { ItemAttributes, StrigifySKUAttributes } from './types';
 /**
  * Stringifies item object into item name
  */
-export default function ({ name, craftable, australium, festivized, killstreak, elevated, defindex, quality, wear, texture, effect, target, output, outputQuality, itemNumber, isUniqueHat, }: ItemAttributes): string;
+export default function (attributes: StrigifySKUAttributes | ItemAttributes): string;

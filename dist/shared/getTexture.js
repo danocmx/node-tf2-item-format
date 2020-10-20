@@ -15,7 +15,6 @@ function default_1(name) {
     const textureKeys = Object.keys(schema_1.default.textures);
     for (let i = 0; i < textureKeys.length; i++) {
         const texture = textureKeys[i];
-        // @ts-ignore
         if (isNumber_1.default(texture) || !name.includes(`${texture} `)) {
             // eslint-disable-next-line no-continue
             continue;

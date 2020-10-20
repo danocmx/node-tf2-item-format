@@ -9,6 +9,7 @@ const getKillstreak_1 = __importDefault(require("../shared/getKillstreak"));
  */
 function default_1(name, target) {
     const killstreak = getKillstreak_1.default(name);
+    // We know killstreak is defined.
     return insertTarget(name, target, killstreak);
 }
 exports.default = default_1;

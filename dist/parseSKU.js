@@ -1,5 +1,4 @@
 "use strict";
-/* eslint-disable radix */
 Object.defineProperty(exports, "__esModule", { value: true });
 function default_1(sku) {
     const [defindex, quality, ...parts] = sku.split(';');
@@ -17,7 +16,7 @@ function default_1(sku) {
             attributes.australium = true;
         }
         else if (attribute === 'festive') {
-            attributes.festive = true;
+            attributes.festivized = true;
         }
         else if (attribute === 'strange') {
             attributes.elevated = true;
@@ -35,7 +34,7 @@ function default_1(sku) {
             attributes.wear = parseInt(attribute.substring(1));
         }
         else if (attribute.startsWith('td')) {
-            attributes.target = parseInt(attribute.substring(2));
+            attributes.targetDefindex = parseInt(attribute.substring(2));
         }
         else if (attribute.startsWith('n')) {
             attributes.itemNumber = {
@@ -50,7 +49,7 @@ function default_1(sku) {
             };
         }
         else if (attribute.startsWith('od')) {
-            attributes.output = parseInt(attribute.substring(2));
+            attributes.outputDefindex = parseInt(attribute.substring(2));
         }
         else if (attribute.startsWith('oq')) {
             attributes.outputQuality = parseInt(attribute.substring(2));

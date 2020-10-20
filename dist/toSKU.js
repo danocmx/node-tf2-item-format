@@ -26,10 +26,10 @@ function default_1(item) {
     if (item.killstreak && item.killstreak !== 0) {
         sku += `;kt-${item.killstreak}`;
     }
-    if (item.target) {
-        sku += `;td-${item.target}`;
+    if (item.targetDefindex) {
+        sku += `;td-${item.targetDefindex}`;
     }
-    if (item.festive) {
+    if (item.festivized) {
         sku += ';festive';
     }
     if (item.itemNumber) {
@@ -40,8 +40,8 @@ function default_1(item) {
             sku += `;c${item.itemNumber.value}`;
         }
     }
-    if (item.output) {
-        sku += `;od-${item.output}`;
+    if (item.outputDefindex) {
+        sku += `;od-${item.outputDefindex}`;
     }
     if (item.outputQuality) {
         sku += `;oq-${item.outputQuality}`;

@@ -54,7 +54,7 @@ describe('toSKU', () => {
 			defindex: 20006,
 			quality: 6,
 			craftable: true,
-			output: 513,
+			outputDefindex: 513,
 			outputQuality: 14,
         });
 
@@ -66,8 +66,8 @@ describe('toSKU', () => {
 			defindex: 20000,
 			quality: 6,
 			craftable: true,
-			target: 486,
-			output: 6522,
+			targetDefindex: 486,
+			outputDefindex: 6522,
 			outputQuality: 6,
         });
 
@@ -80,7 +80,7 @@ describe('toSKU', () => {
 			quality: 6,
 			craftable: false,
 			killstreak: 3,
-			target: 200,
+			targetDefindex: 200,
         });
 
 		assert.equal(sku, '6526;6;uncraftable;kt-3;td-200');
@@ -92,7 +92,7 @@ describe('toSKU', () => {
 			quality: 6,
 			craftable: false,
 			killstreak: 3,
-			target: 200,
+			targetDefindex: 200,
         });
 
 		assert.equal(sku, '6526;6;uncraftable;kt-3;td-200');
@@ -203,7 +203,7 @@ describe('parseSKU', () => {
 			defindex: 20006,
 			quality: 6,
 			craftable: true,
-			output: 513,
+			outputDefindex: 513,
 			outputQuality: 14,
 		});
 	});
@@ -215,8 +215,8 @@ describe('parseSKU', () => {
 			defindex: 20000,
 			quality: 6,
 			craftable: true,
-			target: 486,
-			output: 6522,
+			targetDefindex: 486,
+			outputDefindex: 6522,
 			outputQuality: 6,
 		});
 	});
@@ -229,7 +229,7 @@ describe('parseSKU', () => {
 			quality: 6,
 			craftable: false,
 			killstreak: 3,
-			target: 200,
+			targetDefindex: 200,
 		});
 	});
 
@@ -241,8 +241,8 @@ describe('parseSKU', () => {
 			quality: 6,
 			craftable: true,
 			killstreak: 3,
-            target: 356,
-            output: 6526,
+            targetDefindex: 356,
+            outputDefindex: 6526,
             outputQuality: 6
 		});
 	});

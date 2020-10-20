@@ -1,5 +1,3 @@
-/* eslint-disable radix */
-
 import { SKUAttributes } from './types';
 
 export default function (sku: string): SKUAttributes {
@@ -19,7 +17,7 @@ export default function (sku: string): SKUAttributes {
 		} else if (attribute === 'australium') {
 			attributes.australium = true;
 		} else if (attribute === 'festive') {
-			attributes.festive = true;
+			attributes.festivized = true;
 		} else if (attribute === 'strange') {
 			attributes.elevated = true;
 		} else if (attribute.startsWith('kt')) {
@@ -31,7 +29,7 @@ export default function (sku: string): SKUAttributes {
 		} else if (attribute.startsWith('w')) {
 			attributes.wear = parseInt(attribute.substring(1));
 		} else if (attribute.startsWith('td')) {
-			attributes.target = parseInt(attribute.substring(2));
+			attributes.targetDefindex = parseInt(attribute.substring(2));
 		} else if (attribute.startsWith('n')) {
 			attributes.itemNumber = {
 				type: 'craft',
@@ -43,7 +41,7 @@ export default function (sku: string): SKUAttributes {
 				value: parseInt(attribute.substring(1)),
 			};
 		} else if (attribute.startsWith('od')) {
-			attributes.output = parseInt(attribute.substring(2));
+			attributes.outputDefindex = parseInt(attribute.substring(2));
 		} else if (attribute.startsWith('oq')) {
 			attributes.outputQuality = parseInt(attribute.substring(2));
 		}

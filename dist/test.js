@@ -1,22 +1,30 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const __1 = require("..");
-// 2. From SKU to Listing, from Name to Listing
-// 3. From Econ to SKU, From Econ to listing
-// 3.1 Fix name?
-// 4. Write test from this
-// Items:
-// Burning Flames Blighted Beak
-// Non-Craftable Unusual Taunt: The Trackman's Touchdown Unusualifier 
-// Professional Killstreak Kritzkrieg Kit Fabricator
-// Stockbroker's Scarf Strangifier Chemistry Set Series #2
-// 1. From Name to SKU, from SKU to Name;
-// ------> Needs Overload
+const parseString_1 = __importDefault(require("./parseString"));
+const toSKU_1 = __importDefault(require("./toSKU"));
+const stringify_1 = __importDefault(require("./stringify"));
+const parseSKU_1 = __importDefault(require("./parseSKU"));
+const attributes = parseString_1.default('Strange Festive Wrench', true, true);
+const sku = toSKU_1.default(attributes);
+const skuAttributes = parseSKU_1.default(sku);
+const name = stringify_1.default(skuAttributes);
 /*
-const item = parseString('Burning Flames Blighted Beak', { useDefindexes: true, inNumbers: true });
-const sku = toSKU(item as { defindex: number, quality: number, craftable: boolean });
+type Defindex = { defindex: string };
+type Name = { name: string };
+type Options = (Name|Defindex);
 
-console.log(sku);
-*/
-const sku = __1.parseSKU('315;5;u13');
-// const item = stringify(sku as { name: string, quality: number, craftable: boolean });
+function test(opt: Options) {
+    if (defindexGuard(opt)) {
+
+    } else {
+
+    }
+}
+
+function defindexGuard(data: Options): data is Defindex {
+    return Object.prototype.hasOwnProperty.call(data, 'defindex');
+}
+*/ 

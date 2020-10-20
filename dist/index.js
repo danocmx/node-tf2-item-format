@@ -36,5 +36,5 @@ __exportStar(require("./types"), exports);
  * 	nature of attributes being parsed in way
  * 	they're put in inside the name.
  */
-const fixName = (name) => stringify_1.default(parseString_1.default(name));
+const fixName = (name) => stringify_1.default(parseString_1.default(name, false, false));
 exports.fixName = fixName;

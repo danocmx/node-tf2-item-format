@@ -6,15 +6,21 @@ import getDefindexes from './shared/getDefindexes';
 
 import isEmpty from './util/isEmpty';
 
-import { ItemAttributes } from './types';
+import { ItemAttributes, ItemAttributesInNumbers, ItemAttributesInStrings, ItemDefindexes, DefaultItemAttributes } from './types';
 
 /**
  * Parses name string into attributes.
  */
-export default function (name: string, { inNumbers = false, useDefindexes = false }: Partial<{ inNumbers: boolean, useDefindexes: boolean }> = {}): ItemAttributes {
+function parseString(name: string, inNumbers: false, useDefindexes: false): DefaultItemAttributes & ItemAttributesInStrings;
+function parseString(name: string, inNumbers: true, useDefindexes: true): DefaultItemAttributes & ItemDefindexes & ItemAttributesInNumbers;
+function parseString(name: string, inNumbers: false, useDefindexes: true): DefaultItemAttributes & ItemDefindexes & ItemAttributesInStrings;
+function parseString(name: string, inNumbers: true, useDefindexes: false): DefaultItemAttributes & ItemAttributesInNumbers;
+// Default behaviour should never happen.
+function parseString(name: string, inNumbers: boolean = false, useDefindexes: boolean = false): DefaultItemAttributes {
 	let attributes = new Attributes(name);
 	const itemName = decomposeName(name, attributes);
 
+	// TODO: change this with overloads.
 	const parsedAttributes: ItemAttributes = {
 		name: itemName,
 		craftable: attributes.craftable,
@@ -67,3 +73,5 @@ export default function (name: string, { inNumbers = false, useDefindexes = fals
 
 	return parsedAttributes;
 };
+
+export default parseString;

@@ -24,6 +24,38 @@ export declare type ItemAttributes = {
     outputDefindex?: number;
     outputQuality?: number | string;
 };
+export declare type ItemAttributesInStrings = {
+    quality: string;
+    killstreak?: string;
+    wear?: string;
+    texture?: string;
+    effect?: string;
+    outputQuality?: string;
+};
+export declare type DefaultItemAttributes = {
+    name: string;
+    craftable: boolean;
+    australium?: boolean;
+    festivized?: boolean;
+    elevated?: boolean;
+    itemNumber?: ItemNumber;
+    isUniqueHat?: boolean;
+    target?: string;
+    output?: string;
+};
+export declare type ItemAttributesInNumbers = {
+    quality: number;
+    killstreak?: number;
+    wear?: number;
+    texture?: number;
+    effect?: number;
+    outputQuality?: number;
+};
+export declare type ItemDefindexes = {
+    defindex: number;
+    targetDefindex?: number;
+    outputDefindex?: number;
+};
 export declare type ItemNumber = {
     value: number;
     type: string;
@@ -55,15 +87,15 @@ export declare type SKUAttributes = {
     quality: number;
     craftable: boolean;
     australium?: boolean;
-    festive?: boolean;
+    festivized?: boolean;
     elevated?: boolean;
     killstreak?: number;
     effect?: number;
     texture?: number;
     wear?: number;
-    target?: number;
+    targetDefindex?: number;
     itemNumber?: ItemNumber;
-    output?: number;
+    outputDefindex?: number;
     outputQuality?: number;
 };
 export declare type EconAction = {
@@ -147,7 +179,7 @@ export declare type ParsedEconOptions = {
     inNumbers?: boolean;
     useDefindexes?: boolean;
 };
-export declare type ParsedEconNameAtributes = {
+export declare type PlaceholderEconNameAttributes = {
     tradable: boolean;
     craftable: boolean;
     quality: string | number;
@@ -167,6 +199,23 @@ export declare type ParsedEconNameAtributes = {
     outputDefindex?: number;
     targetDefindex?: number;
 };
+export declare type ParsedEconNameAtributes = {
+    tradable: boolean;
+    craftable: boolean;
+    quality: string;
+    texture?: string;
+    wear?: string;
+    australium?: boolean;
+    festivized?: boolean;
+    effect?: string;
+    isUniqueHat?: boolean;
+    killstreak?: string;
+    elevated?: boolean;
+    target?: string;
+    output?: string;
+    outputQuality?: string;
+    itemNumber?: ItemNumber;
+};
 export declare type ConvertableAttributes = {
     killstreak?: string | number | void;
     wear?: string | number | void;
@@ -175,7 +224,8 @@ export declare type ConvertableAttributes = {
     outputQuality?: string | number | void | null;
     texture?: string | number | void;
 };
-export declare type EconAttributes = ParsedEconNameAtributes & {
+export declare type EconAttributes = ParsedEconNameAtributes & MetaEconAttributes;
+export declare type MetaEconAttributes = {
     classes: string[];
     type?: string;
     collection?: string;
@@ -186,7 +236,8 @@ export declare type EconAttributes = ParsedEconNameAtributes & {
     marketable: boolean;
     commodity: boolean;
 };
-export declare type ParsedEconItem = EconAttributes & {
+export declare type ParsedEconItem = EconAttributes & AddionalEconItemAttributes;
+export declare type AddionalEconItemAttributes = {
     name: string;
     fullName: string;
     id: string;
@@ -209,4 +260,10 @@ export declare type Defindexes = {
     defindex?: number | null;
     targetDefindex?: number;
     outputDefindex?: number;
+};
+/**
+ * When using SKU
+ */
+export declare type StrigifySKUAttributes = SKUAttributes & {
+    isUniqueHat?: false;
 };
