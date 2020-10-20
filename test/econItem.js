@@ -937,6 +937,155 @@ describe('parseEconItem', () => {
 			commodity: false,
 		});
 	});
+
+	it('Case #8', () => {
+		const econItem = parseEconItem({
+			"appid":440,"classid":"4044585817","instanceid":"11040545","currency":0,"background_color":"3C352E","icon_url":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEYYwsVVB7whyJMhcrvCM2ACfIHnpRi4cBQjGc6xAQjNbuwYGMwJlfHWfAMDaRjpQm6CCVhsZJhUIW3r-9TZ0yx4-owIvoI","icon_url_large":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEYYwsVVB7whyJMhcrvCM2ACfIHnpRi4cBQjGc6xAQjNbuwYGMwJlfHWfAMDaRjpQm6CCVhsZJhUIW3r-9TZ0yx4-owIvoI",
+			"descriptions":[
+				{"value":"Holiday Restriction: Halloween / Full Moon","color":"756b5e"},
+				{"value":"''Halloween: Chromatic Corruption (spell only active during event)''", "color": "756b5e"},
+				{"value":"''Sheen: sheen''", "color": "756b5e"},
+				{"value":"''Paint: paint''", "color": "756b5e"},
+				{"value":"''Festivized''", "color": "756b5e"},
+				{"value":"''( Not Usable in Crafting )''", "color": "756b5e"},
+			],"tradable":1,"actions":[{"link":"http://wiki.teamfortress.com/scripts/itemredirect.php?id=5618&lang=en_US","name":"Item Wiki Page..."},{"link":"steam://rungame/440/76561202255233023/+tf_econ_item_preview%20S%owner_steamid%A%assetid%D12289692045334241370","name":"Inspect in Game..."}],"name":"Haunted Voodoo-Cursed Soldier Soul","name_color":"38f3ab","type":"Level 1 Cursed Soul","market_name":"Haunted Voodoo-Cursed Soldier Soul","market_hash_name":"Haunted Voodoo-Cursed Soldier Soul","market_actions":[{"link":"steam://rungame/440/76561202255233023/+tf_econ_item_preview%20M%listingid%A%assetid%D12289692045334241370","name":"Inspect in Game..."}],"commodity":0,"market_tradable_restriction":7,"market_marketable_restriction":0,"marketable":1,"tags":[{"category":"Quality","internal_name":"haunted","localized_category_name":"Quality","localized_tag_name":"Haunted","color":"38f3ab"},{"category":"Type","internal_name":"misc","localized_category_name":"Type","localized_tag_name":"Cosmetic"},{"category":"Class","internal_name":"Soldier","localized_category_name":"Class","localized_tag_name":"Soldier"}]
+		}, false, false);
+
+		assert.deepEqual(econItem, {
+			name: 'Voodoo-Cursed Soldier Soul',
+			fullName: 'Haunted Voodoo-Cursed Soldier Soul',
+			id: undefined,
+			img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEYYwsVVB7whyJMhcrvCM2ACfIHnpRi4cBQjGc6xAQjNbuwYGMwJlfHWfAMDaRjpQm6CCVhsZJhUIW3r-9TZ0yx4-owIvoI/',
+			tradable: true,
+			craftable: true,
+			quality: 'Haunted',
+			classes: [ 'Soldier' ],
+			type: 'misc',
+			parts: [],
+			spells: [],
+			marketable: true,
+			commodity: false
+		});
+	})
+
+	it('Case #9', () => {
+		const econItem = parseEconItem({
+			"appid":440,"classid":"4044585817","instanceid":"11040545","currency":0,"background_color":"3C352E","icon_url":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEYYwsVVB7whyJMhcrvCM2ACfIHnpRi4cBQjGc6xAQjNbuwYGMwJlfHWfAMDaRjpQm6CCVhsZJhUIW3r-9TZ0yx4-owIvoI","icon_url_large":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEYYwsVVB7whyJMhcrvCM2ACfIHnpRi4cBQjGc6xAQjNbuwYGMwJlfHWfAMDaRjpQm6CCVhsZJhUIW3r-9TZ0yx4-owIvoI",
+			"descriptions":[
+				{"value":"Holiday Restriction: Halloween / Full Moon","color":"756b5e"},
+				{"value":"''★ Unusual Effect: Burning Flames''"},
+				{"value":"''★ Unusual Effect: Burning Flames''"}
+			],"tradable":1,"actions":[{"link":"http://wiki.teamfortress.com/scripts/itemredirect.php?id=5618&lang=en_US","name":"Item Wiki Page..."},{"link":"steam://rungame/440/76561202255233023/+tf_econ_item_preview%20S%owner_steamid%A%assetid%D12289692045334241370","name":"Inspect in Game..."}],"name":"Haunted Voodoo-Cursed Soldier Soul","name_color":"38f3ab","type":"Level 1 Cursed Soul","market_name":"Haunted Voodoo-Cursed Soldier Soul","market_hash_name":"Haunted Voodoo-Cursed Soldier Soul","market_actions":[{"link":"steam://rungame/440/76561202255233023/+tf_econ_item_preview%20M%listingid%A%assetid%D12289692045334241370","name":"Inspect in Game..."}],"commodity":0,"market_tradable_restriction":7,"market_marketable_restriction":0,"marketable":1,"tags":[{"category":"Quality","internal_name":"haunted","localized_category_name":"Quality","localized_tag_name":"Haunted","color":"38f3ab"},{"category":"Type","internal_name":"misc","localized_category_name":"Type","localized_tag_name":"Cosmetic"},{"category":"Class","internal_name":"Soldier","localized_category_name":"Class","localized_tag_name":"Soldier"}]
+		});
+
+		assert.deepEqual(econItem, {
+			name: 'Voodoo-Cursed Soldier Soul',
+			fullName: 'Haunted Voodoo-Cursed Soldier Soul',
+			id: undefined,
+			img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEYYwsVVB7whyJMhcrvCM2ACfIHnpRi4cBQjGc6xAQjNbuwYGMwJlfHWfAMDaRjpQm6CCVhsZJhUIW3r-9TZ0yx4-owIvoI/',
+			tradable: true,
+			craftable: true,
+			quality: 'Haunted',
+			classes: [ 'Soldier' ],
+			type: 'misc',
+			parts: [],
+			spells: [],
+			marketable: true,
+			commodity: false
+		});
+	})
+
+	it('Case #10', () => {
+		const econItem = parseEconItem({
+			"appid": "440",
+			"classid": "2871127490",
+			"instanceid": "3522129930",
+			"icon_url": "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIUwsUWBjqvy1Nt8_pAfazBOESnN97vZQFgGVtyQUrbeW2ZjM_IFHGA_JYC_BuoQ7qDyJlusVnUdO1orpQfRKv6tW-OVvZVQ",
+			"icon_url_large": "fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIUwsUWBjqvy1Nt8_pAfazBOESnN97vZQFgGVtyQUrbeW2ZjM_IFHGA_JYC_BuoQ7qDyJlusVnUdO1orpQfRKv6tW-OVvZVQ",
+			"icon_drag_url": "",
+			"name": "Strange Australium Blutsauger",
+			"market_hash_name": "Strange Australium Blutsauger",
+			"market_name": "Strange Australium Blutsauger",
+			"name_color": "CF6A32",
+			"background_color": "3C352E",
+			"type": "Strange Syringe Gun - Kills: 20",
+			"tradable": 1,
+			"marketable": 1,
+			"commodity": 0,
+			"market_tradable_restriction": "7",
+			"market_marketable_restriction": "0",
+			"descriptions": [
+			  {
+				"value": "(Cloaked Spies Killed: 0)",
+				"color": "756b5e"
+			  },
+			  {
+				"value": "''(Killstreaks Ended: 0)''",
+				"color": "756b5e"
+			  },
+			  {
+				"value": "(Scouts Killed: 0)",
+				"color": "756b5e"
+			  },
+			  {
+				"value": "On Hit: Gain up to +3 health",
+				"color": "7ea9d1"
+			  },
+			  {
+				"value": "-2 health drained per second on wearer",
+				"color": "d83636"
+			  }
+			],
+			"actions": [
+			  {
+				"name": "Item Wiki Page...",
+				"link": "http://wiki.teamfortress.com/scripts/itemredirect.php?id=36&lang=en_US"
+			  }
+			],
+			"tags": [
+			  {
+				"internal_name": "strange",
+				"name": "Strange",
+				"category": "Quality",
+				"color": "CF6A32",
+				"category_name": "Quality"
+			  },
+			  {
+				"internal_name": "primary",
+				"name": "Primary weapon",
+				"category": "Type",
+				"category_name": "Type"
+			  },
+			  {
+				"internal_name": "Medic",
+				"name": "Medic",
+				"category": "Class",
+				"category_name": "Class"
+			  }
+			],
+			"app_data": {
+			  "def_index": "36",
+			  "quality": "11"
+			}
+		  }, false, false);
+
+		assert.deepEqual(econItem, {
+			name: 'Blutsauger',
+			fullName: 'Strange Australium Blutsauger',
+			id: undefined,
+			img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIUwsUWBjqvy1Nt8_pAfazBOESnN97vZQFgGVtyQUrbeW2ZjM_IFHGA_JYC_BuoQ7qDyJlusVnUdO1orpQfRKv6tW-OVvZVQ/',
+			tradable: true,
+			craftable: true,
+			quality: 'Strange',
+			australium: true,
+			classes: [ 'Medic' ],
+			type: 'primary',
+			parts: [ 'Cloaked Spies Killed', 'Scouts Killed' ],
+			spells: [],
+			marketable: true,
+			commodity: false
+		  });
+	});
 });
 
 describe('Econ Item in Numbers', () => {

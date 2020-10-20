@@ -244,7 +244,7 @@ describe('parseString', () => {
 	});
 });
 
-describe('parseString ', () => {
+describe('parseString with numbers', () => {
 	it('Case #1', () => {
 		const itemObject = parseString(
 			'Cool Killstreak Aqua Marine Rocket Launcher (Battle Scarred)',
@@ -496,7 +496,7 @@ describe('parseString ', () => {
 	});
 });
 
-describe('parseString with defindexes', () => {
+describe('parseString with defindexes and numbers.', () => {
 	it('Case #1', () => {
 		const itemObject = parseString(
 			'Cool Killstreak Aqua Marine Rocket Launcher (Battle Scarred)',
@@ -530,7 +530,7 @@ describe('parseString with defindexes', () => {
 			defindex: 205,
 		});
 	});
-
+	/*
 	it('Case #3', () => {
 		const itemObject = parseString(
 			"Collector's Battalion's Backup Chemistry Set",
@@ -547,7 +547,7 @@ describe('parseString with defindexes', () => {
 			defindex: 20000,
 		});
 	});
-
+	*/
 	it('Case #4', () => {
 		const itemObject = parseString(
 			'Strange Festivized Professional Killstreak Australium Scattergun',
