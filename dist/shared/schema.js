@@ -79,7 +79,6 @@ class Schema {
         // Exceptions
         if (DEFINDEXES[search])
             return DEFINDEXES[search];
-        // TODO: Handle promo items.
         let upgradeableDfx = null;
         for (let i = 0; i < this.items.length; i++) {
             const item = this.items[i];
@@ -123,7 +122,6 @@ class Schema {
     getTextureName(texture) {
         if (!isNumber_1.default(texture))
             return texture;
-        // fixWarPaintDefindex
         return this.getTexture(texture);
     }
     getQualityName(quality) {
