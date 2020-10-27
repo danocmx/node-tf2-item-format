@@ -83,7 +83,7 @@ export default class ItemName {
 			}
 		}
 
-		if (isStrangeTexture(quality as string, texture as string))
+		if (!name.includes('Strange') && isStrangeTexture(quality, texture))
 			name = `Strange ${name}`;
 		if (!tradable) name = `Non-Tradable ${name}`;
 		if (!craftable) name = `Non-Craftable ${name}`;

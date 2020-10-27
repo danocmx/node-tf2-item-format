@@ -43,7 +43,7 @@ class ItemName {
                 name = name.replace(`${quality} `, `${quality} ${effect} `);
             }
         }
-        if (isStrangeTexture_1.default(quality, texture))
+        if (!name.includes('Strange') && isStrangeTexture_1.default(quality, texture))
             name = `Strange ${name}`;
         if (!tradable)
             name = `Non-Tradable ${name}`;

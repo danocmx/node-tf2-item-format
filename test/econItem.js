@@ -1086,6 +1086,256 @@ describe('parseEconItem', () => {
 			commodity: false
 		  });
 	});
+
+	it('Case #11', () => {
+		const econItem = parseEconItem({
+			"appid":"440",
+			"classid":"2625497429",
+			"instanceid":"4048537137",
+			"icon_url":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEMaQkUTxr2vTx8mMnvA-aHAfQ_ktk664MayTdinxVwPffgYghuZgHPUPUOCacF4w3tG3J86sI7V47mp-JTLQu-vNTGYbh_MNgYHMeFXPHVY139uEk9g_VbK52LqTSvg3pcnpTOhA",
+			"icon_url_large":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEMaQkUTxr2vTx8mMnvA-aHAfQ_ktk664MayTdinxVwPffgYghuZgHPUPUOCacF4w3tG3J86sI7V47mp-JTLQu-vNTGYbh_MNgYHMeFXPHVY139uEk9g_VbK52LqTSvg3pcnpTOhA",
+			"icon_drag_url":"",
+			"name":"Shell Shocker Rocket Launcher",
+			"market_hash_name":"Strange Specialized Killstreak Shell Shocker Rocket Launcher (Battle Scarred)",
+			"market_name":"Strange Specialized Killstreak Shell Shocker Rocket Launcher (Battle Scarred)",
+			"name_color":"CF6A32",
+			"background_color":"3C352E",
+			"type":"",
+			"tradable":1,
+			"marketable":1,
+			"commodity":0,
+			"market_tradable_restriction":"7",
+			"market_marketable_restriction":"0",
+			"descriptions":[
+			   {
+				  "value":"Assassin Grade Rocket Launcher (Battle Scarred)",
+				  "color":"d32ce6"
+			   },
+			   {
+				  "value":"Strange Stat Clock Attached",
+				  "color":"CF6A32"
+			   },
+			   {
+				  "value":"     Kills: 5121",
+				  "color":"756b5e"
+			   },
+			   {
+				  "value":"     Pyros Killed: 712",
+				  "color":"756b5e"
+			   },
+			   {
+				  "value":"Team Colored Decorated Weapon"
+			   },
+			   {
+				  "value":"Halloween: Pumpkin Bombs (spell only active during event)",
+				  "color":"7ea9d1"
+			   },
+			   {
+				  "value":"Sheen: Mean Green",
+				  "color":"7ea9d1"
+			   },
+			   {
+				  "value":"Killstreaks Active",
+				  "color":"7ea9d1"
+			   },
+			   {
+				  "value":" "
+			   },
+			   {
+				  "value":" "
+			   },
+			   {
+				  "value":"Powerhouse Collection"
+			   },
+			   {
+				  "value":"    Liquid Asset Stickybomb Launcher",
+				  "color":"eb4b4b",
+				  "app_data":{
+					 "def_index":"15045"
+				  }
+			   },
+			   {
+				  "value":"    Thunderbolt Sniper Rifle",
+				  "color":"eb4b4b",
+				  "app_data":{
+					 "def_index":"15059"
+				  }
+			   },
+			   {
+				  "value":"    Current Event Scattergun",
+				  "color":"d32ce6",
+				  "app_data":{
+					 "def_index":"15053"
+				  }
+			   },
+			   {
+				  "value":"    Pink Elephant Stickybomb Launcher",
+				  "color":"d32ce6",
+				  "app_data":{
+					 "def_index":"15048"
+				  }
+			   },
+			   {
+				  "value":"✔ Shell Shocker Rocket Launcher",
+				  "color":"d32ce6",
+				  "app_data":{
+					 "def_index":"15052"
+				  }
+			   },
+			   {
+				  "value":"    Flash Fryer Flame Thrower",
+				  "color":"8847ff",
+				  "app_data":{
+					 "def_index":"15049"
+				  }
+			   },
+			   {
+				  "value":"    Spark of Life Medi Gun",
+				  "color":"8847ff",
+				  "app_data":{
+					 "def_index":"15050"
+				  }
+			   },
+			   {
+				  "value":"    Dead Reckoner Revolver",
+				  "color":"8847ff",
+				  "app_data":{
+					 "def_index":"15051"
+				  }
+			   },
+			   {
+				  "value":"    Black Dahlia Pistol",
+				  "color":"8847ff",
+				  "app_data":{
+					 "def_index":"15046"
+				  }
+			   },
+			   {
+				  "value":"    Sandstone Special Pistol",
+				  "color":"8847ff",
+				  "app_data":{
+					 "def_index":"15056"
+				  }
+			   },
+			   {
+				  "value":"    Brick House Minigun",
+				  "color":"4b69ff",
+				  "app_data":{
+					 "def_index":"15055"
+				  }
+			   },
+			   {
+				  "value":"    Aqua Marine Rocket Launcher",
+				  "color":"4b69ff",
+				  "app_data":{
+					 "def_index":"15057"
+				  }
+			   },
+			   {
+				  "value":"    Low Profile SMG",
+				  "color":"4b69ff",
+				  "app_data":{
+					 "def_index":"15058"
+				  }
+			   },
+			   {
+				  "value":"    Turbine Torcher Flame Thrower",
+				  "color":"4b69ff",
+				  "app_data":{
+					 "def_index":"15054"
+				  }
+			   },
+			   {
+				  "value":"    Lightning Rod Shotgun",
+				  "color":"4b69ff",
+				  "app_data":{
+					 "def_index":"15047"
+				  }
+			   }
+			],
+			"actions":[
+			   {
+				  "name":"Item Wiki Page...",
+				  "link":"http:\/\/wiki.teamfortress.com\/scripts\/itemredirect.php?id=15052&lang=en_US"
+			   },
+			   {
+				  "name":"Inspect in Game...",
+				  "link":"steam:\/\/rungame\/440\/76561202255233023\/+tf_econ_item_preview%20S%owner_steamid%A%assetid%D7998211058114246468"
+			   }
+			],
+			"market_actions":[
+			   {
+				  "name":"Inspect in Game...",
+				  "link":"steam:\/\/rungame\/440\/76561202255233023\/+tf_econ_item_preview%20M%listingid%A%assetid%D7998211058114246468"
+			   }
+			],
+			"tags":[
+			   {
+				  "internal_name":"strange",
+				  "name":"Strange",
+				  "category":"Quality",
+				  "color":"CF6A32",
+				  "category_name":"Quality"
+			   },
+			   {
+				  "internal_name":"primary",
+				  "name":"Primary weapon",
+				  "category":"Type",
+				  "category_name":"Type"
+			   },
+			   {
+				  "internal_name":"Soldier",
+				  "name":"Soldier",
+				  "category":"Class",
+				  "category_name":"Class"
+			   },
+			   {
+				  "internal_name":"Rarity_Legendary",
+				  "name":"Assassin",
+				  "category":"Rarity",
+				  "color":"d32ce6",
+				  "category_name":"Grade"
+			   },
+			   {
+				  "internal_name":"Powerhouse_collection",
+				  "name":"Powerhouse Collection",
+				  "category":"Collection",
+				  "category_name":"Collection"
+			   },
+			   {
+				  "internal_name":"TFUI_InvTooltip_BattleScared",
+				  "name":"Battle Scarred",
+				  "category":"Exterior",
+				  "category_name":"Exterior"
+			   }
+			],
+			"app_data":{
+			   "def_index":"15052",
+			   "quality":"11"
+			}
+		}, false, false);
+
+		assert.deepEqual(econItem, {
+			name: 'Rocket Launcher',
+			fullName: 'Strange Specialized Killstreak Shell Shocker Rocket Launcher (Battle Scarred)',
+			id: undefined,
+			img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEMaQkUTxr2vTx8mMnvA-aHAfQ_ktk664MayTdinxVwPffgYghuZgHPUPUOCacF4w3tG3J86sI7V47mp-JTLQu-vNTGYbh_MNgYHMeFXPHVY139uEk9g_VbK52LqTSvg3pcnpTOhA/',
+			tradable: true,
+			craftable: true,
+			quality: "Strange",
+			texture: "Shell Shocker",
+			wear: "Battle Scarred",
+			killstreak: "Specialized Killstreak",
+			classes: [ 'Soldier' ],
+			type: 'primary',
+			collection: 'Powerhouse Collection',
+			grade: 'Assassin',
+			parts: [ 'Kills', 'Pyros Killed' ],
+			spells: [ 'Pumpkin Bombs' ],
+			marketable: true,
+			commodity: false
+		});
+	})
 });
 
 describe('Econ Item in Numbers', () => {
@@ -1233,7 +1483,7 @@ describe('Econ Item in Numbers', () => {
 					},
 				],
 			},
-			false, false
+			true, false
 		);
 
 		assert.deepEqual(econItem, {
@@ -1245,12 +1495,12 @@ describe('Econ Item in Numbers', () => {
 				'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEMaQkUTxr2vTx8mMnvA-aHAfQ_ktk664MayTdinxVwPffsDz5zdwmTVPAOCcot8Qn-Wxg07dR3XcGzub5ffwvmttSXYrAlY9xFTMaCUvbXNQz_6EkwiPRYKJaIon-9jHjrOWoUG0280KDki-w/',
 			tradable: true,
 			craftable: true,
-			quality: 'Unusual',
-			texture: 'Forest Fire',
-			wear: 'Minimal Wear',
-			killstreak: 'Specialized Killstreak',
+			quality: 5,
+			texture: 9,
+			wear: 2,
+			killstreak: 2,
 			festivized: true,
-			effect: 'Cool',
+			effect: 703,
 			classes: ['Pyro'],
 			type: 'primary',
 			collection: 'Concealed Killer Collection',
@@ -1335,7 +1585,7 @@ describe('Econ Item in Numbers', () => {
 					},
 				],
 			},
-			false, false
+			true, false
 		);
 
 		assert.deepEqual(
@@ -1348,8 +1598,8 @@ describe('Econ Item in Numbers', () => {
 					'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEJeQQaWA_dtDlRj82oVPeJUbRTyohkssUGjDBox1IsNrKxaWc1JFWQWPYHDKFsow2_WyVlv4lzWtBtJvRLsg/',
 				tradable: true,
 				craftable: true,
-				quality: 'Unusual',
-				effect: "Nuts n' Bolts",
+				quality: 5,
+				effect: 31,
 				classes: ['Soldier'],
 				type: 'misc',
 				parts: [],
@@ -1472,7 +1722,7 @@ describe('Econ Item in Numbers', () => {
 					},
 				],
 			},
-			false, false
+			true, false
 		);
 
 		assert.deepEqual(econItem, {
@@ -1483,8 +1733,8 @@ describe('Econ Item in Numbers', () => {
 				'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEDewlDDUq7hytIncTqD-CJGu8_l9sn4pUbi2Ftw1ApbbXtNmM_cVTEV_lbWaw7pQu0W3Rr6sVlAdPvoOhScFnt4pyGbefmPm6lTg/',
 			tradable: true,
 			craftable: true,
-			quality: 'Unusual',
-			effect: 'Twisted Radiance',
+			quality: 5,
+			effect: 130,
 			classes: ['Pyro'],
 			type: 'misc',
 			collection: 'Spooky Spoils Collection',
@@ -1565,7 +1815,7 @@ describe('Econ Item in Numbers', () => {
 					},
 				],
 			},
-			false, false
+			true, false
 		);
 
 		assert.deepEqual(econItem, {
@@ -1576,8 +1826,8 @@ describe('Econ Item in Numbers', () => {
 				'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEbfgYfXh7wqwdTmsHiCM2ACfIHnpRh5MkG3G8zyVMpYebiYm8wdFGTBPILC_BvrQu9X3RqupQ6AYPhp-wHZ0yx43BgcxIX/',
 			tradable: true,
 			craftable: true,
-			quality: 'Unusual',
-			effect: 'Smoking',
+			quality: 5,
+			effect: 35,
 			classes: ['Pyro'],
 			type: 'misc',
 			parts: [],
@@ -1738,7 +1988,7 @@ describe('Econ Item in Numbers', () => {
 					},
 				],
 			},
-			false, false
+			true, false
 		);
 
 		assert.deepEqual(econItem, {
@@ -1750,11 +2000,11 @@ describe('Econ Item in Numbers', () => {
 				'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEMaQkUTxr2vTx8mMnvA-aHAfQ_ktk664MayTdinxVwPffjDz5zdwmTVPAOCsot8Qn-Whg07dR3XcGzuehWe1q65oHFOuQpN4kZGpOECffQZl39vho_1KdefJbbonvq3SvubmwUG028UzYUYzA/',
 			tradable: true,
 			craftable: true,
-			quality: 'Decorated Weapon',
-			texture: 'Woodland Warrior',
-			wear: 'Field-Tested',
+			quality: 15,
+			texture: 6,
+			wear: 3,
 			festivized: true,
-			killstreak: 'Specialized Killstreak',
+			killstreak: 2,
 			classes: ['Soldier'],
 			type: 'primary',
 			collection: 'Concealed Killer Collection',
@@ -1765,6 +2015,256 @@ describe('Econ Item in Numbers', () => {
 			commodity: false,
 		});
 	});
+
+	it('Case #6', () => {
+		const econItem = parseEconItem({
+			"appid":"440",
+			"classid":"2625497429",
+			"instanceid":"4048537137",
+			"icon_url":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEMaQkUTxr2vTx8mMnvA-aHAfQ_ktk664MayTdinxVwPffgYghuZgHPUPUOCacF4w3tG3J86sI7V47mp-JTLQu-vNTGYbh_MNgYHMeFXPHVY139uEk9g_VbK52LqTSvg3pcnpTOhA",
+			"icon_url_large":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEMaQkUTxr2vTx8mMnvA-aHAfQ_ktk664MayTdinxVwPffgYghuZgHPUPUOCacF4w3tG3J86sI7V47mp-JTLQu-vNTGYbh_MNgYHMeFXPHVY139uEk9g_VbK52LqTSvg3pcnpTOhA",
+			"icon_drag_url":"",
+			"name":"Shell Shocker Rocket Launcher",
+			"market_hash_name":"Strange Specialized Killstreak Shell Shocker Rocket Launcher (Battle Scarred)",
+			"market_name":"Strange Specialized Killstreak Shell Shocker Rocket Launcher (Battle Scarred)",
+			"name_color":"CF6A32",
+			"background_color":"3C352E",
+			"type":"",
+			"tradable":1,
+			"marketable":1,
+			"commodity":0,
+			"market_tradable_restriction":"7",
+			"market_marketable_restriction":"0",
+			"descriptions":[
+			   {
+				  "value":"Assassin Grade Rocket Launcher (Battle Scarred)",
+				  "color":"d32ce6"
+			   },
+			   {
+				  "value":"Strange Stat Clock Attached",
+				  "color":"CF6A32"
+			   },
+			   {
+				  "value":"     Kills: 5121",
+				  "color":"756b5e"
+			   },
+			   {
+				  "value":"     Pyros Killed: 712",
+				  "color":"756b5e"
+			   },
+			   {
+				  "value":"Team Colored Decorated Weapon"
+			   },
+			   {
+				  "value":"Halloween: Pumpkin Bombs (spell only active during event)",
+				  "color":"7ea9d1"
+			   },
+			   {
+				  "value":"Sheen: Mean Green",
+				  "color":"7ea9d1"
+			   },
+			   {
+				  "value":"Killstreaks Active",
+				  "color":"7ea9d1"
+			   },
+			   {
+				  "value":" "
+			   },
+			   {
+				  "value":" "
+			   },
+			   {
+				  "value":"Powerhouse Collection"
+			   },
+			   {
+				  "value":"    Liquid Asset Stickybomb Launcher",
+				  "color":"eb4b4b",
+				  "app_data":{
+					 "def_index":"15045"
+				  }
+			   },
+			   {
+				  "value":"    Thunderbolt Sniper Rifle",
+				  "color":"eb4b4b",
+				  "app_data":{
+					 "def_index":"15059"
+				  }
+			   },
+			   {
+				  "value":"    Current Event Scattergun",
+				  "color":"d32ce6",
+				  "app_data":{
+					 "def_index":"15053"
+				  }
+			   },
+			   {
+				  "value":"    Pink Elephant Stickybomb Launcher",
+				  "color":"d32ce6",
+				  "app_data":{
+					 "def_index":"15048"
+				  }
+			   },
+			   {
+				  "value":"✔ Shell Shocker Rocket Launcher",
+				  "color":"d32ce6",
+				  "app_data":{
+					 "def_index":"15052"
+				  }
+			   },
+			   {
+				  "value":"    Flash Fryer Flame Thrower",
+				  "color":"8847ff",
+				  "app_data":{
+					 "def_index":"15049"
+				  }
+			   },
+			   {
+				  "value":"    Spark of Life Medi Gun",
+				  "color":"8847ff",
+				  "app_data":{
+					 "def_index":"15050"
+				  }
+			   },
+			   {
+				  "value":"    Dead Reckoner Revolver",
+				  "color":"8847ff",
+				  "app_data":{
+					 "def_index":"15051"
+				  }
+			   },
+			   {
+				  "value":"    Black Dahlia Pistol",
+				  "color":"8847ff",
+				  "app_data":{
+					 "def_index":"15046"
+				  }
+			   },
+			   {
+				  "value":"    Sandstone Special Pistol",
+				  "color":"8847ff",
+				  "app_data":{
+					 "def_index":"15056"
+				  }
+			   },
+			   {
+				  "value":"    Brick House Minigun",
+				  "color":"4b69ff",
+				  "app_data":{
+					 "def_index":"15055"
+				  }
+			   },
+			   {
+				  "value":"    Aqua Marine Rocket Launcher",
+				  "color":"4b69ff",
+				  "app_data":{
+					 "def_index":"15057"
+				  }
+			   },
+			   {
+				  "value":"    Low Profile SMG",
+				  "color":"4b69ff",
+				  "app_data":{
+					 "def_index":"15058"
+				  }
+			   },
+			   {
+				  "value":"    Turbine Torcher Flame Thrower",
+				  "color":"4b69ff",
+				  "app_data":{
+					 "def_index":"15054"
+				  }
+			   },
+			   {
+				  "value":"    Lightning Rod Shotgun",
+				  "color":"4b69ff",
+				  "app_data":{
+					 "def_index":"15047"
+				  }
+			   }
+			],
+			"actions":[
+			   {
+				  "name":"Item Wiki Page...",
+				  "link":"http:\/\/wiki.teamfortress.com\/scripts\/itemredirect.php?id=15052&lang=en_US"
+			   },
+			   {
+				  "name":"Inspect in Game...",
+				  "link":"steam:\/\/rungame\/440\/76561202255233023\/+tf_econ_item_preview%20S%owner_steamid%A%assetid%D7998211058114246468"
+			   }
+			],
+			"market_actions":[
+			   {
+				  "name":"Inspect in Game...",
+				  "link":"steam:\/\/rungame\/440\/76561202255233023\/+tf_econ_item_preview%20M%listingid%A%assetid%D7998211058114246468"
+			   }
+			],
+			"tags":[
+			   {
+				  "internal_name":"strange",
+				  "name":"Strange",
+				  "category":"Quality",
+				  "color":"CF6A32",
+				  "category_name":"Quality"
+			   },
+			   {
+				  "internal_name":"primary",
+				  "name":"Primary weapon",
+				  "category":"Type",
+				  "category_name":"Type"
+			   },
+			   {
+				  "internal_name":"Soldier",
+				  "name":"Soldier",
+				  "category":"Class",
+				  "category_name":"Class"
+			   },
+			   {
+				  "internal_name":"Rarity_Legendary",
+				  "name":"Assassin",
+				  "category":"Rarity",
+				  "color":"d32ce6",
+				  "category_name":"Grade"
+			   },
+			   {
+				  "internal_name":"Powerhouse_collection",
+				  "name":"Powerhouse Collection",
+				  "category":"Collection",
+				  "category_name":"Collection"
+			   },
+			   {
+				  "internal_name":"TFUI_InvTooltip_BattleScared",
+				  "name":"Battle Scarred",
+				  "category":"Exterior",
+				  "category_name":"Exterior"
+			   }
+			],
+			"app_data":{
+			   "def_index":"15052",
+			   "quality":"11"
+			}
+		}, true, false);
+
+		assert.deepEqual(econItem, {
+			name: 'Rocket Launcher',
+			fullName: 'Strange Specialized Killstreak Shell Shocker Rocket Launcher (Battle Scarred)',
+			id: undefined,
+			img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEMaQkUTxr2vTx8mMnvA-aHAfQ_ktk664MayTdinxVwPffgYghuZgHPUPUOCacF4w3tG3J86sI7V47mp-JTLQu-vNTGYbh_MNgYHMeFXPHVY139uEk9g_VbK52LqTSvg3pcnpTOhA/',
+			tradable: true,
+			craftable: true,
+			quality: 11,
+			texture: 52,
+			wear: 5,
+			killstreak: 2,
+			classes: [ 'Soldier' ],
+			type: 'primary',
+			collection: 'Powerhouse Collection',
+			grade: 'Assassin',
+			parts: [ 'Kills', 'Pyros Killed' ],
+			spells: [ 'Pumpkin Bombs' ],
+			marketable: true,
+			commodity: false
+		});
+	})
 });
 
 describe('Econ item with defindexes', () => {
@@ -2593,4 +3093,255 @@ describe('Econ item with defindexes', () => {
 			commodity: false
 		  });
 	});
+
+	it('Case #11', () => {
+		const econItem = parseEconItem({
+			"appid":"440",
+			"classid":"2625497429",
+			"instanceid":"4048537137",
+			"icon_url":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEMaQkUTxr2vTx8mMnvA-aHAfQ_ktk664MayTdinxVwPffgYghuZgHPUPUOCacF4w3tG3J86sI7V47mp-JTLQu-vNTGYbh_MNgYHMeFXPHVY139uEk9g_VbK52LqTSvg3pcnpTOhA",
+			"icon_url_large":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEMaQkUTxr2vTx8mMnvA-aHAfQ_ktk664MayTdinxVwPffgYghuZgHPUPUOCacF4w3tG3J86sI7V47mp-JTLQu-vNTGYbh_MNgYHMeFXPHVY139uEk9g_VbK52LqTSvg3pcnpTOhA",
+			"icon_drag_url":"",
+			"name":"Shell Shocker Rocket Launcher",
+			"market_hash_name":"Strange Specialized Killstreak Shell Shocker Rocket Launcher (Battle Scarred)",
+			"market_name":"Strange Specialized Killstreak Shell Shocker Rocket Launcher (Battle Scarred)",
+			"name_color":"CF6A32",
+			"background_color":"3C352E",
+			"type":"",
+			"tradable":1,
+			"marketable":1,
+			"commodity":0,
+			"market_tradable_restriction":"7",
+			"market_marketable_restriction":"0",
+			"descriptions":[
+			   {
+				  "value":"Assassin Grade Rocket Launcher (Battle Scarred)",
+				  "color":"d32ce6"
+			   },
+			   {
+				  "value":"Strange Stat Clock Attached",
+				  "color":"CF6A32"
+			   },
+			   {
+				  "value":"     Kills: 5121",
+				  "color":"756b5e"
+			   },
+			   {
+				  "value":"     Pyros Killed: 712",
+				  "color":"756b5e"
+			   },
+			   {
+				  "value":"Team Colored Decorated Weapon"
+			   },
+			   {
+				  "value":"Halloween: Pumpkin Bombs (spell only active during event)",
+				  "color":"7ea9d1"
+			   },
+			   {
+				  "value":"Sheen: Mean Green",
+				  "color":"7ea9d1"
+			   },
+			   {
+				  "value":"Killstreaks Active",
+				  "color":"7ea9d1"
+			   },
+			   {
+				  "value":" "
+			   },
+			   {
+				  "value":" "
+			   },
+			   {
+				  "value":"Powerhouse Collection"
+			   },
+			   {
+				  "value":"    Liquid Asset Stickybomb Launcher",
+				  "color":"eb4b4b",
+				  "app_data":{
+					 "def_index":"15045"
+				  }
+			   },
+			   {
+				  "value":"    Thunderbolt Sniper Rifle",
+				  "color":"eb4b4b",
+				  "app_data":{
+					 "def_index":"15059"
+				  }
+			   },
+			   {
+				  "value":"    Current Event Scattergun",
+				  "color":"d32ce6",
+				  "app_data":{
+					 "def_index":"15053"
+				  }
+			   },
+			   {
+				  "value":"    Pink Elephant Stickybomb Launcher",
+				  "color":"d32ce6",
+				  "app_data":{
+					 "def_index":"15048"
+				  }
+			   },
+			   {
+				  "value":"✔ Shell Shocker Rocket Launcher",
+				  "color":"d32ce6",
+				  "app_data":{
+					 "def_index":"15052"
+				  }
+			   },
+			   {
+				  "value":"    Flash Fryer Flame Thrower",
+				  "color":"8847ff",
+				  "app_data":{
+					 "def_index":"15049"
+				  }
+			   },
+			   {
+				  "value":"    Spark of Life Medi Gun",
+				  "color":"8847ff",
+				  "app_data":{
+					 "def_index":"15050"
+				  }
+			   },
+			   {
+				  "value":"    Dead Reckoner Revolver",
+				  "color":"8847ff",
+				  "app_data":{
+					 "def_index":"15051"
+				  }
+			   },
+			   {
+				  "value":"    Black Dahlia Pistol",
+				  "color":"8847ff",
+				  "app_data":{
+					 "def_index":"15046"
+				  }
+			   },
+			   {
+				  "value":"    Sandstone Special Pistol",
+				  "color":"8847ff",
+				  "app_data":{
+					 "def_index":"15056"
+				  }
+			   },
+			   {
+				  "value":"    Brick House Minigun",
+				  "color":"4b69ff",
+				  "app_data":{
+					 "def_index":"15055"
+				  }
+			   },
+			   {
+				  "value":"    Aqua Marine Rocket Launcher",
+				  "color":"4b69ff",
+				  "app_data":{
+					 "def_index":"15057"
+				  }
+			   },
+			   {
+				  "value":"    Low Profile SMG",
+				  "color":"4b69ff",
+				  "app_data":{
+					 "def_index":"15058"
+				  }
+			   },
+			   {
+				  "value":"    Turbine Torcher Flame Thrower",
+				  "color":"4b69ff",
+				  "app_data":{
+					 "def_index":"15054"
+				  }
+			   },
+			   {
+				  "value":"    Lightning Rod Shotgun",
+				  "color":"4b69ff",
+				  "app_data":{
+					 "def_index":"15047"
+				  }
+			   }
+			],
+			"actions":[
+			   {
+				  "name":"Item Wiki Page...",
+				  "link":"http:\/\/wiki.teamfortress.com\/scripts\/itemredirect.php?id=15052&lang=en_US"
+			   },
+			   {
+				  "name":"Inspect in Game...",
+				  "link":"steam:\/\/rungame\/440\/76561202255233023\/+tf_econ_item_preview%20S%owner_steamid%A%assetid%D7998211058114246468"
+			   }
+			],
+			"market_actions":[
+			   {
+				  "name":"Inspect in Game...",
+				  "link":"steam:\/\/rungame\/440\/76561202255233023\/+tf_econ_item_preview%20M%listingid%A%assetid%D7998211058114246468"
+			   }
+			],
+			"tags":[
+			   {
+				  "internal_name":"strange",
+				  "name":"Strange",
+				  "category":"Quality",
+				  "color":"CF6A32",
+				  "category_name":"Quality"
+			   },
+			   {
+				  "internal_name":"primary",
+				  "name":"Primary weapon",
+				  "category":"Type",
+				  "category_name":"Type"
+			   },
+			   {
+				  "internal_name":"Soldier",
+				  "name":"Soldier",
+				  "category":"Class",
+				  "category_name":"Class"
+			   },
+			   {
+				  "internal_name":"Rarity_Legendary",
+				  "name":"Assassin",
+				  "category":"Rarity",
+				  "color":"d32ce6",
+				  "category_name":"Grade"
+			   },
+			   {
+				  "internal_name":"Powerhouse_collection",
+				  "name":"Powerhouse Collection",
+				  "category":"Collection",
+				  "category_name":"Collection"
+			   },
+			   {
+				  "internal_name":"TFUI_InvTooltip_BattleScared",
+				  "name":"Battle Scarred",
+				  "category":"Exterior",
+				  "category_name":"Exterior"
+			   }
+			],
+			"app_data":{
+			   "def_index":"15052",
+			   "quality":"11"
+			}
+		}, false, true);
+
+		assert.deepEqual(econItem, {
+			name: 'Rocket Launcher',
+			fullName: 'Strange Specialized Killstreak Shell Shocker Rocket Launcher (Battle Scarred)',
+			id: undefined,
+			img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEMaQkUTxr2vTx8mMnvA-aHAfQ_ktk664MayTdinxVwPffgYghuZgHPUPUOCacF4w3tG3J86sI7V47mp-JTLQu-vNTGYbh_MNgYHMeFXPHVY139uEk9g_VbK52LqTSvg3pcnpTOhA/',
+			tradable: true,
+			craftable: true,
+			quality: "Strange",
+			texture: "Shell Shocker",
+			wear: "Battle Scarred",
+			killstreak: "Specialized Killstreak",
+			classes: [ 'Soldier' ],
+			type: 'primary',
+			collection: 'Powerhouse Collection',
+			grade: 'Assassin',
+			parts: [ 'Kills', 'Pyros Killed' ],
+			spells: [ 'Pumpkin Bombs' ],
+			marketable: true,
+			commodity: false,
+			"defindex": 205,
+		});
+	})
 });
