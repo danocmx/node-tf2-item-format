@@ -11,6 +11,8 @@ const DEFINDEXES = {
     'Specialized Killstreak Kit Fabricator': 20002,
     'Professional Killstreak Kit Fabricator': 20003,
     'Chemistry Set': 20005,
+    'Mann Co. Supply Crate Key': 5021,
+    'Lugermorph': 160
 };
 /* TODO: Set boundaries between these.
     "20000":"Chemistry Set",
@@ -74,8 +76,10 @@ class Schema {
             this.loadDefindexes();
         if (typeof search === 'number')
             return search;
+        // Exceptions
         if (DEFINDEXES[search])
             return DEFINDEXES[search];
+        // TODO: Handle promo items.
         let upgradeableDfx = null;
         for (let i = 0; i < this.items.length; i++) {
             const item = this.items[i];
@@ -119,6 +123,7 @@ class Schema {
     getTextureName(texture) {
         if (!isNumber_1.default(texture))
             return texture;
+        // fixWarPaintDefindex
         return this.getTexture(texture);
     }
     getQualityName(quality) {

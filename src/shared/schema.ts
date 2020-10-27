@@ -8,6 +8,8 @@ const DEFINDEXES: { [name: string]: number } = {
 	'Specialized Killstreak Kit Fabricator': 20002,
 	'Professional Killstreak Kit Fabricator': 20003,
 	'Chemistry Set': 20005,
+	'Mann Co. Supply Crate Key': 5021,
+	'Lugermorph': 160
 }
 
 /* TODO: Set boundaries between these.
@@ -91,6 +93,8 @@ class Schema {
 	getDefindex(search: number|string): number|null {
 		if (!this.items) this.loadDefindexes();
 		if (typeof search === 'number') return search;
+		
+		// Exceptions
 		if (DEFINDEXES[search]) return DEFINDEXES[search];
 
 		let upgradeableDfx: number|null = null;
