@@ -242,6 +242,88 @@ describe('parseString', () => {
 			quality: 'Strange',
 		});
 	});
+
+	it('Case #20', () => {
+		const itemObject = parseString('Strange Vintage Tyrolean');
+
+		assert.deepEqual(itemObject, {
+			name: 'Vintage Tyrolean',
+			quality: 'Strange',
+			craftable: true,
+		});
+	});
+
+	it('Case #21', () => {
+		const itemObject = parseString('Strange Vintage Vintage Tyrolean');
+
+		assert.deepEqual(itemObject, {
+			name: 'Vintage Tyrolean',
+			quality: 'Vintage',
+			elevated: true,
+			craftable: true,
+		});
+	});
+
+	it('Case #22', () => {
+		const itemObject = parseString('Vintage Tyrolean');
+
+		assert.deepEqual(itemObject, {
+			name: 'Vintage Tyrolean',
+			quality: 'Unique',
+			craftable: true,
+		});
+	});
+
+	it('Case #23', () => {
+		const itemObject = parseString('Vintage Vintage Tyrolean');
+
+		assert.deepEqual(itemObject, {
+			name: 'Vintage Tyrolean',
+			quality: 'Vintage',
+			craftable: true,
+		});
+	});
+
+	it('Case #24', () => {
+		const itemObject = parseString('Strange Haunted Hat');
+
+		assert.deepEqual(itemObject, {
+			name: 'Haunted Hat',
+			quality: 'Strange',
+			craftable: true,
+		});
+	});
+
+	it('Case #25', () => {
+		const itemObject = parseString('Strange Haunted Haunted Hat');
+
+		assert.deepEqual(itemObject, {
+			name: 'Haunted Hat',
+			quality: 'Haunted',
+			elevated: true,
+			craftable: true,
+		});
+	});
+
+	it('Case #26', () => {
+		const itemObject = parseString('Haunted Hat');
+
+		assert.deepEqual(itemObject, {
+			name: 'Haunted Hat',
+			quality: 'Unique',
+			craftable: true,
+		});
+	});
+
+	it('Case #27', () => {
+		const itemObject = parseString('Haunted Haunted Hat');
+
+		assert.deepEqual(itemObject, {
+			name: 'Haunted Hat',
+			quality: 'Haunted',
+			craftable: true,
+		});
+	});
 });
 
 describe('parseString with numbers', () => {
@@ -492,6 +574,88 @@ describe('parseString with numbers', () => {
 			name: 'A Head Full of Hot Air',
 			craftable: true,
 			quality: 11,
+		});
+	});
+
+	it('Case #20', () => {
+		const itemObject = parseString('Strange Vintage Tyrolean', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Vintage Tyrolean',
+			quality: 11,
+			craftable: true,
+		});
+	});
+
+	it('Case #21', () => {
+		const itemObject = parseString('Strange Vintage Vintage Tyrolean', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Vintage Tyrolean',
+			quality: 3,
+			elevated: true,
+			craftable: true,
+		});
+	});
+
+	it('Case #22', () => {
+		const itemObject = parseString('Vintage Tyrolean', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Vintage Tyrolean',
+			quality: 6,
+			craftable: true,
+		});
+	});
+
+	it('Case #23', () => {
+		const itemObject = parseString('Vintage Vintage Tyrolean', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Vintage Tyrolean',
+			quality: 3,
+			craftable: true,
+		});
+	});
+
+	it('Case #24', () => {
+		const itemObject = parseString('Strange Haunted Hat', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Haunted Hat',
+			quality: 11,
+			craftable: true,
+		});
+	});
+
+	it('Case #25', () => {
+		const itemObject = parseString('Strange Haunted Haunted Hat', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Haunted Hat',
+			quality: 13,
+			elevated: true,
+			craftable: true,
+		});
+	});
+
+	it('Case #26', () => {
+		const itemObject = parseString('Haunted Hat', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Haunted Hat',
+			quality: 6,
+			craftable: true,
+		});
+	});
+
+	it('Case #27', () => {
+		const itemObject = parseString('Haunted Haunted Hat', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Haunted Hat',
+			quality: 13,
+			craftable: true,
 		});
 	});
 });
@@ -795,6 +959,96 @@ describe('parseString with defindexes and numbers.', () => {
 			craftable: true,
 			quality: 6,
 			defindex: 5633,
+		});
+	});
+
+	it('Case #23', () => {
+		const itemObject = parseString('Strange Vintage Tyrolean', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Vintage Tyrolean',
+			quality: 11,
+			craftable: true,
+			"defindex": 101
+		});
+	});
+
+	it('Case #24', () => {
+		const itemObject = parseString('Strange Vintage Vintage Tyrolean', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Vintage Tyrolean',
+			quality: 3,
+			elevated: true,
+			craftable: true,
+			"defindex": 101
+		});
+	});
+
+	it('Case #25', () => {
+		const itemObject = parseString('Vintage Tyrolean', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Vintage Tyrolean',
+			quality: 6,
+			craftable: true,
+			"defindex": 101
+		});
+	});
+
+	it('Case #26', () => {
+		const itemObject = parseString('Vintage Vintage Tyrolean', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Vintage Tyrolean',
+			quality: 3,
+			craftable: true,
+			"defindex": 101
+		});
+	});
+
+	it('Case #27', () => {
+		const itemObject = parseString('Strange Haunted Hat', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Haunted Hat',
+			quality: 11,
+			craftable: true,
+			"defindex": 30300,
+		});
+	});
+
+	it('Case #28', () => {
+		const itemObject = parseString('Strange Haunted Haunted Hat', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Haunted Hat',
+			quality: 13,
+			elevated: true,
+			craftable: true,
+			"defindex": 30300,
+		});
+	});
+
+	it('Case #29', () => {
+		const itemObject = parseString('Haunted Hat', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Haunted Hat',
+			quality: 6,
+			craftable: true,
+			"defindex": 30300,
+		});
+	});
+
+	it('Case #30', () => {
+		const itemObject = parseString('Haunted Haunted Hat', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Haunted Hat',
+			"defindex": 30300,
+			quality: 13,
+			craftable: true,
 		});
 	});
 });

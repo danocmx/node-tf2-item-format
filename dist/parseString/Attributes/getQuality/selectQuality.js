@@ -8,13 +8,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @param {Object} attributes
  * @return {Object}
  */
-function default_1({ isStrange, isVintage, otherQuality, attributes, }) {
+function default_1({ isStrange, isVintage, isHaunted, otherQuality, attributes, }) {
     let quality;
     let elevated = false;
     if (isVintage)
         quality = 'Vintage';
+    else if (isHaunted)
+        quality = 'Haunted';
     else if (otherQuality)
-        quality = otherQuality;
+        quality = chooseOtherQuality({ isVintage, isHaunted, otherQuality });
     else if (attributes.effect)
         quality = 'Unusual';
     if (isStrange) {
@@ -35,3 +37,10 @@ function default_1({ isStrange, isVintage, otherQuality, attributes, }) {
     };
 }
 exports.default = default_1;
+function chooseOtherQuality({ isVintage, isHaunted, otherQuality }) {
+    if (!isVintage && otherQuality === 'Vintange')
+        return 'Unique';
+    if (!isHaunted && otherQuality === 'Haunted')
+        return 'Unique';
+    return otherQuality;
+}

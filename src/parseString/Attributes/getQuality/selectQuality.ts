@@ -13,11 +13,13 @@ import { StringQuality } from '../../../types';
 export default function ({
 	isStrange,
 	isVintage,
+	isHaunted,
 	otherQuality,
 	attributes,
 }: {
 	isStrange: boolean;
 	isVintage: boolean;
+	isHaunted: boolean,
 	otherQuality: string;
 	attributes: Attributes;
 }): StringQuality {
@@ -25,7 +27,8 @@ export default function ({
 	let elevated = false;
 
 	if (isVintage) quality = 'Vintage';
-	else if (otherQuality) quality = otherQuality;
+	else if (isHaunted) quality = 'Haunted';
+	else if (otherQuality) quality = chooseOtherQuality({ isVintage, isHaunted, otherQuality });
 	else if (attributes.effect) quality = 'Unusual';
 
 	if (isStrange) {
@@ -42,4 +45,14 @@ export default function ({
 		value: quality,
 		elevated,
 	};
+}
+
+function chooseOtherQuality({ isVintage, isHaunted, otherQuality }: {
+	isVintage: boolean;
+	isHaunted: boolean,
+	otherQuality: string;
+}): string {
+	if (!isVintage && otherQuality === 'Vintange') return 'Unique';
+	if (!isHaunted && otherQuality === 'Haunted') return 'Unique';
+	return otherQuality;
 }

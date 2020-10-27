@@ -470,4 +470,14 @@ describe('stringify from defindexes and numbers.', () => {
 
 		assert.equal(itemString, 'Strange Bacon Grease');
 	});
+
+	it('Case #23', () => {
+		const itemString = stringify({
+			"defindex": 30300,
+			quality: 13,
+			craftable: true,
+		});
+
+		assert.equal(itemString, 'Haunted Haunted Hat');
+	})
 });

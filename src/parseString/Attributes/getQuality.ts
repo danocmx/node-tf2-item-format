@@ -1,5 +1,6 @@
 import isStrange from './getQuality/isStrange';
 import isVintage from './getQuality/isVintage';
+import isHaunted from './getQuality/isHaunted';
 import matchQuality from './getQuality/matchQuality';
 import selectQuality from './getQuality/selectQuality';
 
@@ -23,6 +24,7 @@ export default function (name: string, attributes: Attributes): StringQuality {
 	return selectQuality({
 		isStrange: isStrange(name), // For elevated
 		isVintage: isVintage(name), // Because of exceptions
+		isHaunted: isHaunted(name),
 		otherQuality: matchQuality(name), // Matches every other quality
 		attributes, // Current attributes
 	});

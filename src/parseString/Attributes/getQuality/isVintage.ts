@@ -1,5 +1,6 @@
 export default function (name: string): boolean {
-	return name.includes('Vintage ') && !isVintageException(name);
+	const vintageCount = name.match(/Vintage /g);
+	return !!vintageCount && (vintageCount.length === 2 || !isVintageException(name));
 };
 
 function isVintageException(name: string): boolean {

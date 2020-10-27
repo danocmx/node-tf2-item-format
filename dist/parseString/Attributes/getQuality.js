@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const isStrange_1 = __importDefault(require("./getQuality/isStrange"));
 const isVintage_1 = __importDefault(require("./getQuality/isVintage"));
+const isHaunted_1 = __importDefault(require("./getQuality/isHaunted"));
 const matchQuality_1 = __importDefault(require("./getQuality/matchQuality"));
 const selectQuality_1 = __importDefault(require("./getQuality/selectQuality"));
 /**
@@ -22,6 +23,7 @@ function default_1(name, attributes) {
     return selectQuality_1.default({
         isStrange: isStrange_1.default(name),
         isVintage: isVintage_1.default(name),
+        isHaunted: isHaunted_1.default(name),
         otherQuality: matchQuality_1.default(name),
         attributes,
     });

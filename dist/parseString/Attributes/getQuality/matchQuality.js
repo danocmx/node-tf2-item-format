@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 function default_1(name) {
     // Does not include strangee and vintage for exception reasons.
-    const match = name.match(/(Normal|Genuine|Unique|Unusual|Self-Made|Haunted|Collector's) /) || [];
+    const match = name.match(/(Normal|Genuine|Unique|Unusual|Self-Made|Collector's) /) || [];
     const [, quality] = match;
     return quality;
 }

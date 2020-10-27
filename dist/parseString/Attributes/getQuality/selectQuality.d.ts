@@ -8,9 +8,10 @@ import { StringQuality } from '../../../types';
  * @param {Object} attributes
  * @return {Object}
  */
-export default function ({ isStrange, isVintage, otherQuality, attributes, }: {
+export default function ({ isStrange, isVintage, isHaunted, otherQuality, attributes, }: {
     isStrange: boolean;
     isVintage: boolean;
+    isHaunted: boolean;
     otherQuality: string;
     attributes: Attributes;
 }): StringQuality;

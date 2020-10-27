@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function default_1(name) {
-    return name.includes('Vintage ') && !isVintageException(name);
+    const vintageCount = name.match(/Vintage /g);
+    return !!vintageCount && (vintageCount.length === 2 || !isVintageException(name));
 }
 exports.default = default_1;
 ;
