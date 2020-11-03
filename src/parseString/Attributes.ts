@@ -37,7 +37,7 @@ export default class Attributes {
 		this.killstreak = getKillstreak(name);
 		this.wear = getWear(name);
 
-		this.effect = getEffect(name);
+		this.effect = getEffect(name, this);
 		this.texture = getTexture(name);
 
 		this.itemNumber = getItemNumber(name);

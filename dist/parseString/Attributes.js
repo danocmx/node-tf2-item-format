@@ -24,7 +24,7 @@ class Attributes {
         this.festivized = isFestivized_1.default(name);
         this.killstreak = getKillstreak_1.default(name);
         this.wear = getWear_1.default(name);
-        this.effect = getEffect_1.default(name);
+        this.effect = getEffect_1.default(name, this);
         this.texture = getTexture_1.default(name);
         this.itemNumber = getItemNumber_1.default(name);
         this.usableItem = getUsableItem_1.default(name);

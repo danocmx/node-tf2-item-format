@@ -4,5 +4,5 @@ export default function (name: string): boolean {
 };
 
 function isHauntedException(name: string): boolean {
-	return /Haunted Hat/.test(name);
+	return /(Haunted Hat)|(Haunted Ghosts)|(Haunted Phantasm)/.test(name);
 }

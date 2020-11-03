@@ -324,6 +324,63 @@ describe('parseString', () => {
 			craftable: true,
 		});
 	});
+
+	
+	it('Case #28', () => {
+		const itemObject = parseString('Eerie Orbiting Fire Condor Cap', false, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Condor Cap',
+			quality: 'Unusual',
+			effect: 'Eerie Orbiting Fire',
+			craftable: true,
+		});
+	});
+
+	it('Case #29', () => {
+		const itemObject = parseString('Haunted Ghosts War Paint (Battle Scarred)', false, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'War Paint',
+			quality: 'Decorated Weapon',
+			texture: 'Haunted Ghosts',
+			craftable: true,
+			wear: 'Battle Scarred'
+		});
+	});
+
+	it('Case #30', () => {
+		const itemObject = parseString('Spellbound Aspect Taunt: Most Wanted', false, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Taunt: Most Wanted',
+			quality: 'Unusual',
+			effect: 'Spellbound Aspect',
+			craftable: true,
+		});
+	});
+
+	it('Case #31', () => {
+		const itemObject = parseString('Haunted Phantasm Jr Bonk Boy', false, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Bonk Boy',
+			quality: 'Unusual',
+			effect: 'Haunted Phantasm Jr',
+			craftable: true,
+		});
+	});
+
+	it('Case #32', () => {
+		const itemObject = parseString('Ghastly Ghosts Jr Bonk Boy', false, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Bonk Boy',
+			quality: 'Unusual',
+			effect: 'Ghastly Ghosts Jr',
+			craftable: true,
+		});
+	});
 });
 
 describe('parseString with numbers', () => {
@@ -655,6 +712,62 @@ describe('parseString with numbers', () => {
 		assert.deepEqual(itemObject, {
 			name: 'Haunted Hat',
 			quality: 13,
+			craftable: true,
+		});
+	});
+
+	it('Case #28', () => {
+		const itemObject = parseString('Eerie Orbiting Fire Condor Cap', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Condor Cap',
+			quality: 5,
+			effect: 40,
+			craftable: true,
+		});
+	});
+
+	it('Case #29', () => {
+		const itemObject = parseString('Haunted Ghosts War Paint (Battle Scarred)', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'War Paint',
+			quality: 15,
+			texture: 236,
+			craftable: true,
+			wear: 5
+		});
+	});
+
+	it('Case #30', () => {
+		const itemObject = parseString('Spellbound Aspect Taunt: Most Wanted', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Taunt: Most Wanted',
+			quality: 5,
+			effect: 3043,
+			craftable: true,
+		});
+	});
+
+	it('Case #31', () => {
+		const itemObject = parseString('Haunted Phantasm Jr Bonk Boy', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Bonk Boy',
+			quality: 5,
+			effect: 86,
+			craftable: true,
+		});
+	});
+
+	it('Case #32', () => {
+		const itemObject = parseString('Ghastly Ghosts Jr Bonk Boy', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Bonk Boy',
+			quality: 5,
+			effect: 85,
 			craftable: true,
 		});
 	});
@@ -1048,6 +1161,68 @@ describe('parseString with defindexes and numbers.', () => {
 			name: 'Haunted Hat',
 			"defindex": 30300,
 			quality: 13,
+			craftable: true,
+		});
+	});
+
+	
+	it('Case #31', () => {
+		const itemObject = parseString('Eerie Orbiting Fire Condor Cap', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Condor Cap',
+			quality: 5,
+			effect: 40,
+			craftable: true,
+			defindex: 30553
+		});
+	});
+
+	it('Case #32', () => {
+		const itemObject = parseString('Haunted Ghosts War Paint (Battle Scarred)', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'War Paint',
+			quality: 15,
+			texture: 236,
+			craftable: true,
+			wear: 5,
+			defindex: 9536
+		});
+	});
+
+	it('Case #33', () => {
+		const itemObject = parseString('Spellbound Aspect Taunt: Most Wanted', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Taunt: Most Wanted',
+			quality: 5,
+			effect: 3043,
+			craftable: true,
+			defindex: 30614,
+		});
+	});
+
+	it('Case #34', () => {
+		const itemObject = parseString('Haunted Phantasm Jr Bonk Boy', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Bonk Boy',
+			quality: 5,
+			effect: 86,
+			craftable: true,
+			defindex: 451,
+		});
+	});
+
+	it('Case #35', () => {
+		const itemObject = parseString('Ghastly Ghosts Jr Bonk Boy', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Bonk Boy',
+			defindex: 451,
+			quality: 5,
+			effect: 85,
 			craftable: true,
 		});
 	});
