@@ -1,0 +1,12 @@
+{
+    "branches": [
+        { "name": "master" },
+        { "name": "v3" },
+        { "name": "v4", "prerelease": "beta" },
+    ],
+    "plugins": [
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/npm",
+        "@semantic-release/git"
+    ]
+}

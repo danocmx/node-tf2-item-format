@@ -7,11 +7,12 @@
   "scripts": {
     "test": "mocha ./test",
     "lint": "npx eslint ./src/",
-    "build": "npx tsc"
+    "build": "npx tsc",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danocmx/node-tf2-item-format.git"
+    "url": "https://github.com/danocmx/node-tf2-item-format.git"
   },
   "keywords": [
     "tf2",
@@ -32,6 +33,7 @@
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "mocha": "^7.2.0",
+    "semantic-release": "^17.1.1",
     "typescript": "^4.0.3"
   }
 }
