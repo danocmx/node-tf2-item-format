@@ -1,14 +1,13 @@
 {
   "name": "tf2-item-format",
-  "version": "4.1.1-beta.1",
+  "version": "0.0.0-development",
   "description": "Format's TF2 items like backpack.tf does",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "test": "mocha ./test",
     "lint": "npx eslint ./src/",
-    "build": "npx tsc",
-    "semantic-release": "semantic-release"
+    "build": "npx tsc"
   },
   "repository": {
     "type": "git",
@@ -28,13 +27,11 @@
     "tf2-static-schema": "^1.4.0"
   },
   "devDependencies": {
-    "@semantic-release/git": "^9.0.0",
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "mocha": "^7.2.0",
-    "semantic-release": "^17.1.1",
     "typescript": "^4.0.3"
   }
 }
