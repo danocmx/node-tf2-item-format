@@ -102,7 +102,11 @@ class ParsedEcon {
         else {
             attributes = this.getNameAttributes(shortName, false, false);
         }
-        return Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({}, attributes), { classes: this.tags.classes, type: this.tags.type }), (this.tags.collection
+        return Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({}, attributes), { classes: this.tags.classes, type: this.tags.type }), (this.descriptions.killstreak.killstreaker
+            ? { killstreaker: this.descriptions.killstreak.killstreaker }
+            : {})), (this.descriptions.killstreak.sheen
+            ? { sheen: this.descriptions.killstreak.sheen }
+            : {})), (this.tags.collection
             ? { collection: this.tags.collection }
             : {})), (this.tags.grade ? { grade: this.tags.grade } : {})), (this.descriptions.paint
             ? { paint: this.descriptions.paint }

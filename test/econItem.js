@@ -158,6 +158,7 @@ describe('parseEconItem', () => {
 			spells: [],
 			marketable: true,
 			commodity: false,
+			sheen: "Agonizing Emerald"
 		});
 	});
 
@@ -631,6 +632,7 @@ describe('parseEconItem', () => {
 			spells: ['Pumpkin Bombs'],
 			marketable: true,
 			commodity: false,
+			sheen: "Agonizing Emerald"
 		});
 	});
 
@@ -836,7 +838,7 @@ describe('parseEconItem', () => {
 		});
 	});
 
-	it('Case #7', () => {
+	it('Case #8', () => {
 		const econItem = parseEconItem({
 			appid: 440,
 			contextid: '2',
@@ -938,7 +940,7 @@ describe('parseEconItem', () => {
 		});
 	});
 
-	it('Case #8', () => {
+	it('Case #9', () => {
 		const econItem = parseEconItem({
 			"appid":440,"classid":"4044585817","instanceid":"11040545","currency":0,"background_color":"3C352E","icon_url":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEYYwsVVB7whyJMhcrvCM2ACfIHnpRi4cBQjGc6xAQjNbuwYGMwJlfHWfAMDaRjpQm6CCVhsZJhUIW3r-9TZ0yx4-owIvoI","icon_url_large":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEYYwsVVB7whyJMhcrvCM2ACfIHnpRi4cBQjGc6xAQjNbuwYGMwJlfHWfAMDaRjpQm6CCVhsZJhUIW3r-9TZ0yx4-owIvoI",
 			"descriptions":[
@@ -968,7 +970,7 @@ describe('parseEconItem', () => {
 		});
 	})
 
-	it('Case #9', () => {
+	it('Case #10', () => {
 		const econItem = parseEconItem({
 			"appid":440,"classid":"4044585817","instanceid":"11040545","currency":0,"background_color":"3C352E","icon_url":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEYYwsVVB7whyJMhcrvCM2ACfIHnpRi4cBQjGc6xAQjNbuwYGMwJlfHWfAMDaRjpQm6CCVhsZJhUIW3r-9TZ0yx4-owIvoI","icon_url_large":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEYYwsVVB7whyJMhcrvCM2ACfIHnpRi4cBQjGc6xAQjNbuwYGMwJlfHWfAMDaRjpQm6CCVhsZJhUIW3r-9TZ0yx4-owIvoI",
 			"descriptions":[
@@ -995,7 +997,7 @@ describe('parseEconItem', () => {
 		});
 	})
 
-	it('Case #10', () => {
+	it('Case #11', () => {
 		const econItem = parseEconItem({
 			"appid": "440",
 			"classid": "2871127490",
@@ -1087,7 +1089,7 @@ describe('parseEconItem', () => {
 		  });
 	});
 
-	it('Case #11', () => {
+	it('Case #12', () => {
 		const econItem = parseEconItem({
 			"appid":"440",
 			"classid":"2625497429",
@@ -1333,7 +1335,31 @@ describe('parseEconItem', () => {
 			parts: [ 'Kills', 'Pyros Killed' ],
 			spells: [ 'Pumpkin Bombs' ],
 			marketable: true,
-			commodity: false
+			commodity: false,
+			sheen: "Mean Green"
+		});
+	})
+
+	it('Case #13', () => {
+		const econItem = parseEconItem({"appid":"440","classid":"1348131292","instanceid":"93028938","icon_url":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIUwADWBXjvD1Pid3oDvqJGt8Yltsm2pxUyzFu31V9NbPtYTUwdwWbBfkOXfZioFDuWSFku8JnUdLg8ulQLw29tYfCMOQycIYbhNRIXDY","icon_url_large":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIUwADWBXjvD1Pid3oDvqJGt8Yltsm2pxUyzFu31V9NbPtYTUwdwWbBfkOXfZioFDuWSFku8JnUdLg8ulQLw29tYfCMOQycIYbhNRIXDY","icon_drag_url":"","name":"Strange Professional Killstreak Festive Grenade Launcher","market_hash_name":"Strange Professional Killstreak Festive Grenade Launcher","market_name":"Strange Professional Killstreak Festive Grenade Launcher","name_color":"CF6A32","background_color":"3C352E","type":"Limited Strange Grenade Launcher - Kills: 20","tradable":1,"marketable":1,"commodity":0,"market_tradable_restriction":"7","market_marketable_restriction":"0","descriptions":[{"value":"(Airborne Enemy Kills: 4)","color":"756b5e"},{"value":"Halloween: Exorcism (spell only active during event)","color":"7ea9d1"},{"value":"Killstreaker: Hypno-Beam","color":"7ea9d1"},{"value":"Sheen: Manndarin","color":"7ea9d1"},{"value":"Killstreaks Active","color":"7ea9d1"}],"actions":[{"name":"Item Wiki Page...","link":"http:\/\/wiki.teamfortress.com\/scripts\/itemredirect.php?id=1007&lang=en_US"}],"tags":[{"internal_name":"strange","name":"Strange","category":"Quality","color":"CF6A32","category_name":"Quality"},{"internal_name":"primary","name":"Primary weapon","category":"Type","category_name":"Type"},{"internal_name":"Demoman","name":"Demoman","category":"Class","category_name":"Class"}],"app_data":{"def_index":"1007","quality":"11"}});
+
+		assert.deepEqual(econItem, {
+			classes: ["Demoman"],
+			commodity: false,
+			craftable: true,
+			fullName: "Strange Professional Killstreak Festive Grenade Launcher",
+			id: undefined,
+			img: "https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIUwADWBXjvD1Pid3oDvqJGt8Yltsm2pxUyzFu31V9NbPtYTUwdwWbBfkOXfZioFDuWSFku8JnUdLg8ulQLw29tYfCMOQycIYbhNRIXDY/",
+			killstreak: "Professional Killstreak",
+			killstreaker: "Hypno-Beam",
+			marketable: true,
+			name: "Festive Grenade Launcher",
+			parts: [ "Airborne Enemy Kills" ],
+			quality: "Strange",
+			sheen: "Manndarin",
+			spells: [ "Exorcism" ],
+			tradable: true,
+			type: "primary"
 		});
 	})
 });
@@ -1509,6 +1535,7 @@ describe('Econ Item in Numbers', () => {
 			spells: [],
 			marketable: true,
 			commodity: false,
+			sheen: "Agonizing Emerald"
 		});
 	});
 
@@ -2013,6 +2040,7 @@ describe('Econ Item in Numbers', () => {
 			spells: ['Pumpkin Bombs'],
 			marketable: true,
 			commodity: false,
+			sheen: "Agonizing Emerald"
 		});
 	});
 
@@ -2262,7 +2290,34 @@ describe('Econ Item in Numbers', () => {
 			parts: [ 'Kills', 'Pyros Killed' ],
 			spells: [ 'Pumpkin Bombs' ],
 			marketable: true,
-			commodity: false
+			commodity: false,
+			sheen: "Mean Green"
+		});
+	})
+
+	it('Case #7', () => {
+		const econItem = parseEconItem(
+			{"appid":"440","classid":"1348131292","instanceid":"93028938","icon_url":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIUwADWBXjvD1Pid3oDvqJGt8Yltsm2pxUyzFu31V9NbPtYTUwdwWbBfkOXfZioFDuWSFku8JnUdLg8ulQLw29tYfCMOQycIYbhNRIXDY","icon_url_large":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIUwADWBXjvD1Pid3oDvqJGt8Yltsm2pxUyzFu31V9NbPtYTUwdwWbBfkOXfZioFDuWSFku8JnUdLg8ulQLw29tYfCMOQycIYbhNRIXDY","icon_drag_url":"","name":"Strange Professional Killstreak Festive Grenade Launcher","market_hash_name":"Strange Professional Killstreak Festive Grenade Launcher","market_name":"Strange Professional Killstreak Festive Grenade Launcher","name_color":"CF6A32","background_color":"3C352E","type":"Limited Strange Grenade Launcher - Kills: 20","tradable":1,"marketable":1,"commodity":0,"market_tradable_restriction":"7","market_marketable_restriction":"0","descriptions":[{"value":"(Airborne Enemy Kills: 4)","color":"756b5e"},{"value":"Halloween: Exorcism (spell only active during event)","color":"7ea9d1"},{"value":"Killstreaker: Hypno-Beam","color":"7ea9d1"},{"value":"Sheen: Manndarin","color":"7ea9d1"},{"value":"Killstreaks Active","color":"7ea9d1"}],"actions":[{"name":"Item Wiki Page...","link":"http:\/\/wiki.teamfortress.com\/scripts\/itemredirect.php?id=1007&lang=en_US"}],"tags":[{"internal_name":"strange","name":"Strange","category":"Quality","color":"CF6A32","category_name":"Quality"},{"internal_name":"primary","name":"Primary weapon","category":"Type","category_name":"Type"},{"internal_name":"Demoman","name":"Demoman","category":"Class","category_name":"Class"}],"app_data":{"def_index":"1007","quality":"11"}},
+			true, false
+		);
+
+		assert.deepEqual(econItem, {
+			classes: ["Demoman"],
+			commodity: false,
+			craftable: true,
+			fullName: "Strange Professional Killstreak Festive Grenade Launcher",
+			id: undefined,
+			img: "https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIUwADWBXjvD1Pid3oDvqJGt8Yltsm2pxUyzFu31V9NbPtYTUwdwWbBfkOXfZioFDuWSFku8JnUdLg8ulQLw29tYfCMOQycIYbhNRIXDY/",
+			killstreak: 3,
+			killstreaker: "Hypno-Beam",
+			marketable: true,
+			name: "Festive Grenade Launcher",
+			parts: [ "Airborne Enemy Kills" ],
+			quality: 11,
+			sheen: "Manndarin",
+			spells: [ "Exorcism" ],
+			tradable: true,
+			type: "primary"
 		});
 	})
 });
@@ -2673,6 +2728,7 @@ describe('Econ item with defindexes', () => {
 			spells: ['Pumpkin Bombs'],
 			marketable: true,
 			commodity: false,
+			sheen: "Agonizing Emerald"
 		});
 	});
 
@@ -3342,6 +3398,34 @@ describe('Econ item with defindexes', () => {
 			marketable: true,
 			commodity: false,
 			"defindex": 205,
+			sheen: "Mean Green"
+		});
+	});
+
+	it('Case #12', () => {
+		const econItem = parseEconItem(
+			{"appid":"440","classid":"1348131292","instanceid":"93028938","icon_url":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIUwADWBXjvD1Pid3oDvqJGt8Yltsm2pxUyzFu31V9NbPtYTUwdwWbBfkOXfZioFDuWSFku8JnUdLg8ulQLw29tYfCMOQycIYbhNRIXDY","icon_url_large":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIUwADWBXjvD1Pid3oDvqJGt8Yltsm2pxUyzFu31V9NbPtYTUwdwWbBfkOXfZioFDuWSFku8JnUdLg8ulQLw29tYfCMOQycIYbhNRIXDY","icon_drag_url":"","name":"Strange Professional Killstreak Festive Grenade Launcher","market_hash_name":"Strange Professional Killstreak Festive Grenade Launcher","market_name":"Strange Professional Killstreak Festive Grenade Launcher","name_color":"CF6A32","background_color":"3C352E","type":"Limited Strange Grenade Launcher - Kills: 20","tradable":1,"marketable":1,"commodity":0,"market_tradable_restriction":"7","market_marketable_restriction":"0","descriptions":[{"value":"(Airborne Enemy Kills: 4)","color":"756b5e"},{"value":"Halloween: Exorcism (spell only active during event)","color":"7ea9d1"},{"value":"Killstreaker: Hypno-Beam","color":"7ea9d1"},{"value":"Sheen: Manndarin","color":"7ea9d1"},{"value":"Killstreaks Active","color":"7ea9d1"}],"actions":[{"name":"Item Wiki Page...","link":"http:\/\/wiki.teamfortress.com\/scripts\/itemredirect.php?id=1007&lang=en_US"}],"tags":[{"internal_name":"strange","name":"Strange","category":"Quality","color":"CF6A32","category_name":"Quality"},{"internal_name":"primary","name":"Primary weapon","category":"Type","category_name":"Type"},{"internal_name":"Demoman","name":"Demoman","category":"Class","category_name":"Class"}],"app_data":{"def_index":"1007","quality":"11"}},
+			true, true
+		);
+
+		assert.deepEqual(econItem, {
+			classes: ["Demoman"],
+			commodity: false,
+			craftable: true,
+			fullName: "Strange Professional Killstreak Festive Grenade Launcher",
+			id: undefined,
+			img: "https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIUwADWBXjvD1Pid3oDvqJGt8Yltsm2pxUyzFu31V9NbPtYTUwdwWbBfkOXfZioFDuWSFku8JnUdLg8ulQLw29tYfCMOQycIYbhNRIXDY/",
+			killstreak: 3,
+			killstreaker: "Hypno-Beam",
+			marketable: true,
+			name: "Festive Grenade Launcher",
+			parts: [ "Airborne Enemy Kills" ],
+			quality: 11,
+			sheen: "Manndarin",
+			spells: [ "Exorcism" ],
+			tradable: true,
+			type: "primary",
+			defindex: 1007
 		});
 	})
 });

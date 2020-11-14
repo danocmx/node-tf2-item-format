@@ -230,6 +230,8 @@ export declare type ConvertableAttributes = {
 };
 export declare type EconAttributes = ParsedEconNameAtributes & MetaEconAttributes;
 export declare type MetaEconAttributes = {
+    sheen?: string;
+    killstreaker?: string;
     classes: string[];
     type?: string;
     collection?: string;

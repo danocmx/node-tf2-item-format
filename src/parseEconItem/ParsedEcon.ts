@@ -16,7 +16,6 @@ import {
 	DescriptionAttributes,
 	PropertyAttributes,
 	NameAttributes,
-	ParsedEconOptions,
 	ParsedEconNameAtributes,
 	ItemDefindexes,
 	ItemAttributesInNumbers,
@@ -169,6 +168,14 @@ export default class ParsedEcon {
 
 			classes: this.tags.classes,
 			type: this.tags.type,
+
+			...(this.descriptions.killstreak.killstreaker
+				? { killstreaker: this.descriptions.killstreak.killstreaker }
+				: {}),
+
+			...(this.descriptions.killstreak.sheen
+				? { sheen: this.descriptions.killstreak.sheen }
+				: {}),
 
 			// Only append if exists
 			...(this.tags.collection

@@ -244,6 +244,8 @@ export type ConvertableAttributes = {
 export type EconAttributes = ParsedEconNameAtributes & MetaEconAttributes;
 
 export type MetaEconAttributes = {
+    sheen?: string;
+    killstreaker?: string;
     classes: string[];
     type?: string;
     collection?: string;
