@@ -25,7 +25,7 @@ class Attributes {
         this.killstreak = getKillstreak_1.default(name);
         this.wear = getWear_1.default(name);
         this.effect = getEffect_1.default(name, this);
-        this.texture = getTexture_1.default(name);
+        this.texture = getTexture_1.default(name, this);
         this.itemNumber = getItemNumber_1.default(name);
         this.usableItem = getUsableItem_1.default(name);
         this.isUniqueHat = isUniqueHat_1.default(name);

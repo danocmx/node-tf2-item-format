@@ -26,7 +26,7 @@ export default function (econ: ParsedEcon): NameAttributes {
 	};
 
 	if (!texture) {
-		texture = getTexture(name);
+		texture = getTexture(name, { wear: econ.tags.wear });
 		if (texture) attributes.texture = texture;
 	}
 
