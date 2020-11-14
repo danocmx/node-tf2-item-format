@@ -325,7 +325,6 @@ describe('parseString', () => {
 		});
 	});
 
-	
 	it('Case #28', () => {
 		const itemObject = parseString('Eerie Orbiting Fire Condor Cap', false, false);
 
@@ -378,6 +377,17 @@ describe('parseString', () => {
 			name: 'Bonk Boy',
 			quality: 'Unusual',
 			effect: 'Ghastly Ghosts Jr',
+			craftable: true,
+		});
+	});
+
+	it('Case #33', () => {
+		const itemObject = parseString('Haunted Ghosts Battle Boonie', false, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Battle Boonie',
+			quality: 'Unusual',
+			effect: 'Haunted Ghosts',
 			craftable: true,
 		});
 	});
@@ -768,6 +778,17 @@ describe('parseString with numbers', () => {
 			name: 'Bonk Boy',
 			quality: 5,
 			effect: 85,
+			craftable: true,
+		});
+	});
+
+	it('Case #33', () => {
+		const itemObject = parseString('Haunted Ghosts Battle Boonie', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Battle Boonie',
+			quality: 5,
+			effect: 8,
 			craftable: true,
 		});
 	});
@@ -1224,6 +1245,18 @@ describe('parseString with defindexes and numbers.', () => {
 			quality: 5,
 			effect: 85,
 			craftable: true,
+		});
+	});
+
+	it('Case #36', () => {
+		const itemObject = parseString('Haunted Ghosts Battle Boonie', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Battle Boonie',
+			quality: 5,
+			effect: 8,
+			craftable: true,
+			defindex: 30907
 		});
 	});
 });

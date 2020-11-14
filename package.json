@@ -6,7 +6,6 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "test": "mocha ./test",
-    "lint": "npx eslint ./src/",
     "build": "npx tsc"
   },
   "repository": {

@@ -38,7 +38,7 @@ export default class Attributes {
 		this.wear = getWear(name);
 
 		this.effect = getEffect(name, this);
-		this.texture = getTexture(name);
+		this.texture = getTexture(name, this);
 
 		this.itemNumber = getItemNumber(name);
 		this.usableItem = getUsableItem(name);

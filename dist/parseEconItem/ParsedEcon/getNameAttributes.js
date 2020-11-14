@@ -24,7 +24,7 @@ function default_1(econ) {
         isUniqueHat: isUniqueHat_1.default(name),
     };
     if (!texture) {
-        texture = getTexture_1.default(name);
+        texture = getTexture_1.default(name, { wear: econ.tags.wear });
         if (texture)
             attributes.texture = texture;
     }
