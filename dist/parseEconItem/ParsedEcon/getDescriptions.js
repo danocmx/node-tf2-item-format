@@ -31,7 +31,7 @@ function default_1(econ) {
     };
     for (let i = 0; i < descriptions.length; i++) {
         const description = descriptions[i];
-        if (part_1.isPart(description))
+        if (part_1.isPart(description, econ))
             attributes.parts.push(part_1.getPart(description));
         else if (paint_1.isPaint(description))
             attributes.paint = paint_1.getPaint(description);

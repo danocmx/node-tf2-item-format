@@ -35,7 +35,7 @@ export default function (econ: ParsedEcon): DescriptionAttributes {
 	for (let i = 0; i < descriptions.length; i++) {
 		const description = descriptions[i];
 
-		if (isPart(description)) attributes.parts.push(getPart(description));
+		if (isPart(description, econ)) attributes.parts.push(getPart(description));
 
 		else if (isPaint(description)) attributes.paint = getPaint(description);
 

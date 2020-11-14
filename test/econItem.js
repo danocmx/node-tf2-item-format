@@ -1332,7 +1332,7 @@ describe('parseEconItem', () => {
 			type: 'primary',
 			collection: 'Powerhouse Collection',
 			grade: 'Assassin',
-			parts: [ 'Kills', 'Pyros Killed' ],
+			parts: [ 'Pyros Killed' ],
 			spells: [ 'Pumpkin Bombs' ],
 			marketable: true,
 			commodity: false,
@@ -1360,6 +1360,30 @@ describe('parseEconItem', () => {
 			spells: [ "Exorcism" ],
 			tradable: true,
 			type: "primary"
+		});
+	})
+
+	it('Case #14', () => {
+		const econItem = parseEconItem({"appid":"440","classid":"1342604629","instanceid":"98275077","icon_url":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgENYwUuWCT1qj1Ni8DZCv2ADN8Mmsgy4N4Hi2JtxQMtbOftYG9hJgabUaYMCvFroV_uDXBkv8EwVY_koOxWeQq-qsKYZPpiOaow","icon_url_large":"fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgENYwUuWCT1qj1Ni8DZCv2ADN8Mmsgy4N4Hi2JtxQMtbOftYG9hJgabUaYMCvFroV_uDXBkv8EwVY_koOxWeQq-qsKYZPpiOaow","icon_drag_url":"","name":"Strange Specialized Killstreak Gold Botkiller Wrench Mk.II","market_hash_name":"Strange Specialized Killstreak Gold Botkiller Wrench Mk.II","market_name":"Strange Specialized Killstreak Gold Botkiller Wrench Mk.II","name_color":"CF6A32","background_color":"3C352E","type":"Strange Wrench - Sentry Kills: 12","tradable":1,"marketable":1,"commodity":0,"market_tradable_restriction":"7","market_marketable_restriction":"0","descriptions":[{"value":"(Kills: 1)","color":"756b5e"},{"value":"(Cloaked Spies Killed: 0)","color":"756b5e"},{"value":"Sheen: Deadly Daffodil","color":"7ea9d1"},{"value":"Killstreaks Active","color":"7ea9d1"},{"value":"Upgrades, repairs and speeds up construction of friendly buildings on hit"}],"actions":[{"name":"Item Wiki Page...","link":"http:\/\/wiki.teamfortress.com\/scripts\/itemredirect.php?id=969&lang=en_US"}],"tags":[{"internal_name":"strange","name":"Strange","category":"Quality","color":"CF6A32","category_name":"Quality"},{"internal_name":"melee","name":"Melee weapon","category":"Type","category_name":"Type"},{"internal_name":"Engineer","name":"Engineer","category":"Class","category_name":"Class"}],"app_data":{"def_index":"969","quality":"11"}});
+
+		assert.deepEqual(econItem, {
+			parts: [ "Cloaked Spies Killed" ],
+			"quality": "Strange",
+			"sheen": "Deadly Daffodil",
+			"spells": [],
+			"tradable": true,
+			"type": "melee",
+			"classes": [
+			 "Engineer"
+			],
+			"commodity": false,
+			 "craftable": true,
+			"fullName": "Strange Specialized Killstreak Gold Botkiller Wrench Mk.II",
+			 "id": undefined,
+			"img": "https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgENYwUuWCT1qj1Ni8DZCv2ADN8Mmsgy4N4Hi2JtxQMtbOftYG9hJgabUaYMCvFroV_uDXBkv8EwVY_koOxWeQq-qsKYZPpiOaow/",
+			"killstreak": "Specialized Killstreak",
+			"marketable": true,
+			"name": "Gold Botkiller Wrench Mk.II",
 		});
 	})
 });
@@ -2287,7 +2311,7 @@ describe('Econ Item in Numbers', () => {
 			type: 'primary',
 			collection: 'Powerhouse Collection',
 			grade: 'Assassin',
-			parts: [ 'Kills', 'Pyros Killed' ],
+			parts: [ 'Pyros Killed' ],
 			spells: [ 'Pumpkin Bombs' ],
 			marketable: true,
 			commodity: false,
@@ -3393,7 +3417,7 @@ describe('Econ item with defindexes', () => {
 			type: 'primary',
 			collection: 'Powerhouse Collection',
 			grade: 'Assassin',
-			parts: [ 'Kills', 'Pyros Killed' ],
+			parts: [ 'Pyros Killed' ],
 			spells: [ 'Pumpkin Bombs' ],
 			marketable: true,
 			commodity: false,
