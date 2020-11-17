@@ -39,7 +39,7 @@ exports.default = default_1;
 /**
  * Which item and effect cannot exist together.
  */
-const HAT_NAME_EXCEPTIONS = [['Cool Breeze', 'Cool'], ['Cool Cat Cardigan', 'Cool'], ['Hot Heels', 'Hot'], ['Hot Case', 'Hot'], ['A Head Full of Hot Air', 'Hot'], ['Bonk Atomic Punch', 'Atomic']];
+const HAT_NAME_EXCEPTIONS = [['Cool Breeze', 'Cool'], ['Cool Cat Cardigan', 'Cool'], ['Hot Heels', 'Hot'], ['Hot Case', 'Hot'], ['A Head Full of Hot Air', 'Hot'], ['Bonk Atomic Punch', 'Atomic'], ['Hot Hand', 'Hot']];
 function isException(name, effect) {
     return HAT_NAME_EXCEPTIONS.some((exception) => {
         const [exceptionName, exceptionEffect] = exception;
