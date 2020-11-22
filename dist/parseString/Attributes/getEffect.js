@@ -55,6 +55,7 @@ const HAT_NAME_EXCEPTIONS = [
     ['Smoking Skid Lid', 'Smoking'],
     ['Hot Huaraches', 'Hot'],
     ['Cool Capuchon', 'Cool'],
+    ['Hot Dogger', 'Hot']
 ];
 function isException(name, effect) {
     return HAT_NAME_EXCEPTIONS.some((exception) => {
