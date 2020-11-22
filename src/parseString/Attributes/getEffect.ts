@@ -40,7 +40,16 @@ export default function (name: string, attributes: Attributes): string|void {
 /**
  * Which item and effect cannot exist together.
  */
-const HAT_NAME_EXCEPTIONS: [string, string][] = [['Cool Breeze', 'Cool'], ['Cool Cat Cardigan', 'Cool'], ['Hot Heels', 'Hot'], ['Hot Case', 'Hot'], ['A Head Full of Hot Air', 'Hot'], ['Bonk Atomic Punch', 'Atomic'], ['Hot Hand', 'Hot']];
+const HAT_NAME_EXCEPTIONS: [string, string][] = [
+	['Cool Breeze', 'Cool'],
+	['Cool Cat Cardigan', 'Cool'],
+	['Hot Heels', 'Hot'],
+	['Hot Case', 'Hot'],
+	['A Head Full of Hot Air', 'Hot'],
+	['Bonk Atomic Punch', 'Atomic'],
+	['Hot Hand', 'Hot'],
+	['Smoking Jacket', 'Smoking'],
+];
 
 function isException(name: string, effect: string): boolean {
 	return HAT_NAME_EXCEPTIONS.some((exception) => {
