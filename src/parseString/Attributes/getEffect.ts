@@ -22,6 +22,11 @@ export default function (name: string, attributes: Attributes): string|void {
 	for (let i = 0; i < effectsKeys.length; i++) {
 		let effect: string|number = effectsKeys[i];
 
+		// New type of exception
+		if (effect === 'Smoking' && name.includes('Smoking Smoking Skid Lid')) {
+			return 'Smoking';
+		}
+
 		if (effect === 'Haunted Ghosts' && name.includes('Haunted Ghosts ') && attributes.wear) {
 			continue;
 		}
@@ -49,6 +54,7 @@ const HAT_NAME_EXCEPTIONS: [string, string][] = [
 	['Bonk Atomic Punch', 'Atomic'],
 	['Hot Hand', 'Hot'],
 	['Smoking Jacket', 'Smoking'],
+	['Smoking Skid Lid', 'Smoking'],
 ];
 
 function isException(name: string, effect: string): boolean {
