@@ -391,6 +391,40 @@ describe('parseString', () => {
 			craftable: true,
 		});
 	});
+
+	it('Case #34', () => {
+		const itemObject = parseString('Smoking Jacket', false, false);
+
+		assert.deepEqual(itemObject, { name: 'Smoking Jacket', craftable: true, quality: 'Unique' });
+	});
+
+	it('Case #35', () => {
+		const itemObject = parseString('Smoking Smoking Skid Lid', false, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Smoking Skid Lid',
+			craftable: true,
+			quality: 'Unusual',
+			effect: 'Smoking'
+		});
+	});
+
+	it('Case #36', () => {
+		const itemObject = parseString('Purple Energy Smoking Skid Lid', false, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Smoking Skid Lid',
+			craftable: true,
+			quality: 'Unusual',
+			effect: 'Purple Energy'
+		});
+	});
+
+	it('Case #37', () => {
+		const itemObject = parseString('Smoking Skid Lid', false, false);
+
+		assert.deepEqual(itemObject, { name: 'Smoking Skid Lid', craftable: true, quality: 'Unique' });
+	});
 });
 
 describe('parseString with numbers', () => {
@@ -791,6 +825,40 @@ describe('parseString with numbers', () => {
 			effect: 8,
 			craftable: true,
 		});
+	});
+
+	it('Case #34', () => {
+		const itemObject = parseString('Smoking Jacket', true, false);
+
+		assert.deepEqual(itemObject, { name: 'Smoking Jacket', craftable: true, quality: 6 });
+	});
+
+	it('Case #35', () => {
+		const itemObject = parseString('Smoking Smoking Skid Lid', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Smoking Skid Lid',
+			craftable: true,
+			quality: 5,
+			effect: 35
+		});
+	});
+
+	it('Case #36', () => {
+		const itemObject = parseString('Purple Energy Smoking Skid Lid', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Smoking Skid Lid',
+			craftable: true,
+			quality: 5,
+			effect: 10
+		});
+	});
+
+	it('Case #37', () => {
+		const itemObject = parseString('Smoking Skid Lid', true, false);
+
+		assert.deepEqual(itemObject, { name: 'Smoking Skid Lid', craftable: true, quality: 6 });
 	});
 });
 
@@ -1258,5 +1326,42 @@ describe('parseString with defindexes and numbers.', () => {
 			craftable: true,
 			defindex: 30907
 		});
+	});
+
+	
+	it('Case #37', () => {
+		const itemObject = parseString('Smoking Jacket', true, true);
+
+		assert.deepEqual(itemObject, { name: 'Smoking Jacket', craftable: true, quality: 6, defindex: 31124 });
+	});
+
+	it('Case #38', () => {
+		const itemObject = parseString('Smoking Smoking Skid Lid', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Smoking Skid Lid',
+			craftable: true,
+			quality: 5,
+			effect: 35,
+			defindex: 30399
+		});
+	});
+
+	it('Case #39', () => {
+		const itemObject = parseString('Purple Energy Smoking Skid Lid', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Smoking Skid Lid',
+			craftable: true,
+			quality: 5,
+			effect: 10,
+			defindex: 30399
+		});
+	});
+
+	it('Case #40', () => {
+		const itemObject = parseString('Smoking Skid Lid', true, true);
+
+		assert.deepEqual(itemObject, { name: 'Smoking Skid Lid', craftable: true, quality: 6, defindex: 30399 });
 	});
 });

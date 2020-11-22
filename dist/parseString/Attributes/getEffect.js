@@ -21,6 +21,10 @@ function default_1(name, attributes) {
     const effectsKeys = Object.keys(schema_1.default.effects);
     for (let i = 0; i < effectsKeys.length; i++) {
         let effect = effectsKeys[i];
+        // New type of exception
+        if (effect === 'Smoking' && name.includes('Smoking Smoking Skid Lid')) {
+            return 'Smoking';
+        }
         if (effect === 'Haunted Ghosts' && name.includes('Haunted Ghosts ') && attributes.wear) {
             continue;
         }
@@ -39,7 +43,17 @@ exports.default = default_1;
 /**
  * Which item and effect cannot exist together.
  */
-const HAT_NAME_EXCEPTIONS = [['Cool Breeze', 'Cool'], ['Cool Cat Cardigan', 'Cool'], ['Hot Heels', 'Hot'], ['Hot Case', 'Hot'], ['A Head Full of Hot Air', 'Hot'], ['Bonk Atomic Punch', 'Atomic'], ['Hot Hand', 'Hot']];
+const HAT_NAME_EXCEPTIONS = [
+    ['Cool Breeze', 'Cool'],
+    ['Cool Cat Cardigan', 'Cool'],
+    ['Hot Heels', 'Hot'],
+    ['Hot Case', 'Hot'],
+    ['A Head Full of Hot Air', 'Hot'],
+    ['Bonk Atomic Punch', 'Atomic'],
+    ['Hot Hand', 'Hot'],
+    ['Smoking Jacket', 'Smoking'],
+    ['Smoking Skid Lid', 'Smoking'],
+];
 function isException(name, effect) {
     return HAT_NAME_EXCEPTIONS.some((exception) => {
         const [exceptionName, exceptionEffect] = exception;
