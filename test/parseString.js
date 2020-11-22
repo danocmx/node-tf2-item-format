@@ -425,6 +425,12 @@ describe('parseString', () => {
 
 		assert.deepEqual(itemObject, { name: 'Smoking Skid Lid', craftable: true, quality: 'Unique' });
 	});
+
+	it('Case #38', () => {
+		const itemObject = parseString('Strange Cosmetic Part: Kills', false, false);
+
+		assert.deepEqual(itemObject, { name: 'Strange Cosmetic Part: Kills', craftable: true, quality: 'Unique' });
+	});
 });
 
 describe('parseString with numbers', () => {
@@ -859,6 +865,12 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString('Smoking Skid Lid', true, false);
 
 		assert.deepEqual(itemObject, { name: 'Smoking Skid Lid', craftable: true, quality: 6 });
+	});
+
+	it('Case #38', () => {
+		const itemObject = parseString('Strange Cosmetic Part: Kills', true, false);
+
+		assert.deepEqual(itemObject, { name: 'Strange Cosmetic Part: Kills', craftable: true, quality: 6 });
 	});
 });
 
@@ -1363,5 +1375,11 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString('Smoking Skid Lid', true, true);
 
 		assert.deepEqual(itemObject, { name: 'Smoking Skid Lid', craftable: true, quality: 6, defindex: 30399 });
+	});
+
+	it('Case #40', () => {
+		const itemObject = parseString('Strange Cosmetic Part: Kills', true, true);
+
+		assert.deepEqual(itemObject, { name: 'Strange Cosmetic Part: Kills', craftable: true, quality: 6, defindex: 6060 });
 	});
 });

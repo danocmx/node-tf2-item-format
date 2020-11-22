@@ -6,5 +6,5 @@ function default_1(name) {
 exports.default = default_1;
 ;
 function isStrangeException(name) {
-    return /(Strange Bacon Grease|Strange Filter: |Strange Count Transfer Tool|Strange Part: )/.test(name);
+    return /(Strange Bacon Grease|Strange Filter: |Strange Count Transfer Tool|Strange Part: |Strange Cosmetic Part: )/.test(name);
 }
