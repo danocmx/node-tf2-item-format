@@ -1,5 +1,8 @@
 # TF2 Item Format
-Formatting for TF2  items.
+Formatting for TF2 items.
+
+Use `v4` branch for current version.
+Install it via `npm install tf2-item-format@v4-0-0`
 
 ## Features
 - Parses item name into attribute object
