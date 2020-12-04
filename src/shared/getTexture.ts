@@ -6,14 +6,21 @@ import isNumber from '../util/isNumber';
  * Iterates over effects object to get matching effect.
  */
 // eslint-disable-next-line consistent-return
-export default function (name: string, attributes: { wear: any|void }): string|void {
+export default function (
+	name: string,
+	attributes: { wear: any | void }
+): string | void {
 	if (!schema.textures) schema.loadTextures();
 
 	const textureKeys = Object.keys(schema.textures);
 	for (let i = 0; i < textureKeys.length; i++) {
-		const texture: number|string = textureKeys[i];
+		const texture: number | string = textureKeys[i];
 
-		if (texture === 'Haunted Ghosts' && name.includes('Haunted Ghosts') && !attributes.wear) {
+		if (
+			texture === 'Haunted Ghosts' &&
+			name.includes('Haunted Ghosts') &&
+			!attributes.wear
+		) {
 			continue;
 		}
 
@@ -24,4 +31,4 @@ export default function (name: string, attributes: { wear: any|void }): string|v
 
 		return texture;
 	}
-};
+}

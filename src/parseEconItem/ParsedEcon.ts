@@ -20,7 +20,7 @@ import {
 	ItemDefindexes,
 	ItemAttributesInNumbers,
 	PlaceholderEconNameAttributes,
-	MetaEconAttributes
+	MetaEconAttributes,
 } from '../types';
 
 /**
@@ -70,11 +70,31 @@ export default class ParsedEcon {
 	/**
 	 * Gets attributes that are included in the name.
 	 */
-	getNameAttributes(name: string, inNumbers: false, useDefindexes: true): ParsedEconNameAtributes & ItemDefindexes;
-	getNameAttributes(name: string, inNumbers: false, useDefindexes: false): ParsedEconNameAtributes;
-	getNameAttributes(name: string, inNumbers: true, useDefindexes: true): ParsedEconNameAtributes & ItemDefindexes & ItemAttributesInNumbers;
-	getNameAttributes(name: string, inNumbers: true, useDefindexes: false): ParsedEconNameAtributes & ItemAttributesInNumbers;
-	getNameAttributes(name: string, inNumbers: boolean, useDefindexes: boolean): ParsedEconNameAtributes {
+	getNameAttributes(
+		name: string,
+		inNumbers: false,
+		useDefindexes: true
+	): ParsedEconNameAtributes & ItemDefindexes;
+	getNameAttributes(
+		name: string,
+		inNumbers: false,
+		useDefindexes: false
+	): ParsedEconNameAtributes;
+	getNameAttributes(
+		name: string,
+		inNumbers: true,
+		useDefindexes: true
+	): ParsedEconNameAtributes & ItemDefindexes & ItemAttributesInNumbers;
+	getNameAttributes(
+		name: string,
+		inNumbers: true,
+		useDefindexes: false
+	): ParsedEconNameAtributes & ItemAttributesInNumbers;
+	getNameAttributes(
+		name: string,
+		inNumbers: boolean,
+		useDefindexes: boolean
+	): ParsedEconNameAtributes {
 		const texture = this.descriptions.texture || this.nameAttrs.texture;
 
 		let attrs: PlaceholderEconNameAttributes = {
@@ -104,19 +124,15 @@ export default class ParsedEcon {
 				? { killstreak: this.descriptions.killstreak.value }
 				: {}),
 
-			...(this.nameAttrs.target
-				? { target: this.nameAttrs.target }
-				: {}),
-			...(this.nameAttrs.output
-				? { output: this.nameAttrs.output }
-				: {}),
+			...(this.nameAttrs.target ? { target: this.nameAttrs.target } : {}),
+			...(this.nameAttrs.output ? { output: this.nameAttrs.output } : {}),
 			...(this.nameAttrs.outputQuality
 				? { outputQuality: this.nameAttrs.outputQuality }
 				: {}),
-			
+
 			...(this.nameAttrs.itemNumber
 				? { itemNumber: this.nameAttrs.itemNumber }
-				: {}), 
+				: {}),
 		};
 
 		if (inNumbers) {
@@ -135,34 +151,64 @@ export default class ParsedEcon {
 			const defindexes = getDefindexes(
 				name as string,
 				this.nameAttrs.output || this.nameAttrs.target
-					? { target: this.nameAttrs.target as string, output: this.nameAttrs.output, outputQuality: this.nameAttrs.outputQuality } 
+					? {
+							target: this.nameAttrs.target as string,
+							output: this.nameAttrs.output,
+							outputQuality: this.nameAttrs.outputQuality,
+					  }
 					: undefined
 			);
 
 			if (defindexes.defindex) attrs.defindex = defindexes.defindex;
-			if (defindexes.outputDefindex) attrs.outputDefindex = defindexes.outputDefindex;
-			if (defindexes.targetDefindex) attrs.targetDefindex = defindexes.targetDefindex;
+			if (defindexes.outputDefindex)
+				attrs.outputDefindex = defindexes.outputDefindex;
+			if (defindexes.targetDefindex)
+				attrs.targetDefindex = defindexes.targetDefindex;
 		}
 
 		return removeUndefined(attrs) as ParsedEconNameAtributes;
 	}
 
-	getAttributes(shortName: string, inNumbers: false, useDefindexes: true): ParsedEconNameAtributes & ItemDefindexes & MetaEconAttributes;
-	getAttributes(shortName: string, inNumbers: true, useDefindexes: false): ParsedEconNameAtributes & ItemAttributesInNumbers & MetaEconAttributes;
-	getAttributes(shortName: string, inNumbers: true, useDefindexes: true): ParsedEconNameAtributes & ItemDefindexes & ItemAttributesInNumbers & MetaEconAttributes;
-	getAttributes(shortName: string, inNumbers: false, useDefindexes: false): ParsedEconNameAtributes & MetaEconAttributes;
-	getAttributes(shortName: string, inNumbers: boolean, useDefindex: boolean): any {
+	getAttributes(
+		shortName: string,
+		inNumbers: false,
+		useDefindexes: true
+	): ParsedEconNameAtributes & ItemDefindexes & MetaEconAttributes;
+	getAttributes(
+		shortName: string,
+		inNumbers: true,
+		useDefindexes: false
+	): ParsedEconNameAtributes & ItemAttributesInNumbers & MetaEconAttributes;
+	getAttributes(
+		shortName: string,
+		inNumbers: true,
+		useDefindexes: true
+	): ParsedEconNameAtributes &
+		ItemDefindexes &
+		ItemAttributesInNumbers &
+		MetaEconAttributes;
+	getAttributes(
+		shortName: string,
+		inNumbers: false,
+		useDefindexes: false
+	): ParsedEconNameAtributes & MetaEconAttributes;
+	getAttributes(
+		shortName: string,
+		inNumbers: boolean,
+		useDefindex: boolean
+	): any {
 		// Types are silent now.
 		let attributes: any;
 		if (inNumbers === true) {
-			if (useDefindex) attributes = this.getNameAttributes(shortName, true, true);
+			if (useDefindex)
+				attributes = this.getNameAttributes(shortName, true, true);
 			else attributes = this.getNameAttributes(shortName, true, false);
 		} else if (useDefindex === true) {
 			attributes = this.getNameAttributes(shortName, false, true);
 		} else {
 			attributes = this.getNameAttributes(shortName, false, false);
 		}
-		
+
 		return {
 			...attributes,
 

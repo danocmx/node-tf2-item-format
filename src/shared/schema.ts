@@ -1,4 +1,9 @@
-import { requireStatic, SchemaEnum, DefindexToName, SchemaItem } from 'tf2-static-schema';
+import {
+	requireStatic,
+	SchemaEnum,
+	DefindexToName,
+	SchemaItem,
+} from 'tf2-static-schema';
 
 import isNumber from '../util/isNumber';
 
@@ -9,8 +14,8 @@ const DEFINDEXES: { [name: string]: number } = {
 	'Professional Killstreak Kit Fabricator': 20003,
 	'Chemistry Set': 20005,
 	'Mann Co. Supply Crate Key': 5021,
-	'Lugermorph': 160
-}
+	Lugermorph: 160,
+};
 
 /* TODO: Set boundaries between these.
 	"20000":"Chemistry Set",
@@ -61,25 +66,25 @@ class Schema {
 		this.qualities = requireStatic('qualities') as SchemaEnum;
 	}
 
-	getEffect(search: string|number): number|string {
+	getEffect(search: string | number): number | string {
 		if (!this.effects) this.loadEffects();
 
 		return this.effects[search];
 	}
 
-	getWear(search: string|number): number|string {
+	getWear(search: string | number): number | string {
 		if (!this.wears) this.loadWears();
 
 		return this.wears[search];
 	}
 
-	getKillstreak(search: string|number): number|string {
+	getKillstreak(search: string | number): number | string {
 		if (!this.killstreaks) this.loadKillstreaks();
 
 		return this.killstreaks[search];
 	}
 
-	getTexture(search: string|number): number|string {
+	getTexture(search: string | number): number | string {
 		if (!this.textures) this.loadTextures();
 
 		return this.textures[search];
@@ -90,14 +95,14 @@ class Schema {
 	 * @param {string} search
 	 * @return {number}
 	 */
-	getDefindex(search: number|string): number|null {
+	getDefindex(search: number | string): number | null {
 		if (!this.items) this.loadDefindexes();
 		if (typeof search === 'number') return search;
-		
+
 		// Exceptions
 		if (DEFINDEXES[search]) return DEFINDEXES[search];
 
-		let upgradeableDfx: number|null = null;
+		let upgradeableDfx: number | null = null;
 		for (let i = 0; i < this.items.length; i++) {
 			const item: SchemaItem = this.items[i];
 			const name: string = selectName(item);
@@ -113,74 +118,74 @@ class Schema {
 		return upgradeableDfx;
 	}
 
-	getName(search: number|string): string {
+	getName(search: number | string): string {
 		if (!this.itemNames) this.loadItemNames();
 		if (!isNumber(search)) return search as string;
 
 		return this.itemNames[search as number];
 	}
 
-	getQuality(search: number|string): number|string {
+	getQuality(search: number | string): number | string {
 		if (!this.qualities) this.loadQualities();
 
 		return this.qualities[search];
 	}
 
-	getEffectName(effect: number|string): string {
+	getEffectName(effect: number | string): string {
 		if (!isNumber(effect)) return effect as string;
 
 		return this.getEffect(effect as number) as string;
 	}
 
-	getWearName(wear: number|string): string {
+	getWearName(wear: number | string): string {
 		if (!isNumber(wear)) return wear as string;
 
 		return this.getWear(wear as number) as string;
 	}
 
-	getKillstreakName(killstreak: number|string): string {
+	getKillstreakName(killstreak: number | string): string {
 		if (!isNumber(killstreak)) return killstreak as string;
 
 		return this.getKillstreak(killstreak as number) as string;
 	}
 
-	getTextureName(texture: number|string): string {
+	getTextureName(texture: number | string): string {
 		if (!isNumber(texture)) return texture as string;
 
 		return this.getTexture(texture as number) as string;
 	}
 
-	getQualityName(quality: number|string): string {
+	getQualityName(quality: number | string): string {
 		if (!isNumber(quality)) return quality as string;
 
 		return this.getQuality(quality as number) as string;
 	}
 
-	getEffectEnum(effect: number|string): number {
+	getEffectEnum(effect: number | string): number {
 		if (isNumber(effect)) return effect as number;
 
 		return this.getEffect(effect as string) as number;
 	}
 
-	getWearEnum(wear: number|string): number {
+	getWearEnum(wear: number | string): number {
 		if (isNumber(wear)) return wear as number;
 
 		return this.getWear(wear as string) as number;
 	}
 
-	getKillstreakEnum(killstreak: number|string): number {
+	getKillstreakEnum(killstreak: number | string): number {
 		if (isNumber(killstreak)) return killstreak as number;
 
 		return this.getKillstreak(killstreak as string) as number;
 	}
 
-	getTextureEnum(texture: number|string): number {
+	getTextureEnum(texture: number | string): number {
 		if (isNumber(texture)) return texture as number;
 
 		return parseInt(this.getTexture(texture as string) as string);
 	}
 
-	getQualityEnum(quality: number|string): number {
+	getQualityEnum(quality: number | string): number {
 		if (isNumber(quality)) return quality as number;
 
 		return this.getQuality(quality as string) as number;

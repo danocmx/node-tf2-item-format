@@ -36,7 +36,7 @@ const EXCEPTIONS = [
 	"The Color of a Gentlemann's Business Pants",
 	'The Value of Teamwork',
 	'The Concealed Killer Weapons Case',
-	'The Powerhouse Weapons Case'
+	'The Powerhouse Weapons Case',
 ];
 
 /**

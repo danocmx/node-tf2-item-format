@@ -7,21 +7,23 @@ import { EconDescription } from '../../../types';
  * Checks if texture is the one on the item.
  */
 export function isItemsTexture(description: EconDescription, item: ParsedEcon) {
-	return description.value.startsWith('\u2714 ') && (matchesName(description, item) || isCurrentItemSkin(item));
-};
+	return (
+		description.value.startsWith('\u2714 ') &&
+		(matchesName(description, item) || isCurrentItemSkin(item))
+	);
+}
 
 function matchesName(description: EconDescription, { itemName }: ParsedEcon) {
-	return itemName.origin.includes(
-		description.value.replace('\u2714 ', ''),
-	);
+	return itemName.origin.includes(description.value.replace('\u2714 ', ''));
 }
 
 function isCurrentItemSkin({ tags }: ParsedEcon) {
 	return !!tags.wear;
 }
 
-export function getTexture(description: EconDescription): string|void {
+export function getTexture(description: EconDescription): string | void {
 	// Only set texture when app_data present.
 	return description.app_data
-		? schema.getTextureName(description.app_data.def_index) : undefined;
-};
+		? schema.getTextureName(description.app_data.def_index)
+		: undefined;
+}

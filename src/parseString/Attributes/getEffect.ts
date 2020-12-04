@@ -9,38 +9,47 @@ const EFFECT_EXCEPTIONS = [
 	['Spellbound', 'Spellbound Aspect'],
 	['Haunted Phantasm', 'Haunted Phantasm Jr'],
 	['Ghastly Ghosts', 'Ghastly Ghosts Jr'],
-]
+];
 
 /**
  * Iterates over effects object to get matching effect.
  */
 // eslint-disable-next-line consistent-return
-export default function (name: string, attributes: Attributes): string|void {
+export default function (name: string, attributes: Attributes): string | void {
 	if (!schema.effects) schema.loadEffects();
 
 	const effectsKeys = Object.keys(schema.effects);
 	for (let i = 0; i < effectsKeys.length; i++) {
-		let effect: string|number = effectsKeys[i];
+		let effect: string | number = effectsKeys[i];
 
 		// New type of exception
 		if (effect === 'Smoking' && name.includes('Smoking Smoking Skid Lid')) {
 			return 'Smoking';
 		}
 
-		if (effect === 'Haunted Ghosts' && name.includes('Haunted Ghosts ') && attributes.wear) {
+		if (
+			effect === 'Haunted Ghosts' &&
+			name.includes('Haunted Ghosts ') &&
+			attributes.wear
+		) {
 			continue;
 		}
 
 		for (let i = 0; i < EFFECT_EXCEPTIONS.length; i++) {
 			const exception = EFFECT_EXCEPTIONS[i];
-			if (effect === exception[0] && name.includes(`${exception[1]} `)) return exception[1];
+			if (effect === exception[0] && name.includes(`${exception[1]} `))
+				return exception[1];
 		}
 
-		if (!isNumber(effect) && name.includes(`${effect} `) && !isException(name, effect)) {
+		if (
+			!isNumber(effect) &&
+			name.includes(`${effect} `) &&
+			!isException(name, effect)
+		) {
 			return effect;
 		}
 	}
-};
+}
 
 /**
  * Which item and effect cannot exist together.
@@ -57,7 +66,7 @@ const HAT_NAME_EXCEPTIONS: [string, string][] = [
 	['Smoking Skid Lid', 'Smoking'],
 	['Hot Huaraches', 'Hot'],
 	['Cool Capuchon', 'Cool'],
-	['Hot Dogger', 'Hot']
+	['Hot Dogger', 'Hot'],
 ];
 
 function isException(name: string, effect: string): boolean {

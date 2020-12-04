@@ -35,10 +35,12 @@ export default function (econ: ParsedEcon): NameAttributes {
 		attributes.itemNumber = itemNumber;
 	}
 
-	const usableItem = getUsableItem(itemNumber ? removeItemNumber(name, itemNumber) : name);
+	const usableItem = getUsableItem(
+		itemNumber ? removeItemNumber(name, itemNumber) : name
+	);
 	if (usableItem) {
 		Object.assign(attributes, usableItem);
 	}
 
 	return attributes;
-};
+}

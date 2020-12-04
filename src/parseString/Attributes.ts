@@ -20,12 +20,12 @@ export default class Attributes {
 	public craftable: boolean;
 	public australium: boolean;
 	public festivized: boolean;
-	public killstreak: string|void;
-	public wear: string|void;
-	public effect: string|void;
-	public texture: string|void;
-	public itemNumber: ItemNumber|null;
-	public usableItem?: Partial<TargetOutputItem>|null;
+	public killstreak: string | void;
+	public wear: string | void;
+	public effect: string | void;
+	public texture: string | void;
+	public itemNumber: ItemNumber | null;
+	public usableItem?: Partial<TargetOutputItem> | null;
 	public isUniqueHat?: boolean;
 	public quality: StringQuality;
 
@@ -47,4 +47,3 @@ export default class Attributes {
 		this.quality = getQuality(name, this);
 	}
 }
-

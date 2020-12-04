@@ -50,4 +50,4 @@ export default function (item: SKUAttributes): string {
 	}
 
 	return sku;
-};
+}

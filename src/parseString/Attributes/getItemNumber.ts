@@ -13,7 +13,7 @@ import { ItemNumber } from '../../types';
  * @param {string} name
  * @return {itemNumber}
  */
-export default function (name: string): ItemNumber|null {
+export default function (name: string): ItemNumber | null {
 	const value = getValue(name);
 	if (!value) return null;
 
@@ -21,7 +21,7 @@ export default function (name: string): ItemNumber|null {
 		type: getType(name),
 		value,
 	};
-};
+}
 
 function getType(name: string): string {
 	const [_, type] = name.match(/\b(Medal|Crate|Case|Series)\b/) || [];
@@ -32,7 +32,7 @@ function getType(name: string): string {
 	return type ? type.toLowerCase() : 'craft';
 }
 
-function getValue(name: string): number|null {
+function getValue(name: string): number | null {
 	const [_, value] = name.match(/ #(\d+)/) || [];
 	const numberValue: number = parseInt(value);
 

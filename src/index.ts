@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 
-import parseEconItem from "./parseEconItem";
+import parseEconItem from './parseEconItem';
 import parseString from './parseString';
 import stringify from './stringify';
 import createBPListing from './createBPListing';
@@ -20,12 +20,12 @@ export * from './types';
 const fixName = (name: string) => stringify(parseString(name, false, false));
 
 export {
-    parseEconItem,
-    parseString,
-    stringify,
-    createBPListing,
-    toSKU,
-    parseSKU,
-    fixName,
-    schema,
-}
+	parseEconItem,
+	parseString,
+	stringify,
+	createBPListing,
+	toSKU,
+	parseSKU,
+	fixName,
+	schema,
+};

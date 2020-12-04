@@ -12,7 +12,9 @@ import { ItemAttributes, StrigifySKUAttributes } from './types';
 /**
  * Stringifies item object into item name
  */
-export default function (attributes: StrigifySKUAttributes|ItemAttributes): string {
+export default function (
+	attributes: StrigifySKUAttributes | ItemAttributes
+): string {
 	const {
 		craftable,
 		australium,
@@ -27,7 +29,7 @@ export default function (attributes: StrigifySKUAttributes|ItemAttributes): stri
 		itemNumber,
 		isUniqueHat,
 	} = attributes;
-	
+
 	let name;
 	let target;
 	let output;
@@ -37,12 +39,16 @@ export default function (attributes: StrigifySKUAttributes|ItemAttributes): stri
 		output = attributes.output;
 	} else if (skuTypeGuard(attributes)) {
 		name = getName(attributes.defindex);
-		target = attributes.targetDefindex ? schema.getName(attributes.targetDefindex) : '';
-		output = attributes.outputDefindex ? schema.getName(attributes.outputDefindex) : '';
+		target = attributes.targetDefindex
+			? schema.getName(attributes.targetDefindex)
+			: '';
+		output = attributes.outputDefindex
+			? schema.getName(attributes.outputDefindex)
+			: '';
 	} else {
 		throw new Error('Defindex or Name is missing.');
 	}
-	
+
 	let itemName = '';
 
 	if (!craftable) {

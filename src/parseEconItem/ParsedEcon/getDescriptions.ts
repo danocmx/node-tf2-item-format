@@ -35,24 +35,24 @@ export default function (econ: ParsedEcon): DescriptionAttributes {
 	for (let i = 0; i < descriptions.length; i++) {
 		const description = descriptions[i];
 
-		if (isPart(description, econ)) attributes.parts.push(getPart(description));
-
+		if (isPart(description, econ))
+			attributes.parts.push(getPart(description));
 		else if (isPaint(description)) attributes.paint = getPaint(description);
-
-		else if (isEffect(description, tags)) attributes.effect = getEffect(description);
-
+		else if (isEffect(description, tags))
+			attributes.effect = getEffect(description);
 		else if (isFestivized(description)) attributes.festivized = true;
-
-		else if (isSpell(description)) attributes.spells.push(getSpell(description));
-
-		else if (Killstreak.isKillstreaker(description)) killstreak.setKillstreaker(description);
-		else if (Killstreak.isSheen(description)) killstreak.setSheen(description);
-		else if (Killstreak.isKillstreak(description)) killstreak.setKillstreak();
-
-		else if (isItemsTexture(description, econ)) attributes.texture = getTexture(description);
-
+		else if (isSpell(description))
+			attributes.spells.push(getSpell(description));
+		else if (Killstreak.isKillstreaker(description))
+			killstreak.setKillstreaker(description);
+		else if (Killstreak.isSheen(description))
+			killstreak.setSheen(description);
+		else if (Killstreak.isKillstreak(description))
+			killstreak.setKillstreak();
+		else if (isItemsTexture(description, econ))
+			attributes.texture = getTexture(description);
 		else if (!isCraftable(description)) attributes.craftable = false;
 	}
 
 	return attributes;
-};
+}
