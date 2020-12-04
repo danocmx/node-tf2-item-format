@@ -1,6 +1,6 @@
 {
   "name": "tf2-item-format",
-  "version": "4.1.3-beta.5",
+  "version": "4.1.3-beta.6",
   "description": "Format's TF2 items like backpack.tf does",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
