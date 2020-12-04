@@ -431,6 +431,18 @@ describe('parseString', () => {
 
 		assert.deepEqual(itemObject, { name: 'Strange Cosmetic Part: Kills', craftable: true, quality: 'Unique' });
 	});
+
+	it('Case #39', () => {
+		const itemObject = parseString('The Value of Teamwork', false, false);
+
+		assert.deepEqual(itemObject, { name: 'The Value of Teamwork', craftable: true, quality: 'Unique' });
+	});
+
+	it('Case #40', () => {
+		const itemObject = parseString('The Essential Accessories', false, false);
+
+		assert.deepEqual(itemObject, { name: 'The Essential Accessories', craftable: true, quality: 'Unique' });
+	});
 });
 
 describe('parseString with numbers', () => {
@@ -871,6 +883,18 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString('Strange Cosmetic Part: Kills', true, false);
 
 		assert.deepEqual(itemObject, { name: 'Strange Cosmetic Part: Kills', craftable: true, quality: 6 });
+	});
+
+	it('Case #39', () => {
+		const itemObject = parseString('The Value of Teamwork', true, false);
+
+		assert.deepEqual(itemObject, { name: 'The Value of Teamwork', craftable: true, quality: 6 });
+	});
+
+	it('Case #40', () => {
+		const itemObject = parseString('The Essential Accessories', true, false);
+
+		assert.deepEqual(itemObject, { name: 'The Essential Accessories', craftable: true, quality: 6 });
 	});
 });
 
@@ -1377,9 +1401,21 @@ describe('parseString with defindexes and numbers.', () => {
 		assert.deepEqual(itemObject, { name: 'Smoking Skid Lid', craftable: true, quality: 6, defindex: 30399 });
 	});
 
-	it('Case #40', () => {
+	it('Case #41', () => {
 		const itemObject = parseString('Strange Cosmetic Part: Kills', true, true);
 
 		assert.deepEqual(itemObject, { name: 'Strange Cosmetic Part: Kills', craftable: true, quality: 6, defindex: 6060 });
+	});
+
+	it('Case #42', () => {
+		const itemObject = parseString('The Value of Teamwork', true, true);
+
+		assert.deepEqual(itemObject, { name: 'The Value of Teamwork', craftable: true, quality: 6, defindex: 5064 });
+	});
+
+	it('Case #43', () => {
+		const itemObject = parseString('The Essential Accessories', true, true);
+
+		assert.deepEqual(itemObject, { name: 'The Essential Accessories', craftable: true, quality: 6, defindex: 347 });
 	});
 });

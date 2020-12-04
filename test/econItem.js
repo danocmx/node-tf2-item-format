@@ -1386,6 +1386,29 @@ describe('parseEconItem', () => {
 			"name": "Gold Botkiller Wrench Mk.II",
 		});
 	})
+
+	it('Case #15', () => {
+		const econItem = parseEconItem({"appid":"440","classid":"11042149","instanceid":"19201223","icon_url":"IzMF03bi9WpSBq-S-ekoE33L-iLqGFHVaU25ZzQNQcXdEH9myp0erksICfTdcfMQEpRnqWSMU5OD2NoHwHEIkChXOjLx2Sk5MbUqMcbBnQz4ruyeU3n5awjJLjLaE0pXEvYaYzGdkW_0p7rBXG6aQb0rFl9XK_QM8jdIb82PaURv3dUMrT27kxUqSU5_IZIXcl_smSJdIbMiwRlwHyU","icon_url_large":"IzMF03bi9WpSBq-S-ekoE33L-iLqGFHVaU25ZzQNQcXdEH9myp0erksICfTdcfMQEpRnqWSMU5OD2NoHwHEIkChXOjLx2Sk5MbUqMcbBnQz4ruyeU3n5awjJLjLaE0pXEvYaYzGdkW_0p7rBXG6aQb0rFl9XK_QM8jdIb82PaURv3dUMrT27kxUqSU5_IZIXcl_smSJdIbMiwRlwHyU","icon_drag_url":"","name":"The Essential Accessories","market_hash_name":"The Essential Accessories","market_name":"The Essential Accessories","name_color":"7D6D00","background_color":"3C352E","type":"Limited Level 10 Apparel","tradable":1,"marketable":1,"commodity":0,"market_tradable_restriction":"7","market_marketable_restriction":"0","descriptions":[{"value":"Paint Color: Operator's Overalls","color":"756b5e"},{"value":""}],"actions":[{"name":"Item Wiki Page...","link":"http:\/\/wiki.teamfortress.com\/scripts\/itemredirect.php?id=347&lang=en_US"},{"name":"Inspect in Game...","link":"steam:\/\/rungame\/440\/76561202255233023\/+tf_econ_item_preview%20S%owner_steamid%A%assetid%D2891326522173157497"}],"market_actions":[{"name":"Inspect in Game...","link":"steam:\/\/rungame\/440\/76561202255233023\/+tf_econ_item_preview%20M%listingid%A%assetid%D2891326522173157497"}],"tags":[{"internal_name":"Unique","name":"Unique","category":"Quality","color":"7D6D00","category_name":"Quality"},{"internal_name":"misc","name":"Cosmetic","category":"Type","category_name":"Type"},{"internal_name":"Scout","name":"Scout","category":"Class","category_name":"Class"}],"app_data":{"def_index":"347","quality":"6"}}, false, false);
+
+		assert.deepEqual(econItem, {
+			"classes": [
+				"Scout"
+			],
+			"commodity": false,
+			"craftable": true,
+			"fullName": "The Essential Accessories",
+			"id": undefined,
+			"img": "https://steamcommunity-a.akamaihd.net/economy/image/IzMF03bi9WpSBq-S-ekoE33L-iLqGFHVaU25ZzQNQcXdEH9myp0erksICfTdcfMQEpRnqWSMU5OD2NoHwHEIkChXOjLx2Sk5MbUqMcbBnQz4ruyeU3n5awjJLjLaE0pXEvYaYzGdkW_0p7rBXG6aQb0rFl9XK_QM8jdIb82PaURv3dUMrT27kxUqSU5_IZIXcl_smSJdIbMiwRlwHyU/",
+			"marketable": true,
+			"name": "The Essential Accessories",
+			"paint": "Operator's Overalls",
+			"parts": [],
+			"quality": "Unique",
+			"spells": [],
+			"tradable": true,
+			"type": "misc",
+		});
+	});
 });
 
 describe('Econ Item in Numbers', () => {
@@ -2343,7 +2366,30 @@ describe('Econ Item in Numbers', () => {
 			tradable: true,
 			type: "primary"
 		});
-	})
+	});
+	
+	it('Case #8', () => {
+		const econItem = parseEconItem({"appid":"440","classid":"11042149","instanceid":"19201223","icon_url":"IzMF03bi9WpSBq-S-ekoE33L-iLqGFHVaU25ZzQNQcXdEH9myp0erksICfTdcfMQEpRnqWSMU5OD2NoHwHEIkChXOjLx2Sk5MbUqMcbBnQz4ruyeU3n5awjJLjLaE0pXEvYaYzGdkW_0p7rBXG6aQb0rFl9XK_QM8jdIb82PaURv3dUMrT27kxUqSU5_IZIXcl_smSJdIbMiwRlwHyU","icon_url_large":"IzMF03bi9WpSBq-S-ekoE33L-iLqGFHVaU25ZzQNQcXdEH9myp0erksICfTdcfMQEpRnqWSMU5OD2NoHwHEIkChXOjLx2Sk5MbUqMcbBnQz4ruyeU3n5awjJLjLaE0pXEvYaYzGdkW_0p7rBXG6aQb0rFl9XK_QM8jdIb82PaURv3dUMrT27kxUqSU5_IZIXcl_smSJdIbMiwRlwHyU","icon_drag_url":"","name":"The Essential Accessories","market_hash_name":"The Essential Accessories","market_name":"The Essential Accessories","name_color":"7D6D00","background_color":"3C352E","type":"Limited Level 10 Apparel","tradable":1,"marketable":1,"commodity":0,"market_tradable_restriction":"7","market_marketable_restriction":"0","descriptions":[{"value":"Paint Color: Operator's Overalls","color":"756b5e"},{"value":""}],"actions":[{"name":"Item Wiki Page...","link":"http:\/\/wiki.teamfortress.com\/scripts\/itemredirect.php?id=347&lang=en_US"},{"name":"Inspect in Game...","link":"steam:\/\/rungame\/440\/76561202255233023\/+tf_econ_item_preview%20S%owner_steamid%A%assetid%D2891326522173157497"}],"market_actions":[{"name":"Inspect in Game...","link":"steam:\/\/rungame\/440\/76561202255233023\/+tf_econ_item_preview%20M%listingid%A%assetid%D2891326522173157497"}],"tags":[{"internal_name":"Unique","name":"Unique","category":"Quality","color":"7D6D00","category_name":"Quality"},{"internal_name":"misc","name":"Cosmetic","category":"Type","category_name":"Type"},{"internal_name":"Scout","name":"Scout","category":"Class","category_name":"Class"}],"app_data":{"def_index":"347","quality":"6"}}, true, false);
+
+		assert.deepEqual(econItem, {
+			"classes": [
+				"Scout"
+			],
+			"commodity": false,
+			"craftable": true,
+			"fullName": "The Essential Accessories",
+			"id": undefined,
+			"img": "https://steamcommunity-a.akamaihd.net/economy/image/IzMF03bi9WpSBq-S-ekoE33L-iLqGFHVaU25ZzQNQcXdEH9myp0erksICfTdcfMQEpRnqWSMU5OD2NoHwHEIkChXOjLx2Sk5MbUqMcbBnQz4ruyeU3n5awjJLjLaE0pXEvYaYzGdkW_0p7rBXG6aQb0rFl9XK_QM8jdIb82PaURv3dUMrT27kxUqSU5_IZIXcl_smSJdIbMiwRlwHyU/",
+			"marketable": true,
+			"name": "The Essential Accessories",
+			"paint": "Operator's Overalls",
+			"parts": [],
+			"quality": 6,
+			"spells": [],
+			"tradable": true,
+			"type": "misc",
+		});
+	});
 });
 
 describe('Econ item with defindexes', () => {
@@ -3451,5 +3497,30 @@ describe('Econ item with defindexes', () => {
 			type: "primary",
 			defindex: 1007
 		});
-	})
+	});
+
+	
+	it('Case #13', () => {
+		const econItem = parseEconItem({"appid":"440","classid":"11042149","instanceid":"19201223","icon_url":"IzMF03bi9WpSBq-S-ekoE33L-iLqGFHVaU25ZzQNQcXdEH9myp0erksICfTdcfMQEpRnqWSMU5OD2NoHwHEIkChXOjLx2Sk5MbUqMcbBnQz4ruyeU3n5awjJLjLaE0pXEvYaYzGdkW_0p7rBXG6aQb0rFl9XK_QM8jdIb82PaURv3dUMrT27kxUqSU5_IZIXcl_smSJdIbMiwRlwHyU","icon_url_large":"IzMF03bi9WpSBq-S-ekoE33L-iLqGFHVaU25ZzQNQcXdEH9myp0erksICfTdcfMQEpRnqWSMU5OD2NoHwHEIkChXOjLx2Sk5MbUqMcbBnQz4ruyeU3n5awjJLjLaE0pXEvYaYzGdkW_0p7rBXG6aQb0rFl9XK_QM8jdIb82PaURv3dUMrT27kxUqSU5_IZIXcl_smSJdIbMiwRlwHyU","icon_drag_url":"","name":"The Essential Accessories","market_hash_name":"The Essential Accessories","market_name":"The Essential Accessories","name_color":"7D6D00","background_color":"3C352E","type":"Limited Level 10 Apparel","tradable":1,"marketable":1,"commodity":0,"market_tradable_restriction":"7","market_marketable_restriction":"0","descriptions":[{"value":"Paint Color: Operator's Overalls","color":"756b5e"},{"value":""}],"actions":[{"name":"Item Wiki Page...","link":"http:\/\/wiki.teamfortress.com\/scripts\/itemredirect.php?id=347&lang=en_US"},{"name":"Inspect in Game...","link":"steam:\/\/rungame\/440\/76561202255233023\/+tf_econ_item_preview%20S%owner_steamid%A%assetid%D2891326522173157497"}],"market_actions":[{"name":"Inspect in Game...","link":"steam:\/\/rungame\/440\/76561202255233023\/+tf_econ_item_preview%20M%listingid%A%assetid%D2891326522173157497"}],"tags":[{"internal_name":"Unique","name":"Unique","category":"Quality","color":"7D6D00","category_name":"Quality"},{"internal_name":"misc","name":"Cosmetic","category":"Type","category_name":"Type"},{"internal_name":"Scout","name":"Scout","category":"Class","category_name":"Class"}],"app_data":{"def_index":"347","quality":"6"}}, true, true);
+
+		assert.deepEqual(econItem, {
+			"classes": [
+				"Scout"
+			],
+			"commodity": false,
+			"craftable": true,
+			"fullName": "The Essential Accessories",
+			"id": undefined,
+			"img": "https://steamcommunity-a.akamaihd.net/economy/image/IzMF03bi9WpSBq-S-ekoE33L-iLqGFHVaU25ZzQNQcXdEH9myp0erksICfTdcfMQEpRnqWSMU5OD2NoHwHEIkChXOjLx2Sk5MbUqMcbBnQz4ruyeU3n5awjJLjLaE0pXEvYaYzGdkW_0p7rBXG6aQb0rFl9XK_QM8jdIb82PaURv3dUMrT27kxUqSU5_IZIXcl_smSJdIbMiwRlwHyU/",
+			"marketable": true,
+			"name": "The Essential Accessories",
+			"paint": "Operator's Overalls",
+			"parts": [],
+			"quality": 6,
+			"spells": [],
+			"tradable": true,
+			"type": "misc",
+			"defindex": 347
+		});
+	});
 });
