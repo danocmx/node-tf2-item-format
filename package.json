@@ -1,15 +1,16 @@
 {
   "name": "tf2-item-format",
-  "version": "2.4.7",
+  "version": "4.2.0",
   "description": "Format's TF2 items like backpack.tf does",
-  "main": "./src/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "test": "mocha ./test",
-    "lint": "eslint ./src/"
+    "build": "npx tsc"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danocmx/node-tf2-item-format.git"
+    "url": "https://github.com/danocmx/node-tf2-item-format.git"
   },
   "keywords": [
     "tf2",
@@ -22,13 +23,15 @@
   },
   "homepage": "https://github.com/danocmx/node-tf2-item-format#readme",
   "dependencies": {
-    "lodash": "^4.17.15"
+    "tf2-static-schema": "^1.5.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
-    "mocha": "^7.2.0"
+    "mocha": "^7.2.0",
+    "release-it": "^14.2.1",
+    "typescript": "^4.0.3"
   }
 }

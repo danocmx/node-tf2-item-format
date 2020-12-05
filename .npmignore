@@ -1,0 +1,4 @@
+# Make packages smaller
+/.github
+/src
+/test
