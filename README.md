@@ -5,87 +5,42 @@ Formatting for TF2 items.
 - Parses item name into attribute object
 - Stringifies attribute object into item name same as backpack.tf
 - Parses ECON item into attributes
+- Parses SKU into attributes
+- Makes SKU out of attributes
 
 # Instalation
 Via NPM: `npm install tf2-item-format`
 
 # Documentation
-### parseEconItem(item)
-Param | Type | Description
------ | ---- | -----------
-item | `object` | https://github.com/DoctorMcKay/node-steamcommunity/wiki/CEconItem
+Currently there is no full documentation.
 
-#### Return => `object`
-Property | Type | Description
--------- | ---- | -----------
-name | `string` | shortened name of the item
-fullName | `string` | full name of the item
-id | `string` | item id
-img | `string` | image url
-tradable | `boolean` | is item tradable?
-craftable | `boolean` | is item craftable?
-quality | `number` | quality of the item
-texture | `string` |
-[wear] | `number` |
-[elevated] | `boolean` |
-[australium] | `boolean` |
-[festivized] | `boolean` |
-[effect] | `number` |
-[isUniqueHat] | `boolean` | is item a unique hat?
-[killstreak] | `number` |
-classes | `string[]` | Array of classes
-type | `string` | Type of the item as said by steam
-[collection] | `string` |
-[grade] | `string` |
-[paint] | `string` |
-parts | `string[]` | Array of parts
-spells | `string[]` | Array of spells
-marketable | `boolean` |
-commodity | `boolean` |
+We export these methods:
+- `parseString`
+- `stringify`
+- `parseEconItem`
+- `toSKU`
+- `parseSKU`
+- `createBPListing`
+- `fixName`
 
-### parseString(name)
-Param | Type | Description
------ | ---- | -----------
-name | `string` | name of the item you want parsed
+And static schema:
+- under property `schema`
 
-#### Return => `object`
-Property | Type | Description
--------- | ---- | -----------
-name | `string` | shortened name of the item
-craftable | `boolean` | is item craftable?
-[wear] | `number` |
-[elevated] | `boolean` |
-[australium] | `boolean` |
-[festivized] | `boolean` |
-[effect] | `number` |
-[isUniqueHat] | `boolean` | is item a unique hat?
-[killstreak] | `number` |
-[target] | `string` | item target string
-[output] | `string` | item output string
-[outputQuality] | `string` | output quality
-[itemNumber] | `object` | holds the `#123` value that's displayed on crafts, crates, cases and medals
-[itemNumber.value] | `number` | value of the number
-[itemNumber.type] | `string` | type of the number
-quality | `string` | item quality
-[elevated] | `boolean` | whether or not has item two qualities
+Everything is fully typed so you should be able to get this working on your own, until I make a documentation.
+Some of the types are a bit confusing which will get fixed in next major version.
 
-### stringify(item)
-Param | Type | Description
------ | ---- | -----------
-item | `object` | See previous return
+# Compability usage
+```ts
+// Have a name, want a sku
+const attributes = parseString(name, true, true); // To get defindexes and enums
+const sku = toSKU(attributes);
 
-#### Return => `string`
-Full name created from the object
+// Have a sku, want a name
+const attributes = parseSKU(sku);
+const name = stringify(attributes);
 
-### fixName(name)
-Param | Type | Description
------ | ---- | -----------
-name | `string` | Name you want to get fixed
-
-#### Return => `string`
-Fixed name
-
-#### Warning
-This method is highly experimental due to the
-nature of some attributes being parsed in way
-they're put in inside the name.
+// Have a sku, want a bp listing
+const attributes = parseSKU(sku);
+const listing = createBPListing(attributes);
+```
+Every method should be interchangable in similar ways.
