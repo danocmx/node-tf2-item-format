@@ -10,6 +10,7 @@ Formatting for TF2 items.
 
 # Instalation
 Via NPM: `npm install tf2-item-format`
+Or Yarn: `yarn add tf2-item-format`
 
 # Documentation
 Currently there is no full documentation.
