@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/danocmx/node-tf2-item-format#readme",
   "dependencies": {
-    "tf2-static-schema": "^1.4.0"
+    "tf2-static-schema": "^1.5.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
