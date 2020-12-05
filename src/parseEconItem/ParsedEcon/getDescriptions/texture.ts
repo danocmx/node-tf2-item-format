@@ -1,7 +1,6 @@
-import schema from '../../../shared/schema';
-
 import ParsedEcon from '../../ParsedEcon';
 import { EconDescription } from '../../../types';
+import { ISchema } from '../../../types/schema';
 
 /**
  * Checks if texture is the one on the item.
@@ -21,7 +20,7 @@ function isCurrentItemSkin({ tags }: ParsedEcon) {
 	return !!tags.wear;
 }
 
-export function getTexture(description: EconDescription): string | void {
+export function getTexture(description: EconDescription, schema: ISchema): string | void {
 	// Only set texture when app_data present.
 	return description.app_data
 		? schema.getTextureName(description.app_data.def_index)

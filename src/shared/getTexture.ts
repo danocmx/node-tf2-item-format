@@ -1,6 +1,6 @@
-import schema from './schema';
-import Attributes from '../parseString/Attributes';
 import isNumber from '../util/isNumber';
+
+import { ISchema } from '../types/schema';
 
 /**
  * Iterates over effects object to get matching effect.
@@ -8,11 +8,10 @@ import isNumber from '../util/isNumber';
 // eslint-disable-next-line consistent-return
 export default function (
 	name: string,
-	attributes: { wear: any | void }
+	attributes: { wear: any|null, schema: ISchema }
 ): string | void {
-	if (!schema.textures) schema.loadTextures();
-
-	const textureKeys = Object.keys(schema.textures);
+	const textures = attributes.schema.getTextures();
+	const textureKeys = Object.keys(textures);
 	for (let i = 0; i < textureKeys.length; i++) {
 		const texture: number | string = textureKeys[i];
 

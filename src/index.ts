@@ -6,26 +6,26 @@ import stringify from './stringify';
 import createBPListing from './createBPListing';
 import toSKU from './toSKU';
 import parseSKU from './parseSKU';
+import fixName from './fixName';
 
-import schema from './shared/schema';
+import { ISchema } from './types/schema';
 
 export * from './types';
 
-/**
- * Fixes the order of attributes in your name,
- * 	this is highly exrimental due to the
- * 	nature of attributes being parsed in way
- * 	they're put in inside the name.
- */
-const fixName = (name: string) => stringify(parseString(name, false, false));
+export function createFormat(schema: ISchema) {
+	return {
+		parseEconItem: parseEconItem.bind(undefined, schema),
+		parseString: parseString.bind(undefined, schema),
+		stringify: stringify.bind(undefined, schema),
+		createBPListing: createBPListing.bind(undefined, schema),
+		fixName: fixName.bind(undefined, schema),
+		/**
+		 * We export these to keep the format api constant. 
+		 */
+		toSKU,
+		parseSKU,
+		schema,
+	}
+}
 
-export {
-	parseEconItem,
-	parseString,
-	stringify,
-	createBPListing,
-	toSKU,
-	parseSKU,
-	fixName,
-	schema,
-};
+export { toSKU, parseSKU };

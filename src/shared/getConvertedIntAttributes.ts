@@ -1,8 +1,8 @@
-import schema from './schema';
-
 import { ConvertableAttributes } from '../types';
+import { ISchema } from '../types/schema';
 
 export default function (
+	schema: ISchema,
 	item: ConvertableAttributes
 ): {
 	killstreak?: number;

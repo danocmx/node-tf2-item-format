@@ -1,8 +1,8 @@
-import schema from '../shared/schema';
-
 import { Defindexes, TargetOutputItem } from '../types';
+import { ISchema } from '../types/schema';
 
 export default function getDefindexes(
+	schema: ISchema,
 	name: string,
 	usableItem?: Partial<TargetOutputItem>
 ): Defindexes {

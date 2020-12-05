@@ -12,11 +12,13 @@ import getTexture from '../shared/getTexture';
 import getKillstreak from '../shared/getKillstreak';
 
 import { ItemNumber, TargetOutputItem, StringQuality } from '../types';
+import { ISchema } from '../types/schema';
 
 /**
  * Holds all attributes we received from name.
  */
 export default class Attributes {
+	public schema: ISchema;
 	public craftable: boolean;
 	public australium: boolean;
 	public festivized: boolean;
@@ -29,7 +31,9 @@ export default class Attributes {
 	public isUniqueHat?: boolean;
 	public quality: StringQuality;
 
-	constructor(name: string) {
+	constructor(schema: ISchema, name: string) {
+		this.schema = schema;
+
 		this.craftable = isCraftable(name);
 		this.australium = isAustralium(name);
 		this.festivized = isFestivized(name);

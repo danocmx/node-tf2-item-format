@@ -9,6 +9,7 @@ import {
 	MetaEconAttributes,
 	AddionalEconItemAttributes,
 } from './types';
+import { ISchema } from './types/schema';
 
 /**
  * Parses Economy item from steam.
@@ -18,6 +19,7 @@ import {
  * @return {object}
  */
 function parseEconItem(
+	schema: ISchema,
 	item: EconItem,
 	inNumbers: false,
 	useDefindexes: true
@@ -26,11 +28,13 @@ function parseEconItem(
 	MetaEconAttributes &
 	AddionalEconItemAttributes;
 function parseEconItem(
+	schema: ISchema,
 	item: EconItem,
 	inNumbers: false,
 	useDefindexes: false
 ): ParsedEconNameAtributes & MetaEconAttributes & AddionalEconItemAttributes;
 function parseEconItem(
+	schema: ISchema,
 	item: EconItem,
 	inNumbers: true,
 	useDefindexes: true
@@ -40,6 +44,7 @@ function parseEconItem(
 	MetaEconAttributes &
 	AddionalEconItemAttributes;
 function parseEconItem(
+	schema: ISchema,
 	item: EconItem,
 	inNumbers: true,
 	useDefindexes: false
@@ -48,11 +53,12 @@ function parseEconItem(
 	MetaEconAttributes &
 	AddionalEconItemAttributes;
 function parseEconItem(
+	schema: ISchema,
 	item: EconItem,
 	inNumbers: boolean = false,
 	useDefindexes: boolean = false
 ): ParsedEconItem {
-	const parsedEcon = new ParsedEcon(item);
+	const parsedEcon = new ParsedEcon(schema, item);
 
 	const name = parsedEcon.itemName.getShort();
 

@@ -9,3 +9,28 @@ export default function (name: string, itemNumber: ItemNumber) {
 
 	return itemName;
 }
+
+/**
+ * parseEcon
+- getEffect [x]
+
+Econ
+- Killstreak
+- getTextureName
+
+createBPListing
+- index [x]
+
+shared
+- getTexture [x]
+- getConvertedIntAttributes [x]
+- getDefindexes [x]
+
+stringify
+- index [x]
+
+Desired syntax:
+
+createFormat(schema);
+default - createFormat(staticSchema);
+*/

@@ -1,5 +1,3 @@
-import schema from '../../shared/schema';
-
 import isNumber from '../../util/isNumber';
 
 import Attributes from '../Attributes';
@@ -16,9 +14,8 @@ const EFFECT_EXCEPTIONS = [
  */
 // eslint-disable-next-line consistent-return
 export default function (name: string, attributes: Attributes): string | void {
-	if (!schema.effects) schema.loadEffects();
-
-	const effectsKeys = Object.keys(schema.effects);
+	const effects = attributes.schema.getEffects();
+	const effectsKeys = Object.keys(effects);
 	for (let i = 0; i < effectsKeys.length; i++) {
 		let effect: string | number = effectsKeys[i];
 

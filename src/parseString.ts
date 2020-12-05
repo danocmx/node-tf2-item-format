@@ -13,37 +13,43 @@ import {
 	ItemDefindexes,
 	DefaultItemAttributes,
 } from './types';
+import { ISchema } from './types/schema';
 
 /**
  * Parses name string into attributes.
  */
 function parseString(
+	schema: ISchema,
 	name: string,
 	inNumbers: false,
 	useDefindexes: false
 ): DefaultItemAttributes & ItemAttributesInStrings;
 function parseString(
+	schema: ISchema,
 	name: string,
 	inNumbers: true,
 	useDefindexes: true
 ): DefaultItemAttributes & ItemDefindexes & ItemAttributesInNumbers;
 function parseString(
+	schema: ISchema,
 	name: string,
 	inNumbers: false,
 	useDefindexes: true
 ): DefaultItemAttributes & ItemDefindexes & ItemAttributesInStrings;
 function parseString(
+	schema: ISchema,
 	name: string,
 	inNumbers: true,
 	useDefindexes: false
 ): DefaultItemAttributes & ItemAttributesInNumbers;
 // Default behaviour should never happen.
 function parseString(
+	schema: ISchema,
 	name: string,
 	inNumbers: boolean = false,
 	useDefindexes: boolean = false
 ): DefaultItemAttributes {
-	let attributes = new Attributes(name);
+	let attributes = new Attributes(schema, name);
 	const itemName = decomposeName(name, attributes);
 
 	// TODO: change this with overloads.
@@ -54,7 +60,7 @@ function parseString(
 	};
 
 	if (inNumbers) {
-		const convertedAttributes = getConvertedIntAttributes({
+		const convertedAttributes = getConvertedIntAttributes(schema, {
 			killstreak: attributes.killstreak,
 			wear: attributes.wear,
 			effect: attributes.effect,
@@ -76,7 +82,7 @@ function parseString(
 	}
 
 	const defindexes = useDefindexes
-		? getDefindexes(itemName, attributes.usableItem || undefined)
+		? getDefindexes(schema, itemName, attributes.usableItem || undefined)
 		: {};
 	if (defindexes.defindex) parsedAttributes.defindex = defindexes.defindex;
 

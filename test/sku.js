@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 
-const { toSKU, parseSKU } = require('..');
+const { toSKU, parseSKU } = require('../static');
 
 describe('toSKU', () => {
     it('case #1', () => {

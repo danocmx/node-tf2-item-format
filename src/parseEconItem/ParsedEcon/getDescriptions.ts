@@ -19,7 +19,7 @@ export default function (econ: ParsedEcon): DescriptionAttributes {
 	const { tags } = econ;
 	const { descriptions = [] } = econ.item;
 
-	const killstreak = new Killstreak();
+	const killstreak = new Killstreak(econ.schema);
 
 	/**
 	 * @type {descriptionAttributes}
@@ -50,7 +50,7 @@ export default function (econ: ParsedEcon): DescriptionAttributes {
 		else if (Killstreak.isKillstreak(description))
 			killstreak.setKillstreak();
 		else if (isItemsTexture(description, econ))
-			attributes.texture = getTexture(description);
+			attributes.texture = getTexture(description, econ.schema);
 		else if (!isCraftable(description)) attributes.craftable = false;
 	}
 

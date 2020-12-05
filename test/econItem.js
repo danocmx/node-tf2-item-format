@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 
-const { parseEconItem } = require('..');
+const { parseEconItem } = require('../static');
 
 describe('parseEconItem', () => {
 	it('Case #1', () => {

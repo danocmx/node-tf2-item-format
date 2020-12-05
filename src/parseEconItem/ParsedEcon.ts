@@ -22,12 +22,14 @@ import {
 	PlaceholderEconNameAttributes,
 	MetaEconAttributes,
 } from '../types';
+import { ISchema } from '../types/schema';
 
 /**
  * Parser class.
  * @todo Remove this entirely with better types.
  */
 export default class ParsedEcon {
+	public schema: ISchema;
 	public item: EconItem;
 	public itemName: ItemName;
 	public fullEcon: boolean;
@@ -36,7 +38,8 @@ export default class ParsedEcon {
 	public properties: PropertyAttributes;
 	public nameAttrs: NameAttributes;
 
-	constructor(item: EconItem) {
+	constructor(schema: ISchema, item: EconItem) {
+		this.schema = schema;
 		this.item = { ...item };
 		this.itemName = new ItemName(this);
 		this.fullEcon = hasAppData(this.item);
@@ -136,7 +139,7 @@ export default class ParsedEcon {
 		};
 
 		if (inNumbers) {
-			const convertedAttributes = getConvertedIntAttributes(attrs);
+			const convertedAttributes = getConvertedIntAttributes(this.schema, attrs);
 
 			attrs.killstreak = convertedAttributes.killstreak;
 			attrs.wear = convertedAttributes.wear;
@@ -149,6 +152,7 @@ export default class ParsedEcon {
 		if (useDefindexes) {
 			// Add them here.
 			const defindexes = getDefindexes(
+				this.schema,
 				name as string,
 				this.nameAttrs.output || this.nameAttrs.target
 					? {

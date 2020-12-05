@@ -22,7 +22,7 @@
     "url": "https://github.com/danocmx/node-tf2-item-format/issues"
   },
   "homepage": "https://github.com/danocmx/node-tf2-item-format#readme",
-  "dependencies": {
+  "optionalDependencies": {
     "tf2-static-schema": "^1.4.0"
   },
   "devDependencies": {

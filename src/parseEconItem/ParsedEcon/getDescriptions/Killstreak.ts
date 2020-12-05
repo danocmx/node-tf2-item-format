@@ -1,6 +1,5 @@
-import schema from '../../../shared/schema';
-
 import { EconDescription } from '../../../types';
+import { ISchema } from '../../../types/schema';
 
 /**
  * Handles killstreak actions
@@ -14,10 +13,14 @@ export default class Killstreak {
 		return this.value;
 	}
 
+	constructor(
+		private schema: ISchema,
+	) {}
+
 	set killstreak(value: string) {
 		if (
-			schema.getKillstreakEnum(value) <
-			schema.getKillstreakEnum(this.killstreak)
+			this.schema.getKillstreakEnum(value) <
+			this.schema.getKillstreakEnum(this.killstreak)
 		)
 			return;
 

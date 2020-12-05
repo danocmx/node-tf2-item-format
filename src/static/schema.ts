@@ -6,6 +6,7 @@ import {
 } from 'tf2-static-schema';
 
 import isNumber from '../util/isNumber';
+import { ISchema } from '../types/schema';
 
 const DEFINDEXES: { [name: string]: number } = {
 	// Local naming
@@ -27,7 +28,7 @@ const DEFINDEXES: { [name: string]: number } = {
 	"20009":"Chemistry Set"
 */
 
-class Schema {
+class Schema implements ISchema {
 	public effects!: SchemaEnum;
 	public wears!: SchemaEnum;
 	public killstreaks!: SchemaEnum;
@@ -37,6 +38,18 @@ class Schema {
 	public qualities!: SchemaEnum;
 
 	constructor() {}
+
+	getTextures() {
+		if (!this.textures) this.loadTextures();
+
+		return this.textures;
+	}
+
+	getEffects() {
+		if (!this.effects) this.loadEffects();
+
+		return this.effects;
+	}
 
 	loadEffects(): void {
 		this.effects = requireStatic('effects') as SchemaEnum;

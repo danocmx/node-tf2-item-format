@@ -1,5 +1,3 @@
-import schema from './shared/schema';
-
 import stringify from './stringify';
 
 import { nameTypeGuard, skuTypeGuard } from './types/guards';
@@ -9,12 +7,14 @@ import {
 	ItemNumber,
 	StrigifySKUAttributes,
 } from './types';
+import { ISchema } from './types/schema';
 
 /**
  * Creates a listing object that you can sent to backpack.tf
  * @todo work with SKU attributes
  */
 export default function (
+	schema: ISchema,
 	item: ItemAttributes | StrigifySKUAttributes
 ): BackpackTFListing {
 	let name: string;
@@ -27,14 +27,14 @@ export default function (
 	}
 
 	return {
-		quality: getQuality(item),
+		quality: getQuality(schema, item),
 		craftable: item.craftable ? 1 : 0,
-		item_name: getItem(name, item),
-		priceindex: getPriceindex(name, item),
+		item_name: getItem(schema, name, item),
+		priceindex: getPriceindex(schema, name, item),
 	};
 }
 
-function getQuality({
+function getQuality(schema: ISchema, {
 	quality,
 	elevated,
 }: {
@@ -45,10 +45,11 @@ function getQuality({
 }
 
 function getItem(
+	schema: ISchema,
 	name: string,
 	item: ItemAttributes | StrigifySKUAttributes
 ): string {
-	return stringify({
+	return stringify(schema, {
 		name: getRightName(name),
 		australium: item.australium,
 		// Don't add it if it's already in the name.
@@ -67,6 +68,7 @@ function getRightName(name: string): string {
 }
 
 function getPriceindex(
+	schema: ISchema,
 	name: string,
 	item: ItemAttributes | StrigifySKUAttributes
 ): number | string | void {
@@ -101,7 +103,7 @@ function getPriceindex(
 			item.killstreak as string
 		)}-${targetDefindex}`; // as defindex
 	if (isFabricator(name))
-		return `${getKitDefindex(item)}-6-${targetDefindex}`;
+		return `${getKitDefindex(schema, item)}-6-${targetDefindex}`;
 
 	return 0;
 }
@@ -127,10 +129,11 @@ function isFabricator(name: string): boolean {
 }
 
 function getKitDefindex(
+	schema: ISchema,
 	item: ItemAttributes | StrigifySKUAttributes
 ): number | null {
 	return schema.getDefindex(
-		stringify({
+		stringify(schema, {
 			name: 'Kit',
 			killstreak: item.killstreak,
 			craftable: true,
