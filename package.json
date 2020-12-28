@@ -23,15 +23,15 @@
   },
   "homepage": "https://github.com/danocmx/node-tf2-item-format#readme",
   "dependencies": {
-    "tf2-static-schema": "^1.5.0"
+    "tf2-static-schema": "^1.9.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.2",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
     "mocha": "^7.2.0",
-    "release-it": "^14.2.1",
-    "typescript": "^4.0.3"
+    "release-it": "^14.2.2",
+    "typescript": "^4.1.3"
   }
 }
