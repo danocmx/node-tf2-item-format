@@ -164,7 +164,7 @@ describe('createBPListing', () => {
 		assert.deepEqual(listing, {
 			quality: 'Strange',
 			craftable: 1,
-			item_name: 'Professional Killstreak Australium Scattergun',
+			item_name: 'Festivized Professional Killstreak Australium Scattergun',
 			priceindex: 0,
 		});
 	});
