@@ -38,6 +38,7 @@ function getItem(name: string, item: ItemAttributes|StrigifySKUAttributes): stri
 		// Don't add it if it's already in the name.
 		killstreak: isKillstreakKit(name) || isFabricator(name) ? 0 : item.killstreak,
 		craftable: true,
+		festivized: item.festivized,
 		quality: 6
 	});
 }
