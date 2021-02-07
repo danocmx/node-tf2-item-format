@@ -33,19 +33,21 @@ function getQuality({ quality, elevated }: { quality: string|number, elevated?: 
 
 function getItem(name: string, item: ItemAttributes|StrigifySKUAttributes): string {
 	return stringify({
-		name: getRightName(name),
+		name: getRightName(name, item),
 		australium: item.australium,
 		// Don't add it if it's already in the name.
 		killstreak: isKillstreakKit(name) || isFabricator(name) ? 0 : item.killstreak,
 		craftable: true,
 		festivized: item.festivized,
-		quality: 6
+		quality: 6,
+		wear: item.wear,
 	});
 }
 
-function getRightName(name: string): string {
+function getRightName(name: string, item: ItemAttributes|StrigifySKUAttributes): string {
 	// We keep kit in the name but backpack.tf does not accept it.
 	if (isFabricator(name)) return name.replace('Kit ', '');
+	if (item.texture) return `${item.texture} | ${name}`;
 
 	return name;
 }
