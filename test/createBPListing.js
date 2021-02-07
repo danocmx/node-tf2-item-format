@@ -185,4 +185,24 @@ describe('createBPListing', () => {
 			priceindex: 150,
 		});
 	});
+
+	it('Case #12 - Texture + Wear', () => {
+		const listing = createBPListing({
+			name: 'Degreaser',
+			craftable: true,
+			killstreak: 'Professional Killstreak',
+			quality: 15,
+			elevated: false,
+			effect: 702,
+			wear: 'Minimal-Wear',
+			texture: 'Alien Tech'
+		});
+
+		assert.deepEqual(listing, {
+			quality: 15,
+			craftable: 1,
+			item_name: 'Professional Killstreak Alien Tech | Degreaser (Minimal-Wear)',
+			priceindex: 702,
+		});
+	})
 });
