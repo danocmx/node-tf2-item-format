@@ -27,8 +27,24 @@ export default function (item: ItemAttributes|StrigifySKUAttributes): BackpackTF
 	};
 };
 
-function getQuality({ quality, elevated }: { quality: string|number, elevated?: boolean }): string|number {
-	return elevated ? `Strange ${schema.getQualityName(quality)}` : quality;
+function getQuality(item: ItemAttributes|StrigifySKUAttributes): string|number {
+	let { quality } = item;
+	const { elevated } = item;
+	
+	if (isUnusualSkin(item)) {
+		/*
+			- decorated
+			- unusual
+			- strange decorated
+			- strange unusual
+			- strange
+		*/
+		quality = 'Decorated Weapon';
+	}
+
+	return elevated 
+		? `Strange ${schema.getQualityName(quality)}` 
+		: quality;
 }
 
 function getItem(name: string, item: ItemAttributes|StrigifySKUAttributes): string {
@@ -47,7 +63,7 @@ function getItem(name: string, item: ItemAttributes|StrigifySKUAttributes): stri
 function getRightName(name: string, item: ItemAttributes|StrigifySKUAttributes): string {
 	// We keep kit in the name but backpack.tf does not accept it.
 	if (isFabricator(name)) return name.replace('Kit ', '');
-	if (item.texture) return `${item.texture} | ${name}`;
+	if (item.texture) return `${schema.getTextureName(item.texture)} | ${name}`;
 
 	return name;
 }
@@ -99,4 +115,8 @@ function isFabricator(name: string): boolean {
 
 function getKitDefindex(item: ItemAttributes|StrigifySKUAttributes): number|null {
 	return schema.getDefindex(stringify({ name: 'Kit', killstreak: item.killstreak, craftable: true, quality: 6 }));
+}
+
+function isUnusualSkin(item: ItemAttributes|StrigifySKUAttributes) {
+	return item.effect && item.texture && item.wear;
 }

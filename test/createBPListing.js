@@ -199,7 +199,7 @@ describe('createBPListing', () => {
 		});
 
 		assert.deepEqual(listing, {
-			quality: 15,
+			quality: "Decorated Weapon",
 			craftable: 1,
 			item_name: 'Professional Killstreak Alien Tech | Degreaser (Minimal-Wear)',
 			priceindex: 702,
