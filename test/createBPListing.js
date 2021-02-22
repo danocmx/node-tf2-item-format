@@ -115,7 +115,7 @@ describe('createBPListing', () => {
 			quality: 'Unique',
 			craftable: 1,
 			item_name: 'Strangifier Chemistry Set',
-			priceindex: '5661-6',
+			priceindex: '5661-6-828',
 		});
 	});
 
