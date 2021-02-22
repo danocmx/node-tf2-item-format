@@ -84,7 +84,7 @@ function getPriceindex(name: string, item: ItemAttributes|StrigifySKUAttributes)
 	if (isUnusualfierOrStrangifier(name)) return (targetDefindex as number);
 	if (isChemistrySet(name)) {
 		let priceindex = `${outputDefindex}-${schema.getQualityEnum(item.outputQuality as number)}`;
-		if ((typeof targetDefindex === 'string' || typeof targetDefindex === 'number') && isUnusualfierOrStrangifier(schema.getName(targetDefindex))) priceindex += `-${targetDefindex}`;
+		if (isUnusualfierOrStrangifier(schema.getName(outputDefindex))) priceindex += `-${targetDefindex}`;
 		return priceindex;
 	}
 	if (isKillstreakKit(name)) return `${schema.getKillstreakEnum(item.killstreak as string)}-${targetDefindex}`; // as defindex
