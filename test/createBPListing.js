@@ -206,14 +206,14 @@ describe('createBPListing', () => {
 		});
 	})
 
-	/*
 	it('Case #13 - Strangifier Chemistry Set', () => {
 		const listing = createBPListing({
 			defindex: 20005,
 			quality: 6,
 			targetDefindex: 30132,
 			outputDefindex: 6522,
-			outputQuality: 6
+			outputQuality: 6,
+			craftable: true
 		});
 
 		assert.deepEqual(listing, {
@@ -223,5 +223,4 @@ describe('createBPListing', () => {
 			priceindex: '6522-6-30132'
 		});
 	});
-	*/
 });
