@@ -205,4 +205,23 @@ describe('createBPListing', () => {
 			priceindex: 702,
 		});
 	})
+
+	/*
+	it('Case #13 - Strangifier Chemistry Set', () => {
+		const listing = createBPListing({
+			defindex: 20005,
+			quality: 6,
+			targetDefindex: 30132,
+			outputDefindex: 6522,
+			outputQuality: 6
+		});
+
+		assert.deepEqual(listing, {
+			quality: 6,
+			craftable: 1,
+			item_name: 'Chemistry Set',
+			priceindex: '6522-6-30132'
+		});
+	});
+	*/
 });

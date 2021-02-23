@@ -84,7 +84,7 @@ function getPriceindex(name: string, item: ItemAttributes|StrigifySKUAttributes)
 	if (isUnusualfierOrStrangifier(name)) return (targetDefindex as number);
 	if (isChemistrySet(name)) {
 		let priceindex = `${outputDefindex}-${schema.getQualityEnum(item.outputQuality as number)}`;
-		if (isUnusualfierOrStrangifierChemistrySet(name)) priceindex += `-${targetDefindex}`;
+		if (isStrangifierChemistrySet(name)) priceindex += `-${targetDefindex}`;
 		return priceindex;
 	}
 	if (isKillstreakKit(name)) return `${schema.getKillstreakEnum(item.killstreak as string)}-${targetDefindex}`; // as defindex
@@ -105,8 +105,8 @@ function isChemistrySet(name: string): boolean {
 	return name.includes('Chemistry Set');
 }
 
-function isUnusualfierOrStrangifierChemistrySet(name?: string): boolean {
-	return !!(name && (name === 'Unusualifier Chemistry Set' || name === 'Strangifier Chemistry Set'));
+function isStrangifierChemistrySet(name?: string): boolean {
+	return !!(name && name === 'Strangifier Chemistry Set');
 }
 
 function isKillstreakKit(name: string): boolean {
