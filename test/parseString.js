@@ -1449,9 +1449,21 @@ describe('parseString with defindexes and numbers.', () => {
 		assert.deepEqual(itemObject, { name: 'Atomic Accolade', defindex: 767, craftable: true, quality: 1 });
 	});
 
-	it('Case #42', () => {
+	it('Case #45', () => {
 		const itemObject = parseString('Bonk! Atomic Punch', true, true);
 
 		assert.deepEqual(itemObject, { name: 'Bonk! Atomic Punch', defindex: 46, craftable: true, quality: 6 });
+	});
+
+	it('Case #46 - The Value of Teamwork', () => {
+		const itemObject = parseString('The Value of Teamwork', true, true);
+
+		assert.deepEqual(itemObject, { name: 'The Value of Teamwork', quality: 6, craftable: true, defindex: 5064 });
+	})
+
+	it('Case #47 - The Bitter Taste of Defeat and Lime', () => {
+		const itemObject = parseString('The Bitter Taste of Defeat and Lime', true, true);
+
+		assert.deepEqual(itemObject, { name: 'The Bitter Taste of Defeat and Lime', quality: 6, craftable: true, defindex: 5054 });
 	});
 });
