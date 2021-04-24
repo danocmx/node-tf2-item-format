@@ -1,5 +1,3 @@
-/* eslint-disable global-require */
-
 import parseEconItem from './parseEconItem';
 import parseString from './parseString';
 import stringify from './stringify';
@@ -28,4 +26,4 @@ export function createFormat(schema: ISchema) {
 	}
 }
 
-export { toSKU, parseSKU };
+export { toSKU, parseSKU, ISchema };

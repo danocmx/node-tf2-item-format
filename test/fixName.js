@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 
-const { fixName } = require('../static')
+const { fixName } = require('../dist/static')
 
 describe('fixName', () => {
 	it('Case #1', () => {

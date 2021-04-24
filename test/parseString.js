@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 
-const { parseString } = require('../static');
+const { parseString } = require('../dist/static');
 
 describe('parseString', () => {
 	it('Case #1', () => {

@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 
-const { stringify } = require('../static');
+const { stringify } = require('../dist/static');
 
 describe('stringify', () => {
 	it('Case #1', () => {
