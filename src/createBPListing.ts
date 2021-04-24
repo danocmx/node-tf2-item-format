@@ -34,7 +34,7 @@ export default function (
 	};
 }
 
-function getQuality(item: ItemAttributes|StrigifySKUAttributes): string|number {
+function getQuality(schema: ISchema, item: ItemAttributes|StrigifySKUAttributes): string|number {
 	let { quality } = item;
 	const { elevated } = item;
 	
@@ -54,9 +54,9 @@ function getQuality(item: ItemAttributes|StrigifySKUAttributes): string|number {
 		: quality;
 }
 
-function getItem(name: string, item: ItemAttributes|StrigifySKUAttributes): string {
-	return stringify({
-		name: getRightName(name, item),
+function getItem(schema: ISchema, name: string, item: ItemAttributes|StrigifySKUAttributes): string {
+	return stringify(schema, {
+		name: getRightName(schema, name, item),
 		australium: item.australium,
 		// Don't add it if it's already in the name.
 		killstreak:
@@ -68,7 +68,7 @@ function getItem(name: string, item: ItemAttributes|StrigifySKUAttributes): stri
 	});
 }
 
-function getRightName(name: string, item: ItemAttributes|StrigifySKUAttributes): string {
+function getRightName(schema: ISchema, name: string, item: ItemAttributes|StrigifySKUAttributes): string {
 	// We keep kit in the name but backpack.tf does not accept it.
 	if (isFabricator(name)) return name.replace('Kit ', '');
 	if (item.texture) return `${schema.getTextureName(item.texture)} | ${name}`;
