@@ -9,6 +9,7 @@ import fixName from './fixName';
 import { ISchema } from './types/schema';
 
 export * from './types';
+export * from './types/schema'
 
 export function createFormat(schema: ISchema) {
 	return {
@@ -26,4 +27,4 @@ export function createFormat(schema: ISchema) {
 	}
 }
 
-export { toSKU, parseSKU, ISchema };
+export { toSKU, parseSKU };

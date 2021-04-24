@@ -1,6 +1,6 @@
 {
   "name": "tf2-item-format",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "description": "Format's TF2 items like backpack.tf does",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -10,8 +10,12 @@
   },
   "typesVersions": {
     "*": {
-      ".": ["./dist/index.d.ts"],
-      "static": ["./dist/static.d.ts"]
+      ".": [
+        "./dist/index.d.ts"
+      ],
+      "static": [
+        "./dist/static.d.ts"
+      ]
     }
   },
   "scripts": {
@@ -37,10 +41,10 @@
     "tf2-static-schema": "^1.4.0"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
+    "chai": "^4.2.0",
     "mocha": "^7.2.0",
     "nyc": "^15.1.0",
     "release-it": "^14.4.1",

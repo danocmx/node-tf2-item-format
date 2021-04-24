@@ -3,7 +3,6 @@ Formatting for TF2 items.
 
 Use `v5` branch for current version.
 Install it via `npm install tf2-item-format@v5-0-0`
-=======
 
 ## Features
 - Parses item name into attribute object
@@ -12,11 +11,61 @@ Install it via `npm install tf2-item-format@v5-0-0`
 - Parses SKU into attributes
 - Makes SKU out of attributes
 
-# Instalation
+## Migrating from v4 to v5
+To keep your application working like before with version 5 you have to:
+```ts
+import { parseString } from 'tf2-item-format/static' // -> from 'tf2-item-format'
+
+const { parseString } = require('tf2-item-format/static') // -> from 'tf2-item-format'
+```
+
+### New
+
+To inject your own schema use this interface:
+```ts
+export type ISchema = {
+    getDefindex(search: number | string): number|null;
+    getName(search: number | string): string;
+    getEffectName(effect: number | string): string;
+    getWearName(wear: number | string): string;
+    getKillstreakName(killstreak: number | string): string;
+    getTextureName(texture: number | string): string;
+    getQualityName(quality: number | string): string;
+    getEffectEnum(effect: number | string): number;
+    getWearEnum(wear: number | string): number;
+    getKillstreakEnum(killstreak: number | string): number;
+    getTextureEnum(texture: number | string): number;
+    getQualityEnum(quality: number | string): number;
+    getTextures(): SchemaEnum;
+    getEffects(): SchemaEnum;
+}
+
+// Extra types you might need:
+export type NameToDefindex = { [name: string]: number };
+export type DefindexToName = { [defindex: number]: string };
+export type SchemaEnum = NameToDefindex & DefindexToName;
+
+// Import these like:
+// import { ISchema, NameToDefindex, DefindexToName, SchemaEnum } from 'tf2-item-format'
+```
+Then you just have to:
+```ts
+import { createFormat } from 'tf2-item-format';
+
+const format = createFormat(schema);
+```
+Every method is then export same as before.
+
+You can use `parseSKU` and `toSKU` without schema:
+```ts
+import { parseSKU, toSKU } from 'tf2-item-format';
+```
+
+## Instalation
 Via NPM: `npm install tf2-item-format`
 Or Yarn: `yarn add tf2-item-format`
 
-# Documentation
+## Documentation
 Currently there is no full documentation.
 
 We export these methods:
@@ -34,7 +83,7 @@ And static schema:
 Everything is fully typed so you should be able to get this working on your own, until I make a documentation.
 Some of the types are a bit confusing which will get fixed in next major version.
 
-# Compability usage
+## Compability usage
 ```ts
 // Have a name, want a sku
 const attributes = parseString(name, true, true); // To get defindexes and enums
