@@ -34,35 +34,44 @@ export default function (
 	};
 }
 
-function getQuality(schema: ISchema, {
-	quality,
-	elevated,
-}: {
-	quality: string | number;
-	elevated?: boolean;
-}): string | number {
-	return elevated ? `Strange ${schema.getQualityName(quality)}` : quality;
+function getQuality(item: ItemAttributes|StrigifySKUAttributes): string|number {
+	let { quality } = item;
+	const { elevated } = item;
+	
+	if (isUnusualSkin(item)) {
+		/*
+			- decorated
+			- unusual
+			- strange decorated
+			- strange unusual
+			- strange
+		*/
+		quality = 'Decorated Weapon';
+	}
+
+	return elevated 
+		? `Strange ${schema.getQualityName(quality)}` 
+		: quality;
 }
 
-function getItem(
-	schema: ISchema,
-	name: string,
-	item: ItemAttributes | StrigifySKUAttributes
-): string {
-	return stringify(schema, {
-		name: getRightName(name),
+function getItem(name: string, item: ItemAttributes|StrigifySKUAttributes): string {
+	return stringify({
+		name: getRightName(name, item),
 		australium: item.australium,
 		// Don't add it if it's already in the name.
 		killstreak:
 			isKillstreakKit(name) || isFabricator(name) ? 0 : item.killstreak,
 		craftable: true,
+		festivized: item.festivized,
 		quality: 6,
+		wear: item.wear,
 	});
 }
 
-function getRightName(name: string): string {
+function getRightName(name: string, item: ItemAttributes|StrigifySKUAttributes): string {
 	// We keep kit in the name but backpack.tf does not accept it.
 	if (isFabricator(name)) return name.replace('Kit ', '');
+	if (item.texture) return `${schema.getTextureName(item.texture)} | ${name}`;
 
 	return name;
 }
@@ -91,11 +100,8 @@ function getPriceindex(
 		return (item.itemNumber as ItemNumber).value;
 	if (isUnusualfierOrStrangifier(name)) return targetDefindex as number;
 	if (isChemistrySet(name)) {
-		let priceindex = `${outputDefindex}-${schema.getQualityEnum(
-			item.outputQuality as number
-		)}`;
-		if (isUnusualfierOrStrangifier(name))
-			priceindex += `-${targetDefindex}`;
+		let priceindex = `${outputDefindex}-${schema.getQualityEnum(item.outputQuality as number)}`;
+		if (hasTarget(targetDefindex)) priceindex += `-${targetDefindex}`;
 		return priceindex;
 	}
 	if (isKillstreakKit(name))
@@ -120,6 +126,10 @@ function isChemistrySet(name: string): boolean {
 	return name.includes('Chemistry Set');
 }
 
+function hasTarget(targetDefindex: number | "" | null | undefined): boolean {
+	return !!(targetDefindex);
+}
+
 function isKillstreakKit(name: string): boolean {
 	return name.includes('Kit') && !isFabricator(name);
 }
@@ -140,4 +150,8 @@ function getKitDefindex(
 			quality: 6,
 		})
 	);
+}
+
+function isUnusualSkin(item: ItemAttributes|StrigifySKUAttributes) {
+	return item.effect && item.texture && item.wear;
 }

@@ -103,7 +103,7 @@ describe('parseString', () => {
 		const itemObject = parseString('Archimedes Strangifier Chemistry Set');
 
 		assert.deepEqual(itemObject, {
-			name: 'Strangifier Chemistry Set',
+			name: 'Chemistry Set',
 			craftable: true,
 			target: 'Archimedes',
 			output: 'Strangifier',
@@ -443,6 +443,18 @@ describe('parseString', () => {
 
 		assert.deepEqual(itemObject, { name: 'The Essential Accessories', craftable: true, quality: 'Unique' });
 	});
+
+	it('Case #41', () => {
+		const itemObject = parseString('Genuine Atomic Accolade', false, false);
+
+		assert.deepEqual(itemObject, { name: 'Atomic Accolade', craftable: true, quality: 'Genuine' });
+	});
+
+	it('Case #42', () => {
+		const itemObject = parseString('Bonk! Atomic Punch', false, false);
+
+		assert.deepEqual(itemObject, { name: 'Bonk! Atomic Punch', craftable: true, quality: 'Unique' });
+	});
 });
 
 describe('parseString with numbers', () => {
@@ -554,7 +566,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString('Archimedes Strangifier Chemistry Set', true, false);
 
 		assert.deepEqual(itemObject, {
-			name: 'Strangifier Chemistry Set',
+			name: 'Chemistry Set',
 			craftable: true,
 			target: 'Archimedes',
 			output: 'Strangifier',
@@ -896,6 +908,18 @@ describe('parseString with numbers', () => {
 
 		assert.deepEqual(itemObject, { name: 'The Essential Accessories', craftable: true, quality: 6 });
 	});
+
+	it('Case #41', () => {
+		const itemObject = parseString('Genuine Atomic Accolade', true, false);
+
+		assert.deepEqual(itemObject, { name: 'Atomic Accolade', craftable: true, quality: 1 });
+	});
+
+	it('Case #42', () => {
+		const itemObject = parseString('Bonk! Atomic Punch', true, false);
+
+		assert.deepEqual(itemObject, { name: 'Bonk! Atomic Punch', craftable: true, quality: 6 });
+	});
 });
 
 describe('parseString with defindexes and numbers.', () => {
@@ -1017,16 +1041,15 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString('Archimedes Strangifier Chemistry Set', true, true);
 
 		assert.deepEqual(itemObject, {
-			name: 'Strangifier Chemistry Set',
+			name: 'Chemistry Set',
 			craftable: true,
 			target: 'Archimedes',
 			output: 'Strangifier',
 			outputQuality: 6,
-			defindex: 'NEEDED HERE',
 			quality: 6,
 			targetDefindex: 828,
 			outputDefindex: 5661,
-			defindex: 20000,
+			defindex: 20005,
 		});
 	});
 
@@ -1417,5 +1440,29 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString('The Essential Accessories', true, true);
 
 		assert.deepEqual(itemObject, { name: 'The Essential Accessories', craftable: true, quality: 6, defindex: 347 });
+	});
+
+	it('Case #44', () => {
+		const itemObject = parseString('Genuine Atomic Accolade', true, true);
+
+		assert.deepEqual(itemObject, { name: 'Atomic Accolade', defindex: 767, craftable: true, quality: 1 });
+	});
+
+	it('Case #45', () => {
+		const itemObject = parseString('Bonk! Atomic Punch', true, true);
+
+		assert.deepEqual(itemObject, { name: 'Bonk! Atomic Punch', defindex: 46, craftable: true, quality: 6 });
+	});
+
+	it('Case #46 - The Value of Teamwork', () => {
+		const itemObject = parseString('The Value of Teamwork', true, true);
+
+		assert.deepEqual(itemObject, { name: 'The Value of Teamwork', quality: 6, craftable: true, defindex: 5064 });
+	})
+
+	it('Case #47 - The Bitter Taste of Defeat and Lime', () => {
+		const itemObject = parseString('The Bitter Taste of Defeat and Lime', true, true);
+
+		assert.deepEqual(itemObject, { name: 'The Bitter Taste of Defeat and Lime', quality: 6, craftable: true, defindex: 5054 });
 	});
 });

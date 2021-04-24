@@ -3197,7 +3197,7 @@ describe('Econ item with defindexes', () => {
 		}, true, true);
 
 		assert.deepEqual(econItem, {
-			name: 'Strangifier Chemistry Set',
+			name: 'Chemistry Set',
 			fullName: "Stockbroker's Scarf Strangifier Chemistry Set Series #2",
 			id: "30125",
 			img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIYwkCSQn3uyxKh8bZBvuYN-wBid0wq8hXjW49lVl_NrC2ZjFjJlPHV6FcDPRj8Am1Cn5i6pE3DIfuoOxReV_x9NyRdNFoUKY/',
@@ -3208,7 +3208,7 @@ describe('Econ item with defindexes', () => {
 			output: 'Strangifier',
 			outputQuality: 6,
 			itemNumber: { type: 'series', value: 2 },
-			defindex: 20000,
+			defindex: 20005,
 			outputDefindex: 5661,
 			targetDefindex: 336,
 			classes: [],

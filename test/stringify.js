@@ -91,7 +91,7 @@ describe('stringify', () => {
 
 	it('Case #8', () => {
 		const itemString = stringify({
-			name: 'Strangifier Chemistry Set',
+			name: 'Chemistry Set',
 			craftable: true,
 			target: 'Archimedes',
 			output: 'Strangifier',
@@ -303,7 +303,7 @@ describe('stringify from defindexes and numbers.', () => {
 
 	it('Case #9', () => {
 		const itemString = stringify({
-			name: 'Strangifier Chemistry Set',
+			name: 'Chemistry Set',
 			craftable: true,
 			target: 'Archimedes',
 			output: 'Strangifier',

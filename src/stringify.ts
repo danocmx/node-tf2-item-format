@@ -90,14 +90,23 @@ export default function (
 		// There can be both target and output, target is prefered thus the check.
 		// getOutput constructs full output name if quality present.
 		// target has no quality
-		itemName += `${
-			output && !target
-				? getOutput(
-						schema.getName(output),
-						schema.getQualityName(outputQuality as number)
-				  )
-				: schema.getName(target as string)
-		} `;
+		if (target && output) {
+			const outputName = getOutput(
+				schema.getName(output),
+				schema.getQualityName(outputQuality as number)
+			);
+
+			itemName += `${target} ${outputName} `;
+		} else {
+			itemName += `${
+				output && !target
+					? getOutput(
+							schema.getName(output),
+							schema.getQualityName(outputQuality as number)
+					  )
+					: schema.getName(target as string)
+			} `;
+		}
 	}
 
 	if (isUniqueHat) {

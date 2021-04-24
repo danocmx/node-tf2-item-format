@@ -816,7 +816,7 @@ describe('SKU to Listing', () => {
         assert.deepEqual(listing, {
             quality: 11,
             craftable: 1,
-            item_name: 'Professional Killstreak Australium Medi Gun',
+            item_name: 'Festivized Professional Killstreak Australium Medi Gun',
             priceindex: 0
         });
     });

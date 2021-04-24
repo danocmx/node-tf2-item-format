@@ -115,7 +115,7 @@ describe('createBPListing', () => {
 			quality: 'Unique',
 			craftable: 1,
 			item_name: 'Strangifier Chemistry Set',
-			priceindex: '5661-6',
+			priceindex: '5661-6-828',
 		});
 	});
 
@@ -164,7 +164,7 @@ describe('createBPListing', () => {
 		assert.deepEqual(listing, {
 			quality: 'Strange',
 			craftable: 1,
-			item_name: 'Professional Killstreak Australium Scattergun',
+			item_name: 'Festivized Professional Killstreak Australium Scattergun',
 			priceindex: 0,
 		});
 	});
@@ -183,6 +183,44 @@ describe('createBPListing', () => {
 			craftable: 1,
 			item_name: 'Bazaar Bauble',
 			priceindex: 150,
+		});
+	});
+
+	it('Case #12 - Texture + Wear', () => {
+		const listing = createBPListing({
+			name: 'Degreaser',
+			craftable: true,
+			killstreak: 'Professional Killstreak',
+			quality: 15,
+			elevated: false,
+			effect: 702,
+			wear: 'Minimal-Wear',
+			texture: 'Alien Tech'
+		});
+
+		assert.deepEqual(listing, {
+			quality: "Decorated Weapon",
+			craftable: 1,
+			item_name: 'Professional Killstreak Alien Tech | Degreaser (Minimal-Wear)',
+			priceindex: 702,
+		});
+	})
+
+	it('Case #13 - Strangifier Chemistry Set', () => {
+		const listing = createBPListing({
+			defindex: 20005,
+			quality: 6,
+			targetDefindex: 30132,
+			outputDefindex: 6522,
+			outputQuality: 6,
+			craftable: true
+		});
+
+		assert.deepEqual(listing, {
+			quality: 6,
+			craftable: 1,
+			item_name: 'Chemistry Set',
+			priceindex: '6522-6-30132'
 		});
 	});
 });

@@ -2,3 +2,4 @@
 /.github
 /src
 /test
+/.nyc_output
