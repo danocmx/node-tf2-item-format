@@ -22,8 +22,7 @@ export default class ItemName {
 
 	getOrigin() {
 		return (
-			this.item.market_name
-			|| this.item.market_hash_name
+			this.item.market_name || this.item.market_hash_name
 			// || this.item.name
 		);
 	}
@@ -41,7 +40,7 @@ export default class ItemName {
 			output,
 			outputQuality,
 			target,
-			itemNumber
+			itemNumber,
 		} = this.econ.getNameAttributes('', false, false);
 
 		return decomposeName(this.origin, {
@@ -56,7 +55,15 @@ export default class ItemName {
 			craftable: true,
 			itemNumber,
 
-			...(output || target ? { usableItem: { output, target, outputQuality: outputQuality as string } } : {}),
+			...(output || target
+				? {
+						usableItem: {
+							output,
+							target,
+							outputQuality: outputQuality as string,
+						},
+				  }
+				: {}),
 		});
 	}
 

@@ -28,4 +28,4 @@ export default function (name: string, attributes: Attributes): StringQuality {
 		otherQuality: matchQuality(name), // Matches every other quality
 		attributes, // Current attributes
 	});
-};
+}

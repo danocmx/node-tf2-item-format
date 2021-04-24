@@ -1,6 +1,6 @@
 {
   "name": "tf2-item-format",
-  "version": "4.3.5",
+  "version": "5.0.0",
   "description": "Format's TF2 items like backpack.tf does",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -23,8 +23,8 @@
     "url": "https://github.com/danocmx/node-tf2-item-format/issues"
   },
   "homepage": "https://github.com/danocmx/node-tf2-item-format#readme",
-  "dependencies": {
-    "tf2-static-schema": "^1.10.0"
+  "optionalDependencies": {
+    "tf2-static-schema": "^1.4.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",

@@ -2,7 +2,7 @@
  * Gets wear from name
  */
 // eslint-disable-next-line consistent-return
-export default function (name: string): string|void {
+export default function (name: string): string | void {
 	if (name.includes('(Battle Scarred)')) {
 		return 'Battle Scarred';
 	}
@@ -22,4 +22,4 @@ export default function (name: string): string|void {
 	if (name.includes('(Factory New)')) {
 		return 'Factory New';
 	}
-};
+}

@@ -73,9 +73,11 @@ export default function (
  * @return {string}
  */
 function getUsableItemToRemove(attributes: DecomposeAttributes) {
-	const { target, output, outputQuality } = attributes.usableItem as Partial<
-		TargetOutputItem
-	>;
+	const {
+		target,
+		output,
+		outputQuality,
+	} = attributes.usableItem as Partial<TargetOutputItem>;
 
 	return target || getOutput(output as string, outputQuality as string);
 }

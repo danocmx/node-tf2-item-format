@@ -26,7 +26,7 @@ export default function (econ: ParsedEcon): NameAttributes {
 	};
 
 	if (!texture) {
-		texture = getTexture(name, { wear: econ.tags.wear });
+		texture = getTexture(name, { wear: econ.tags.wear, schema: econ.schema });
 		if (texture) attributes.texture = texture;
 	}
 
@@ -35,10 +35,12 @@ export default function (econ: ParsedEcon): NameAttributes {
 		attributes.itemNumber = itemNumber;
 	}
 
-	const usableItem = getUsableItem(itemNumber ? removeItemNumber(name, itemNumber) : name);
+	const usableItem = getUsableItem(
+		itemNumber ? removeItemNumber(name, itemNumber) : name
+	);
 	if (usableItem) {
 		Object.assign(attributes, usableItem);
 	}
 
 	return attributes;
-};
+}

@@ -9,7 +9,7 @@ import { TargetOutputItem } from '../../types';
  * @param {string} name
  * @return {Object}
  */
-export default function (name: string): Partial<TargetOutputItem>|null {
+export default function (name: string): Partial<TargetOutputItem> | null {
 	// TODO: add series to itemNumber.
 	// For chemistry sets the quality is predefined
 	if (isStrangifierChemistrySet(name)) {
@@ -25,9 +25,9 @@ export default function (name: string): Partial<TargetOutputItem>|null {
 		return {
 			output: name
 				.replace(' Chemistry Set', '')
-				.replace('Collector\'s ', ''),
+				.replace("Collector's ", ''),
 
-			outputQuality: 'Collector\'s',
+			outputQuality: "Collector's",
 		};
 	}
 
@@ -45,17 +45,18 @@ export default function (name: string): Partial<TargetOutputItem>|null {
 	}
 
 	return null;
-};
+}
 
 function isStrangifierChemistrySet(name: string): boolean {
 	return / Strangifier Chemistry Set/.test(name);
 }
 
-function getItemIfTarget(name: string): string|void {
+function getItemIfTarget(name: string): string | void {
 	if (/(Killer's Kit|Coffin Kit|Summer Starter Kit)/.test(name)) return;
 
 	// eslint-disable-next-line consistent-return
-	return (name.match(/ (Kit Fabricator|Kit|Strangifier|Unusualifier)/) || [])[1];
+	return (name.match(/ (Kit Fabricator|Kit|Strangifier|Unusualifier)/) ||
+		[])[1];
 }
 
 function isChemistrySet(name: string): boolean {

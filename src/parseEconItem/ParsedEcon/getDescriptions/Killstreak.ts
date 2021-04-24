@@ -1,6 +1,5 @@
-import schema from '../../../shared/schema';
-
 import { EconDescription } from '../../../types';
+import { ISchema } from '../../../types/schema';
 
 /**
  * Handles killstreak actions
@@ -14,38 +13,55 @@ export default class Killstreak {
 		return this.value;
 	}
 
+	constructor(
+		private schema: ISchema,
+	) {}
+
 	set killstreak(value: string) {
-		if (schema.getKillstreakEnum(value) < schema.getKillstreakEnum(this.killstreak)) return;
+		if (
+			this.schema.getKillstreakEnum(value) <
+			this.schema.getKillstreakEnum(this.killstreak)
+		)
+			return;
 
 		this.value = value;
 	}
 
 	/**
- 	 * Checks if description includes killstreaker
- 	 * Killstreaker is an `effect` from killstreak
- 	 * @param {object} description
- 	 * @return {boolean}
- 	 */
+	 * Checks if description includes killstreaker
+	 * Killstreaker is an `effect` from killstreak
+	 * @param {object} description
+	 * @return {boolean}
+	 */
 	static isKillstreaker(description: EconDescription): boolean {
-		return description.value.startsWith('Killstreaker: ') && description.color === '7ea9d1';
+		return (
+			description.value.startsWith('Killstreaker: ') &&
+			description.color === '7ea9d1'
+		);
 	}
 
 	/**
- 	 * Checks if description includes sheen
- 	 * @param {object} description
- 	 * @return {boolean}
- 	 */
+	 * Checks if description includes sheen
+	 * @param {object} description
+	 * @return {boolean}
+	 */
 	static isSheen(description: EconDescription): boolean {
-		return description.value.startsWith('Sheen: ') && description.color === '7ea9d1';
+		return (
+			description.value.startsWith('Sheen: ') &&
+			description.color === '7ea9d1'
+		);
 	}
 
 	/**
- 	 * Checks if item is killstreak from description
- 	 * @param {object} description
- 	 * @return {boolean}
- 	 */
+	 * Checks if item is killstreak from description
+	 * @param {object} description
+	 * @return {boolean}
+	 */
 	static isKillstreak(description: EconDescription): boolean {
-		return description.value === 'Killstreaks Active' && description.color === '7ea9d1';
+		return (
+			description.value === 'Killstreaks Active' &&
+			description.color === '7ea9d1'
+		);
 	}
 
 	/**
@@ -76,4 +92,3 @@ export default class Killstreak {
 		this.killstreak = 'Killstreak';
 	}
 }
-

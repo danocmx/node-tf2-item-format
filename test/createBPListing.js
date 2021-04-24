@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 
-const { createBPListing } = require('..');
+const { createBPListing } = require('../static');
 
 describe('createBPListing', () => {
 	it('Case #1', () => {

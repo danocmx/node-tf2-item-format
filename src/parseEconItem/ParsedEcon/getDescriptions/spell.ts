@@ -6,8 +6,11 @@ import { EconDescription } from '../../../types';
  * @return {boolean}
  */
 export function isSpell(description: EconDescription): boolean {
-	return /^Halloween: .*/.test(description.value) && description.color === '7ea9d1';
-};
+	return (
+		/^Halloween: .*/.test(description.value) &&
+		description.color === '7ea9d1'
+	);
+}
 
 /**
  * Gets spell from description
@@ -18,4 +21,4 @@ export function getSpell(description: EconDescription): string {
 	return description.value
 		.replace('Halloween: ', '')
 		.replace(' (spell only active during event)', '');
-};
+}
