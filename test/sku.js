@@ -296,4 +296,17 @@ describe('parseSKU', () => {
 			itemNumber: { type: 'crate', value: 109 },
 		});
 	});
+
+	it('case #13 - strangifier chemistry set', () => {
+		const skuAttrs = parseSKU('20005;6;td-441;od-5783;oq-6');
+
+		assert.deepEqual(skuAttrs, {
+			defindex: 20005,
+			quality: 6,
+			craftable: true,
+			targetDefindex: 441,
+			outputDefindex: 5783,
+			outputQuality: 6
+		});
+	})
 });

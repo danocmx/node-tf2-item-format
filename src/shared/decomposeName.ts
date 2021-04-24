@@ -38,11 +38,21 @@ export default function (
 
 	// So we keep killstreak name for kits and fabricators
 	if (usableItem) {
-		const toRemove = getUsableItemToRemove(attributes);
-		itemName = itemName.replace(
-			new RegExp(`(( ${toRemove})|(${toRemove} ))`),
-			''
-		);
+		if (!!(usableItem.output && usableItem.target)) {
+			const outputToRemove = `${getOutput(usableItem.output, usableItem.outputQuality as string)} `;
+			const targetToRemove = `${usableItem.target} `;
+
+			itemName = itemName
+				.replace(outputToRemove, '')
+				.replace(targetToRemove, '');
+		} else {
+			const toRemove = getUsableItemToRemove(attributes);
+		
+			itemName = itemName.replace(
+				new RegExp(`(( ${toRemove})|(${toRemove} ))`),
+				''
+			);
+		}
 	} else if (killstreak) itemName = itemName.replace(`${killstreak} `, ''); // Killstreak stat is kept
 
 	if (wear) itemName = itemName.replace(` (${wear})`, '');

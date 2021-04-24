@@ -103,7 +103,7 @@ describe('parseString', () => {
 		const itemObject = parseString('Archimedes Strangifier Chemistry Set');
 
 		assert.deepEqual(itemObject, {
-			name: 'Strangifier Chemistry Set',
+			name: 'Chemistry Set',
 			craftable: true,
 			target: 'Archimedes',
 			output: 'Strangifier',
@@ -566,7 +566,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString('Archimedes Strangifier Chemistry Set', true, false);
 
 		assert.deepEqual(itemObject, {
-			name: 'Strangifier Chemistry Set',
+			name: 'Chemistry Set',
 			craftable: true,
 			target: 'Archimedes',
 			output: 'Strangifier',
@@ -1041,16 +1041,15 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString('Archimedes Strangifier Chemistry Set', true, true);
 
 		assert.deepEqual(itemObject, {
-			name: 'Strangifier Chemistry Set',
+			name: 'Chemistry Set',
 			craftable: true,
 			target: 'Archimedes',
 			output: 'Strangifier',
 			outputQuality: 6,
-			defindex: 'NEEDED HERE',
 			quality: 6,
 			targetDefindex: 828,
 			outputDefindex: 5661,
-			defindex: 20000,
+			defindex: 20005,
 		});
 	});
 
