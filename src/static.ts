@@ -1,7 +1,9 @@
 import staticSchema from './static/schema';
 import { createFormat } from './';
 
-const {
+const format = createFormat(staticSchema);
+
+let {
 	parseEconItem,
 	parseString,
 	stringify,
@@ -10,7 +12,15 @@ const {
 	toSKU,
     parseSKU,
 	schema,
-} = createFormat(staticSchema);
+} = format;
+
+parseEconItem = parseEconItem.bind(format);
+parseString = parseString.bind(format);
+stringify = stringify.bind(format);
+fixName = fixName.bind(format);
+createBPListing = createBPListing.bind(format);
+toSKU = toSKU.bind(format);
+parseSKU = parseSKU.bind(format);
 
 export {
 	parseEconItem,
