@@ -16,6 +16,25 @@ const DEFINDEXES: { [name: string]: number } = {
 	'Chemistry Set': 20005,
 	'Mann Co. Supply Crate Key': 5021,
 	Lugermorph: 160,
+
+	/**
+	 * Old keys, list might be incomplete.
+	 */
+	'Festive Winter Crate Key': 5049,
+	'Refreshing Summer Cooler Key': 5067,
+	'Naughty Winter Crate Key': 5072,
+	'Nice Winter Crate Key': 5073,
+	'Scorched Key': 5079,
+	'Fall Key': 5081,
+	'Eerie Key': 5628,
+	'Naughty Winter Crate Key 2012': 5631,
+	'Nice Winter Crate Key 2012': 5632,
+	'Spooky Key': 5713,
+	'Naughty Winter Crate Key 2013': 5716,
+	'Nice Winter Crate Key 2013': 5717,
+	'Limited Late Summer Crate Key': 5762,
+	'Naughty Winter Crate Key 2014': 5791,
+	'Nice Winter Crate Key 2014': 5792
 };
 
 /* TODO: Set boundaries between these.

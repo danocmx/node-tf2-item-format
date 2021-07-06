@@ -456,11 +456,17 @@ describe('parseString', () => {
 		assert.deepEqual(itemObject, { name: 'Bonk! Atomic Punch', craftable: true, quality: 'Unique' });
 	});
 
-	it('Case #43 - Item with native `The` with craft number (The Concealed Killer Weapons Case #93)', () => {
+	it('Case #43 - Item with native `The` with craft number', () => {
 		const itemObject = parseString('The Concealed Killer Weapons Case #93', false, false);
 
 		assert.deepEqual(itemObject, { name: 'The Concealed Killer Weapons Case', craftable: true, quality: 'Unique', itemNumber: { type: 'crate', value: 93 } });
-	})
+	});
+
+	it('Case #44 - Old retired keys', () => {
+		const itemObject = parseString('Non-Craftable Naughty Winter Crate Key 2014', false, false);
+
+		assert.deepEqual(itemObject, { name: 'Naughty Winter Crate Key 2014', craftable: false, quality: 'Unique'});
+	});
 });
 
 describe('parseString with numbers', () => {
@@ -925,6 +931,19 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString('Bonk! Atomic Punch', true, false);
 
 		assert.deepEqual(itemObject, { name: 'Bonk! Atomic Punch', craftable: true, quality: 6 });
+	});
+
+	
+	it('Case #43 - Item with native `The` with craft number', () => {
+		const itemObject = parseString('The Concealed Killer Weapons Case #93', true, false);
+
+		assert.deepEqual(itemObject, { name: 'The Concealed Killer Weapons Case', craftable: true, quality: 6, itemNumber: { type: 'crate', value: 93 } });
+	});
+
+	it('Case #44 - Old retired keys', () => {
+		const itemObject = parseString('Non-Craftable Naughty Winter Crate Key 2014', true, false);
+
+		assert.deepEqual(itemObject, { name: 'Naughty Winter Crate Key 2014', craftable: false, quality: 6});
 	});
 });
 
@@ -1470,5 +1489,17 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString('The Bitter Taste of Defeat and Lime', true, true);
 
 		assert.deepEqual(itemObject, { name: 'The Bitter Taste of Defeat and Lime', quality: 6, craftable: true, defindex: 5054 });
+	});
+
+	it('Case #48 - Item with native `The` with craft number', () => {
+		const itemObject = parseString('The Concealed Killer Weapons Case #93', true, true);
+
+		assert.deepEqual(itemObject, { name: 'The Concealed Killer Weapons Case', craftable: true, quality: 6, "defindex": 5806, itemNumber: { type: 'crate', value: 93 } });
+	});
+
+	it('Case #49 - Old retired keys', () => {
+		const itemObject = parseString('Non-Craftable Naughty Winter Crate Key 2014', true, true);
+
+		assert.deepEqual(itemObject, { name: 'Naughty Winter Crate Key 2014', craftable: false, quality: 6, "defindex": 5791 });
 	});
 });
