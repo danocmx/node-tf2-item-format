@@ -1,3 +1,5 @@
+import Attributes from "../parseString/Attributes";
+
 /**
  * These items keep 'The' in name.
  */
@@ -43,6 +45,16 @@ const EXCEPTIONS = [
  * Signalizes if `The` is at the start of name.
  * Only happens to hats with unique quality.
  */
-export default function (name: string): boolean {
-	return /^The /.test(name) && !EXCEPTIONS.includes(name);
+export default function (name: string, attributes?: Attributes): boolean {
+	if (!/^The /.test(name)) {
+		return false;
+	}
+	
+	if (attributes?.itemNumber) {
+		return !EXCEPTIONS.some((item) => {
+			return name.startsWith(item);
+		});
+	}
+
+	return !EXCEPTIONS.includes(name);
 }

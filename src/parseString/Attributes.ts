@@ -47,7 +47,7 @@ export default class Attributes {
 		this.itemNumber = getItemNumber(name);
 		this.usableItem = getUsableItem(name);
 
-		this.isUniqueHat = isUniqueHat(name);
+		this.isUniqueHat = isUniqueHat(name, this);
 		this.quality = getQuality(name, this);
 	}
 }
