@@ -467,6 +467,12 @@ describe('parseString', () => {
 
 		assert.deepEqual(itemObject, { name: 'Naughty Winter Crate Key 2014', craftable: false, quality: 'Unique'});
 	});
+
+	it('Case #45 - Munition case', () => {
+		const itemObject = parseString('Mann Co. Supply Munition #83', false, false);
+
+		assert.deepEqual(itemObject, { name: 'Mann Co. Supply Munition', craftable: true, quality: 'Unique', itemNumber: { value: 83, type: 'crate' } });
+	})
 });
 
 describe('parseString with numbers', () => {
@@ -945,6 +951,12 @@ describe('parseString with numbers', () => {
 
 		assert.deepEqual(itemObject, { name: 'Naughty Winter Crate Key 2014', craftable: false, quality: 6});
 	});
+
+	it('Case #45 - Munition case', () => {
+		const itemObject = parseString('Mann Co. Supply Munition #83', true, false);
+
+		assert.deepEqual(itemObject, { name: 'Mann Co. Supply Munition', craftable: true, quality: 6, itemNumber: { value: 83, type: 'crate' } });
+	})
 });
 
 describe('parseString with defindexes and numbers.', () => {
@@ -1502,4 +1514,10 @@ describe('parseString with defindexes and numbers.', () => {
 
 		assert.deepEqual(itemObject, { name: 'Naughty Winter Crate Key 2014', craftable: false, quality: 6, "defindex": 5791 });
 	});
+
+	it('Case #50 - Munition case', () => {
+		const itemObject = parseString('Mann Co. Supply Munition #83', true, true);
+
+		assert.deepEqual(itemObject, { name: 'Mann Co. Supply Munition', defindex: 5734, craftable: true, quality: 6, itemNumber: { value: 83, type: 'crate' } });
+	})
 });
