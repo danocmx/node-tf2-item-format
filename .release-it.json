@@ -1,7 +1,6 @@
 {
     "npm": {
-        "publish": true,
-        "tag": "v5-0-0"
+        "publish": true
     },
     "git": {
         "commit": true,
