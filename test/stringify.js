@@ -480,4 +480,10 @@ describe('stringify from defindexes and numbers.', () => {
 
 		assert.equal(itemString, 'Haunted Haunted Hat');
 	})
+
+	it('Case #24 - fixed names', () => {
+		const itemString = stringify({ defindex: 5791, quality: 6, craftable: false });
+
+		assert.equal(itemString, 'Non-Craftable Naughty Winter Crate Key 2014');
+	})
 });
