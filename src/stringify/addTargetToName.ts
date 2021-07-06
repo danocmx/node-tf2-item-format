@@ -8,11 +8,15 @@ export default function (name: string, target: string) {
 
 	// We know killstreak is defined.
 	return insertTarget(name, target, killstreak as string);
-};
+}
 
 /**
  * Inserts the target into name.
  */
-function insertTarget(name: string, target: string, killstreak: string): string {
+function insertTarget(
+	name: string,
+	target: string,
+	killstreak: string
+): string {
 	return `${killstreak} ${target} ${name.slice(killstreak.length + 1)}`;
 }

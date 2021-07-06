@@ -48,4 +48,4 @@ export default function (sku: string): SKUAttributes {
 	}
 
 	return attributes;
-};
+}

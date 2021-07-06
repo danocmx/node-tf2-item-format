@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 
-const { parseString } = require('..');
+const { parseString } = require('../dist/static');
 
 describe('parseString', () => {
 	it('Case #1', () => {
@@ -455,6 +455,24 @@ describe('parseString', () => {
 
 		assert.deepEqual(itemObject, { name: 'Bonk! Atomic Punch', craftable: true, quality: 'Unique' });
 	});
+
+	it('Case #43 - Item with native `The` with craft number', () => {
+		const itemObject = parseString('The Concealed Killer Weapons Case #93', false, false);
+
+		assert.deepEqual(itemObject, { name: 'The Concealed Killer Weapons Case', craftable: true, quality: 'Unique', itemNumber: { type: 'crate', value: 93 } });
+	});
+
+	it('Case #44 - Old retired keys', () => {
+		const itemObject = parseString('Non-Craftable Naughty Winter Crate Key 2014', false, false);
+
+		assert.deepEqual(itemObject, { name: 'Naughty Winter Crate Key 2014', craftable: false, quality: 'Unique'});
+	});
+
+	it('Case #45 - Munition case', () => {
+		const itemObject = parseString('Mann Co. Supply Munition #83', false, false);
+
+		assert.deepEqual(itemObject, { name: 'Mann Co. Supply Munition', craftable: true, quality: 'Unique', itemNumber: { value: 83, type: 'crate' } });
+	})
 });
 
 describe('parseString with numbers', () => {
@@ -920,6 +938,25 @@ describe('parseString with numbers', () => {
 
 		assert.deepEqual(itemObject, { name: 'Bonk! Atomic Punch', craftable: true, quality: 6 });
 	});
+
+	
+	it('Case #43 - Item with native `The` with craft number', () => {
+		const itemObject = parseString('The Concealed Killer Weapons Case #93', true, false);
+
+		assert.deepEqual(itemObject, { name: 'The Concealed Killer Weapons Case', craftable: true, quality: 6, itemNumber: { type: 'crate', value: 93 } });
+	});
+
+	it('Case #44 - Old retired keys', () => {
+		const itemObject = parseString('Non-Craftable Naughty Winter Crate Key 2014', true, false);
+
+		assert.deepEqual(itemObject, { name: 'Naughty Winter Crate Key 2014', craftable: false, quality: 6});
+	});
+
+	it('Case #45 - Munition case', () => {
+		const itemObject = parseString('Mann Co. Supply Munition #83', true, false);
+
+		assert.deepEqual(itemObject, { name: 'Mann Co. Supply Munition', craftable: true, quality: 6, itemNumber: { value: 83, type: 'crate' } });
+	})
 });
 
 describe('parseString with defindexes and numbers.', () => {
@@ -1465,4 +1502,22 @@ describe('parseString with defindexes and numbers.', () => {
 
 		assert.deepEqual(itemObject, { name: 'The Bitter Taste of Defeat and Lime', quality: 6, craftable: true, defindex: 5054 });
 	});
+
+	it('Case #48 - Item with native `The` with craft number', () => {
+		const itemObject = parseString('The Concealed Killer Weapons Case #93', true, true);
+
+		assert.deepEqual(itemObject, { name: 'The Concealed Killer Weapons Case', craftable: true, quality: 6, "defindex": 5806, itemNumber: { type: 'crate', value: 93 } });
+	});
+
+	it('Case #49 - Old retired keys', () => {
+		const itemObject = parseString('Non-Craftable Naughty Winter Crate Key 2014', true, true);
+
+		assert.deepEqual(itemObject, { name: 'Naughty Winter Crate Key 2014', craftable: false, quality: 6, "defindex": 5791 });
+	});
+
+	it('Case #50 - Munition case', () => {
+		const itemObject = parseString('Mann Co. Supply Munition #83', true, true);
+
+		assert.deepEqual(itemObject, { name: 'Mann Co. Supply Munition', defindex: 5734, craftable: true, quality: 6, itemNumber: { value: 83, type: 'crate' } });
+	})
 });

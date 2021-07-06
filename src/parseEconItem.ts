@@ -1,20 +1,15 @@
 import ParsedEcon from './parseEconItem/ParsedEcon';
 
 import {
-	ParsedEconOptions,
 	EconItem,
 	ParsedEconItem,
-	TagAttributes,
-	DescriptionAttributes,
-	PropertyAttributes,
-	NameAttributes,
 	ParsedEconNameAtributes,
 	ItemDefindexes,
 	ItemAttributesInNumbers,
-	PlaceholderEconNameAttributes,
 	MetaEconAttributes,
-	AddionalEconItemAttributes
+	AddionalEconItemAttributes,
 } from './types';
+import { ISchema } from './types/schema';
 
 /**
  * Parses Economy item from steam.
@@ -23,12 +18,47 @@ import {
  * @param {boolean} options.inNumbers
  * @return {object}
  */
-function parseEconItem(item: EconItem, inNumbers: false, useDefindexes: true): ParsedEconNameAtributes & ItemDefindexes & MetaEconAttributes & AddionalEconItemAttributes;
-function parseEconItem(item: EconItem, inNumbers: false, useDefindexes: false): ParsedEconNameAtributes & MetaEconAttributes & AddionalEconItemAttributes;
-function parseEconItem(item: EconItem, inNumbers: true, useDefindexes: true): ParsedEconNameAtributes & ItemDefindexes & ItemAttributesInNumbers & MetaEconAttributes & AddionalEconItemAttributes;
-function parseEconItem(item: EconItem, inNumbers: true, useDefindexes: false): ParsedEconNameAtributes & ItemAttributesInNumbers & MetaEconAttributes & AddionalEconItemAttributes;
-function parseEconItem(item: EconItem, inNumbers: boolean = false, useDefindexes: boolean = false): ParsedEconItem {
-	const parsedEcon = new ParsedEcon(item);
+function parseEconItem(
+	schema: ISchema,
+	item: EconItem,
+	inNumbers: false,
+	useDefindexes: true
+): ParsedEconNameAtributes &
+	ItemDefindexes &
+	MetaEconAttributes &
+	AddionalEconItemAttributes;
+function parseEconItem(
+	schema: ISchema,
+	item: EconItem,
+	inNumbers: false,
+	useDefindexes: false
+): ParsedEconNameAtributes & MetaEconAttributes & AddionalEconItemAttributes;
+function parseEconItem(
+	schema: ISchema,
+	item: EconItem,
+	inNumbers: true,
+	useDefindexes: true
+): ParsedEconNameAtributes &
+	ItemDefindexes &
+	ItemAttributesInNumbers &
+	MetaEconAttributes &
+	AddionalEconItemAttributes;
+function parseEconItem(
+	schema: ISchema,
+	item: EconItem,
+	inNumbers: true,
+	useDefindexes: false
+): ParsedEconNameAtributes &
+	ItemAttributesInNumbers &
+	MetaEconAttributes &
+	AddionalEconItemAttributes;
+function parseEconItem(
+	schema: ISchema,
+	item: EconItem,
+	inNumbers: boolean = false,
+	useDefindexes: boolean = false
+): ParsedEconItem {
+	const parsedEcon = new ParsedEcon(schema, item);
 
 	const name = parsedEcon.itemName.getShort();
 

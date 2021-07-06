@@ -19,16 +19,17 @@ export default function ({
 }: {
 	isStrange: boolean;
 	isVintage: boolean;
-	isHaunted: boolean,
+	isHaunted: boolean;
 	otherQuality: string;
 	attributes: Attributes;
 }): StringQuality {
-	let quality: string|void;
+	let quality: string | void;
 	let elevated = false;
 
 	if (isVintage) quality = 'Vintage';
 	else if (isHaunted) quality = 'Haunted';
-	else if (otherQuality) quality = chooseOtherQuality({ isVintage, isHaunted, otherQuality });
+	else if (otherQuality)
+		quality = chooseOtherQuality({ isVintage, isHaunted, otherQuality });
 	else if (attributes.effect) quality = 'Unusual';
 
 	if (isStrange) {
@@ -47,9 +48,13 @@ export default function ({
 	};
 }
 
-function chooseOtherQuality({ isVintage, isHaunted, otherQuality }: {
+function chooseOtherQuality({
+	isVintage,
+	isHaunted,
+	otherQuality,
+}: {
 	isVintage: boolean;
-	isHaunted: boolean,
+	isHaunted: boolean;
 	otherQuality: string;
 }): string {
 	if (!isVintage && otherQuality === 'Vintange') return 'Unique';

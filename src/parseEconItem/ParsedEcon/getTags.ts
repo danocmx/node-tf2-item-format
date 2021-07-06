@@ -1,4 +1,13 @@
-import { isType, getType, isClass, getClass, isGrade, getGrade, isCollection, getCollection } from './getTags/tags';
+import {
+	isType,
+	getType,
+	isClass,
+	getClass,
+	isGrade,
+	getGrade,
+	isCollection,
+	getCollection,
+} from './getTags/tags';
 import { isQuality, getQuality, isWear, getWear } from './getTags/resourceTags';
 
 import ParsedEcon from '../ParsedEcon';
@@ -26,4 +35,4 @@ export default function ({ item }: ParsedEcon): TagAttributes {
 	}
 
 	return attributes;
-};
+}

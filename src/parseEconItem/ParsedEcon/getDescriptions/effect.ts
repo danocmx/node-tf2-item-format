@@ -6,8 +6,12 @@ import { EconDescription, TagAttributes } from '../../../types';
  * @return {boolean}
  */
 export function isEffect(description: EconDescription, tags: TagAttributes) {
-	return description.value.startsWith('★ Unusual Effect: ') && isRightColour(description) && canQualityBeUnusual(tags);
-};
+	return (
+		description.value.startsWith('★ Unusual Effect: ') &&
+		isRightColour(description) &&
+		canQualityBeUnusual(tags)
+	);
+}
 
 function isRightColour({ color }: EconDescription): boolean {
 	return color === 'ffd700';
@@ -24,4 +28,4 @@ function canQualityBeUnusual({ quality }: TagAttributes): boolean {
  */
 export function getEffect(description: EconDescription): string {
 	return description.value.replace('★ Unusual Effect: ', '');
-};
+}

@@ -1,5 +1,3 @@
-import schema from './shared/schema';
-
 import shouldSetNumber from './stringify/shouldSetNumber';
 import shouldSetQuality from './stringify/shouldSetQuality';
 import addTargetToName from './stringify/addTargetToName';
@@ -8,11 +6,13 @@ import getOutput from './shared/getOutput';
 
 import { nameTypeGuard, skuTypeGuard } from './types/guards';
 import { ItemAttributes, StrigifySKUAttributes } from './types';
+import { ISchema } from './types/schema';
 
 /**
  * Stringifies item object into item name
  */
 export default function (
+	schema: ISchema,
 	attributes: StrigifySKUAttributes | ItemAttributes
 ): string {
 	const {
@@ -38,7 +38,7 @@ export default function (
 		target = attributes.target;
 		output = attributes.output;
 	} else if (skuTypeGuard(attributes)) {
-		name = getName(attributes.defindex);
+		name = getName(attributes.defindex, schema);
 		target = attributes.targetDefindex
 			? schema.getName(attributes.targetDefindex)
 			: '';
@@ -129,7 +129,7 @@ export default function (
 	return itemName;
 }
 
-function getName(defindex: number): string {
+function getName(defindex: number, schema: ISchema): string {
 	const name = schema.getName(defindex);
 
 	if (name.includes(' Fabricator')) {

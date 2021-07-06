@@ -1,31 +1,114 @@
-/* eslint-disable global-require */
-
-import parseEconItem from "./parseEconItem";
+import parseEconItem from './parseEconItem';
 import parseString from './parseString';
 import stringify from './stringify';
 import createBPListing from './createBPListing';
 import toSKU from './toSKU';
 import parseSKU from './parseSKU';
+import fixName from './fixName';
 
-import schema from './shared/schema';
+import { ISchema } from './types/schema';
+import { AddionalEconItemAttributes, BackpackTFListing, DefaultItemAttributes, EconItem, ItemAttributes, ItemAttributesInNumbers, ItemAttributesInStrings, ItemDefindexes, MetaEconAttributes, ParsedEconItem, ParsedEconNameAtributes, SKUAttributes, StrigifySKUAttributes } from './types';
 
 export * from './types';
+export * from './types/schema'
 
-/**
- * Fixes the order of attributes in your name,
- * 	this is highly exrimental due to the
- * 	nature of attributes being parsed in way
- * 	they're put in inside the name.
- */
-const fixName = (name: string) => stringify(parseString(name, false, false));
+class Format {
+	constructor(public schema: ISchema) {}
 
-export {
-    parseEconItem,
-    parseString,
-    stringify,
-    createBPListing,
-    toSKU,
-    parseSKU,
-    fixName,
-    schema,
+	parseEconItem(
+		item: EconItem,
+		inNumbers: false,
+		useDefindexes: true
+	): ParsedEconNameAtributes &
+		ItemDefindexes &
+		MetaEconAttributes &
+		AddionalEconItemAttributes;
+	parseEconItem(
+		item: EconItem,
+		inNumbers: false,
+		useDefindexes: false
+	): ParsedEconNameAtributes & MetaEconAttributes & AddionalEconItemAttributes;
+	parseEconItem(
+		item: EconItem,
+		inNumbers: true,
+		useDefindexes: true
+	): ParsedEconNameAtributes &
+		ItemDefindexes &
+		ItemAttributesInNumbers &
+		MetaEconAttributes &
+		AddionalEconItemAttributes;
+	parseEconItem(item: EconItem, inNumbers: true, useDefindexes: false): ParsedEconNameAtributes & ItemAttributesInNumbers & MetaEconAttributes & AddionalEconItemAttributes;
+	parseEconItem(item: EconItem, inNumbers: boolean = false, useDefindexes: boolean = false): ParsedEconItem {
+		if (inNumbers && useDefindexes) {
+			return parseEconItem(this.schema, item, true, true);
+		} else if (inNumbers) {
+			return parseEconItem(this.schema, item, true, false);
+		} else if (useDefindexes) {
+			return parseEconItem(this.schema, item, false, true);
+		}
+		
+		return parseEconItem(this.schema, item, false, false);
+	}
+
+	parseString(
+		name: string,
+		inNumbers: false,
+		useDefindexes: false
+	): DefaultItemAttributes & ItemAttributesInStrings;
+	parseString(
+		name: string,
+		inNumbers: true,
+		useDefindexes: true
+	): DefaultItemAttributes & ItemDefindexes & ItemAttributesInNumbers;
+	parseString(
+		name: string,
+		inNumbers: false,
+		useDefindexes: true
+	): DefaultItemAttributes & ItemDefindexes & ItemAttributesInStrings;
+	parseString(
+		name: string,
+		inNumbers: true,
+		useDefindexes: false
+	): DefaultItemAttributes & ItemAttributesInNumbers;
+	parseString(
+		name: string,
+		inNumbers: boolean = false,
+		useDefindexes: boolean = false
+	): DefaultItemAttributes {
+		if (inNumbers && useDefindexes) {
+			return parseString(this.schema, name, true, true);
+		} else if (inNumbers) {
+			return parseString(this.schema, name, true, false);
+		} else if (useDefindexes) {
+			return parseString(this.schema, name, false, true);
+		}
+		
+		return parseString(this.schema, name, false, false);
+	}
+
+	stringify(attributes: StrigifySKUAttributes | ItemAttributes): string {
+		return stringify(this.schema, attributes);
+	}
+
+	createBPListing(item: StrigifySKUAttributes | ItemAttributes): BackpackTFListing {
+		return createBPListing(this.schema, item);
+	}
+
+	fixName(name: string): string {
+		return fixName(this.schema, name);
+	}
+
+	toSKU(item: SKUAttributes): string {
+		return toSKU(item);
+	}
+	
+	parseSKU(sku: string): SKUAttributes {
+		return parseSKU(sku);
+	}
 }
+
+export function createFormat(schema: ISchema) {
+	return new Format(schema);
+}
+
+export { toSKU, parseSKU };

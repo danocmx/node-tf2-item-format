@@ -14,4 +14,4 @@ export default function ({ item, tags }: ParsedEcon): PropertyAttributes {
 	};
 
 	return attributes;
-};
+}

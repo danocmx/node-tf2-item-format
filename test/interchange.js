@@ -5,7 +5,7 @@
  */
 const { assert } = require('chai');
 
-const { parseEconItem, parseSKU, parseString, toSKU, stringify, createBPListing } = require('../');
+const { parseEconItem, parseSKU, parseString, toSKU, stringify, createBPListing } = require('../dist/static');
 
 /**
  * StartFormat - EconItem

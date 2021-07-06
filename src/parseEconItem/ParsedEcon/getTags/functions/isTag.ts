@@ -10,5 +10,5 @@ export default function (category: string): (tag: EconTag) => boolean {
 	 * @param {Object} tag
 	 * @return {string|number}
 	 */
-	return (tag: EconTag) => (tag.category === category);
-};
+	return (tag: EconTag) => tag.category === category;
+}

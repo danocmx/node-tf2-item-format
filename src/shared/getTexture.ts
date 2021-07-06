@@ -1,19 +1,25 @@
-import schema from './schema';
-import Attributes from '../parseString/Attributes';
 import isNumber from '../util/isNumber';
+
+import { ISchema } from '../types/schema';
 
 /**
  * Iterates over effects object to get matching effect.
  */
 // eslint-disable-next-line consistent-return
-export default function (name: string, attributes: { wear: any|void }): string|void {
-	if (!schema.textures) schema.loadTextures();
-
-	const textureKeys = Object.keys(schema.textures);
+export default function (
+	name: string,
+	attributes: { wear: any|null, schema: ISchema }
+): string | void {
+	const textures = attributes.schema.getTextures();
+	const textureKeys = Object.keys(textures);
 	for (let i = 0; i < textureKeys.length; i++) {
-		const texture: number|string = textureKeys[i];
+		const texture: number | string = textureKeys[i];
 
-		if (texture === 'Haunted Ghosts' && name.includes('Haunted Ghosts') && !attributes.wear) {
+		if (
+			texture === 'Haunted Ghosts' &&
+			name.includes('Haunted Ghosts') &&
+			!attributes.wear
+		) {
 			continue;
 		}
 
@@ -24,4 +30,4 @@ export default function (name: string, attributes: { wear: any|void }): string|v
 
 		return texture;
 	}
-};
+}
