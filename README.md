@@ -61,6 +61,8 @@ You can use `parseSKU` and `toSKU` without schema:
 import { parseSKU, toSKU } from 'tf2-item-format';
 ```
 
+Please note that static schema has implemented a lot of overwrites for defindexes that simply cannot be obtained by the limited data we have, so when you are implenting it yourself you should use the current `Schema` as your guide.
+
 ## Instalation
 Via NPM: `npm install tf2-item-format`
 Or Yarn: `yarn add tf2-item-format`
