@@ -2,7 +2,7 @@
 Formatting for TF2 items.
 
 Use `v5` branch for current version.
-Install it via `npm install tf2-item-format@v5-0-0`
+Install it via `npm install tf2-item-format`
 
 ## Features
 - Parses item name into attribute object
@@ -61,7 +61,7 @@ You can use `parseSKU` and `toSKU` without schema:
 import { parseSKU, toSKU } from 'tf2-item-format';
 ```
 
-Please note that static schema has implemented a lot of overwrites for defindexes that simply cannot be obtained by the limited data we have, so when you are implenting it yourself you should use the current `Schema` as your guide.
+Please note that static schema has implemented a lot of overwrites for defindexes that simply cannot be obtained by the limited data we have, so when you are implementing it yourself you should use the current `Schema` as your guide.
 
 ## Instalation
 Via NPM: `npm install tf2-item-format`
