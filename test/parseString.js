@@ -455,6 +455,12 @@ describe('parseString', () => {
 
 		assert.deepEqual(itemObject, { name: 'Bonk! Atomic Punch', craftable: true, quality: 'Unique' });
 	});
+
+	it('Case #43 - Item with native `The` with craft number (The Concealed Killer Weapons Case #93)', () => {
+		const itemObject = parseString('The Concealed Killer Weapons Case #93', false, false);
+
+		assert.deepEqual(itemObject, { name: 'The Concealed Killer Weapons Case', craftable: true, quality: 'Unique', itemNumber: { type: 'crate', value: 93 } });
+	})
 });
 
 describe('parseString with numbers', () => {
