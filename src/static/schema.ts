@@ -34,7 +34,29 @@ const DEFINDEXES: { [name: string]: number } = {
 	'Nice Winter Crate Key 2013': 5717,
 	'Limited Late Summer Crate Key': 5762,
 	'Naughty Winter Crate Key 2014': 5791,
-	'Nice Winter Crate Key 2014': 5792
+	'Nice Winter Crate Key 2014': 5792,
+};
+
+const NAMES: { [defindex: number]: string } = {
+	160: 'Lugermorph',
+	5021: 'Mann Co. Supply Crate Key',
+	5049: 'Festive Winter Crate Key',
+	5067: 'Refreshing Summer Cooler Key',
+	5072: 'Naughty Winter Crate Key',
+	5073: 'Nice Winter Crate Key',
+	5079: 'Scorched Key',
+	5081: 'Fall Key',
+	5628: 'Eerie Key',
+	5631: 'Naughty Winter Crate Key 2012',
+	5632: 'Nice Winter Crate Key 2012',
+	5713: 'Spooky Key',
+	5716: 'Naughty Winter Crate Key 2013',
+	5717: 'Nice Winter Crate Key 2013',
+	5762: 'Limited Late Summer Crate Key',
+	5791: 'Naughty Winter Crate Key 2014',
+	5792: 'Nice Winter Crate Key 2014',
+	20000: 'Strangifier Chemistry Set',
+	20005: 'Chemistry Set',
 };
 
 /* TODO: Set boundaries between these.
@@ -153,6 +175,8 @@ class Schema implements ISchema {
 	getName(search: number | string): string {
 		if (!this.itemNames) this.loadItemNames();
 		if (!isNumber(search)) return search as string;
+		const name = NAMES[search];
+		if (name) return name;
 
 		return this.itemNames[search as number];
 	}
