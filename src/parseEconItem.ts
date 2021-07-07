@@ -10,6 +10,7 @@ import {
 	AddionalEconItemAttributes,
 } from './types';
 import { ISchema } from './types/schema';
+import { EconOptions } from './types/econ';
 
 /**
  * Parses Economy item from steam.
@@ -22,7 +23,8 @@ function parseEconItem(
 	schema: ISchema,
 	item: EconItem,
 	inNumbers: false,
-	useDefindexes: true
+	useDefindexes: true,
+	options?: EconOptions
 ): ParsedEconNameAtributes &
 	ItemDefindexes &
 	MetaEconAttributes &
@@ -31,13 +33,15 @@ function parseEconItem(
 	schema: ISchema,
 	item: EconItem,
 	inNumbers: false,
-	useDefindexes: false
+	useDefindexes: false,
+	options?: EconOptions
 ): ParsedEconNameAtributes & MetaEconAttributes & AddionalEconItemAttributes;
 function parseEconItem(
 	schema: ISchema,
 	item: EconItem,
 	inNumbers: true,
-	useDefindexes: true
+	useDefindexes: true,
+	options?: EconOptions
 ): ParsedEconNameAtributes &
 	ItemDefindexes &
 	ItemAttributesInNumbers &
@@ -47,7 +51,8 @@ function parseEconItem(
 	schema: ISchema,
 	item: EconItem,
 	inNumbers: true,
-	useDefindexes: false
+	useDefindexes: false,
+	options?: EconOptions
 ): ParsedEconNameAtributes &
 	ItemAttributesInNumbers &
 	MetaEconAttributes &
@@ -56,9 +61,10 @@ function parseEconItem(
 	schema: ISchema,
 	item: EconItem,
 	inNumbers: boolean = false,
-	useDefindexes: boolean = false
+	useDefindexes: boolean = false,
+	options?: EconOptions
 ): ParsedEconItem {
-	const parsedEcon = new ParsedEcon(schema, item);
+	const parsedEcon = new ParsedEcon(schema, item, options || { useTrueDefindex: false });
 
 	const name = parsedEcon.itemName.getShort();
 
