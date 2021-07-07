@@ -23,6 +23,8 @@ import {
 	MetaEconAttributes,
 } from '../types';
 import { ISchema } from '../types/schema';
+import getDefindex from './ParsedEcon/getDefindex';
+import { EconOptions } from '../types/econ';
 
 /**
  * Parser class.
@@ -37,10 +39,13 @@ export default class ParsedEcon {
 	public descriptions: DescriptionAttributes;
 	public properties: PropertyAttributes;
 	public nameAttrs: NameAttributes;
+	public trueDefindex: number;
+	private options: EconOptions;
 
-	constructor(schema: ISchema, item: EconItem) {
+	constructor(schema: ISchema, item: EconItem, options: EconOptions) {
 		this.schema = schema;
 		this.item = { ...item };
+		this.options = options;
 		this.itemName = new ItemName(this);
 		this.fullEcon = hasAppData(this.item);
 
@@ -48,6 +53,7 @@ export default class ParsedEcon {
 		this.descriptions = getDescriptions(this);
 		this.properties = getPropertyAttributes(this);
 		this.nameAttrs = getNameAttributes(this);
+		this.trueDefindex = getDefindex(this);
 	}
 
 	get id(): string {
@@ -163,7 +169,10 @@ export default class ParsedEcon {
 					: undefined
 			);
 
-			if (defindexes.defindex) attrs.defindex = defindexes.defindex;
+			if (this.options.useTrueDefindex && this.trueDefindex !== -1) {
+				attrs.defindex = this.trueDefindex;
+			} else if (defindexes.defindex) attrs.defindex = defindexes.defindex;
+
 			if (defindexes.outputDefindex)
 				attrs.outputDefindex = defindexes.outputDefindex;
 			if (defindexes.targetDefindex)
