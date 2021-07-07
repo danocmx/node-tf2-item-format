@@ -85,6 +85,17 @@ And static schema:
 Everything is fully typed so you should be able to get this working on your own, until I make a documentation.
 Some of the types are a bit confusing which will get fixed in next major version.
 
+### parseEconItem
+```ts
+parseEconItem(econ: EconItem, inNumbers: boolean, useDefindexes: boolean, options: { useTrueDefindex: boolean }): ParsedEconItem;
+```
+
+- `econ` is raw item you receive from the api
+- `inNumbers` - changes return type of certain attributes to numbers instead of pure strings, eg. quality, texture, wear, ...
+- `useDefindexes` - appends item defindex to the object, adds target & output aswell
+- `options`
+    - `useTrueDefindex` - returns true defindex item has on this econ, doesn't ask schema.
+
 ## Compability usage
 ```ts
 // Have a name, want a sku
