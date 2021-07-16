@@ -136,13 +136,13 @@ export type EconItem = {
 	descriptions: EconDescription[];
 	tradable: number;
 	name: string;
-	type: string;
 	market_name: string;
 	market_hash_name: string;
 	commodity: number;
 	marketable: number;
 	tags: EconTag[];
 	app_data?: { def_index: number };
+	type: string;
 
 	icon_url?: string;
 	icon_url_large?: string;
@@ -258,6 +258,7 @@ export type MetaEconAttributes = {
 	classes: string[];
 	type?: string;
 	collection?: string;
+	level: number;
 	grade?: string;
 	paint?: string;
 	parts: string[];

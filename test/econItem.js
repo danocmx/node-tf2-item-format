@@ -158,7 +158,8 @@ describe('parseEconItem', () => {
 			spells: [],
 			marketable: true,
 			commodity: false,
-			sheen: "Agonizing Emerald"
+			sheen: "Agonizing Emerald",
+			level: -1,
 		});
 	});
 
@@ -248,6 +249,7 @@ describe('parseEconItem', () => {
 			spells: [],
 			marketable: true,
 			commodity: false,
+			level: 82,
 		});
 	});
 
@@ -380,6 +382,7 @@ describe('parseEconItem', () => {
 			spells: [],
 			marketable: true,
 			commodity: false,
+			level: 57,
 		});
 	});
 
@@ -468,6 +471,7 @@ describe('parseEconItem', () => {
 			spells: [],
 			marketable: true,
 			commodity: false,
+			level: 88,
 		});
 	});
 
@@ -632,7 +636,8 @@ describe('parseEconItem', () => {
 			spells: ['Pumpkin Bombs'],
 			marketable: true,
 			commodity: false,
-			sheen: "Agonizing Emerald"
+			sheen: "Agonizing Emerald",
+			level: -1,
 		});
 	});
 
@@ -729,6 +734,7 @@ describe('parseEconItem', () => {
 			spells: ['Spectral Spectrum'],
 			marketable: true,
 			commodity: false,
+			level: 58,
 		});
 	});
 
@@ -835,6 +841,7 @@ describe('parseEconItem', () => {
 			marketable: true,
 			commodity: false,
 			paint: "Noble Hatter's Violet",
+			level: 1,
 		});
 	});
 
@@ -937,6 +944,7 @@ describe('parseEconItem', () => {
 			spells: ['Chromatic Corruption', 'Voices From Below'],
 			marketable: true,
 			commodity: false,
+			level: -1,
 		});
 	});
 
@@ -966,7 +974,8 @@ describe('parseEconItem', () => {
 			parts: [],
 			spells: [],
 			marketable: true,
-			commodity: false
+			commodity: false,
+			level: 1,
 		});
 	})
 
@@ -993,7 +1002,8 @@ describe('parseEconItem', () => {
 			parts: [],
 			spells: [],
 			marketable: true,
-			commodity: false
+			commodity: false,
+			level: 1,
 		});
 	})
 
@@ -1085,7 +1095,8 @@ describe('parseEconItem', () => {
 			parts: [ 'Cloaked Spies Killed', 'Scouts Killed' ],
 			spells: [],
 			marketable: true,
-			commodity: false
+			commodity: false,
+			level: -1,
 		  });
 	});
 
@@ -1336,7 +1347,8 @@ describe('parseEconItem', () => {
 			spells: [ 'Pumpkin Bombs' ],
 			marketable: true,
 			commodity: false,
-			sheen: "Mean Green"
+			sheen: "Mean Green",
+			level: -1,
 		});
 	})
 
@@ -1359,7 +1371,8 @@ describe('parseEconItem', () => {
 			sheen: "Manndarin",
 			spells: [ "Exorcism" ],
 			tradable: true,
-			type: "primary"
+			type: "primary",
+			level: -1,
 		});
 	})
 
@@ -1384,6 +1397,7 @@ describe('parseEconItem', () => {
 			"killstreak": "Specialized Killstreak",
 			"marketable": true,
 			"name": "Gold Botkiller Wrench Mk.II",
+			level: -1,
 		});
 	})
 
@@ -1407,6 +1421,7 @@ describe('parseEconItem', () => {
 			"spells": [],
 			"tradable": true,
 			"type": "misc",
+			level: -1,
 		});
 	});
 });
@@ -1582,7 +1597,8 @@ describe('Econ Item in Numbers', () => {
 			spells: [],
 			marketable: true,
 			commodity: false,
-			sheen: "Agonizing Emerald"
+			sheen: "Agonizing Emerald",
+			level: -1,
 		});
 	});
 
@@ -1680,6 +1696,7 @@ describe('Econ Item in Numbers', () => {
 				spells: [],
 				marketable: true,
 				commodity: false,
+				level: 82,
 			},
 			false, false
 		);
@@ -1817,6 +1834,7 @@ describe('Econ Item in Numbers', () => {
 			spells: [],
 			marketable: true,
 			commodity: false,
+			level: 57,
 		});
 	});
 
@@ -1908,6 +1926,7 @@ describe('Econ Item in Numbers', () => {
 			spells: [],
 			marketable: true,
 			commodity: false,
+			level: 88,
 		});
 	});
 
@@ -2087,7 +2106,8 @@ describe('Econ Item in Numbers', () => {
 			spells: ['Pumpkin Bombs'],
 			marketable: true,
 			commodity: false,
-			sheen: "Agonizing Emerald"
+			sheen: "Agonizing Emerald",
+			level: -1,
 		});
 	});
 
@@ -2338,7 +2358,8 @@ describe('Econ Item in Numbers', () => {
 			spells: [ 'Pumpkin Bombs' ],
 			marketable: true,
 			commodity: false,
-			sheen: "Mean Green"
+			sheen: "Mean Green",
+			level: -1,
 		});
 	})
 
@@ -2364,7 +2385,8 @@ describe('Econ Item in Numbers', () => {
 			sheen: "Manndarin",
 			spells: [ "Exorcism" ],
 			tradable: true,
-			type: "primary"
+			type: "primary",
+			level: -1,
 		});
 	});
 	
@@ -2388,6 +2410,7 @@ describe('Econ Item in Numbers', () => {
 			"spells": [],
 			"tradable": true,
 			"type": "misc",
+			level: -1,
 		});
 	});
 });
@@ -2526,6 +2549,7 @@ describe('Econ item with defindexes', () => {
 			spells: [],
 			marketable: true,
 			commodity: false,
+			level: 57,
 		});
 	});
 
@@ -2618,6 +2642,7 @@ describe('Econ item with defindexes', () => {
 			spells: [],
 			marketable: true,
 			commodity: false,
+			level: 88,
 		});
 	});
 
@@ -2798,7 +2823,8 @@ describe('Econ item with defindexes', () => {
 			spells: ['Pumpkin Bombs'],
 			marketable: true,
 			commodity: false,
-			sheen: "Agonizing Emerald"
+			sheen: "Agonizing Emerald",
+			level: -1,
 		});
 	});
 
@@ -2899,6 +2925,7 @@ describe('Econ item with defindexes', () => {
 			spells: ['Spectral Spectrum'],
 			marketable: true,
 			commodity: false,
+			level: 58,
 		});
 	});
 
@@ -3009,6 +3036,7 @@ describe('Econ item with defindexes', () => {
 			marketable: true,
 			commodity: false,
 			paint: "Noble Hatter's Violet",
+			level: 1,
 		});
 	});
 
@@ -3115,6 +3143,7 @@ describe('Econ item with defindexes', () => {
 			spells: ['Chromatic Corruption', 'Voices From Below'],
 			marketable: true,
 			commodity: false,
+			level: -1,
 		});
 	});
 
@@ -3216,7 +3245,8 @@ describe('Econ item with defindexes', () => {
 			parts: [],
 			spells: [],
 			marketable: true,
-			commodity: false
+			commodity: false,
+			level: 5,
 		  });
 	});
 
@@ -3468,7 +3498,8 @@ describe('Econ item with defindexes', () => {
 			marketable: true,
 			commodity: false,
 			"defindex": 205,
-			sheen: "Mean Green"
+			sheen: "Mean Green",
+			level: -1,
 		});
 	});
 
@@ -3495,7 +3526,8 @@ describe('Econ item with defindexes', () => {
 			spells: [ "Exorcism" ],
 			tradable: true,
 			type: "primary",
-			defindex: 1007
+			defindex: 1007,
+			level: -1,
 		});
 	});
 
@@ -3520,7 +3552,8 @@ describe('Econ item with defindexes', () => {
 			"spells": [],
 			"tradable": true,
 			"type": "misc",
-			"defindex": 347
+			"defindex": 347,
+			level: -1,
 		});
 	});
 });
@@ -3703,7 +3736,8 @@ describe('Econ item with true defindex', () => {
 			spells: ['Pumpkin Bombs'],
 			marketable: true,
 			commodity: false,
-			sheen: "Agonizing Emerald"
+			sheen: "Agonizing Emerald",
+			level: -1,
 		});
 	});
 
@@ -3955,7 +3989,8 @@ describe('Econ item with true defindex', () => {
 			marketable: true,
 			commodity: false,
 			"defindex": 15052,
-			sheen: "Mean Green"
+			sheen: "Mean Green",
+			level: -1,
 		});
 	});
 });

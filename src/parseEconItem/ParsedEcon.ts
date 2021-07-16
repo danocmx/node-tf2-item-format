@@ -6,6 +6,8 @@ import getTags from './ParsedEcon/getTags';
 import getPropertyAttributes from './ParsedEcon/getPropertyAttributes';
 import getNameAttributes from './ParsedEcon/getNameAttributes';
 import getDescriptions from './ParsedEcon/getDescriptions';
+import getDefindex from './ParsedEcon/getDefindex';
+import getLevel from './ParsedEcon/getLevel';
 
 import getConvertedIntAttributes from '../shared/getConvertedIntAttributes';
 import getDefindexes from '../shared/getDefindexes';
@@ -23,7 +25,6 @@ import {
 	MetaEconAttributes,
 } from '../types';
 import { ISchema } from '../types/schema';
-import getDefindex from './ParsedEcon/getDefindex';
 import { EconOptions } from '../types/econ';
 
 /**
@@ -40,6 +41,7 @@ export default class ParsedEcon {
 	public properties: PropertyAttributes;
 	public nameAttrs: NameAttributes;
 	public trueDefindex: number;
+	public level: number;
 	private options: EconOptions;
 
 	constructor(schema: ISchema, item: EconItem, options: EconOptions) {
@@ -54,6 +56,7 @@ export default class ParsedEcon {
 		this.properties = getPropertyAttributes(this);
 		this.nameAttrs = getNameAttributes(this);
 		this.trueDefindex = getDefindex(this);
+		this.level = getLevel(this);
 	}
 
 	get id(): string {
@@ -225,6 +228,7 @@ export default class ParsedEcon {
 		return {
 			...attributes,
 
+			level: this.level,
 			classes: this.tags.classes,
 			type: this.tags.type,
 
