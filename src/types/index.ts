@@ -134,15 +134,16 @@ export type EconDescription = {
 export type EconItem = {
 	assetid: string;
 	descriptions: EconDescription[];
-	tradable: number;
 	name: string;
 	market_name: string;
 	market_hash_name: string;
-	commodity: number;
-	marketable: number;
 	tags: EconTag[];
 	app_data?: { def_index: number };
 	type: string;
+
+	tradable: number | boolean;
+	commodity: number | boolean;
+	marketable: number | boolean;
 
 	icon_url?: string;
 	icon_url_large?: string;
