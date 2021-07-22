@@ -1,7 +1,7 @@
 import parseEconItem from './parseEconItem';
 import parseString from './parseString';
 import stringify from './stringify';
-import createBPListing from './createBPListing';
+import createBPListing, { CreateBPListingOptions } from './createBPListing';
 import toSKU from './toSKU';
 import parseSKU from './parseSKU';
 import fixName from './fixName';
@@ -94,8 +94,8 @@ class Format {
 		return stringify(this.schema, attributes);
 	}
 
-	createBPListing(item: StrigifySKUAttributes | ItemAttributes): BackpackTFListing {
-		return createBPListing(this.schema, item);
+	createBPListing(item: StrigifySKUAttributes | ItemAttributes, options: CreateBPListingOptions = {}): BackpackTFListing {
+		return createBPListing(this.schema, item, options);
 	}
 
 	fixName(name: string): string {

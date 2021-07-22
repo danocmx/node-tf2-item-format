@@ -223,4 +223,44 @@ describe('createBPListing', () => {
 			priceindex: '6522-6-30132'
 		});
 	});
+
+	it('Case #14 - Skin with unusual quality to decorated', () => {
+		const listing = createBPListing({
+			name: 'Degreaser',
+			craftable: true,
+			killstreak: 'Professional Killstreak',
+			quality: 5,
+			elevated: false,
+			effect: 702,
+			wear: 'Minimal-Wear',
+			texture: 'Alien Tech'
+		});
+
+		assert.deepEqual(listing, {
+			quality: "Decorated Weapon",
+			craftable: 1,
+			item_name: 'Professional Killstreak Alien Tech | Degreaser (Minimal-Wear)',
+			priceindex: 702,
+		});
+	});
+
+	it('Case #15 - Skin with unusual quality keeps unusual quality', () => {
+		const listing = createBPListing({
+			name: 'Degreaser',
+			craftable: true,
+			killstreak: 'Professional Killstreak',
+			quality: 5,
+			elevated: false,
+			effect: 702,
+			wear: 'Minimal-Wear',
+			texture: 'Alien Tech'
+		}, { unuSkinsToDecorated: false });
+
+		assert.deepEqual(listing, {
+			quality: 5,
+			craftable: 1,
+			item_name: 'Professional Killstreak Alien Tech | Degreaser (Minimal-Wear)',
+			priceindex: 702,
+		});
+	});
 });

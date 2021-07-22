@@ -9,14 +9,31 @@ import {
 } from './types';
 import { ISchema } from './types/schema';
 
+const DEFAULT_OPTIONS: CreateBPListingOptions = {
+	unuSkinsToDecorated: true,
+}
+
+export type CreateBPListingOptions = {
+	/**
+	 * Defaults unusual skins to decorated weapon quality.
+	 */
+	unuSkinsToDecorated?: boolean;
+}
+
 /**
  * Creates a listing object that you can sent to backpack.tf
  * @todo work with SKU attributes
  */
 export default function (
 	schema: ISchema,
-	item: ItemAttributes | StrigifySKUAttributes
+	item: ItemAttributes | StrigifySKUAttributes,
+	options: CreateBPListingOptions = {},
 ): BackpackTFListing {
+	options = {
+		...DEFAULT_OPTIONS,
+		...options,
+	}
+
 	let name: string;
 	if (skuTypeGuard(item)) {
 		name = schema.getName(item.defindex);
@@ -27,18 +44,18 @@ export default function (
 	}
 
 	return {
-		quality: getQuality(schema, item),
+		quality: getQuality(schema, item, options),
 		craftable: item.craftable ? 1 : 0,
 		item_name: getItem(schema, name, item),
 		priceindex: getPriceindex(schema, name, item),
 	};
 }
 
-function getQuality(schema: ISchema, item: ItemAttributes|StrigifySKUAttributes): string|number {
+function getQuality(schema: ISchema, item: ItemAttributes|StrigifySKUAttributes, options: CreateBPListingOptions): string|number {
 	let { quality } = item;
 	const { elevated } = item;
 	
-	if (isUnusualSkin(item)) {
+	if (options.unuSkinsToDecorated && isUnusualSkin(item)) {
 		/*
 			- decorated
 			- unusual
