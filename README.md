@@ -10,6 +10,11 @@ Install it via `npm install tf2-item-format`
 - Parses ECON item into attributes
 - Parses SKU into attributes
 - Makes SKU out of attributes
+- Creates backpack.tf compatible format for listing creation
+
+## Support the project
+tf2-item-format is now used in number of production grade projects for handling item data,
+help support the project by donating items [here](https://steamcommunity.com/tradeoffer/new/?partner=162338347&token=Od7J3LIh).
 
 ## Migrating from v4 to v5
 To keep your application working like before with version 5 you have to:
@@ -95,6 +100,17 @@ parseEconItem(econ: EconItem, inNumbers: boolean, useDefindexes: boolean, option
 - `useDefindexes` - appends item defindex to the object, adds target & output aswell
 - `options`
     - `useTrueDefindex` - returns true defindex item has on this econ, doesn't ask schema.
+- Returns `ParsedEconItem` which is an object of all attributes the econ gives us
+
+### createBPListing
+```ts
+createBPListing(attributes: ItemAttributes | StringifySKUAttributes, options?: CreateBPListingOptions): BackpackTFListing
+```
+
+- `attributes` - these you get from `parseString`, `parseSKU` or `parseEconItem`, all are compatible
+- `options`
+    - `unuSkinsToDecorated` - defaults unusual skins to decorated weapon quality, default value is `true`
+- Returns `BackpackTFListing` object compatible with `item` object in backpack.tf listing creation api
 
 ## Compability usage
 ```ts
