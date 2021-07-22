@@ -120,6 +120,10 @@ stringify(attributes: StrigifySKUAttributes | ItemAttributes, options?: Stringif
 - `attributes` - these you get from `parseString`, `parseSKU` or `parseEconItem`, all are compatible
 - `options`
     - `determineUniqueHat` - if set it checks in schema if given item should use `The` in name, defaults to `false`
+- Returns the item name
+
+#### Note for stringify
+If you are using sku format to store your items and want to use `The` in your names, you have to turn `determineUniqueHat` to `true`.
 
 ## Compability usage
 ```ts
