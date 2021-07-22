@@ -43,6 +43,7 @@ export type ISchema = {
     getQualityEnum(quality: number | string): number;
     getTextures(): SchemaEnum;
     getEffects(): SchemaEnum;
+    isUniqueHat(defindexOrName: string | number): boolean;
 }
 
 // Extra types you might need:
