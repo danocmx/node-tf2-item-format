@@ -485,5 +485,53 @@ describe('stringify from defindexes and numbers.', () => {
 		const itemString = stringify({ defindex: 5791, quality: 6, craftable: false });
 
 		assert.equal(itemString, 'Non-Craftable Naughty Winter Crate Key 2014');
+	});
+
+	it('Case #25 - unique hat only defindex', () => {
+		const itemString = stringify({ defindex: 876, quality: 6, craftable: true }, { determineUniqueHat: true });
+
+		assert.equal(itemString, 'The K-9 Mane');
+	});
+
+	it('Case #26 - unique hat only defindex off', () => {
+		const itemString = stringify({ defindex: 876, quality: 6, craftable: true }, { determineUniqueHat: false });
+
+		assert.equal(itemString, 'K-9 Mane');
+	});
+
+	it('Case #26 - unique hat only defindex with other attributes', () => {
+		const itemString = stringify({ defindex: 876, quality: 6, craftable: false }, { determineUniqueHat: true });
+
+		assert.equal(itemString, 'Non-Craftable K-9 Mane');
+	});
+
+	it('Case #26 - unique hat with bad name', () => {
+		const itemString = stringify({ name: 'K-9 Mane', quality: 6, craftable: true }, { determineUniqueHat: true });
+
+		assert.equal(itemString, 'The K-9 Mane');
+	});
+
+	it('Case #27 - strange unique with determineUniqueHat', () => {
+		const itemString = stringify({ name: 'K-9 Mane', quality: 6, craftable: true, elevated: true }, { determineUniqueHat: true });
+
+		assert.equal(itemString, 'Strange Unique K-9 Mane');
+	});
+
+	it('Case #27 - craft number with determineUniqueHat', () => {
+		const itemString = stringify({ name: 'Surgeon\'s Stahlhelm', quality: 6, craftable: true, itemNumber: { type: 'craft', value: 1 } }, { determineUniqueHat: true });
+
+		assert.equal(itemString, 'The Surgeon\'s Stahlhelm #1');
+	});
+
+	it('Case #28 - case with determineUniqueHat', () => {
+		const itemString = stringify({ name: 'Gargoyle Case', quality: 6, craftable: true, itemNumber: { type: 'crate', value: 98 } }, { determineUniqueHat: true });
+
+		assert.equal(itemString, 'Gargoyle Case #98');
+	});
+
+	it('Case #29 - The Bitter Taste of Defeat and Lime with determineUniqueHat', () => {
+		const itemString = stringify({ name: 'The Bitter Taste of Defeat and Lime', quality: 6, craftable: true }, { determineUniqueHat: true });
+
+		assert.equal(itemString, 'The Bitter Taste of Defeat and Lime');
 	})
 });

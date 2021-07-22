@@ -8,13 +8,27 @@ import { nameTypeGuard, skuTypeGuard } from './types/guards';
 import { ItemAttributes, StrigifySKUAttributes } from './types';
 import { ISchema } from './types/schema';
 
+const DEFAULT_OPTIONS: StringifyOptions = {
+	determineUniqueHat: false,
+};
+
+export type StringifyOptions = {
+	determineUniqueHat?: boolean;
+};
+
 /**
  * Stringifies item object into item name
  */
 export default function (
 	schema: ISchema,
-	attributes: StrigifySKUAttributes | ItemAttributes
+	attributes: StrigifySKUAttributes | ItemAttributes,
+	options: StringifyOptions = {}
 ): string {
+	options = {
+		...DEFAULT_OPTIONS,
+		...options,
+	};
+
 	const {
 		craftable,
 		australium,
@@ -27,7 +41,6 @@ export default function (
 		effect,
 		outputQuality,
 		itemNumber,
-		isUniqueHat,
 	} = attributes;
 
 	let name;
@@ -49,43 +62,53 @@ export default function (
 		throw new Error('Defindex or Name is missing.');
 	}
 
+	let shouldSetUniqueHat = true;
 	let itemName = '';
 
 	if (!craftable) {
 		itemName += 'Non-Craftable ';
+		shouldSetUniqueHat = false;
 	}
 
 	if (elevated) {
 		itemName += 'Strange ';
+		shouldSetUniqueHat = false;
 	}
 
 	if (shouldSetQuality(quality, elevated, effect)) {
 		itemName += `${schema.getQualityName(quality)} `;
+		shouldSetUniqueHat = false;
 	}
 
 	if (effect) {
 		itemName += `${schema.getEffectName(effect)} `;
+		shouldSetUniqueHat = false;
 	}
 
 	if (festivized) {
 		itemName += 'Festivized ';
+		shouldSetUniqueHat = false;
 	}
 
 	if (killstreak && canAddKillstreak(killstreak, target)) {
 		itemName += `${schema.getKillstreakName(killstreak)} `;
+		shouldSetUniqueHat = false;
 	}
 
 	if (isAustralium(australium)) {
 		itemName += 'Australium ';
+		shouldSetUniqueHat = false;
 	}
 
 	if (texture) {
 		itemName += `${schema.getTextureName(texture)} `;
+		shouldSetUniqueHat = false;
 	}
 
 	if (target && isKillstreakKitOrFabricator(name, target)) {
 		// eslint-disable-next-line no-param-reassign
 		name = addTargetToName(name, schema.getName(target as string));
+		shouldSetUniqueHat = false;
 	} else if (target || (output && outputQuality)) {
 		// There can be both target and output, target is prefered thus the check.
 		// getOutput constructs full output name if quality present.
@@ -107,9 +130,15 @@ export default function (
 					: schema.getName(target as string)
 			} `;
 		}
+
+		shouldSetUniqueHat = false;
 	}
 
-	if (isUniqueHat) {
+	if (wear) {
+		shouldSetUniqueHat = false;
+	}
+
+	if (shouldSetUniqueHat && isUniqueHat(schema, attributes, options)) {
 		itemName += 'The ';
 	}
 
@@ -159,4 +188,22 @@ function canAddKillstreak(
 
 function isKillstreakKitOrFabricator(name: string, target?: string): boolean {
 	return !!(target && (/ Kit/.test(name) || / Fabricator/.test(name))); // This checks for fabricator too.
+}
+
+function isUniqueHat(
+	schema: ISchema,
+	attributes: StrigifySKUAttributes | ItemAttributes,
+	options: StringifyOptions
+) {
+	if (typeof attributes.isUniqueHat === 'boolean') {
+		return attributes.isUniqueHat;
+	}
+
+	if (!options.determineUniqueHat) {
+		return false;
+	}
+
+	return schema.isUniqueHat(
+		skuTypeGuard(attributes) ? attributes.defindex : attributes.name
+	);;
 }

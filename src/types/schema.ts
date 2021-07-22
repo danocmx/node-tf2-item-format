@@ -21,4 +21,6 @@ export type ISchema = {
 
     getTextures(): SchemaEnum;
     getEffects(): SchemaEnum;
+
+    isUniqueHat(nameOrDefindex: string | number): boolean;
 }

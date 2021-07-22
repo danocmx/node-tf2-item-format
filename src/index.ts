@@ -1,6 +1,6 @@
 import parseEconItem from './parseEconItem';
 import parseString from './parseString';
-import stringify from './stringify';
+import stringify, { StringifyOptions } from './stringify';
 import createBPListing, { CreateBPListingOptions } from './createBPListing';
 import toSKU from './toSKU';
 import parseSKU from './parseSKU';
@@ -90,8 +90,8 @@ class Format {
 		return parseString(this.schema, name, false, false);
 	}
 
-	stringify(attributes: StrigifySKUAttributes | ItemAttributes): string {
-		return stringify(this.schema, attributes);
+	stringify(attributes: StrigifySKUAttributes | ItemAttributes, options: StringifyOptions = {}): string {
+		return stringify(this.schema, attributes, options);
 	}
 
 	createBPListing(item: StrigifySKUAttributes | ItemAttributes, options: CreateBPListingOptions = {}): BackpackTFListing {

@@ -246,6 +246,39 @@ class Schema implements ISchema {
 
 		return this.getQuality(quality as string) as number;
 	}
+
+	isUniqueHat(defindexOrName: string | number): boolean {
+		if (isNumber(defindexOrName)) {
+			defindexOrName = this.getName(defindexOrName);
+		}
+
+		const item = this.getSchemaItemFromName(defindexOrName);
+		return item?.proper_name ? item.name.startsWith('The ') : false;
+	}
+
+	private getSchemaItemFromName(search: string) {
+		if (!this.items) this.loadDefindexes();
+
+		let byDefindex: number = 0;
+		if (DEFINDEXES[search]) {
+			byDefindex = DEFINDEXES[search];
+		}
+
+		let correctItem: SchemaItem | null = null;
+		for (let i = 0; i < this.items.length; i++) {
+			const item: SchemaItem = this.items[i];
+			const name: string = selectName(item);
+			if (byDefindex ? byDefindex === item.defindex : name === search) {
+				if (!hasUpgradeable(item) || isUpgradeable(item.name)) {
+					return item;
+				}
+
+				correctItem = item;
+			}
+		}
+
+		return correctItem;
+	}
 }
 
 /**

@@ -1,3 +1,6 @@
+import isUnique from '../shared/isUnique';
+import isStrangeUnique from '../shared/isStrangeUnique';
+
 /**
  * Checks if quality should be set on name by few checks.
  */
@@ -44,18 +47,10 @@ function hasNoEffect(quality: string | number, effect?: string | number) {
 	return quality && !effect;
 }
 
-function isStrangeUnique(quality: string | number, elevated?: boolean) {
-	return isUnique(quality) && !!elevated;
-}
-
 function isDecorated(quality: string | number) {
 	return quality === 'Decorated Weapon' || quality === 15;
 }
 
 function isUnusual(quality: string | number) {
 	return quality === 'Unusual' || quality === 5;
-}
-
-function isUnique(quality: string | number) {
-	return quality === 'Unique' || quality === 6;
 }

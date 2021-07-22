@@ -92,7 +92,7 @@ Some of the types are a bit confusing which will get fixed in next major version
 
 ### parseEconItem
 ```ts
-parseEconItem(econ: EconItem, inNumbers: boolean, useDefindexes: boolean, options: { useTrueDefindex: boolean }): ParsedEconItem;
+parseEconItem(econ: EconItem, inNumbers: boolean, useDefindexes: boolean, options?: { useTrueDefindex: boolean }): ParsedEconItem;
 ```
 
 - `econ` is raw item you receive from the api
@@ -111,6 +111,15 @@ createBPListing(attributes: ItemAttributes | StringifySKUAttributes, options?: C
 - `options`
     - `unuSkinsToDecorated` - defaults unusual skins to decorated weapon quality, default value is `true`
 - Returns `BackpackTFListing` object compatible with `item` object in backpack.tf listing creation api
+
+### stringify
+```ts
+stringify(attributes: StrigifySKUAttributes | ItemAttributes, options?: StringifyOptions): string
+```
+
+- `attributes` - these you get from `parseString`, `parseSKU` or `parseEconItem`, all are compatible
+- `options`
+    - `determineUniqueHat` - if set it checks in schema if given item should use `The` in name, defaults to `false`
 
 ## Compability usage
 ```ts

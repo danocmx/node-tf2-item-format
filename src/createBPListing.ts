@@ -82,7 +82,7 @@ function getItem(schema: ISchema, name: string, item: ItemAttributes|StrigifySKU
 		festivized: item.festivized,
 		quality: 6,
 		wear: item.wear,
-	});
+	}, { determineUniqueHat: false });
 }
 
 function getRightName(schema: ISchema, name: string, item: ItemAttributes|StrigifySKUAttributes): string {
