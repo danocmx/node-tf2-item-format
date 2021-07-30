@@ -41,7 +41,7 @@
     "tf2-static-schema": "^1.11.1"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
+    "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "chai": "^4.2.0",
