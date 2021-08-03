@@ -534,4 +534,16 @@ describe('stringify from defindexes and numbers.', () => {
 
 		assert.equal(itemString, 'The Bitter Taste of Defeat and Lime');
 	})
+
+	it('Case #30 - Normal quality item', () => {
+		const itemString = stringify({ defindex: 211, quality: 0, craftable: true, elevated: true });
+
+		assert.equal(itemString, 'Strange Normal Medi Gun');
+	});
+
+	it('Case #31 - Normal quality item #2', () => {
+		const itemString = stringify({ name: 'Medi Gun', quality: 'Normal', craftable: true, elevated: true });
+
+		assert.equal(itemString, 'Strange Normal Medi Gun');
+	});
 });

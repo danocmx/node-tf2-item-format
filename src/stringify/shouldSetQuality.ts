@@ -24,7 +24,7 @@ function checkForEffectAndUnusual(
 	effect?: string | number
 ) {
 	return (
-		isNonUnusualWithEffect(quality, effect) || hasNoEffect(quality, effect)
+		isNonUnusualWithEffect(quality, effect) || hasNoEffect(effect)
 	);
 }
 
@@ -43,8 +43,8 @@ function isNonUnusualWithEffect(
 /**
  * Has quality without effect
  */
-function hasNoEffect(quality: string | number, effect?: string | number) {
-	return quality && !effect;
+function hasNoEffect(effect?: string | number) {
+	return !effect;
 }
 
 function isDecorated(quality: string | number) {
