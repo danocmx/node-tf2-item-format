@@ -5,7 +5,8 @@
     "git": {
         "commit": true,
         "commitMessage": "chore: release ${version}",
-        "push": true
+        "push": true,
+        "requireCleanWorkingDir": false
     },
     "github": {
         "release": true
