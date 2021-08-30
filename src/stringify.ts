@@ -205,5 +205,5 @@ function isUniqueHat(
 
 	return schema.isUniqueHat(
 		skuTypeGuard(attributes) ? attributes.defindex : attributes.name
-	);;
+	);
 }

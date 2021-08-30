@@ -11,6 +11,6 @@
         "release": true
     },
     "hooks": {
-        "before:init": ["npm run format", "npm run build", "npm run test"]
+        "before:init": ["npm run build", "npm run test"]
     }
 }

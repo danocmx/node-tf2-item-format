@@ -1,7 +1,7 @@
-import parseString from "./parseString";
-import stringify from "./stringify";
+import parseString from './parseString';
+import stringify from './stringify';
 
-import { ISchema } from "./types/schema";
+import { ISchema } from './types/schema';
 
 /**
  * Fixes the order of attributes in your name,
@@ -9,4 +9,5 @@ import { ISchema } from "./types/schema";
  * 	nature of attributes being parsed in way
  * 	they're put in inside the name.
  */
-export default (schema: ISchema, name: string) => stringify(schema, parseString(schema, name, false, false));
+export default (schema: ISchema, name: string) =>
+	stringify(schema, parseString(schema, name, false, false));

@@ -11,14 +11,14 @@ import { ISchema } from './types/schema';
 
 const DEFAULT_OPTIONS: CreateBPListingOptions = {
 	unuSkinsToDecorated: true,
-}
+};
 
 export type CreateBPListingOptions = {
 	/**
 	 * Defaults unusual skins to decorated weapon quality.
 	 */
 	unuSkinsToDecorated?: boolean;
-}
+};
 
 /**
  * Creates a listing object that you can sent to backpack.tf
@@ -27,12 +27,12 @@ export type CreateBPListingOptions = {
 export default function (
 	schema: ISchema,
 	item: ItemAttributes | StrigifySKUAttributes,
-	options: CreateBPListingOptions = {},
+	options: CreateBPListingOptions = {}
 ): BackpackTFListing {
 	options = {
 		...DEFAULT_OPTIONS,
 		...options,
-	}
+	};
 
 	let name: string;
 	if (skuTypeGuard(item)) {
@@ -51,10 +51,14 @@ export default function (
 	};
 }
 
-function getQuality(schema: ISchema, item: ItemAttributes|StrigifySKUAttributes, options: CreateBPListingOptions): string|number {
+function getQuality(
+	schema: ISchema,
+	item: ItemAttributes | StrigifySKUAttributes,
+	options: CreateBPListingOptions
+): string | number {
 	let { quality } = item;
 	const { elevated } = item;
-	
+
 	if (options.unuSkinsToDecorated && isUnusualSkin(item)) {
 		/*
 			- decorated
@@ -66,26 +70,38 @@ function getQuality(schema: ISchema, item: ItemAttributes|StrigifySKUAttributes,
 		quality = 'Decorated Weapon';
 	}
 
-	return elevated 
-		? `Strange ${schema.getQualityName(quality)}` 
-		: quality;
+	return elevated ? `Strange ${schema.getQualityName(quality)}` : quality;
 }
 
-function getItem(schema: ISchema, name: string, item: ItemAttributes|StrigifySKUAttributes): string {
-	return stringify(schema, {
-		name: getRightName(schema, name, item),
-		australium: item.australium,
-		// Don't add it if it's already in the name.
-		killstreak:
-			isKillstreakKit(name) || isFabricator(name) ? 0 : item.killstreak,
-		craftable: true,
-		festivized: item.festivized,
-		quality: 6,
-		wear: item.wear,
-	}, { determineUniqueHat: false });
+function getItem(
+	schema: ISchema,
+	name: string,
+	item: ItemAttributes | StrigifySKUAttributes
+): string {
+	return stringify(
+		schema,
+		{
+			name: getRightName(schema, name, item),
+			australium: item.australium,
+			// Don't add it if it's already in the name.
+			killstreak:
+				isKillstreakKit(name) || isFabricator(name)
+					? 0
+					: item.killstreak,
+			craftable: true,
+			festivized: item.festivized,
+			quality: 6,
+			wear: item.wear,
+		},
+		{ determineUniqueHat: false }
+	);
 }
 
-function getRightName(schema: ISchema, name: string, item: ItemAttributes|StrigifySKUAttributes): string {
+function getRightName(
+	schema: ISchema,
+	name: string,
+	item: ItemAttributes | StrigifySKUAttributes
+): string {
 	// We keep kit in the name but backpack.tf does not accept it.
 	if (isFabricator(name)) return name.replace('Kit ', '');
 	if (item.texture) return `${schema.getTextureName(item.texture)} | ${name}`;
@@ -117,7 +133,9 @@ function getPriceindex(
 		return (item.itemNumber as ItemNumber).value;
 	if (isUnusualfierOrStrangifier(name)) return targetDefindex as number;
 	if (isChemistrySet(name)) {
-		let priceindex = `${outputDefindex}-${schema.getQualityEnum(item.outputQuality as number)}`;
+		let priceindex = `${outputDefindex}-${schema.getQualityEnum(
+			item.outputQuality as number
+		)}`;
 		if (hasTarget(targetDefindex)) priceindex += `-${targetDefindex}`;
 		return priceindex;
 	}
@@ -143,8 +161,8 @@ function isChemistrySet(name: string): boolean {
 	return name.includes('Chemistry Set');
 }
 
-function hasTarget(targetDefindex: number | "" | null | undefined): boolean {
-	return !!(targetDefindex);
+function hasTarget(targetDefindex: number | '' | null | undefined): boolean {
+	return !!targetDefindex;
 }
 
 function isKillstreakKit(name: string): boolean {
@@ -169,6 +187,6 @@ function getKitDefindex(
 	);
 }
 
-function isUnusualSkin(item: ItemAttributes|StrigifySKUAttributes) {
+function isUnusualSkin(item: ItemAttributes | StrigifySKUAttributes) {
 	return item.effect && item.texture && item.wear;
 }

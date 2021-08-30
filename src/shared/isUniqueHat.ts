@@ -1,4 +1,4 @@
-import Attributes from "../parseString/Attributes";
+import Attributes from '../parseString/Attributes';
 
 /**
  * These items keep 'The' in name.
@@ -49,7 +49,7 @@ export default function (name: string, attributes?: Attributes): boolean {
 	if (!/^The /.test(name)) {
 		return false;
 	}
-	
+
 	if (attributes?.itemNumber) {
 		return !EXCEPTIONS.some((item) => {
 			return name.startsWith(item);

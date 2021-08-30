@@ -64,7 +64,11 @@ function parseEconItem(
 	useDefindexes: boolean = false,
 	options?: EconOptions
 ): ParsedEconItem {
-	const parsedEcon = new ParsedEcon(schema, item, options || { useTrueDefindex: false });
+	const parsedEcon = new ParsedEcon(
+		schema,
+		item,
+		options || { useTrueDefindex: false }
+	);
 
 	const name = parsedEcon.itemName.getShort();
 

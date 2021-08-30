@@ -8,7 +8,7 @@ import { ISchema } from '../types/schema';
 // eslint-disable-next-line consistent-return
 export default function (
 	name: string,
-	attributes: { wear: any|null, schema: ISchema }
+	attributes: { wear: any | null; schema: ISchema }
 ): string | void {
 	const textures = attributes.schema.getTextures();
 	const textureKeys = Object.keys(textures);

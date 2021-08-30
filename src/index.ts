@@ -7,11 +7,25 @@ import parseSKU from './parseSKU';
 import fixName from './fixName';
 
 import { ISchema } from './types/schema';
-import { AddionalEconItemAttributes, BackpackTFListing, DefaultItemAttributes, EconItem, ItemAttributes, ItemAttributesInNumbers, ItemAttributesInStrings, ItemDefindexes, MetaEconAttributes, ParsedEconItem, ParsedEconNameAtributes, SKUAttributes, StrigifySKUAttributes } from './types';
+import {
+	AddionalEconItemAttributes,
+	BackpackTFListing,
+	DefaultItemAttributes,
+	EconItem,
+	ItemAttributes,
+	ItemAttributesInNumbers,
+	ItemAttributesInStrings,
+	ItemDefindexes,
+	MetaEconAttributes,
+	ParsedEconItem,
+	ParsedEconNameAtributes,
+	SKUAttributes,
+	StrigifySKUAttributes,
+} from './types';
 import { EconOptions } from './types/econ';
 
 export * from './types';
-export * from './types/schema'
+export * from './types/schema';
 
 class Format {
 	constructor(public schema: ISchema) {}
@@ -30,7 +44,9 @@ class Format {
 		inNumbers: false,
 		useDefindexes: false,
 		options?: EconOptions
-	): ParsedEconNameAtributes & MetaEconAttributes & AddionalEconItemAttributes;
+	): ParsedEconNameAtributes &
+		MetaEconAttributes &
+		AddionalEconItemAttributes;
 	parseEconItem(
 		item: EconItem,
 		inNumbers: true,
@@ -41,8 +57,21 @@ class Format {
 		ItemAttributesInNumbers &
 		MetaEconAttributes &
 		AddionalEconItemAttributes;
-	parseEconItem(item: EconItem, inNumbers: true, useDefindexes: false, options?: EconOptions): ParsedEconNameAtributes & ItemAttributesInNumbers & MetaEconAttributes & AddionalEconItemAttributes;
-	parseEconItem(item: EconItem, inNumbers: boolean = false, useDefindexes: boolean = false, options?: EconOptions): ParsedEconItem {
+	parseEconItem(
+		item: EconItem,
+		inNumbers: true,
+		useDefindexes: false,
+		options?: EconOptions
+	): ParsedEconNameAtributes &
+		ItemAttributesInNumbers &
+		MetaEconAttributes &
+		AddionalEconItemAttributes;
+	parseEconItem(
+		item: EconItem,
+		inNumbers: boolean = false,
+		useDefindexes: boolean = false,
+		options?: EconOptions
+	): ParsedEconItem {
 		if (inNumbers && useDefindexes) {
 			return parseEconItem(this.schema, item, true, true, options);
 		} else if (inNumbers) {
@@ -50,7 +79,7 @@ class Format {
 		} else if (useDefindexes) {
 			return parseEconItem(this.schema, item, false, true, options);
 		}
-		
+
 		return parseEconItem(this.schema, item, false, false, options);
 	}
 
@@ -86,15 +115,21 @@ class Format {
 		} else if (useDefindexes) {
 			return parseString(this.schema, name, false, true);
 		}
-		
+
 		return parseString(this.schema, name, false, false);
 	}
 
-	stringify(attributes: StrigifySKUAttributes | ItemAttributes, options: StringifyOptions = {}): string {
+	stringify(
+		attributes: StrigifySKUAttributes | ItemAttributes,
+		options: StringifyOptions = {}
+	): string {
 		return stringify(this.schema, attributes, options);
 	}
 
-	createBPListing(item: StrigifySKUAttributes | ItemAttributes, options: CreateBPListingOptions = {}): BackpackTFListing {
+	createBPListing(
+		item: StrigifySKUAttributes | ItemAttributes,
+		options: CreateBPListingOptions = {}
+	): BackpackTFListing {
 		return createBPListing(this.schema, item, options);
 	}
 
@@ -105,7 +140,7 @@ class Format {
 	toSKU(item: SKUAttributes): string {
 		return toSKU(item);
 	}
-	
+
 	parseSKU(sku: string): SKUAttributes {
 		return parseSKU(sku);
 	}

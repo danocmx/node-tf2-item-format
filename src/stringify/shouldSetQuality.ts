@@ -23,9 +23,7 @@ function checkForEffectAndUnusual(
 	quality: string | number,
 	effect?: string | number
 ) {
-	return (
-		isNonUnusualWithEffect(quality, effect) || hasNoEffect(effect)
-	);
+	return isNonUnusualWithEffect(quality, effect) || hasNoEffect(effect);
 }
 
 /**

@@ -20,7 +20,10 @@ function isCurrentItemSkin({ tags }: ParsedEcon) {
 	return !!tags.wear;
 }
 
-export function getTexture(description: EconDescription, schema: ISchema): string | void {
+export function getTexture(
+	description: EconDescription,
+	schema: ISchema
+): string | void {
 	// Only set texture when app_data present.
 	return description.app_data
 		? schema.getTextureName(description.app_data.def_index)

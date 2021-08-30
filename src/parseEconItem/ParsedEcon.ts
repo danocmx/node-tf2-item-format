@@ -148,7 +148,10 @@ export default class ParsedEcon {
 		};
 
 		if (inNumbers) {
-			const convertedAttributes = getConvertedIntAttributes(this.schema, attrs);
+			const convertedAttributes = getConvertedIntAttributes(
+				this.schema,
+				attrs
+			);
 
 			attrs.killstreak = convertedAttributes.killstreak;
 			attrs.wear = convertedAttributes.wear;
@@ -174,7 +177,8 @@ export default class ParsedEcon {
 
 			if (this.options.useTrueDefindex && this.trueDefindex !== -1) {
 				attrs.defindex = this.trueDefindex;
-			} else if (defindexes.defindex) attrs.defindex = defindexes.defindex;
+			} else if (defindexes.defindex)
+				attrs.defindex = defindexes.defindex;
 
 			if (defindexes.outputDefindex)
 				attrs.outputDefindex = defindexes.outputDefindex;

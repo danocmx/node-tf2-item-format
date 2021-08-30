@@ -39,7 +39,10 @@ export default function (
 	// So we keep killstreak name for kits and fabricators
 	if (usableItem) {
 		if (!!(usableItem.output && usableItem.target)) {
-			const outputToRemove = `${getOutput(usableItem.output, usableItem.outputQuality as string)} `;
+			const outputToRemove = `${getOutput(
+				usableItem.output,
+				usableItem.outputQuality as string
+			)} `;
 			const targetToRemove = `${usableItem.target} `;
 
 			itemName = itemName
@@ -47,7 +50,7 @@ export default function (
 				.replace(targetToRemove, '');
 		} else {
 			const toRemove = getUsableItemToRemove(attributes);
-		
+
 			itemName = itemName.replace(
 				new RegExp(`(( ${toRemove})|(${toRemove} ))`),
 				''

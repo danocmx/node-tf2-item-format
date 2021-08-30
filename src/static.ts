@@ -10,7 +10,7 @@ let {
 	fixName,
 	createBPListing,
 	toSKU,
-    parseSKU,
+	parseSKU,
 	schema,
 } = format;
 
@@ -29,6 +29,6 @@ export {
 	fixName,
 	createBPListing,
 	toSKU,
-    parseSKU,
+	parseSKU,
 	schema,
 };

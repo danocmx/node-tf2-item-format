@@ -13,9 +13,7 @@ export default class Killstreak {
 		return this.value;
 	}
 
-	constructor(
-		private schema: ISchema,
-	) {}
+	constructor(private schema: ISchema) {}
 
 	set killstreak(value: string) {
 		if (
