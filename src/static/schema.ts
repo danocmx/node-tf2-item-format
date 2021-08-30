@@ -253,7 +253,7 @@ class Schema implements ISchema {
 		}
 
 		const item = this.getSchemaItemFromName(defindexOrName);
-		return item?.proper_name ? item.name.startsWith('The ') : false;
+		return !!item?.proper_name;
 	}
 
 	private getSchemaItemFromName(search: string) {
