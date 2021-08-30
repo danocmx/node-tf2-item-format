@@ -6,5 +6,11 @@
         "commit": true,
         "commitMessage": "chore: release ${version}",
         "push": true
+    },
+    "github": {
+        "release": true
+    },
+    "hooks": {
+        "before:init": ["npm run format", "npm run build", "npm run test"]
     }
 }
