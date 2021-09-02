@@ -1,3 +1,4 @@
+import { hasOutputDefindex, hasOutputQuality, hasTargetDefindex, hasTexture } from './toSKU/guards';
 import { SKUAttributes } from './types';
 
 export default function (item: SKUAttributes): string {
@@ -15,7 +16,7 @@ export default function (item: SKUAttributes): string {
 	if (item.wear) {
 		sku += `;w${item.wear}`;
 	}
-	if (item.texture) {
+	if (hasTexture(item)) {
 		sku += `;pk${item.texture}`;
 	}
 	if (item.elevated) {
@@ -24,7 +25,7 @@ export default function (item: SKUAttributes): string {
 	if (item.killstreak && item.killstreak !== 0) {
 		sku += `;kt-${item.killstreak}`;
 	}
-	if (item.targetDefindex) {
+	if (hasTargetDefindex(item)) {
 		sku += `;td-${item.targetDefindex}`;
 	}
 	if (item.festivized) {
@@ -39,10 +40,10 @@ export default function (item: SKUAttributes): string {
 		}
 	}
 
-	if (item.outputDefindex) {
+	if (hasOutputDefindex(item)) {
 		sku += `;od-${item.outputDefindex}`;
 	}
-	if (item.outputQuality) {
+	if (hasOutputQuality(item)) {
 		sku += `;oq-${item.outputQuality}`;
 	}
 

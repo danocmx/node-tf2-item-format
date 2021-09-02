@@ -3,6 +3,8 @@ import shouldSetQuality from './stringify/shouldSetQuality';
 import addTargetToName from './stringify/addTargetToName';
 
 import getOutput from './shared/getOutput';
+import { hasDefindex } from './shared/guards';
+import { hasOutputDefindex, hasTargetDefindex } from './toSKU/guards';
 
 import { nameTypeGuard, skuTypeGuard } from './types/guards';
 import { ItemAttributes, StrigifySKUAttributes } from './types';
@@ -48,16 +50,16 @@ export default function (
 	let output;
 	if (nameTypeGuard(attributes)) {
 		name = attributes.name;
-		target = attributes.target;
-		output = attributes.output;
+		target = getTarget(schema, attributes);
+		output = getOutputItem(schema, attributes);
 	} else if (skuTypeGuard(attributes)) {
 		name = getName(attributes.defindex, schema);
-		target = attributes.targetDefindex
+		target = hasTargetDefindex(attributes)
 			? schema.getName(attributes.targetDefindex)
 			: '';
-		output = attributes.outputDefindex
+		output = hasOutputDefindex(attributes)
 			? schema.getName(attributes.outputDefindex)
-			: '';
+			: '';		
 	} else {
 		throw new Error('Defindex or Name is missing.');
 	}
@@ -100,7 +102,7 @@ export default function (
 		shouldSetUniqueHat = false;
 	}
 
-	if (texture) {
+	if (hasDefindex(texture)) {
 		itemName += `${schema.getTextureName(texture)} `;
 		shouldSetUniqueHat = false;
 	}
@@ -206,4 +208,18 @@ function isUniqueHat(
 	return schema.isUniqueHat(
 		skuTypeGuard(attributes) ? attributes.defindex : attributes.name
 	);
+}
+
+function getTarget(schema: ISchema, attributes: ItemAttributes): string {
+	return attributes.target 
+	|| (hasTargetDefindex(attributes as StrigifySKUAttributes)
+		? schema.getName(attributes.targetDefindex as number) 
+		: '')
+}
+
+function getOutputItem(schema: ISchema, attributes: ItemAttributes): string {
+	return attributes.output 
+	|| (hasOutputDefindex(attributes as StrigifySKUAttributes)
+		? schema.getName(attributes.outputDefindex as number) 
+		: '')
 }

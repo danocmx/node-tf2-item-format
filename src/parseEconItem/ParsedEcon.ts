@@ -11,6 +11,7 @@ import getLevel from './ParsedEcon/getLevel';
 
 import getConvertedIntAttributes from '../shared/getConvertedIntAttributes';
 import getDefindexes from '../shared/getDefindexes';
+import { hasDefindex } from '../shared/guards';
 
 import {
 	EconItem,
@@ -115,7 +116,7 @@ export default class ParsedEcon {
 			quality: this.tags.quality,
 
 			// Only append if exists
-			...(texture ? { texture } : {}),
+			...(hasDefindex(texture) ? { texture } : {}),
 			...(this.tags.wear ? { wear: this.tags.wear } : {}),
 			...(this.properties.elevated
 				? { elevated: this.properties.elevated }
@@ -177,16 +178,30 @@ export default class ParsedEcon {
 
 			if (this.options.useTrueDefindex && this.trueDefindex !== -1) {
 				attrs.defindex = this.trueDefindex;
-			} else if (defindexes.defindex)
+			} else if (hasDefindex(defindexes.defindex))
 				attrs.defindex = defindexes.defindex;
 
-			if (defindexes.outputDefindex)
+			if (hasDefindex(defindexes.outputDefindex))
 				attrs.outputDefindex = defindexes.outputDefindex;
-			if (defindexes.targetDefindex)
+			if (hasDefindex(defindexes.targetDefindex))
 				attrs.targetDefindex = defindexes.targetDefindex;
 		}
 
-		return removeUndefined(attrs) as ParsedEconNameAtributes;
+		const cleanAttrs = removeUndefined(attrs);
+		if (hasDefindex(attrs.texture)) {
+			cleanAttrs.texture = attrs.texture;
+		}
+		if (hasDefindex(attrs.defindex)) {
+			cleanAttrs.defindex = attrs.defindex;
+		}
+		if (hasDefindex(attrs.outputDefindex)) {
+			cleanAttrs.outputDefindex = attrs.outputDefindex;
+		}
+		if (hasDefindex(attrs.targetDefindex)) {
+			cleanAttrs.targetDefindex = attrs.targetDefindex;
+		}
+
+		return cleanAttrs as ParsedEconNameAtributes;
 	}
 
 	getAttributes(

@@ -1,6 +1,7 @@
 const { assert } = require('chai');
 
-const { parseString } = require('../dist/static');
+const { parseString, schema, Schema } = require('../dist/static');
+const { createFormat } = require('../dist');
 
 describe('parseString', () => {
 	it('Case #1', () => {
@@ -957,6 +958,29 @@ describe('parseString with numbers', () => {
 
 		assert.deepEqual(itemObject, { name: 'Mann Co. Supply Munition', craftable: true, quality: 6, itemNumber: { value: 83, type: 'crate' } });
 	})
+
+	it('Case #46 - Red Rock Roscoe Texture', () => {
+		class MockSchema extends Schema {
+			getTextureEnum() {
+				this.loadTextures();
+				
+				return 0;
+			}
+		}
+
+		const format = createFormat(new MockSchema());
+
+		const itemObject = format.parseString('Festivized Specialized Killstreak Red Rock Roscoe Pistol (Field-Tested)', true, false);
+		assert.deepEqual(itemObject, {
+			name: 'Pistol',
+			quality: 15,
+			wear: 3,
+			festivized: true,
+			killstreak: 2,
+			texture: 0,
+			craftable: true
+		})
+	});
 });
 
 describe('parseString with defindexes and numbers.', () => {
@@ -1519,5 +1543,73 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString('Mann Co. Supply Munition #83', true, true);
 
 		assert.deepEqual(itemObject, { name: 'Mann Co. Supply Munition', defindex: 5734, craftable: true, quality: 6, itemNumber: { value: 83, type: 'crate' } });
-	})
+	});
+
+	it('Case #51 - Bat', () => {
+		class MockSchema extends Schema {
+			getDefindex() {
+				return 0;
+			}
+		}
+
+		const format = createFormat(new MockSchema());
+
+		const itemObject = format.parseString('Bat', true, true);
+		assert.deepEqual(itemObject, {
+			name: 'Bat',
+			quality: 6,
+			defindex: 0,
+			craftable: true
+		})
+	});
+
+	it('Case #52 - Bat output', () => {
+		class MockSchema extends Schema {
+			getDefindex(input) {
+				if (input === 'Bat') {
+					return 0;
+				}
+
+				return super.getDefindex(input);
+			}
+		}
+
+		const format = createFormat(new MockSchema());
+
+		const itemObject = format.parseString('Collector\'s Bat Chemistry Set', true, true);
+		assert.deepEqual(itemObject, {
+			name: 'Chemistry Set',
+			quality: 6,
+			defindex: 20005,
+			craftable: true,
+			output: 'Bat',
+			outputDefindex: 0,
+			outputQuality: 14,
+		});
+	});
+
+	it('Case #52 - Bat target', () => {
+		class MockSchema extends Schema {
+			getDefindex(input) {
+				if (input === 'Bat') {
+					return 0;
+				}
+
+				return super.getDefindex(input);
+			}
+		}
+
+		const format = createFormat(new MockSchema());
+
+		const itemObject = format.parseString('Non-Craftable Specialized Killstreak Bat Kit Fabricator', true, true);
+		assert.deepEqual(itemObject, {
+			name: 'Specialized Killstreak Kit Fabricator',
+			quality: 6,
+			defindex: 20002,
+			craftable: false,
+			killstreak: 2,
+			target: 'Bat',
+			targetDefindex: 0,
+		});
+	});
 });

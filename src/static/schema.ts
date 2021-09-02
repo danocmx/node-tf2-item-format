@@ -69,7 +69,7 @@ const NAMES: { [defindex: number]: string } = {
 	"20009":"Chemistry Set"
 */
 
-class Schema implements ISchema {
+export class Schema implements ISchema {
 	public effects!: SchemaEnum;
 	public wears!: SchemaEnum;
 	public killstreaks!: SchemaEnum;

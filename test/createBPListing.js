@@ -263,4 +263,75 @@ describe('createBPListing', () => {
 			priceindex: 702,
 		});
 	});
+
+	it('Case #16 - Red Rock Roscoe texture', () => {
+		const listing = createBPListing({
+			defindex: 15013,
+			quality: 15,
+			wear: 3,
+			texture: 0,
+			festivized: true,
+			killstreak: 2,
+			craftable: true
+		});
+
+		assert.deepEqual(listing, {
+			quality: 15,
+			craftable: 1,
+			item_name: 'Festivized Specialized Killstreak Red Rock Roscoe | Pistol (Field-Tested)',
+			priceindex: 0,
+		});
+	});
+	
+	it('Case #17 - Bat', () =>{
+		const listing = createBPListing({
+			defindex: 0,
+			quality: 6,
+			craftable: true,
+		});
+
+		assert.deepEqual(listing, {
+			quality: 6,
+			craftable: 1,
+			item_name: 'Bat',
+			priceindex: 0,
+		});
+	})
+
+	
+	it('Case #18 - Bat output', () =>{
+		const listing = createBPListing({
+			defindex: 20006,
+			quality: 6,
+			craftable: true,
+			outputDefindex: 0,
+			outputQuality: 6,
+		});
+
+		assert.deepEqual(listing, {
+			quality: 6,
+			craftable: 1,
+			item_name: 'Chemistry Set',
+			priceindex: "0-6",
+		});
+	})
+
+	
+	it('Case #19 - Bat target', () =>{
+		const listing = createBPListing({
+			defindex: 20000,
+			quality: 6,
+			craftable: true,
+			targetDefindex: 0,
+			outputDefindex: 6522,
+			outputQuality: 6,
+		});
+
+		assert.deepEqual(listing, {
+			quality: 6,
+			craftable: 1,
+			item_name: 'Strangifier Chemistry Set',
+			priceindex: '6522-6-0',
+		});
+	})
 });

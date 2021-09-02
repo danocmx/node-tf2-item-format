@@ -1,3 +1,5 @@
+import { hasDefindex } from './guards';
+
 import { ConvertableAttributes } from '../types';
 import { ISchema } from '../types/schema';
 
@@ -21,7 +23,7 @@ export default function (
 		quality: schema.getQualityEnum(item.quality),
 		outputQuality: item.outputQuality
 			? schema.getQualityEnum(item.outputQuality)
-			: 0,
-		texture: item.texture ? schema.getTextureEnum(item.texture) : undefined,
+			: undefined,
+		texture: hasDefindex(item.texture) ? schema.getTextureEnum(item.texture) : undefined,
 	};
 }

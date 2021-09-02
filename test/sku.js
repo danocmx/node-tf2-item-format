@@ -147,6 +147,55 @@ describe('toSKU', () => {
 
 		assert.equal(sku, '5883;6;c109');
 	});
+
+	it('case #13 - Red Rock Roscoe texture', () => {
+		const sku = toSKU({
+			defindex: 15013,
+			quality: 15,
+			wear: 3,
+			texture: 0,
+			festivized: true,
+			killstreak: 2,
+			craftable: true
+        });
+
+		assert.equal(sku, '15013;15;w3;pk0;kt-2;festive');
+	})
+
+	it('case #14 - Bat', () => {
+		const sku = toSKU({
+			defindex: 0,
+			quality: 6,
+			craftable: true,
+        });
+
+		assert.equal(sku, '0;6');
+	})
+
+	it('case #15 - Bat output', () => {
+		const sku = toSKU({
+			defindex: 20006,
+			quality: 6,
+			craftable: true,
+			outputDefindex: 0,
+			outputQuality: 6,
+        });
+
+		assert.equal(sku, '20006;6;od-0;oq-6');
+	})
+
+	it('case #16 - Bat target', () => {
+		const sku = toSKU({
+			defindex: 20000,
+			quality: 6,
+			craftable: true,
+			targetDefindex: 0,
+			outputDefindex: 6522,
+			outputQuality: 6,
+        });
+
+		assert.equal(sku, '20000;6;td-0;od-6522;oq-6');
+	})
 });
 
 describe('parseSKU', () => {
@@ -307,6 +356,55 @@ describe('parseSKU', () => {
 			targetDefindex: 441,
 			outputDefindex: 5783,
 			outputQuality: 6
+		});
+	})
+
+	it('case #14 - Red Rock Roscoe texture', () => {
+		const skuAttrs = parseSKU('15013;15;w3;pk0;kt-2;festive');
+
+		assert.deepEqual(skuAttrs, {
+			defindex: 15013,
+			quality: 15,
+			wear: 3,
+			texture: 0,
+			festivized: true,
+			killstreak: 2,
+			craftable: true
+		});
+	})
+
+	it('case #15 - Bat', () => {
+		const skuAttrs = parseSKU('0;6');
+
+		assert.deepEqual(skuAttrs, {
+			defindex: 0,
+			quality: 6,
+			craftable: true,
+		});
+	})
+
+	it('case #16 - Bat output', () => {
+		const skuAttrs = parseSKU('20006;6;od-0;oq-6');
+
+		assert.deepEqual(skuAttrs, {
+			defindex: 20006,
+			quality: 6,
+			craftable: true,
+			outputDefindex: 0,
+			outputQuality: 6,
+		});
+	})
+
+	it('case #17 - Bat target', () => {
+		const skuAttrs = parseSKU('20000;6;td-0;od-6522;oq-6');
+
+		assert.deepEqual(skuAttrs, {
+			defindex: 20000,
+			quality: 6,
+			craftable: true,
+			targetDefindex: 0,
+			outputDefindex: 6522,
+			outputQuality: 6,
 		});
 	})
 });

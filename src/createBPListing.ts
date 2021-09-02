@@ -1,5 +1,7 @@
 import stringify from './stringify';
 
+import { hasDefindex } from './shared/guards';
+
 import { nameTypeGuard, skuTypeGuard } from './types/guards';
 import {
 	ItemAttributes,
@@ -104,7 +106,7 @@ function getRightName(
 ): string {
 	// We keep kit in the name but backpack.tf does not accept it.
 	if (isFabricator(name)) return name.replace('Kit ', '');
-	if (item.texture) return `${schema.getTextureName(item.texture)} | ${name}`;
+	if (hasDefindex(item.texture)) return `${schema.getTextureName(item.texture)} | ${name}`;
 
 	return name;
 }
@@ -162,7 +164,7 @@ function isChemistrySet(name: string): boolean {
 }
 
 function hasTarget(targetDefindex: number | '' | null | undefined): boolean {
-	return !!targetDefindex;
+	return !!targetDefindex || targetDefindex === 0;
 }
 
 function isKillstreakKit(name: string): boolean {

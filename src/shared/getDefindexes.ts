@@ -1,5 +1,6 @@
 import { Defindexes, TargetOutputItem } from '../types';
 import { ISchema } from '../types/schema';
+import { hasDefindex } from './guards';
 
 export default function getDefindexes(
 	schema: ISchema,
@@ -11,12 +12,12 @@ export default function getDefindexes(
 	if (usableItem) {
 		if (usableItem.target) {
 			const targetDefindex = schema.getDefindex(usableItem.target);
-			if (targetDefindex) defindexes.targetDefindex = targetDefindex;
+			if (hasDefindex(targetDefindex)) defindexes.targetDefindex = targetDefindex;
 		}
 
 		if (usableItem.output) {
 			const outputDefindex = schema.getDefindex(usableItem.output);
-			if (outputDefindex) defindexes.outputDefindex = outputDefindex;
+			if (hasDefindex(outputDefindex)) defindexes.outputDefindex = outputDefindex;
 		}
 	}
 

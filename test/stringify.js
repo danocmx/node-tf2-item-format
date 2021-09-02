@@ -546,4 +546,40 @@ describe('stringify from defindexes and numbers.', () => {
 
 		assert.equal(itemString, 'Strange Normal Medi Gun');
 	});
+
+	it('Case #32 - Red Rock Roscoe texture', () => {
+		const itemString = stringify({ name: 'Pistol', quality: 'Decorated Weapon', craftable: true, wear: 'Field-Tested', festivized: true, killstreak: 'Specialized Killstreak', texture: 0 });
+
+		assert.equal(itemString, 'Festivized Specialized Killstreak Red Rock Roscoe Pistol (Field-Tested)'); 
+	});
+
+	it('Case #33 - Bat', () => {
+		const itemString = stringify({ defindex: 0, quality: 'Unique', craftable: true });
+
+		assert.equal(itemString, 'Bat'); 
+	})
+
+	it('Case #34 - Bat output', () => {
+		const itemString = stringify({
+			name: 'Chemistry Set',
+			craftable: true,
+			outputDefindex: 0,
+			outputQuality: 'Collector\'s',
+			quality: 'Unique'
+		});
+
+		assert.equal(itemString, 'Collector\'s Bat Chemistry Set');
+	})
+
+	it('Case #34 - Bat target', () => {
+		const itemString = stringify({
+			name: 'Specialized Killstreak Kit Fabricator',
+			craftable: false,
+			killstreak: 'Specialized Killstreak',
+			targetDefindex: 0,
+			quality: 'Unique'
+		});
+
+		assert.equal(itemString, 'Non-Craftable Specialized Killstreak Bat Kit Fabricator');
+	})
 });

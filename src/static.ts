@@ -1,4 +1,4 @@
-import staticSchema from './static/schema';
+import staticSchema, { Schema } from './static/schema';
 import { createFormat } from './';
 
 const format = createFormat(staticSchema);
@@ -31,4 +31,5 @@ export {
 	toSKU,
 	parseSKU,
 	schema,
+	Schema,
 };
