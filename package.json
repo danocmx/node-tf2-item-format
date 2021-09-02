@@ -22,7 +22,6 @@
     "test": "mocha ./test",
     "test:coverage": "nyc npm run test",
     "build": "npx tsc",
-    "publish": "npx release-it --ci",
     "format": "npx prettier --write \"src/**/*.ts\""
   },
   "repository": {
