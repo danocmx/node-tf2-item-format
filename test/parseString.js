@@ -1612,4 +1612,14 @@ describe('parseString with defindexes and numbers.', () => {
 			targetDefindex: 0,
 		});
 	});
+
+	it('Case #53 - Accursed Apparition', () => {
+		const itemObject = parseString('Accursed Apparition', true, true);
+		assert.deepEqual(itemObject, {
+			name: 'Accursed Apparition',
+			quality: 6,
+			craftable: true,
+			defindex: 30206
+		});
+	})
 });
