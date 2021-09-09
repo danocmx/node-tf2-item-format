@@ -1,0 +1,52 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  target-branch: v5
+  reviewers:
+  - danocmx
+  assignees:
+  - danocmx
+  ignore:
+  - dependency-name: tf2-static-schema
+    versions:
+    - 1.11.1
+  - dependency-name: eslint
+    versions:
+    - 7.25.0
+  - dependency-name: release-it
+    versions:
+    - 14.3.0
+    - 14.4.0
+    - 14.4.1
+    - 14.5.0
+    - 14.5.1
+    - 14.6.0
+    - 14.6.1
+  - dependency-name: chai
+    versions:
+    - 4.3.0
+    - 4.3.1
+    - 4.3.2
+    - 4.3.3
+    - 4.3.4
+  - dependency-name: mocha
+    versions:
+    - 8.3.0
+    - 8.3.1
+    - 8.3.2
+  - dependency-name: typescript
+    versions:
+    - 4.1.4
+    - 4.1.5
+    - 4.2.2
+    - 4.2.3
+  - dependency-name: lodash
+    versions:
+    - 4.17.20
+  - dependency-name: eslint-plugin-import
+    versions:
+    - 2.22.1
