@@ -66,7 +66,8 @@ const HAT_NAME_EXCEPTIONS: [string, string][] = [
 	['Hot Dogger', 'Hot'],
 	['Atomic Accolade', 'Atomic'],
 	['Bonk! Atomic Punch', 'Atomic'],
-	['Accursed Apparition', 'Accursed']
+	['Accursed Apparition', 'Accursed'],
+	['Taunt: The Hot Wheeler', 'Hot'],
 ];
 
 function isException(name: string, effect: string): boolean {
