@@ -4785,6 +4785,103 @@ describe('Econ item with defindexes', () => {
 			commodity: false,
 		});
 	});
+
+	it('Case #18 - Non-Craftable Sticky Jumper', () => {
+		const econItem = parseEconItem(
+			{
+				appid: '440',
+				classid: '9230923',
+				instanceid: '11040578',
+				icon_url:
+					'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIUxQFVBjpoQdJncX2COCzBOESnN97tJFQ3GIyk1V5MbvmZDE-dgGaUaRcCKw-9gu7XXRgsMI7ANHk8usDLBKv6tUEIS3TYQ',
+				icon_url_large:
+					'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIUxQFVBjpoQdJncX2COCzBOESnN97tJFQ3GIyk1V5MbvmZDE-dgGaUaRcCKw-9gu7XXRgsMI7ANHk8usDLBKv6tUEIS3TYQ',
+				icon_drag_url: '',
+				name: 'The Sticky Jumper',
+				market_hash_name: 'The Sticky Jumper',
+				market_name: 'The Sticky Jumper',
+				name_color: '7D6D00',
+				background_color: '3C352E',
+				type: 'Level 1 Stickybomb Launcher',
+				tradable: 1,
+				marketable: 0,
+				commodity: 0,
+				market_tradable_restriction: '7',
+				market_marketable_restriction: '0',
+				descriptions: [
+					{
+						value: '+200% max secondary ammo on wearer',
+						color: '7ea9d1',
+					},
+					{
+						value: 'No self inflicted blast damage taken',
+						color: '7ea9d1',
+					},
+					{ value: '-100% damage penalty', color: 'd83636' },
+					{ value: 'No random critical hits', color: 'd83636' },
+					{ value: '-6 max pipebombs out', color: 'd83636' },
+					{
+						value: 'Wearer cannot carry the intelligence briefcase or PASS Time JACK',
+						color: 'd83636',
+					},
+					{
+						value: 'A special no-damage stickybomb launcher for learning stickybomb jump tricks and patterns.',
+					},
+					{ value: ' ' },
+					{ value: '( Not Usable in Crafting )' },
+				],
+				actions: [
+					{
+						name: 'Item Wiki Page...',
+						link: 'http://wiki.teamfortress.com/scripts/itemredirect.php?id=265&lang=en_US',
+					},
+				],
+				tags: [
+					{
+						internal_name: 'Unique',
+						name: 'Unique',
+						category: 'Quality',
+						color: '7D6D00',
+						category_name: 'Quality',
+					},
+					{
+						internal_name: 'secondary',
+						name: 'Secondary weapon',
+						category: 'Type',
+						category_name: 'Type',
+					},
+					{
+						internal_name: 'Demoman',
+						name: 'Demoman',
+						category: 'Class',
+						category_name: 'Class',
+					},
+				],
+				app_data: { def_index: '265', quality: '6' },
+			},
+			true,
+			true
+		);
+
+		assert.deepEqual(econItem, {
+			name: 'Sticky Jumper',
+			fullName: 'Non-Craftable The Sticky Jumper',
+			id: undefined,
+			img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIUxQFVBjpoQdJncX2COCzBOESnN97tJFQ3GIyk1V5MbvmZDE-dgGaUaRcCKw-9gu7XXRgsMI7ANHk8usDLBKv6tUEIS3TYQ/',
+			tradable: true,
+			quality: 6,
+			isUniqueHat: true,
+			defindex: 265,
+			level: 1,
+			classes: ['Demoman'],
+			type: 'secondary',
+			parts: [],
+			spells: [],
+			marketable: false,
+			commodity: false,
+			craftable: false,
+		});
+	});
 });
 
 describe('Econ item with true defindex', () => {

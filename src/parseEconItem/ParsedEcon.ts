@@ -204,6 +204,8 @@ export default class ParsedEcon {
 			cleanAttrs.quality = attrs.quality;
 		}
 
+		cleanAttrs.craftable = attrs.craftable;
+
 		return cleanAttrs as ParsedEconNameAtributes;
 	}
 
