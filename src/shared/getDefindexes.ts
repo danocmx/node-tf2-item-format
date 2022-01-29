@@ -12,12 +12,14 @@ export default function getDefindexes(
 	if (usableItem) {
 		if (usableItem.target) {
 			const targetDefindex = schema.getDefindex(usableItem.target);
-			if (hasDefindex(targetDefindex)) defindexes.targetDefindex = targetDefindex;
+			if (hasDefindex(targetDefindex))
+				defindexes.targetDefindex = targetDefindex;
 		}
 
 		if (usableItem.output) {
 			const outputDefindex = schema.getDefindex(usableItem.output);
-			if (hasDefindex(outputDefindex)) defindexes.outputDefindex = outputDefindex;
+			if (hasDefindex(outputDefindex))
+				defindexes.outputDefindex = outputDefindex;
 		}
 	}
 

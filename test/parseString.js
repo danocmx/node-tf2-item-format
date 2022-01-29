@@ -2006,4 +2006,14 @@ describe('parseString with defindexes and numbers.', () => {
 			defindex: 30206,
 		});
 	});
+
+	it('Case #54 - Unusual Haunted Metal Scrap', () => {
+		const itemObject = parseString('Unusual Haunted Metal Scrap', true, true);
+		assert.deepEqual(itemObject, {
+			name: 'Haunted Metal Scrap',
+			quality: 5,
+			craftable: true,
+			defindex: 267,
+		});
+	});
 });

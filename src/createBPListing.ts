@@ -106,7 +106,8 @@ function getRightName(
 ): string {
 	// We keep kit in the name but backpack.tf does not accept it.
 	if (isFabricator(name)) return name.replace('Kit ', '');
-	if (hasDefindex(item.texture)) return `${schema.getTextureName(item.texture)} | ${name}`;
+	if (hasDefindex(item.texture))
+		return `${schema.getTextureName(item.texture)} | ${name}`;
 
 	return name;
 }

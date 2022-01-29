@@ -59,7 +59,7 @@ export default function (
 			: '';
 		output = hasOutputDefindex(attributes)
 			? schema.getName(attributes.outputDefindex)
-			: '';		
+			: '';
 	} else {
 		throw new Error('Defindex or Name is missing.');
 	}
@@ -211,15 +211,19 @@ function isUniqueHat(
 }
 
 function getTarget(schema: ISchema, attributes: ItemAttributes): string {
-	return attributes.target 
-	|| (hasTargetDefindex(attributes as StrigifySKUAttributes)
-		? schema.getName(attributes.targetDefindex as number) 
-		: '')
+	return (
+		attributes.target ||
+		(hasTargetDefindex(attributes as StrigifySKUAttributes)
+			? schema.getName(attributes.targetDefindex as number)
+			: '')
+	);
 }
 
 function getOutputItem(schema: ISchema, attributes: ItemAttributes): string {
-	return attributes.output 
-	|| (hasOutputDefindex(attributes as StrigifySKUAttributes)
-		? schema.getName(attributes.outputDefindex as number) 
-		: '')
+	return (
+		attributes.output ||
+		(hasOutputDefindex(attributes as StrigifySKUAttributes)
+			? schema.getName(attributes.outputDefindex as number)
+			: '')
+	);
 }

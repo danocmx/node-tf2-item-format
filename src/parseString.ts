@@ -75,7 +75,8 @@ function parseString(
 			delete convertedAttributes.killstreak;
 		if (!convertedAttributes.wear) delete convertedAttributes.wear;
 		if (!convertedAttributes.effect) delete convertedAttributes.effect;
-		if (!hasDefindex(convertedAttributes.texture)) delete convertedAttributes.texture;
+		if (!hasDefindex(convertedAttributes.texture))
+			delete convertedAttributes.texture;
 		if (!hasDefindex(convertedAttributes.outputQuality))
 			delete convertedAttributes.outputQuality;
 
@@ -85,7 +86,8 @@ function parseString(
 	const defindexes = useDefindexes
 		? getDefindexes(schema, itemName, attributes.usableItem || undefined)
 		: {};
-	if (hasDefindex(defindexes.defindex)) parsedAttributes.defindex = defindexes.defindex;
+	if (hasDefindex(defindexes.defindex))
+		parsedAttributes.defindex = defindexes.defindex;
 
 	if (attributes.quality.elevated)
 		parsedAttributes.elevated = attributes.quality.elevated;
@@ -99,12 +101,15 @@ function parseString(
 		parsedAttributes.killstreak = attributes.killstreak;
 	if (attributes.wear && !parsedAttributes.wear)
 		parsedAttributes.wear = attributes.wear;
-	if (hasDefindex(attributes.texture) && !hasDefindex(parsedAttributes.texture))
+	if (
+		hasDefindex(attributes.texture) &&
+		!hasDefindex(parsedAttributes.texture)
+	)
 		parsedAttributes.texture = attributes.texture;
 	if (attributes.effect && !parsedAttributes.effect)
 		parsedAttributes.effect = attributes.effect;
 
-	if (attributes.usableItem && !isEmpty(attributes.usableItem)) {				
+	if (attributes.usableItem && !isEmpty(attributes.usableItem)) {
 		if (attributes.usableItem.target)
 			parsedAttributes.target = attributes.usableItem.target;
 		if (attributes.usableItem.output)

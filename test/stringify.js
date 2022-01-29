@@ -582,4 +582,15 @@ describe('stringify from defindexes and numbers.', () => {
 
 		assert.equal(itemString, 'Non-Craftable Specialized Killstreak Bat Kit Fabricator');
 	})
+
+	it('Case #35 - Unusual Haunted Metal Scrap', () => {
+		const itemString = stringify({
+			name: 'Haunted Metal Scrap',
+			craftable: true,
+			quality: 'Unusual',
+			effect: 0,
+		});
+
+		assert.equal(itemString, 'Unusual Haunted Metal Scrap');
+	});
 });

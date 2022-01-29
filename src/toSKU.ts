@@ -1,4 +1,9 @@
-import { hasOutputDefindex, hasOutputQuality, hasTargetDefindex, hasTexture } from './toSKU/guards';
+import {
+	hasOutputDefindex,
+	hasOutputQuality,
+	hasTargetDefindex,
+	hasTexture,
+} from './toSKU/guards';
 import { SKUAttributes } from './types';
 
 export default function (item: SKUAttributes): string {

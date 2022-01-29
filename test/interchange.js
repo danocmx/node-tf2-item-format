@@ -105,6 +105,16 @@ describe('Name to SKU', () => {
         assert.equal(sku, '20005;6;td-645;od-6522;oq-6');
     });
     */
+
+	it('Case #9 - Unusual Haunted Metal Scrap', () => {
+        const name = 'Unusual Haunted Metal Scrap';
+
+        const attributes = parseString(name, true, true);
+
+        const sku = toSKU(attributes);
+
+        assert.equal(sku, '267;5');
+	})
 });
 
 describe('Econ to SKU', () => {

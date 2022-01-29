@@ -24,6 +24,8 @@ export default function (
 		outputQuality: item.outputQuality
 			? schema.getQualityEnum(item.outputQuality)
 			: undefined,
-		texture: hasDefindex(item.texture) ? schema.getTextureEnum(item.texture) : undefined,
+		texture: hasDefindex(item.texture)
+			? schema.getTextureEnum(item.texture)
+			: undefined,
 	};
 }

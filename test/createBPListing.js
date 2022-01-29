@@ -334,4 +334,19 @@ describe('createBPListing', () => {
 			priceindex: '6522-6-0',
 		});
 	})
+
+	it('Case #20 - Unusual Haunted Metal Scrap', () => {
+		const listing = createBPListing({
+			defindex: 267,
+			quality: 5,
+			craftable: true,
+		});
+
+		assert.deepEqual(listing, {
+			quality: 5,
+			craftable: 1,
+			item_name: 'Haunted Metal Scrap',
+			priceindex: 0,
+		});
+	});
 });

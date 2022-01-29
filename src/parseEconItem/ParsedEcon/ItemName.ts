@@ -50,7 +50,7 @@ export default class ItemName {
 			isUniqueHat,
 			// We know it's a string here:
 			killstreak: killstreak as string,
-			wear: (wear as unknown) as string,
+			wear: wear as unknown as string,
 			texture: texture as string,
 			craftable: true,
 			itemNumber,
@@ -74,13 +74,8 @@ export default class ItemName {
 	getFull() {
 		let name = this.origin;
 
-		const {
-			craftable,
-			tradable,
-			texture,
-			quality,
-			effect,
-		} = this.econ.getNameAttributes('', false, false);
+		const { craftable, tradable, texture, quality, effect } =
+			this.econ.getNameAttributes('', false, false);
 
 		if (effect) {
 			if (isUnusual(quality as string))
