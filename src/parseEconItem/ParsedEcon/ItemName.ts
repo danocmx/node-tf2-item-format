@@ -74,8 +74,12 @@ export default class ItemName {
 	getFull() {
 		let name = this.origin;
 
-		const { craftable, tradable, texture, quality, effect } =
+		const { craftable, tradable, texture, quality, effect, isUniqueHat } =
 			this.econ.getNameAttributes('', false, false);
+
+		if (isUniqueHat) {
+			name = name.replace('The ', '');
+		}
 
 		if (effect) {
 			if (isUnusual(quality as string))

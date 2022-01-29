@@ -4865,7 +4865,7 @@ describe('Econ item with defindexes', () => {
 
 		assert.deepEqual(econItem, {
 			name: 'Sticky Jumper',
-			fullName: 'Non-Craftable The Sticky Jumper',
+			fullName: 'Non-Craftable Sticky Jumper',
 			id: undefined,
 			img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIUxQFVBjpoQdJncX2COCzBOESnN97tJFQ3GIyk1V5MbvmZDE-dgGaUaRcCKw-9gu7XXRgsMI7ANHk8usDLBKv6tUEIS3TYQ/',
 			tradable: true,
