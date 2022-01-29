@@ -200,6 +200,9 @@ export default class ParsedEcon {
 		if (hasDefindex(attrs.targetDefindex)) {
 			cleanAttrs.targetDefindex = attrs.targetDefindex;
 		}
+		if(hasDefindex(attrs.quality)) {
+			cleanAttrs.quality = attrs.quality;
+		}
 
 		return cleanAttrs as ParsedEconNameAtributes;
 	}

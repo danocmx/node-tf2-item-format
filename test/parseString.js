@@ -2016,4 +2016,15 @@ describe('parseString with defindexes and numbers.', () => {
 			defindex: 267,
 		});
 	});
+
+	it('Case #55 - Strange Normal Medi Gun', () => {
+		const itemObject = parseString('Strange Normal Medi Gun', true, true);
+		assert.deepEqual(itemObject, {
+			name: 'Medi Gun',
+			quality: 0,
+			craftable: true,
+			defindex: 211,
+			elevated: true,
+		});
+	});
 });
