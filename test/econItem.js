@@ -1936,7 +1936,9 @@ describe('parseEconItem', () => {
 				commodity: false,
 				market_tradable_restriction: 7,
 				market_marketable_restriction: 0,
-				fraudwarnings: [],
+				fraudwarnings: [
+					'This item has been renamed.\nOriginal name: "The Barnstormer #103"',
+				],
 				descriptions: [
 					{
 						type: 'text',
@@ -2023,14 +2025,17 @@ describe('parseEconItem', () => {
 				owner_actions: [],
 			},
 			false,
-			false
+			false,
+			{
+				itemNumberFromFraudWarning: true,
+			}
 		);
 
 		assert.deepEqual(econItem, {
 			classes: ['Engineer'],
 			commodity: false,
 			craftable: true,
-			fullName: 'Barnstormer',
+			fullName: 'Barnstormer #103',
 			id: '11369034375',
 			img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEOYgAYUx7nqgdBidroHuaDGu0FieUmtcFq1Td5lgQ1ZrPtZW5jJ1CaUKMOC_Zr9Vi4XnE36cQxDIXl9e9WeArptNSSMrUvNcYMQZftGxgDiQ/',
 			name: 'Barnstormer',
@@ -2042,6 +2047,10 @@ describe('parseEconItem', () => {
 			level: 26,
 			marketable: false,
 			isUniqueHat: true,
+			itemNumber: {
+				value: 103,
+				type: 'craft',
+			},
 		});
 	});
 

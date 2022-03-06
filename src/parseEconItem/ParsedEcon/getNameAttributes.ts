@@ -62,7 +62,7 @@ function getNameForItemNumber(econ: ParsedEcon) {
 	);
 	if (!warning) return econ.itemName.getOrigin();
 	return warning
-		.replace('This item has been renamed.\n"', '')
+		.replace('This item has been renamed.\nOriginal name: "', '')
 		.replace(/"$/, '');
 }
 
