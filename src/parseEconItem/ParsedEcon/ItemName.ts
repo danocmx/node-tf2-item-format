@@ -102,10 +102,7 @@ export default class ItemName {
 		if (!craftable) name = `Non-Craftable ${name}`;
 
 		if (itemNumber) {
-			if (itemNumber.type !== 'crate') {
-				name += ` #${itemNumber.value}`;
-			}
-	
+			name += ` #${itemNumber.value}`;
 			name = name.replace('Series ', '');
 		}
 

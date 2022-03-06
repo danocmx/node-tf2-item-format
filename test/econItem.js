@@ -2200,7 +2200,7 @@ describe('parseEconItem', () => {
 			classes: [],
 			commodity: true,
 			craftable: true,
-			fullName: 'Mann Co. Supply Munition',
+			fullName: 'Mann Co. Supply Munition #103',
 			itemNumber: {
 				value: 103,
 				type: 'crate',

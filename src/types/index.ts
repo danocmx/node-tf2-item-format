@@ -66,7 +66,7 @@ export type ItemDefindexes = {
 //
 export type ItemNumber = {
 	value: number;
-	type: string;
+	type: 'crate' | 'series' | 'medal' | 'craft';
 };
 
 export type TargetItem = {
@@ -162,7 +162,7 @@ export type EconItem = {
 
 	/**
 	 * This array contains strings used in frontend to display fraud warnings.
-	 * 
+	 *
 	 * We use this to check if item has been renamed.
 	 */
 	fraudwarnings?: string[];

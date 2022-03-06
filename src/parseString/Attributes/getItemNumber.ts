@@ -23,9 +23,11 @@ export default function (name: string): ItemNumber | null {
 	};
 }
 
-function getType(name: string): string {
-	const [_, type] =
-		name.match(/\b(Medal|Crate|Case|Munition)\b/) || [];
+function getType(name: string): ItemNumber['type'] {
+	const [_, type] = (name.match(/\b(Medal|Crate|Case|Munition)\b/) || []) as [
+		any,
+		'Medal' | 'Crate' | 'Case' | 'Munition'
+	];
 
 	// Same thing, different name.
 	if (type === 'Case' || type === 'Munition') return 'crate';
@@ -33,7 +35,7 @@ function getType(name: string): string {
 	// Used for chemistry sets.
 	if (!type && name.includes('Series ')) return 'series';
 
-	return type ? type.toLowerCase() : 'craft';
+	return type ? transformTypeToLowerCase(type) : 'craft';
 }
 
 function getValue(name: string): number | null {
@@ -41,4 +43,10 @@ function getValue(name: string): number | null {
 	const numberValue: number = parseInt(value);
 
 	return isNaN(numberValue) ? null : numberValue;
+}
+
+export function transformTypeToLowerCase(
+	type: 'Medal' | 'Crate' | 'Case' | 'Munition'
+): ItemNumber['type'] {
+	return type.toLowerCase() as ItemNumber['type'];
 }
