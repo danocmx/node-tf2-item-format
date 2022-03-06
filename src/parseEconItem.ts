@@ -67,7 +67,7 @@ function parseEconItem(
 	const parsedEcon = new ParsedEcon(
 		schema,
 		item,
-		options || { useTrueDefindex: false }
+		options || { useTrueDefindex: false, itemNumberFromFraudWarning: false }
 	);
 
 	const name = parsedEcon.itemName.getShort();

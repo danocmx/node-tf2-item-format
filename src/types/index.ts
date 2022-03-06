@@ -159,6 +159,13 @@ export type EconItem = {
 	name_color?: string;
 	market_tradable_restriction?: number;
 	market_marketable_restriction?: number;
+
+	/**
+	 * This array contains strings used in frontend to display fraud warnings.
+	 * 
+	 * We use this to check if item has been renamed.
+	 */
+	fraudwarnings?: string[];
 };
 
 export type TagAttributes = {
@@ -179,6 +186,7 @@ export type DescriptionAttributes = {
 	paint?: string;
 	festivized?: boolean;
 	texture?: string | void;
+	itemNumber?: ItemNumber;
 };
 
 export type PropertyAttributes = {

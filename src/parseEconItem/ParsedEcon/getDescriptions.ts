@@ -5,6 +5,12 @@ import { isPart, getPart } from './getDescriptions/part';
 import { isPaint, getPaint } from './getDescriptions/paint';
 import { isCraftable } from './getDescriptions/craftable';
 import { isItemsTexture, getTexture } from './getDescriptions/texture';
+import {
+	isMedal,
+	isCrate,
+	getMedal,
+	getCrate,
+} from './getDescriptions/item-number';
 
 import Killstreak from './getDescriptions/Killstreak';
 
@@ -35,7 +41,17 @@ export default function (econ: ParsedEcon): DescriptionAttributes {
 	for (let i = 0; i < descriptions.length; i++) {
 		const description = descriptions[i];
 
-		if (isPart(description, econ))
+		if (isMedal(description))
+			attributes.itemNumber = {
+				type: 'medal',
+				value: getMedal(description),
+			};
+		else if (isCrate(description))
+			attributes.itemNumber = {
+				type: 'crate',
+				value: getCrate(description),
+			};
+		else if (isPart(description, econ))
 			attributes.parts.push(getPart(description));
 		else if (isPaint(description)) attributes.paint = getPaint(description);
 		else if (isEffect(description, tags))

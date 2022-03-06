@@ -43,7 +43,7 @@ export default class ParsedEcon {
 	public nameAttrs: NameAttributes;
 	public trueDefindex: number;
 	public level: number;
-	private options: EconOptions;
+	public options: EconOptions;
 
 	constructor(schema: ISchema, item: EconItem, options: EconOptions) {
 		this.schema = schema;
@@ -109,6 +109,7 @@ export default class ParsedEcon {
 		useDefindexes: boolean
 	): ParsedEconNameAtributes {
 		const texture = this.descriptions.texture || this.nameAttrs.texture;
+		const itemNumber = this.nameAttrs.itemNumber || this.descriptions.itemNumber;
 
 		let attrs: PlaceholderEconNameAttributes = {
 			tradable: this.properties.tradable,
@@ -143,8 +144,8 @@ export default class ParsedEcon {
 				? { outputQuality: this.nameAttrs.outputQuality }
 				: {}),
 
-			...(this.nameAttrs.itemNumber
-				? { itemNumber: this.nameAttrs.itemNumber }
+			...(itemNumber
+				? { itemNumber }
 				: {}),
 		};
 

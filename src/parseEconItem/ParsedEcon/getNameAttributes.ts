@@ -33,17 +33,49 @@ export default function (econ: ParsedEcon): NameAttributes {
 		if (texture) attributes.texture = texture;
 	}
 
-	const itemNumber = getItemNumber(name);
+	const itemNumberName = getNameForItemNumber(econ);
+	const itemNumber = getItemNumber(itemNumberName);
 	if (itemNumber) {
 		attributes.itemNumber = itemNumber;
 	}
 
 	const usableItem = getUsableItem(
-		itemNumber ? removeItemNumber(name, itemNumber) : name
+		attributes.itemNumber ? removeItemNumber(name, attributes.itemNumber) : name
 	);
 	if (usableItem) {
 		Object.assign(attributes, usableItem);
 	}
 
 	return attributes;
+}
+
+/**
+ * Returns a string that can be used for retrieving item number.
+ * @param econ 
+ * @returns name
+ */
+function getNameForItemNumber(econ: ParsedEcon) {
+	if (!hasBeenRenamed(econ)) return econ.item.name;
+	if (!econ.options.itemNumberFromFraudWarning) return econ.itemName.getOrigin();
+	const warning = econ.item.fraudwarnings?.find((f) =>
+		f.startsWith('This item has been renamed.')
+	);
+	if (!warning) return econ.itemName.getOrigin();
+	return warning
+		.replace('This item has been renamed.\n"', '')
+		.replace(/"$/, '');
+}
+
+/**
+ * Checks if item has been renamed based on fraudwarnings and symbols.
+ * @param econ 
+ * @returns if it has been renamed
+ */
+function hasBeenRenamed(econ: ParsedEcon) {
+	if (econ.item.name.startsWith("''") && econ.item.name.endsWith("''"))
+		return true;
+
+	return econ.item.fraudwarnings?.find((f) =>
+		f.startsWith('This item has been renamed.')
+	);
 }

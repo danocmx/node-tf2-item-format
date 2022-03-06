@@ -74,8 +74,15 @@ export default class ItemName {
 	getFull() {
 		let name = this.origin;
 
-		const { craftable, tradable, texture, quality, effect, isUniqueHat } =
-			this.econ.getNameAttributes('', false, false);
+		const {
+			craftable,
+			tradable,
+			texture,
+			quality,
+			effect,
+			isUniqueHat,
+			itemNumber,
+		} = this.econ.getNameAttributes('', false, false);
 
 		if (isUniqueHat) {
 			name = name.replace('The ', '');
@@ -93,6 +100,14 @@ export default class ItemName {
 			name = `Strange ${name}`;
 		if (!tradable) name = `Non-Tradable ${name}`;
 		if (!craftable) name = `Non-Craftable ${name}`;
+
+		if (itemNumber) {
+			if (itemNumber.type !== 'crate') {
+				name += ` #${itemNumber.value}`;
+			}
+	
+			name = name.replace('Series ', '');
+		}
 
 		return name;
 	}
