@@ -1,6 +1,7 @@
 export type NameToDefindex = { [name: string]: number };
 export type DefindexToName = { [defindex: number]: string };
 export type SchemaEnum = NameToDefindex & DefindexToName;
+export type ItemsGame = { items: Record<string, { static_attrs?: { 'set supply crate series'?: string } }> }
 
 /**
  * Injectable schema interface.
@@ -23,4 +24,5 @@ export type ISchema = {
 	getEffects(): SchemaEnum;
 
 	isUniqueHat(nameOrDefindex: string | number): boolean;
+	getCrateNumber(defindex: string | number): number;
 };

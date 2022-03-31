@@ -6,7 +6,7 @@ import {
 } from 'tf2-static-schema';
 
 import isNumber from '../util/isNumber';
-import { ISchema } from '../types/schema';
+import { ISchema, ItemsGame } from '../types/schema';
 
 const DEFINDEXES: { [name: string]: number } = {
 	// Local naming
@@ -77,6 +77,7 @@ export class Schema implements ISchema {
 	public itemNames!: DefindexToName;
 	public items!: SchemaItem[];
 	public qualities!: SchemaEnum;
+	public itemsGame!: ItemsGame;
 
 	constructor() {}
 
@@ -118,6 +119,10 @@ export class Schema implements ISchema {
 
 	loadQualities(): void {
 		this.qualities = requireStatic('qualities') as SchemaEnum;
+	}
+
+	loadItemsGame(): void {
+		this.itemsGame = requireStatic('items-game') as ItemsGame;
 	}
 
 	getEffect(search: string | number): number | string {
@@ -254,6 +259,25 @@ export class Schema implements ISchema {
 
 		const item = this.getSchemaItemFromName(defindexOrName);
 		return !!item?.proper_name;
+	}
+
+	getCrateNumber(defindexOrName: string | number): number {
+		if (!this.itemsGame) this.loadItemsGame();
+
+		if (!isNumber(defindexOrName)) {
+			const defindex = this.getDefindex(defindexOrName);;
+			if (!defindex) return 0;
+			defindexOrName = defindex;
+		}
+
+		const item = this.itemsGame.items[defindexOrName + ''];
+		if (!item) return 0;
+
+		const crateSeries = parseInt(
+			(item.static_attrs && item.static_attrs['set supply crate series']) as string
+		);
+
+		return isNaN(crateSeries) ? 0 : crateSeries;
 	}
 
 	private getSchemaItemFromName(search: string) {

@@ -6441,4 +6441,1023 @@ describe('Econ item with true defindex', () => {
 			defindex: 15005,
 		});
 	});
+
+	describe('Retrieves crate number', () => {
+		it('Retrieves crate number correctly for crate', () => {
+			const econItem = parseEconItem(
+				{
+					appid: '440',
+					classid: '4657007866',
+					instanceid: '0',
+					icon_url:
+						'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEYYQ4CThbjqwcR2Jq3MvGNG-U_l9sn4pUbjjc5xAUjMOfnaGNiKwKVA_IIBPRr8lm1XHEzvMY2DIG3rr9eewnns5yGbeenE9nBew',
+					icon_url_large:
+						'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEYYQ4CThbjqwcR2Jq3MvGNG-U_l9sn4pUbjjc5xAUjMOfnaGNiKwKVA_IIBPRr8lm1XHEzvMY2DIG3rr9eewnns5yGbeenE9nBew',
+					icon_drag_url: '',
+					name: 'Winter 2021 Cosmetic Case',
+					market_hash_name: 'Winter 2021 Cosmetic Case',
+					market_name: 'Winter 2021 Cosmetic Case',
+					name_color: '7D6D00',
+					background_color: '3C352E',
+					type: '',
+					tradable: 1,
+					marketable: 1,
+					commodity: 1,
+					market_tradable_restriction: '7',
+					market_marketable_restriction: '0',
+					descriptions: [
+						{
+							value: 'This case is locked and requires a\nWinter 2021 Cosmetic Key to open.\n\nContains a community made item\nfrom the Winter 2021 Cosmetic Collection.',
+						},
+						{ value: ' ' },
+						{
+							value: 'Contents may be Strange or an Unusual Winter 2021 Hat',
+							color: '7ea9d1',
+						},
+						{ value: ' ' },
+						{ value: ' ' },
+						{ value: 'Winter 2021 Cosmetics Collection' },
+						{
+							value: '    Oh Deer!',
+							color: 'eb4b4b',
+							app_data: { def_index: '31245' },
+						},
+						{
+							value: '    Jolly Jester',
+							color: 'd32ce6',
+							app_data: { def_index: '31243' },
+						},
+						{
+							value: '    Merry Cone',
+							color: 'd32ce6',
+							app_data: { def_index: '31247' },
+						},
+						{
+							value: '    Hat Chocolate',
+							color: 'd32ce6',
+							app_data: { def_index: '31259' },
+						},
+						{
+							value: '    Elf-Made Bandanna',
+							color: '8847ff',
+							app_data: { def_index: '31260' },
+						},
+						{
+							value: '    Seasonal Spring',
+							color: '8847ff',
+							app_data: { def_index: '31244' },
+						},
+						{
+							value: '    Elf Ignition',
+							color: '8847ff',
+							app_data: { def_index: '31253' },
+						},
+						{
+							value: '    Train Of Thought',
+							color: '8847ff',
+							app_data: { def_index: '31254' },
+						},
+						{
+							value: '    Seasonal Employee',
+							color: '8847ff',
+							app_data: { def_index: '31258' },
+						},
+						{
+							value: '    Reindoonihorns',
+							color: '8847ff',
+							app_data: { def_index: '31249' },
+						},
+						{
+							value: '    Festive Cover-Up',
+							color: '4b69ff',
+							app_data: { def_index: '31257' },
+						},
+						{
+							value: '    El Fiestibrero',
+							color: '4b69ff',
+							app_data: { def_index: '31241' },
+						},
+						{
+							value: '    Ominous Offering',
+							color: '4b69ff',
+							app_data: { def_index: '31251' },
+						},
+						{
+							value: '    Brain Cane',
+							color: '4b69ff',
+							app_data: { def_index: '31248' },
+						},
+						{
+							value: '    Cozy Catchers',
+							color: '4b69ff',
+							app_data: { def_index: '31250' },
+						},
+						{
+							value: '    The Giftcrafter',
+							color: '4b69ff',
+							app_data: { def_index: '31246' },
+						},
+						{
+							value: '    Festive Frames',
+							color: '4b69ff',
+							app_data: { def_index: '31252' },
+						},
+						{
+							value: '    Mooshanka',
+							color: '4b69ff',
+							app_data: { def_index: '31255' },
+						},
+						{
+							value: '    Elf Defense',
+							color: '4b69ff',
+							app_data: { def_index: '31256' },
+						},
+						{
+							value: '    Gnome Dome',
+							color: '4b69ff',
+							app_data: { def_index: '31242' },
+						},
+						{ value: ' ' },
+						{ value: 'Case Exclusive Bonus Item(s):' },
+						{
+							value: 'Festivizer',
+							color: '6F6A63',
+							app_data: { def_index: '5839' },
+						},
+						{ value: ' ' },
+						{ value: 'Case Global Unusual Effect(s)' },
+						{
+							value: '★ Unusual Effect: Green Confetti',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Purple Confetti',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Haunted Ghosts',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Green Energy',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Purple Energy',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Circling TF Logo',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Massed Flies',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Burning Flames',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Scorching Flames',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Searing Plasma',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Vivid Plasma',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Sunbeams',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Circling Peace Sign',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Circling Heart',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Stormy Storm',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Blizzardy Storm',
+							color: 'ffd700',
+						},
+						{
+							value: "★ Unusual Effect: Nuts n' Bolts",
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Orbiting Planets',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Orbiting Fire',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Bubbling',
+							color: 'ffd700',
+						},
+						{ value: '★ Unusual Effect: Smoking', color: 'ffd700' },
+						{
+							value: '★ Unusual Effect: Steaming',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Kill-a-Watt',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Terror-Watt',
+							color: 'ffd700',
+						},
+						{ value: '★ Unusual Effect: Cloud 9', color: 'ffd700' },
+						{
+							value: '★ Unusual Effect: Aces High',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Dead Presidents',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Miami Nights',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Disco Beat Down',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Smissmas Tree',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Smissmas Tree',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Smissmas Tree',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Hospitable Festivity',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Condescending Embrace',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Condescending Embrace',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Sparkling Spruce',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Glittering Juniper',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Prismatic Pine',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Spiraling Lights',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Spiraling Lights',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Twisting Lights',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Stardust Pathway',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Flurry Rush',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Spark of Smissmas',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Polar Forecast',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Polar Forecast',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Polar Forecast',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Shining Stag',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Holiday Horns',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Ardent Antlers',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Festive Lights',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Festive Lights',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Festive Lights',
+							color: 'ffd700',
+						},
+						{ value: ' ' },
+						{ value: 'Case Global Bonus Item(s)' },
+						{
+							value: 'Paint Cans!\nTaunt Unusualifiers!\nMvM Tickets!\nAnd TF2 Tools!',
+						},
+						{
+							value: 'Inspect for full list of unusual effects and more details',
+						},
+					],
+					actions: [
+						{
+							name: 'Item Wiki Page...',
+							link: 'http://wiki.teamfortress.com/scripts/itemredirect.php?id=5935&lang=en_US',
+						},
+						{
+							name: 'Inspect in Game...',
+							link: 'steam://rungame/440/76561202255233023/+tf_econ_item_preview%20S%owner_steamid%A%assetid%D2496517253638132563',
+						},
+					],
+					market_actions: [
+						{
+							name: 'Inspect in Game...',
+							link: 'steam://rungame/440/76561202255233023/+tf_econ_item_preview%20M%listingid%A%assetid%D2496517253638132563',
+						},
+					],
+					tags: [
+						{
+							internal_name: 'Unique',
+							name: 'Unique',
+							category: 'Quality',
+							color: '7D6D00',
+							category_name: 'Quality',
+						},
+						{
+							internal_name: 'Supply Crate',
+							name: 'Crate',
+							category: 'Type',
+							category_name: 'Type',
+						},
+						{
+							internal_name: 'Winter2021Cosmetics_collection',
+							name: 'Winter 2021 Cosmetics Collection',
+							category: 'Collection',
+							category_name: 'Collection',
+						},
+					],
+				},
+				false,
+				false,
+				{ retrieveCrateNumber: true }
+			);
+
+			assert.deepEqual(econItem, {
+				classes: [],
+				commodity: true,
+				craftable: true,
+				fullName: 'Winter 2021 Cosmetic Case #135',
+				id: undefined,
+				img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEYYQ4CThbjqwcR2Jq3MvGNG-U_l9sn4pUbjjc5xAUjMOfnaGNiKwKVA_IIBPRr8lm1XHEzvMY2DIG3rr9eewnns5yGbeenE9nBew/',
+				name: 'Winter 2021 Cosmetic Case',
+				parts: [],
+				quality: 'Unique',
+				spells: [],
+				tradable: true,
+				type: 'Supply Crate',
+				level: -1,
+				marketable: true,
+				collection: 'Winter 2021 Cosmetics Collection',
+				itemNumber: {
+					type: 'crate',
+					value: 135,
+				},
+			});
+		});
+
+		it('Retrieves crate number for non-crate item', () => {
+			const econItem = parseEconItem(
+				{
+					appid: 440,
+					contextid: '2',
+					assetid: '8407830034',
+					classid: '3662018019',
+					instanceid: '11040671',
+					amount: '1',
+					currency: 0,
+					background_color: '3C352E',
+					icon_url:
+						'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEMaQkUTxr2vTx8mMnvA-aHAfQ_ktk664MayTdinxVwPffsDz5zdwmTVPAOCcot8Qn-Wxg07dR3XcGzub5ffwvmttSXYrAlY9xFTMaCUvbXNQz_6EkwiPRYKJaIon-9jHjrOWoUG0280KDki-w',
+					icon_url_large:
+						'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEMaQkUTxr2vTx8mMnvA-aHAfQ_ktk664MayTdinxVwPffsDz5zdwmTVPAOCcot8Qn-Wxg07dR3XcGzub5ffwvmttSXYrAlY9xFTMaCUvbXNQz_6EkwiPRYKJaIon-9jHjrOWoUG0280KDki-w',
+					descriptions: [
+						{
+							value: 'Mercenary Grade Flame Thrower (Minimal Wear)',
+							color: '4b69ff',
+						},
+						{ value: '★ Unusual Effect: Cool', color: 'ffd700' },
+						{ value: 'Festivized', color: 'ffd700' },
+						{
+							value: 'Extinguishing teammates restores 20 health',
+							color: '7ea9d1',
+						},
+						{ value: 'Sheen: Agonizing Emerald', color: '7ea9d1' },
+						{ value: 'Killstreaks Active', color: '7ea9d1' },
+						{
+							value: 'Afterburn reduces Medi Gun healing and resist shield effects.\nAlt-Fire: Release a blast of air that pushes enemies and projectiles and extinguishes teammates that are on fire.',
+						},
+						{ value: ' ' },
+						{ value: ' ' },
+						{ value: 'Concealed Killer Collection' },
+						{
+							value: '    Sand Cannon Rocket Launcher',
+							color: 'eb4b4b',
+						},
+						{ value: '    Red Rock Roscoe Pistol', color: 'eb4b4b' },
+						{
+							value: '    Psychedelic Slugger Revolver',
+							color: 'd32ce6',
+						},
+						{ value: '    Purple Range Sniper Rifle', color: 'd32ce6' },
+						{
+							value: '    Sudden Flurry Stickybomb Launcher',
+							color: 'd32ce6',
+						},
+						{ value: '    Night Terror Scattergun', color: '8847ff' },
+						{
+							value: '    Carpet Bomber Stickybomb Launcher',
+							color: '8847ff',
+						},
+						{
+							value: '    Woodland Warrior Rocket Launcher',
+							color: '8847ff',
+						},
+						{ value: '    Wrapped Reviver Medi Gun', color: '8847ff' },
+						{ value: '    Night Owl Sniper Rifle', color: '4b69ff' },
+						{ value: '    Woodsy Widowmaker SMG', color: '4b69ff' },
+						{
+							value: '    Backwoods Boomstick Shotgun',
+							color: '4b69ff',
+						},
+						{
+							value: '    King of the Jungle Minigun',
+							color: '4b69ff',
+						},
+						{ value: '    Masked Mender Medi Gun', color: '4b69ff' },
+						{ value: '★ Forest Fire Flame Thrower', color: '4b69ff' },
+					],
+					tradable: 1,
+					actions: [
+						{
+							link: 'http://wiki.teamfortress.com/scripts/itemredirect.php?id=15005&lang=en_US',
+							name: 'Item Wiki Page...',
+						},
+						{
+							link: 'steam://rungame/440/76561202255233023/+tf_econ_item_preview%20S%owner_steamid%A%assetid%D6922402693932635553',
+							name: 'Inspect in Game...',
+						},
+					],
+					name: 'Festivized Forest Fire Flame Thrower',
+					name_color: '8650AC',
+					type: '',
+					market_name:
+						'Unusual Festivized Specialized Killstreak Forest Fire Flame Thrower (Minimal Wear)',
+					market_hash_name:
+						'Unusual Festivized Specialized Killstreak Forest Fire Flame Thrower (Minimal Wear)',
+					market_actions: [
+						{
+							link: 'steam://rungame/440/76561202255233023/+tf_econ_item_preview%20M%listingid%A%assetid%D6922402693932635553',
+							name: 'Inspect in Game...',
+						},
+					],
+					commodity: 0,
+					market_tradable_restriction: 7,
+					market_marketable_restriction: 0,
+					marketable: 1,
+					tags: [
+						{
+							category: 'Quality',
+							internal_name: 'rarity4',
+							localized_category_name: 'Quality',
+							localized_tag_name: 'Unusual',
+							color: '8650AC',
+						},
+						{
+							category: 'Type',
+							internal_name: 'primary',
+							localized_category_name: 'Type',
+							localized_tag_name: 'Primary weapon',
+						},
+						{
+							category: 'Class',
+							internal_name: 'Pyro',
+							localized_category_name: 'Class',
+							localized_tag_name: 'Pyro',
+						},
+						{
+							category: 'Rarity',
+							internal_name: 'Rarity_Rare',
+							localized_category_name: 'Grade',
+							localized_tag_name: 'Mercenary',
+							color: '4b69ff',
+						},
+						{
+							category: 'Collection',
+							internal_name: 'concealedkiller_collection',
+							localized_category_name: 'Collection',
+							localized_tag_name: 'Concealed Killer Collection',
+						},
+						{
+							category: 'Exterior',
+							internal_name: 'TFUI_InvTooltip_MinimalWear',
+							localized_category_name: 'Exterior',
+							localized_tag_name: 'Minimal Wear',
+						},
+					],
+				},
+				true,
+				true,
+				{ retrieveCrateNumber: false }
+			);
+	
+			assert.deepEqual(econItem, {
+				name: 'Flame Thrower',
+				fullName:
+					'Cool Festivized Specialized Killstreak Forest Fire Flame Thrower (Minimal Wear)',
+				id: '8407830034',
+				img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEMaQkUTxr2vTx8mMnvA-aHAfQ_ktk664MayTdinxVwPffsDz5zdwmTVPAOCcot8Qn-Wxg07dR3XcGzub5ffwvmttSXYrAlY9xFTMaCUvbXNQz_6EkwiPRYKJaIon-9jHjrOWoUG0280KDki-w/',
+				tradable: true,
+				craftable: true,
+				quality: 5,
+				texture: 9,
+				wear: 2,
+				killstreak: 2,
+				festivized: true,
+				effect: 703,
+				classes: ['Pyro'],
+				type: 'primary',
+				collection: 'Concealed Killer Collection',
+				grade: 'Mercenary',
+				parts: [],
+				spells: [],
+				marketable: true,
+				commodity: false,
+				sheen: 'Agonizing Emerald',
+				level: -1,
+				defindex: 208,
+			});
+		});
+
+		it('Retrieves crate number correctly for crate', () => {
+			const econItem = parseEconItem(
+				{
+					appid: '440',
+					classid: '4657007866',
+					instanceid: '0',
+					icon_url:
+						'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEYYQ4CThbjqwcR2Jq3MvGNG-U_l9sn4pUbjjc5xAUjMOfnaGNiKwKVA_IIBPRr8lm1XHEzvMY2DIG3rr9eewnns5yGbeenE9nBew',
+					icon_url_large:
+						'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEYYQ4CThbjqwcR2Jq3MvGNG-U_l9sn4pUbjjc5xAUjMOfnaGNiKwKVA_IIBPRr8lm1XHEzvMY2DIG3rr9eewnns5yGbeenE9nBew',
+					icon_drag_url: '',
+					name: 'Winter 2021 Cosmetic Case',
+					market_hash_name: 'Winter 2021 Cosmetic Case',
+					market_name: 'Winter 2021 Cosmetic Case',
+					name_color: '7D6D00',
+					background_color: '3C352E',
+					type: '',
+					tradable: 1,
+					marketable: 1,
+					commodity: 1,
+					market_tradable_restriction: '7',
+					market_marketable_restriction: '0',
+					descriptions: [
+						{
+							value: 'This case is locked and requires a\nWinter 2021 Cosmetic Key to open.\n\nContains a community made item\nfrom the Winter 2021 Cosmetic Collection.',
+						},
+						{ value: ' ' },
+						{
+							value: 'Contents may be Strange or an Unusual Winter 2021 Hat',
+							color: '7ea9d1',
+						},
+						{ value: ' ' },
+						{ value: ' ' },
+						{ value: 'Winter 2021 Cosmetics Collection' },
+						{
+							value: '    Oh Deer!',
+							color: 'eb4b4b',
+							app_data: { def_index: '31245' },
+						},
+						{
+							value: '    Jolly Jester',
+							color: 'd32ce6',
+							app_data: { def_index: '31243' },
+						},
+						{
+							value: '    Merry Cone',
+							color: 'd32ce6',
+							app_data: { def_index: '31247' },
+						},
+						{
+							value: '    Hat Chocolate',
+							color: 'd32ce6',
+							app_data: { def_index: '31259' },
+						},
+						{
+							value: '    Elf-Made Bandanna',
+							color: '8847ff',
+							app_data: { def_index: '31260' },
+						},
+						{
+							value: '    Seasonal Spring',
+							color: '8847ff',
+							app_data: { def_index: '31244' },
+						},
+						{
+							value: '    Elf Ignition',
+							color: '8847ff',
+							app_data: { def_index: '31253' },
+						},
+						{
+							value: '    Train Of Thought',
+							color: '8847ff',
+							app_data: { def_index: '31254' },
+						},
+						{
+							value: '    Seasonal Employee',
+							color: '8847ff',
+							app_data: { def_index: '31258' },
+						},
+						{
+							value: '    Reindoonihorns',
+							color: '8847ff',
+							app_data: { def_index: '31249' },
+						},
+						{
+							value: '    Festive Cover-Up',
+							color: '4b69ff',
+							app_data: { def_index: '31257' },
+						},
+						{
+							value: '    El Fiestibrero',
+							color: '4b69ff',
+							app_data: { def_index: '31241' },
+						},
+						{
+							value: '    Ominous Offering',
+							color: '4b69ff',
+							app_data: { def_index: '31251' },
+						},
+						{
+							value: '    Brain Cane',
+							color: '4b69ff',
+							app_data: { def_index: '31248' },
+						},
+						{
+							value: '    Cozy Catchers',
+							color: '4b69ff',
+							app_data: { def_index: '31250' },
+						},
+						{
+							value: '    The Giftcrafter',
+							color: '4b69ff',
+							app_data: { def_index: '31246' },
+						},
+						{
+							value: '    Festive Frames',
+							color: '4b69ff',
+							app_data: { def_index: '31252' },
+						},
+						{
+							value: '    Mooshanka',
+							color: '4b69ff',
+							app_data: { def_index: '31255' },
+						},
+						{
+							value: '    Elf Defense',
+							color: '4b69ff',
+							app_data: { def_index: '31256' },
+						},
+						{
+							value: '    Gnome Dome',
+							color: '4b69ff',
+							app_data: { def_index: '31242' },
+						},
+						{ value: ' ' },
+						{ value: 'Case Exclusive Bonus Item(s):' },
+						{
+							value: 'Festivizer',
+							color: '6F6A63',
+							app_data: { def_index: '5839' },
+						},
+						{ value: ' ' },
+						{ value: 'Case Global Unusual Effect(s)' },
+						{
+							value: '★ Unusual Effect: Green Confetti',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Purple Confetti',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Haunted Ghosts',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Green Energy',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Purple Energy',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Circling TF Logo',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Massed Flies',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Burning Flames',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Scorching Flames',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Searing Plasma',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Vivid Plasma',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Sunbeams',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Circling Peace Sign',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Circling Heart',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Stormy Storm',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Blizzardy Storm',
+							color: 'ffd700',
+						},
+						{
+							value: "★ Unusual Effect: Nuts n' Bolts",
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Orbiting Planets',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Orbiting Fire',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Bubbling',
+							color: 'ffd700',
+						},
+						{ value: '★ Unusual Effect: Smoking', color: 'ffd700' },
+						{
+							value: '★ Unusual Effect: Steaming',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Kill-a-Watt',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Terror-Watt',
+							color: 'ffd700',
+						},
+						{ value: '★ Unusual Effect: Cloud 9', color: 'ffd700' },
+						{
+							value: '★ Unusual Effect: Aces High',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Dead Presidents',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Miami Nights',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Disco Beat Down',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Smissmas Tree',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Smissmas Tree',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Smissmas Tree',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Hospitable Festivity',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Condescending Embrace',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Condescending Embrace',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Sparkling Spruce',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Glittering Juniper',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Prismatic Pine',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Spiraling Lights',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Spiraling Lights',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Twisting Lights',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Stardust Pathway',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Flurry Rush',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Spark of Smissmas',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Polar Forecast',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Polar Forecast',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Polar Forecast',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Shining Stag',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Holiday Horns',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Ardent Antlers',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Festive Lights',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Festive Lights',
+							color: 'ffd700',
+						},
+						{
+							value: '★ Unusual Effect: Festive Lights',
+							color: 'ffd700',
+						},
+						{ value: ' ' },
+						{ value: 'Case Global Bonus Item(s)' },
+						{
+							value: 'Paint Cans!\nTaunt Unusualifiers!\nMvM Tickets!\nAnd TF2 Tools!',
+						},
+						{
+							value: 'Inspect for full list of unusual effects and more details',
+						},
+					],
+					actions: [
+						{
+							name: 'Item Wiki Page...',
+							link: 'http://wiki.teamfortress.com/scripts/itemredirect.php?id=5935&lang=en_US',
+						},
+						{
+							name: 'Inspect in Game...',
+							link: 'steam://rungame/440/76561202255233023/+tf_econ_item_preview%20S%owner_steamid%A%assetid%D2496517253638132563',
+						},
+					],
+					market_actions: [
+						{
+							name: 'Inspect in Game...',
+							link: 'steam://rungame/440/76561202255233023/+tf_econ_item_preview%20M%listingid%A%assetid%D2496517253638132563',
+						},
+					],
+					tags: [
+						{
+							internal_name: 'Unique',
+							name: 'Unique',
+							category: 'Quality',
+							color: '7D6D00',
+							category_name: 'Quality',
+						},
+						{
+							internal_name: 'Supply Crate',
+							name: 'Crate',
+							category: 'Type',
+							category_name: 'Type',
+						},
+						{
+							internal_name: 'Winter2021Cosmetics_collection',
+							name: 'Winter 2021 Cosmetics Collection',
+							category: 'Collection',
+							category_name: 'Collection',
+						},
+					],
+				},
+				false,
+				false,
+				{ retrieveCrateNumber: false }
+			);
+
+			assert.deepEqual(econItem, {
+				classes: [],
+				commodity: true,
+				craftable: true,
+				fullName: 'Winter 2021 Cosmetic Case',
+				id: undefined,
+				img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEYYQ4CThbjqwcR2Jq3MvGNG-U_l9sn4pUbjjc5xAUjMOfnaGNiKwKVA_IIBPRr8lm1XHEzvMY2DIG3rr9eewnns5yGbeenE9nBew/',
+				name: 'Winter 2021 Cosmetic Case',
+				parts: [],
+				quality: 'Unique',
+				spells: [],
+				tradable: true,
+				type: 'Supply Crate',
+				level: -1,
+				marketable: true,
+				collection: 'Winter 2021 Cosmetics Collection',
+			});
+		});
+	});
 });

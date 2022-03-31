@@ -11,4 +11,10 @@ export type EconOptions = {
 	 * Defaults to false.
 	 */
 	itemNumberFromFraudWarning?: boolean;
+	/**
+	 * Retrieves crate number for crates.
+	 * 
+	 * Defaults to false.
+	 */
+	retrieveCrateNumber?: boolean;
 };

@@ -8,6 +8,7 @@ import getNameAttributes from './ParsedEcon/getNameAttributes';
 import getDescriptions from './ParsedEcon/getDescriptions';
 import getDefindex from './ParsedEcon/getDefindex';
 import getLevel from './ParsedEcon/getLevel';
+import getCrateNumber from './ParsedEcon/getCrateNumber';
 
 import getConvertedIntAttributes from '../shared/getConvertedIntAttributes';
 import getDefindexes from '../shared/getDefindexes';
@@ -24,6 +25,7 @@ import {
 	ItemAttributesInNumbers,
 	PlaceholderEconNameAttributes,
 	MetaEconAttributes,
+	ItemNumber,
 } from '../types';
 import { ISchema } from '../types/schema';
 import { EconOptions } from '../types/econ';
@@ -44,6 +46,7 @@ export default class ParsedEcon {
 	public trueDefindex: number;
 	public level: number;
 	public options: EconOptions;
+	public crateNumber: number;
 
 	constructor(schema: ISchema, item: EconItem, options: EconOptions) {
 		this.schema = schema;
@@ -58,6 +61,7 @@ export default class ParsedEcon {
 		this.nameAttrs = getNameAttributes(this);
 		this.trueDefindex = getDefindex(this);
 		this.level = getLevel(this);
+		this.crateNumber = getCrateNumber(this);
 	}
 
 	get id(): string {
@@ -109,7 +113,7 @@ export default class ParsedEcon {
 		useDefindexes: boolean
 	): ParsedEconNameAtributes {
 		const texture = this.descriptions.texture || this.nameAttrs.texture;
-		const itemNumber = this.nameAttrs.itemNumber || this.descriptions.itemNumber;
+		const itemNumber = this.getItemNumber();
 
 		let attrs: PlaceholderEconNameAttributes = {
 			tradable: this.properties.tradable,
@@ -144,9 +148,7 @@ export default class ParsedEcon {
 				? { outputQuality: this.nameAttrs.outputQuality }
 				: {}),
 
-			...(itemNumber
-				? { itemNumber }
-				: {}),
+			...(itemNumber ? { itemNumber } : {}),
 		};
 
 		if (inNumbers) {
@@ -201,7 +203,7 @@ export default class ParsedEcon {
 		if (hasDefindex(attrs.targetDefindex)) {
 			cleanAttrs.targetDefindex = attrs.targetDefindex;
 		}
-		if(hasDefindex(attrs.quality)) {
+		if (hasDefindex(attrs.quality)) {
 			cleanAttrs.quality = attrs.quality;
 		}
 
@@ -280,6 +282,18 @@ export default class ParsedEcon {
 			marketable: this.properties.marketable,
 			commodity: this.properties.commodity,
 		};
+	}
+
+	private getItemNumber(): ItemNumber | void {
+		if (this.nameAttrs.itemNumber || this.descriptions.itemNumber) 
+			return this.nameAttrs.itemNumber || this.descriptions.itemNumber;
+
+		if (this.crateNumber) {
+			return {
+				value: this.crateNumber,
+				type: 'crate',
+			}
+		}
 	}
 }
 
