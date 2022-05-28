@@ -4,7 +4,7 @@ import isStrangeTexture from './ItemName/isStrangeTexture';
 import isUnusual from './ItemName/isUnusual';
 
 import ParsedEcon from '../ParsedEcon';
-import { EconItem } from '../../types';
+import { EconItem, ItemNumber } from '../../types';
 
 /**
  * Class that handles name.
@@ -101,11 +101,15 @@ export default class ItemName {
 		if (!tradable) name = `Non-Tradable ${name}`;
 		if (!craftable) name = `Non-Craftable ${name}`;
 
-		if (itemNumber) {
+		if (this.shouldAddItemNumber(itemNumber)) {
 			name += ` #${itemNumber.value}`;
 			name = name.replace('Series ', '');
 		}
 
 		return name;
+	}
+
+	private shouldAddItemNumber(itemNumber?: ItemNumber): itemNumber is ItemNumber {
+		return !!itemNumber && !this.origin.endsWith(` #${itemNumber.value}`);
 	}
 }

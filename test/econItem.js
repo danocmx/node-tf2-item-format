@@ -2066,8 +2066,8 @@ describe('parseEconItem', () => {
 					'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIfgYFWCTxrCpChs_jMuWJCfAPlckK6ZFH3jMlx1kpYbHgNTYyKgGUVPdbCfM_rAm0WiRguJYxBtGzruxReQ3ntoLBZa5sbo_yPNmUMw',
 				icon_drag_url: '',
 				name: 'Mann Co. Supply Munition Series #103',
-				market_hash_name: 'Mann Co. Supply Munition',
-				market_name: 'Mann Co. Supply Munition',
+				market_hash_name: 'Mann Co. Supply Munition #103',
+				market_name: 'Mann Co. Supply Munition #103',
 				name_color: '7D6D00',
 				background_color: '3C352E',
 				type: 'Level 20 Supply Crate',
@@ -7457,6 +7457,173 @@ describe('Econ item with true defindex', () => {
 				level: -1,
 				marketable: true,
 				collection: 'Winter 2021 Cosmetics Collection',
+			});
+		});
+
+		it('Retrieves crate number for munition crate that has it in name', () => {
+			const econItem = parseEconItem(
+				{
+					appid: '440',
+					classid: '1848848533',
+					instanceid: '4005345694',
+					icon_url:
+						'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIfgYFWCTxrCpChs_jMuWJCfAPlckK6ZFH3jMlx1kpYbHgNTYyKgGUVPdbCfM_rAm0WiRguJYxBtGzruxReQ3ntoLBZa5sbo_yPNmUMw',
+					icon_url_large:
+						'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIfgYFWCTxrCpChs_jMuWJCfAPlckK6ZFH3jMlx1kpYbHgNTYyKgGUVPdbCfM_rAm0WiRguJYxBtGzruxReQ3ntoLBZa5sbo_yPNmUMw',
+					icon_drag_url: '',
+					name: 'Mann Co. Supply Munition Series #103',
+					market_hash_name: 'Mann Co. Supply Munition #103',
+					market_name: 'Mann Co. Supply Munition #103',
+					name_color: '7D6D00',
+					background_color: '3C352E',
+					type: 'Level 20 Supply Crate',
+					tradable: 1,
+					marketable: 1,
+					commodity: 1,
+					market_tradable_restriction: '7',
+					market_marketable_restriction: '0',
+					descriptions: [
+						{ value: 'Crate Series #103', color: '7ea9d1' },
+						{
+							value: 'You need a Mann Co. Supply Crate Key to open this.\nYou can pick one up at the Mann Co. Store.',
+						},
+						{ value: '\nGift from: MothmanOfficial', color: '7ea9d1' },
+						{
+							value: 'Date Received: Sunday, September 20, 2020 (13:59:02) GMT',
+						},
+						{ value: ' ' },
+						{
+							value: 'This crate contains one of the following items.\nWeapons will be Strange quality.',
+						},
+						{
+							value: '    The Iron Bomber',
+							color: '6F6A63',
+							app_data: { def_index: '1151' },
+						},
+						{
+							value: '    The Panic Attack',
+							color: '6F6A63',
+							app_data: { def_index: '1153' },
+						},
+						{
+							value: '    The Back Scatter',
+							color: '6F6A63',
+							app_data: { def_index: '1103' },
+						},
+						{
+							value: '    The Quickiebomb Launcher',
+							color: '6F6A63',
+							app_data: { def_index: '1150' },
+						},
+						{
+							value: '    The Ambassador',
+							color: '6F6A63',
+							app_data: { def_index: '61' },
+						},
+						{
+							value: '    The Reserve Shooter',
+							color: '6F6A63',
+							app_data: { def_index: '415' },
+						},
+						{
+							value: '    The Degreaser',
+							color: '6F6A63',
+							app_data: { def_index: '215' },
+						},
+						{
+							value: '    The Powerjack',
+							color: '6F6A63',
+							app_data: { def_index: '214' },
+						},
+						{
+							value: '    Natascha',
+							color: '6F6A63',
+							app_data: { def_index: '41' },
+						},
+						{
+							value: '    The Sandvich',
+							color: '6F6A63',
+							app_data: { def_index: '42' },
+						},
+						{
+							value: '    Strange Part: Damage Dealt',
+							color: '6F6A63',
+							app_data: { def_index: '6056' },
+						},
+						{
+							value: '    Strange Part: Allied Healing Done',
+							color: '6F6A63',
+							app_data: { def_index: '6058' },
+						},
+						{
+							value: '    Strange Part: Critical Kills',
+							color: '6F6A63',
+							app_data: { def_index: '6021' },
+						},
+						{
+							value: '    Strange Part: Pyros Killed',
+							color: '6F6A63',
+							app_data: { def_index: '6006' },
+						},
+						{
+							value: '    Strange Part: Heavies Killed',
+							color: '6F6A63',
+							app_data: { def_index: '6000' },
+						},
+						{
+							value: 'or an Exceedingly Rare Special Item!',
+							color: '7ea9d1',
+						},
+					],
+					actions: [
+						{
+							name: 'Item Wiki Page...',
+							link: 'http://wiki.teamfortress.com/scripts/itemredirect.php?id=5859&lang=en_US',
+						},
+					],
+					tags: [
+						{
+							internal_name: 'Unique',
+							name: 'Unique',
+							category: 'Quality',
+							color: '7D6D00',
+							category_name: 'Quality',
+						},
+						{
+							internal_name: 'Supply Crate',
+							name: 'Crate',
+							category: 'Type',
+							category_name: 'Type',
+						},
+					],
+					app_data: { def_index: '5859', quality: '6' },
+				},
+				false,
+				false,
+				{
+					retrieveCrateNumber: true,
+				}
+			);
+	
+			assert.deepEqual(econItem, {
+				classes: [],
+				commodity: true,
+				craftable: true,
+				fullName: 'Mann Co. Supply Munition #103',
+				itemNumber: {
+					value: 103,
+					type: 'crate',
+				},
+				id: undefined,
+				img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEIfgYFWCTxrCpChs_jMuWJCfAPlckK6ZFH3jMlx1kpYbHgNTYyKgGUVPdbCfM_rAm0WiRguJYxBtGzruxReQ3ntoLBZa5sbo_yPNmUMw/',
+				name: 'Mann Co. Supply Munition',
+				parts: [],
+				quality: 'Unique',
+				spells: [],
+				tradable: true,
+				type: 'Supply Crate',
+				level: 20,
+				marketable: true,
 			});
 		});
 	});
