@@ -1,0 +1,31 @@
+name: Release CI
+on: 
+  push:
+    branches:
+      master
+jobs:
+  test:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          scope: "@s-tf"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGE_INSTALL_TOKEN }}
+      - name: Install packages
+        run: npm ci
+        env:
+          NPM_CONFIG_USERCONFIG: .npmrc.ci
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGE_INSTALL_TOKEN }}
+      - run: npm run build
+        name: Build TS into JS.
+      - run: npm run test
+        name: Test function outputs.
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
