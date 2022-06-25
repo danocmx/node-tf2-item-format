@@ -270,6 +270,7 @@ export type MetaEconAttributes = {
 	level: number;
 	grade?: string;
 	paint?: string;
+	paintDefindex?: number;
 	parts: string[];
 	spells: string[];
 	marketable: boolean;

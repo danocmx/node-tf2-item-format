@@ -238,15 +238,15 @@ export default class ParsedEcon {
 	getAttributes(
 		shortName: string,
 		inNumbers: boolean,
-		useDefindex: boolean
+		useDefindexes: boolean
 	): any {
 		// Types are silent now.
 		let attributes: any;
 		if (inNumbers === true) {
-			if (useDefindex)
+			if (useDefindexes)
 				attributes = this.getNameAttributes(shortName, true, true);
 			else attributes = this.getNameAttributes(shortName, true, false);
-		} else if (useDefindex === true) {
+		} else if (useDefindexes === true) {
 			attributes = this.getNameAttributes(shortName, false, true);
 		} else {
 			attributes = this.getNameAttributes(shortName, false, false);
@@ -273,7 +273,13 @@ export default class ParsedEcon {
 				: {}),
 			...(this.tags.grade ? { grade: this.tags.grade } : {}),
 			...(this.descriptions.paint
-				? { paint: this.descriptions.paint }
+				? { 
+					paint: this.descriptions.paint, 
+					...(useDefindexes 
+						? { paintDefindex: this.schema.getDefindex(this.descriptions.paint) } 
+						: {}
+					)
+				}
 				: {}),
 
 			parts: this.descriptions.parts,

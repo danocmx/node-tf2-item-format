@@ -4643,6 +4643,7 @@ describe('Econ item with defindexes', () => {
 			marketable: true,
 			commodity: false,
 			paint: "Noble Hatter's Violet",
+			paintDefindex: 5029,
 			level: 1,
 		});
 	});
@@ -5290,6 +5291,7 @@ describe('Econ item with defindexes', () => {
 			marketable: true,
 			name: 'The Essential Accessories',
 			paint: "Operator's Overalls",
+			paintDefindex: 5060,
 			parts: [],
 			quality: 6,
 			spells: [],
