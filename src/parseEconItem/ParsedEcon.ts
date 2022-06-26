@@ -9,6 +9,7 @@ import getDescriptions from './ParsedEcon/getDescriptions';
 import getDefindex from './ParsedEcon/getDefindex';
 import getLevel from './ParsedEcon/getLevel';
 import getCrateNumber from './ParsedEcon/getCrateNumber';
+import getUses from './ParsedEcon/getUses';
 
 import getConvertedIntAttributes from '../shared/getConvertedIntAttributes';
 import getDefindexes from '../shared/getDefindexes';
@@ -47,6 +48,7 @@ export default class ParsedEcon {
 	public level: number;
 	public options: EconOptions;
 	public crateNumber: number;
+	public uses?: number;
 
 	constructor(schema: ISchema, item: EconItem, options: EconOptions) {
 		this.schema = schema;
@@ -62,6 +64,7 @@ export default class ParsedEcon {
 		this.trueDefindex = getDefindex(this);
 		this.level = getLevel(this);
 		this.crateNumber = getCrateNumber(this);
+		this.uses = getUses(this);
 	}
 
 	get id(): string {
@@ -273,13 +276,16 @@ export default class ParsedEcon {
 				: {}),
 			...(this.tags.grade ? { grade: this.tags.grade } : {}),
 			...(this.descriptions.paint
-				? { 
-					paint: this.descriptions.paint, 
-					...(useDefindexes 
-						? { paintDefindex: this.schema.getDefindex(this.descriptions.paint) } 
-						: {}
-					)
-				}
+				? {
+						paint: this.descriptions.paint,
+						...(useDefindexes
+							? {
+									paintDefindex: this.schema.getDefindex(
+										this.descriptions.paint
+									),
+							  }
+							: {}),
+				  }
 				: {}),
 
 			parts: this.descriptions.parts,
@@ -287,18 +293,20 @@ export default class ParsedEcon {
 
 			marketable: this.properties.marketable,
 			commodity: this.properties.commodity,
+
+			...(this.uses ? { uses: this.uses } : {}),
 		};
 	}
 
 	private getItemNumber(): ItemNumber | void {
-		if (this.nameAttrs.itemNumber || this.descriptions.itemNumber) 
+		if (this.nameAttrs.itemNumber || this.descriptions.itemNumber)
 			return this.nameAttrs.itemNumber || this.descriptions.itemNumber;
 
 		if (this.crateNumber) {
 			return {
 				value: this.crateNumber,
 				type: 'crate',
-			}
+			};
 		}
 	}
 }

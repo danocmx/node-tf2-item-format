@@ -4854,6 +4854,7 @@ describe('Econ item with defindexes', () => {
 			marketable: true,
 			commodity: false,
 			level: 5,
+			uses: 1,
 		});
 	});
 
@@ -5414,6 +5415,7 @@ describe('Econ item with defindexes', () => {
 			marketable: true,
 			commodity: false,
 			level: 5,
+			uses: 1,
 		});
 	});
 
@@ -5517,6 +5519,7 @@ describe('Econ item with defindexes', () => {
 			marketable: true,
 			commodity: false,
 			level: 5,
+			uses: 1,
 		});
 	});
 
@@ -5825,6 +5828,158 @@ describe('Econ item with defindexes', () => {
 			marketable: false,
 			commodity: false,
 			craftable: false,
+		});
+	});
+
+	it('Gets uses from Dueling Mini-Game', () => {
+		const econItem = parseEconItem(
+			{
+				appid: '440',
+				classid: '134',
+				instanceid: '0',
+				icon_url:
+					'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgECbwgfYh_3vTRKhs_ZAfOeD-VOmtkzvZRU2GY4wFN_NrHsZWZlJlTGUKILCPc_rFjvXXVg6sI2DYDi9PUWJ1s1TbibCw',
+				icon_url_large:
+					'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgECbwgfYh_3vTRKhs_ZAfOeD-VOmtkzvZRU2GY4wFN_NrHsZWZlJlTGUKILCPc_rFjvXXVg6sI2DYDi9PUWJ1s1TbibCw',
+				icon_drag_url: '',
+				name: 'Dueling Mini-Game',
+				market_hash_name: 'Dueling Mini-Game',
+				market_name: 'Dueling Mini-Game',
+				name_color: '7D6D00',
+				background_color: '3C352E',
+				type: 'Level 5 Usable Item',
+				tradable: 1,
+				marketable: 0,
+				commodity: 0,
+				market_tradable_restriction: '7',
+				market_marketable_restriction: '0',
+				descriptions: [
+					{
+						value: 'Is an enemy player questioning your skills, personal hygiene, and/or ancestry?\nUse these stylish firearms to challenge them to a duel!\nSee the Mann Co. Catalog for full details.',
+					},
+					{
+						value: ' ',
+					},
+					{
+						value: 'This is a limited use item. Uses: 5',
+						color: '00a000',
+						app_data: {
+							limited: 1,
+						},
+					},
+				],
+				actions: [
+					{
+						name: 'Item Wiki Page...',
+						link: 'http://wiki.teamfortress.com/scripts/itemredirect.php?id=241&lang=en_US',
+					},
+				],
+				tags: [
+					{
+						internal_name: 'Unique',
+						name: 'Unique',
+						category: 'Quality',
+						color: '7D6D00',
+						category_name: 'Quality',
+					},
+					{
+						internal_name: 'TF_UsableItem',
+						name: 'Usable Item',
+						category: 'Type',
+						category_name: 'Type',
+					},
+					{
+						internal_name: 'Scout',
+						name: 'Scout',
+						category: 'Class',
+						category_name: 'Class',
+					},
+					{
+						internal_name: 'Sniper',
+						name: 'Sniper',
+						category: 'Class',
+						category_name: 'Class',
+					},
+					{
+						internal_name: 'Soldier',
+						name: 'Soldier',
+						category: 'Class',
+						category_name: 'Class',
+					},
+					{
+						internal_name: 'Demoman',
+						name: 'Demoman',
+						category: 'Class',
+						category_name: 'Class',
+					},
+					{
+						internal_name: 'Medic',
+						name: 'Medic',
+						category: 'Class',
+						category_name: 'Class',
+					},
+					{
+						internal_name: 'Heavy',
+						name: 'Heavy',
+						category: 'Class',
+						category_name: 'Class',
+					},
+					{
+						internal_name: 'Pyro',
+						name: 'Pyro',
+						category: 'Class',
+						category_name: 'Class',
+					},
+					{
+						internal_name: 'Spy',
+						name: 'Spy',
+						category: 'Class',
+						category_name: 'Class',
+					},
+					{
+						internal_name: 'Engineer',
+						name: 'Engineer',
+						category: 'Class',
+						category_name: 'Class',
+					},
+				],
+				app_data: {
+					quantity: '5',
+					def_index: '241',
+					quality: '6',
+				},
+			},
+			true,
+			true
+		);
+
+		assert.deepEqual(econItem, {
+			defindex: 241,
+			fullName: "Dueling Mini-Game",
+			craftable: true,
+			commodity: false,
+			img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgECbwgfYh_3vTRKhs_ZAfOeD-VOmtkzvZRU2GY4wFN_NrHsZWZlJlTGUKILCPc_rFjvXXVg6sI2DYDi9PUWJ1s1TbibCw/',
+			classes: [
+				"Scout",
+				"Sniper",
+				"Soldier",
+				"Demoman",
+				"Medic",
+				"Heavy",
+				"Pyro",
+				"Spy",
+				"Engineer"
+			],
+			name: "Dueling Mini-Game",
+			quality: 6,
+			parts: [],
+			spells: [],
+			marketable: false,
+			tradable: true,
+			type: "TF_UsableItem",
+			uses: 5,
+			level: 5,
+			id: undefined,
 		});
 	});
 });
@@ -6907,17 +7062,26 @@ describe('Econ item with true defindex', () => {
 							value: '    Sand Cannon Rocket Launcher',
 							color: 'eb4b4b',
 						},
-						{ value: '    Red Rock Roscoe Pistol', color: 'eb4b4b' },
+						{
+							value: '    Red Rock Roscoe Pistol',
+							color: 'eb4b4b',
+						},
 						{
 							value: '    Psychedelic Slugger Revolver',
 							color: 'd32ce6',
 						},
-						{ value: '    Purple Range Sniper Rifle', color: 'd32ce6' },
+						{
+							value: '    Purple Range Sniper Rifle',
+							color: 'd32ce6',
+						},
 						{
 							value: '    Sudden Flurry Stickybomb Launcher',
 							color: 'd32ce6',
 						},
-						{ value: '    Night Terror Scattergun', color: '8847ff' },
+						{
+							value: '    Night Terror Scattergun',
+							color: '8847ff',
+						},
 						{
 							value: '    Carpet Bomber Stickybomb Launcher',
 							color: '8847ff',
@@ -6926,8 +7090,14 @@ describe('Econ item with true defindex', () => {
 							value: '    Woodland Warrior Rocket Launcher',
 							color: '8847ff',
 						},
-						{ value: '    Wrapped Reviver Medi Gun', color: '8847ff' },
-						{ value: '    Night Owl Sniper Rifle', color: '4b69ff' },
+						{
+							value: '    Wrapped Reviver Medi Gun',
+							color: '8847ff',
+						},
+						{
+							value: '    Night Owl Sniper Rifle',
+							color: '4b69ff',
+						},
 						{ value: '    Woodsy Widowmaker SMG', color: '4b69ff' },
 						{
 							value: '    Backwoods Boomstick Shotgun',
@@ -6937,8 +7107,14 @@ describe('Econ item with true defindex', () => {
 							value: '    King of the Jungle Minigun',
 							color: '4b69ff',
 						},
-						{ value: '    Masked Mender Medi Gun', color: '4b69ff' },
-						{ value: '★ Forest Fire Flame Thrower', color: '4b69ff' },
+						{
+							value: '    Masked Mender Medi Gun',
+							color: '4b69ff',
+						},
+						{
+							value: '★ Forest Fire Flame Thrower',
+							color: '4b69ff',
+						},
 					],
 					tradable: 1,
 					actions: [
@@ -7013,7 +7189,7 @@ describe('Econ item with true defindex', () => {
 				true,
 				{ retrieveCrateNumber: false }
 			);
-	
+
 			assert.deepEqual(econItem, {
 				name: 'Flame Thrower',
 				fullName:
@@ -7489,7 +7665,10 @@ describe('Econ item with true defindex', () => {
 						{
 							value: 'You need a Mann Co. Supply Crate Key to open this.\nYou can pick one up at the Mann Co. Store.',
 						},
-						{ value: '\nGift from: MothmanOfficial', color: '7ea9d1' },
+						{
+							value: '\nGift from: MothmanOfficial',
+							color: '7ea9d1',
+						},
 						{
 							value: 'Date Received: Sunday, September 20, 2020 (13:59:02) GMT',
 						},
@@ -7606,7 +7785,7 @@ describe('Econ item with true defindex', () => {
 					retrieveCrateNumber: true,
 				}
 			);
-	
+
 			assert.deepEqual(econItem, {
 				classes: [],
 				commodity: true,

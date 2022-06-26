@@ -138,7 +138,7 @@ export type EconItem = {
 	market_name: string;
 	market_hash_name: string;
 	tags: EconTag[];
-	app_data?: { def_index: number };
+	app_data?: { def_index: number, quality: number, quantity?: string };
 	type: string;
 
 	tradable: number | boolean;
@@ -275,6 +275,7 @@ export type MetaEconAttributes = {
 	spells: string[];
 	marketable: boolean;
 	commodity: boolean;
+	uses?: number;
 };
 
 export type ParsedEconItem = EconAttributes & AddionalEconItemAttributes;
