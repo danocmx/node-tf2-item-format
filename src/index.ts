@@ -27,7 +27,7 @@ import { EconOptions } from './types/econ';
 export * from './types';
 export * from './types/schema';
 
-class Format {
+export class Format {
 	constructor(public schema: ISchema) {}
 
 	parseEconItem(
