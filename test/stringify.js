@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 
-const { stringify } = require('../dist/static');
+const { stringify, parseString } = require('../dist/static');
 
 describe('stringify', () => {
 	it('Case #1', () => {
@@ -592,5 +592,16 @@ describe('stringify from defindexes and numbers.', () => {
 		});
 
 		assert.equal(itemString, 'Unusual Haunted Metal Scrap');
+	});
+
+	it('Case #46 - Haunted Kraken Rotation Sensation', () => {
+		const itemString = stringify({
+			name: 'Rotation Sensation',
+			craftable: true,
+			quality: 5,
+			effect: 257,
+		});
+
+		assert.deepEqual(itemString, "Haunted Kraken Rotation Sensation");
 	});
 });

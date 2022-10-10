@@ -6,7 +6,7 @@ const { createFormat } = require('../dist');
 describe('parseString', () => {
 	it('Case #1', () => {
 		const itemObject = parseString(
-			'Cool Killstreak Aqua Marine Rocket Launcher (Battle Scarred)'
+			'Cool Killstreak Aqua Marine Rocket Launcher (Battle Scarred)',
 		);
 
 		assert.deepEqual(itemObject, {
@@ -22,35 +22,35 @@ describe('parseString', () => {
 
 	it('Case #2', () => {
 		const itemObject = parseString(
-			"Strange High Roller's Rocket Launcher (Factory New)"
+			'Strange High Roller\'s Rocket Launcher (Factory New)',
 		);
 
 		assert.deepEqual(itemObject, {
 			name: 'Rocket Launcher',
 			craftable: true,
 			wear: 'Factory New',
-			texture: "High Roller's",
+			texture: 'High Roller\'s',
 			quality: 'Strange',
 		});
 	});
 
 	it('Case #3', () => {
 		const itemObject = parseString(
-			"Collector's Battalion's Backup Chemistry Set"
+			'Collector\'s Battalion\'s Backup Chemistry Set',
 		);
 
 		assert.deepEqual(itemObject, {
 			name: 'Chemistry Set',
 			craftable: true,
-			output: "Battalion's Backup",
-			outputQuality: "Collector's",
+			output: 'Battalion\'s Backup',
+			outputQuality: 'Collector\'s',
 			quality: 'Unique',
 		});
 	});
 
 	it('Case #4', () => {
 		const itemObject = parseString(
-			'Strange Festivized Professional Killstreak Australium Scattergun'
+			'Strange Festivized Professional Killstreak Australium Scattergun',
 		);
 
 		assert.deepEqual(itemObject, {
@@ -88,7 +88,7 @@ describe('parseString', () => {
 
 	it('Case #7', () => {
 		const itemObject = parseString(
-			'Non-Craftable Specialized Killstreak Gunboats Kit Fabricator'
+			'Non-Craftable Specialized Killstreak Gunboats Kit Fabricator',
 		);
 
 		assert.deepEqual(itemObject, {
@@ -125,7 +125,7 @@ describe('parseString', () => {
 
 	it('Case #10', () => {
 		const itemObject = parseString(
-			'Professional Killstreak Iron Curtain Kit Fabricator'
+			'Professional Killstreak Iron Curtain Kit Fabricator',
 		);
 
 		assert.deepEqual(itemObject, {
@@ -139,7 +139,7 @@ describe('parseString', () => {
 
 	it('Case #11', () => {
 		const itemObject = parseString(
-			'Strange Professional Killstreak Festive Grenade Launcher'
+			'Strange Professional Killstreak Festive Grenade Launcher',
 		);
 
 		assert.deepEqual(itemObject, {
@@ -330,7 +330,7 @@ describe('parseString', () => {
 		const itemObject = parseString(
 			'Eerie Orbiting Fire Condor Cap',
 			false,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -345,7 +345,7 @@ describe('parseString', () => {
 		const itemObject = parseString(
 			'Haunted Ghosts War Paint (Battle Scarred)',
 			false,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -361,7 +361,7 @@ describe('parseString', () => {
 		const itemObject = parseString(
 			'Spellbound Aspect Taunt: Most Wanted',
 			false,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -376,7 +376,7 @@ describe('parseString', () => {
 		const itemObject = parseString(
 			'Haunted Phantasm Jr Bonk Boy',
 			false,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -391,7 +391,7 @@ describe('parseString', () => {
 		const itemObject = parseString(
 			'Ghastly Ghosts Jr Bonk Boy',
 			false,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -406,7 +406,7 @@ describe('parseString', () => {
 		const itemObject = parseString(
 			'Haunted Ghosts Battle Boonie',
 			false,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -431,7 +431,7 @@ describe('parseString', () => {
 		const itemObject = parseString(
 			'Smoking Smoking Skid Lid',
 			false,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -446,7 +446,7 @@ describe('parseString', () => {
 		const itemObject = parseString(
 			'Purple Energy Smoking Skid Lid',
 			false,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -471,7 +471,7 @@ describe('parseString', () => {
 		const itemObject = parseString(
 			'Strange Cosmetic Part: Kills',
 			false,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -495,7 +495,7 @@ describe('parseString', () => {
 		const itemObject = parseString(
 			'The Essential Accessories',
 			false,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -529,7 +529,7 @@ describe('parseString', () => {
 		const itemObject = parseString(
 			'The Concealed Killer Weapons Case #93',
 			false,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -544,7 +544,7 @@ describe('parseString', () => {
 		const itemObject = parseString(
 			'Non-Craftable Naughty Winter Crate Key 2014',
 			false,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -558,7 +558,7 @@ describe('parseString', () => {
 		const itemObject = parseString(
 			'Mann Co. Supply Munition #83',
 			false,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -578,6 +578,17 @@ describe('parseString', () => {
 			quality: 'Unique',
 		});
 	});
+
+	it('Case #46 - Haunted Kraken Rotation Sensation', () => {
+		const itemObject = parseString('Haunted Kraken Rotation Sensation', false, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Rotation Sensation',
+			craftable: true,
+			quality: 'Unusual',
+			effect: 'Haunted Kraken',
+		});
+	});
 });
 
 describe('parseString with numbers', () => {
@@ -585,7 +596,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Cool Killstreak Aqua Marine Rocket Launcher (Battle Scarred)',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -601,9 +612,9 @@ describe('parseString with numbers', () => {
 
 	it('Case #2', () => {
 		const itemObject = parseString(
-			"Strange High Roller's Rocket Launcher (Factory New)",
+			'Strange High Roller\'s Rocket Launcher (Factory New)',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -617,15 +628,15 @@ describe('parseString with numbers', () => {
 
 	it('Case #3', () => {
 		const itemObject = parseString(
-			"Collector's Battalion's Backup Chemistry Set",
+			'Collector\'s Battalion\'s Backup Chemistry Set',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
 			name: 'Chemistry Set',
 			craftable: true,
-			output: "Battalion's Backup",
+			output: 'Battalion\'s Backup',
 			outputQuality: 14,
 			quality: 6,
 		});
@@ -635,7 +646,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Strange Festivized Professional Killstreak Australium Scattergun',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -652,7 +663,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Demonflame Modest Pile of Hat',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -667,7 +678,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Strange Omniscient Orb Balloonihoodie',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -683,7 +694,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Non-Craftable Specialized Killstreak Gunboats Kit Fabricator',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -699,7 +710,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Archimedes Strangifier Chemistry Set',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -716,7 +727,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Strange Backwards Ballcap',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -730,7 +741,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Professional Killstreak Iron Curtain Kit Fabricator',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -746,7 +757,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Strange Professional Killstreak Festive Grenade Launcher',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -761,7 +772,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Strange Unique Sniper Rifle',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -849,7 +860,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Strange A Head Full of Hot Air',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -873,7 +884,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Strange Vintage Vintage Tyrolean',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -918,7 +929,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Strange Haunted Haunted Hat',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -953,7 +964,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Eerie Orbiting Fire Condor Cap',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -968,7 +979,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Haunted Ghosts War Paint (Battle Scarred)',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -984,7 +995,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Spellbound Aspect Taunt: Most Wanted',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -999,7 +1010,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Haunted Phantasm Jr Bonk Boy',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1014,7 +1025,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Ghastly Ghosts Jr Bonk Boy',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1029,7 +1040,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Haunted Ghosts Battle Boonie',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1065,7 +1076,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Purple Energy Smoking Skid Lid',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1090,7 +1101,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Strange Cosmetic Part: Kills',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1114,7 +1125,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'The Essential Accessories',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1148,7 +1159,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'The Concealed Killer Weapons Case #93',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1163,7 +1174,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Non-Craftable Naughty Winter Crate Key 2014',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1177,7 +1188,7 @@ describe('parseString with numbers', () => {
 		const itemObject = parseString(
 			'Mann Co. Supply Munition #83',
 			true,
-			false
+			false,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1202,7 +1213,7 @@ describe('parseString with numbers', () => {
 		const itemObject = format.parseString(
 			'Festivized Specialized Killstreak Red Rock Roscoe Pistol (Field-Tested)',
 			true,
-			false
+			false,
 		);
 		assert.deepEqual(itemObject, {
 			name: 'Pistol',
@@ -1214,6 +1225,18 @@ describe('parseString with numbers', () => {
 			craftable: true,
 		});
 	});
+
+
+	it('Case #46 - Haunted Kraken Rotation Sensation', () => {
+		const itemObject = parseString('Haunted Kraken Rotation Sensation', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Rotation Sensation',
+			craftable: true,
+			quality: 5,
+			effect: 257,
+		});
+	});
 });
 
 describe('parseString with defindexes and numbers.', () => {
@@ -1221,7 +1244,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Cool Killstreak Aqua Marine Rocket Launcher (Battle Scarred)',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1238,9 +1261,9 @@ describe('parseString with defindexes and numbers.', () => {
 
 	it('Case #2', () => {
 		const itemObject = parseString(
-			"Strange High Roller's Rocket Launcher (Factory New)",
+			'Strange High Roller\'s Rocket Launcher (Factory New)',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1274,7 +1297,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Strange Festivized Professional Killstreak Australium Scattergun',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1292,7 +1315,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Demonflame Modest Pile of Hat',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1308,7 +1331,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Strange Omniscient Orb Balloonihoodie',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1325,7 +1348,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Non-Craftable Specialized Killstreak Gunboats Kit Fabricator',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1344,7 +1367,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Archimedes Strangifier Chemistry Set',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1375,7 +1398,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Professional Killstreak Iron Curtain Kit Fabricator',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1393,7 +1416,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Strange Professional Killstreak Festive Grenade Launcher',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1409,7 +1432,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Strange Unique Sniper Rifle',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1492,7 +1515,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Strange A Head Full of Hot Air',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1507,7 +1530,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Taunt: Kazotsky Kick Unusualifier',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1559,7 +1582,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Strange Vintage Vintage Tyrolean',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1608,7 +1631,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Strange Haunted Haunted Hat',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1646,7 +1669,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Eerie Orbiting Fire Condor Cap',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1662,7 +1685,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Haunted Ghosts War Paint (Battle Scarred)',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1679,7 +1702,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Spellbound Aspect Taunt: Most Wanted',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1695,7 +1718,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Haunted Phantasm Jr Bonk Boy',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1711,7 +1734,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Ghastly Ghosts Jr Bonk Boy',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1727,7 +1750,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Haunted Ghosts Battle Boonie',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1766,7 +1789,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Purple Energy Smoking Skid Lid',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1793,7 +1816,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Strange Cosmetic Part: Kills',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1863,7 +1886,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'The Bitter Taste of Defeat and Lime',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1878,7 +1901,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'The Concealed Killer Weapons Case #93',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1894,7 +1917,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Non-Craftable Naughty Winter Crate Key 2014',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1909,7 +1932,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = parseString(
 			'Mann Co. Supply Munition #83',
 			true,
-			true
+			true,
 		);
 
 		assert.deepEqual(itemObject, {
@@ -1953,9 +1976,9 @@ describe('parseString with defindexes and numbers.', () => {
 		const format = createFormat(new MockSchema());
 
 		const itemObject = format.parseString(
-			"Collector's Bat Chemistry Set",
+			'Collector\'s Bat Chemistry Set',
 			true,
-			true
+			true,
 		);
 		assert.deepEqual(itemObject, {
 			name: 'Chemistry Set',
@@ -1984,7 +2007,7 @@ describe('parseString with defindexes and numbers.', () => {
 		const itemObject = format.parseString(
 			'Non-Craftable Specialized Killstreak Bat Kit Fabricator',
 			true,
-			true
+			true,
 		);
 		assert.deepEqual(itemObject, {
 			name: 'Specialized Killstreak Kit Fabricator',
@@ -2025,6 +2048,18 @@ describe('parseString with defindexes and numbers.', () => {
 			craftable: true,
 			defindex: 211,
 			elevated: true,
+		});
+	});
+
+	it('Case #46 - Haunted Kraken Rotation Sensation', () => {
+		const itemObject = parseString('Haunted Kraken Rotation Sensation', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Rotation Sensation',
+			defindex: 30623,
+			craftable: true,
+			quality: 5,
+			effect: 257,
 		});
 	});
 });
