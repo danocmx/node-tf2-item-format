@@ -7,7 +7,7 @@ export default function (name: string): boolean {
 }
 
 function isHauntedException(name: string): boolean {
-	return /(Haunted Hat)|(Haunted Ghosts)|(Haunted Phantasm)|(Haunted Metal Scrap)/.test(
+	return /(Haunted Hat)|(Haunted Ghosts)|(Haunted Phantasm)|(Haunted Metal Scrap)|(Haunted Kraken)|(Haunted Forever)|(Haunted Wick)/.test(
 		name
 	);
 }
