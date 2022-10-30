@@ -79,6 +79,9 @@ export class Schema implements ISchema {
 	public qualities!: SchemaEnum;
 	public itemsGame!: ItemsGame;
 
+	private itemLookupTableItems: string[] = [];
+	private itemLookupTableIndexes: number[] = [];
+
 	constructor() {}
 
 	getTextures() {
@@ -114,7 +117,37 @@ export class Schema implements ISchema {
 	}
 
 	loadDefindexes(): void {
-		this.items = requireStatic('items') as SchemaItem[];
+		const unsortedItems = requireStatic('items') as SchemaItem[];
+
+		//sort items by name for Binary Search
+		this.items = unsortedItems.sort((a, b) => {
+			//to to compare via name first
+			const aName = selectName(a);
+			const bName = selectName(b);
+			if (aName < bName) return -1;
+			if (aName > bName) return 1;
+
+			if (aName == bName) {
+				//otherwise the item with the lower defindex is first
+				if (a.defindex < b.defindex) return -1;
+				if (a.defindex > b.defindex) return 1;
+			}
+			return 0;
+		});
+
+		//create lookup tables for binary search
+		//tables store the first index of each item name
+
+		let lastItemName = '';
+		for (let i = 0; i < this.items.length; i++) {
+			const item = this.items[i];
+			const itemName = selectName(item);
+			if (itemName != lastItemName) {
+				this.itemLookupTableItems.push(itemName);
+				this.itemLookupTableIndexes.push(i);
+				lastItemName = itemName;
+			}
+		}
 	}
 
 	loadQualities(): void {
@@ -161,16 +194,42 @@ export class Schema implements ISchema {
 		// Exceptions
 		if (DEFINDEXES[search]) return DEFINDEXES[search];
 
+		// Binary Search for item start index
 		let upgradeableDfx: number | null = null;
-		for (let i = 0; i < this.items.length; i++) {
+
+		let min = 0;
+		let max = this.itemLookupTableItems.length - 1;
+		let linearStartIndex: number = -1;
+
+		while (min <= max) {
+			const mid = Math.floor((min + max) / 2);
+			const itemName = this.itemLookupTableItems[mid];
+
+			if (search < itemName) {
+				max = mid - 1;
+			} else if (search > itemName) {
+				min = mid + 1;
+			} else {
+				//found item
+				linearStartIndex = this.itemLookupTableIndexes[mid];
+				break;
+			}
+		}
+
+		if (linearStartIndex === -1) return null;
+
+		//linear search for item
+		for (let i = linearStartIndex; i < this.items.length; i++) {
 			const item: SchemaItem = this.items[i];
 			const name: string = selectName(item);
 			if (name === search) {
 				if (!hasUpgradeable(item) || isUpgradeable(item.name)) {
 					return item.defindex;
 				}
-
 				upgradeableDfx = item.defindex;
+			} else {
+				//stop searching if we've reached the next item
+				break;
 			}
 		}
 
@@ -265,7 +324,7 @@ export class Schema implements ISchema {
 		if (!this.itemsGame) this.loadItemsGame();
 
 		if (!isNumber(defindexOrName)) {
-			const defindex = this.getDefindex(defindexOrName);;
+			const defindex = this.getDefindex(defindexOrName);
 			if (!defindex) return 0;
 			defindexOrName = defindex;
 		}
@@ -274,7 +333,8 @@ export class Schema implements ISchema {
 		if (!item) return 0;
 
 		const crateSeries = parseInt(
-			(item.static_attrs && item.static_attrs['set supply crate series']) as string
+			(item.static_attrs &&
+				item.static_attrs['set supply crate series']) as string
 		);
 
 		return isNaN(crateSeries) ? 0 : crateSeries;
