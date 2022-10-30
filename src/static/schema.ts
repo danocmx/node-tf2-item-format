@@ -200,6 +200,7 @@ export class Schema implements ISchema {
 		let min = 0;
 		let max = this.itemLookupTableItems.length - 1;
 		let linearStartIndex: number = -1;
+		let linearEndIndex: number = -1;
 
 		while (min <= max) {
 			const mid = Math.floor((min + max) / 2);
@@ -212,6 +213,8 @@ export class Schema implements ISchema {
 			} else {
 				//found item
 				linearStartIndex = this.itemLookupTableIndexes[mid];
+				linearEndIndex =
+					this.itemLookupTableIndexes[mid + 1] || this.items.length;
 				break;
 			}
 		}
@@ -219,18 +222,13 @@ export class Schema implements ISchema {
 		if (linearStartIndex === -1) return null;
 
 		//linear search for item
-		for (let i = linearStartIndex; i < this.items.length; i++) {
+		for (let i = linearStartIndex; i < linearEndIndex; i++) {
 			const item: SchemaItem = this.items[i];
 			const name: string = selectName(item);
-			if (name === search) {
-				if (!hasUpgradeable(item) || isUpgradeable(item.name)) {
-					return item.defindex;
-				}
-				upgradeableDfx = item.defindex;
-			} else {
-				//stop searching if we've reached the next item
-				break;
+			if (!hasUpgradeable(item) || isUpgradeable(item.name)) {
+				return item.defindex;
 			}
+			upgradeableDfx = item.defindex;
 		}
 
 		return upgradeableDfx;
