@@ -2,6 +2,10 @@ import isNumber from '../util/isNumber';
 
 import { ISchema } from '../types/schema';
 
+const TEXTURE_EXCEPTIONS = [
+	['Health and Hell', 'Health and Hell (Green)'],
+];
+
 /**
  * Iterates over effects object to get matching effect.
  */
@@ -21,6 +25,12 @@ export default function (
 			!attributes.wear
 		) {
 			continue;
+		}
+
+		for (let j = 0; j < TEXTURE_EXCEPTIONS.length; j++) {
+			const exception = TEXTURE_EXCEPTIONS[j];
+			if (texture === exception[0] && name.includes(`${exception[1]} `))
+				return exception[1];
 		}
 
 		if (isNumber(texture) || !name.includes(`${texture} `)) {

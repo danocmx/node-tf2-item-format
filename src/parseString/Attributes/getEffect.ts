@@ -32,8 +32,8 @@ export default function (name: string, attributes: Attributes): string | void {
 			continue;
 		}
 
-		for (let i = 0; i < EFFECT_EXCEPTIONS.length; i++) {
-			const exception = EFFECT_EXCEPTIONS[i];
+		for (let j = 0; j < EFFECT_EXCEPTIONS.length; j++) {
+			const exception = EFFECT_EXCEPTIONS[j];
 			if (effect === exception[0] && name.includes(`${exception[1]} `))
 				return exception[1];
 		}

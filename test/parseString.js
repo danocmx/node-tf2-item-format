@@ -2062,4 +2062,40 @@ describe('parseString with defindexes and numbers.', () => {
 			effect: 257,
 		});
 	});
+
+	it('Case #47 - Strange Health and Hell (Green) War Paint', () => {
+		const itemObject = parseString('Strange Health and Hell (Green) War Paint', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'War Paint',
+			craftable: true,
+			quality: 11,
+			texture: 407,
+			defindex: 9536
+		});
+	});
+
+	it('Case #48 - Health and Hell (Green) Rocket Launcher', () => {
+		const itemObject = parseString('Health and Hell (Green) Rocket Launcher', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Rocket Launcher',
+			craftable: true,
+			quality: 15,
+			texture: 407,
+			defindex: 205
+		});
+	});
+
+	it('Case #49 - Health and Hell Iron Bomber', () => {
+		const itemObject = parseString('Health and Hell Iron Bomber', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Iron Bomber',
+			craftable: true,
+			quality: 15,
+			texture: 406,
+			defindex: 1151,
+		});
+	});
 });
