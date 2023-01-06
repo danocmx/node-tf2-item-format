@@ -589,6 +589,27 @@ describe('parseString', () => {
 			effect: 'Haunted Kraken',
 		});
 	});
+
+	it('Case #47 - Frostbite Bonnet ', () => {
+		const itemObject = parseString('Frostbite Bonnet', false, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Frostbite Bonnet',
+			craftable: true,
+			quality: 'Unique',
+		});
+	});
+
+	it('Case #48 - Frostbite Bonnet ', () => {
+		const itemObject = parseString('Festivized Formation Taunt: Most Wanted', false, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Taunt: Most Wanted',
+			craftable: true,
+			quality: 'Unusual',
+			effect: 'Festivized Formation'
+		});
+	});
 });
 
 describe('parseString with numbers', () => {
@@ -1235,6 +1256,27 @@ describe('parseString with numbers', () => {
 			craftable: true,
 			quality: 5,
 			effect: 257,
+		});
+	});
+
+	it('Case #47 - Frostbite Bonnet ', () => {
+		const itemObject = parseString('Frostbite Bonnet', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Frostbite Bonnet',
+			craftable: true,
+			quality: 6,
+		});
+	});
+
+	it('Case #48 - Frostbite Bonnet ', () => {
+		const itemObject = parseString('Festivized Formation Taunt: Most Wanted', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Taunt: Most Wanted',
+			craftable: true,
+			quality: 5,
+			effect: 3108
 		});
 	});
 });
@@ -2107,6 +2149,18 @@ describe('parseString with defindexes and numbers.', () => {
 			craftable: true,
 			quality: 6,
 			defindex: 31337,
+		});
+	});
+
+	it('Case #51 - Frostbite Bonnet ', () => {
+		const itemObject = parseString('Festivized Formation Taunt: Most Wanted', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Taunt: Most Wanted',
+			craftable: true,
+			quality: 5,
+			defindex: 30614,
+			effect: 3108
 		});
 	});
 });
