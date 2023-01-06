@@ -2098,4 +2098,15 @@ describe('parseString with defindexes and numbers.', () => {
 			defindex: 1151,
 		});
 	});
+
+	it('Case #50 - Frostbite Bonnet ', () => {
+		const itemObject = parseString('Frostbite Bonnet', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Frostbite Bonnet',
+			craftable: true,
+			quality: 6,
+			defindex: 31337,
+		});
+	});
 });
