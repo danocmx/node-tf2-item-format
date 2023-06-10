@@ -121,8 +121,20 @@ export class Format {
 
 	stringify(
 		attributes: StrigifySKUAttributes | ItemAttributes,
+		options: StringifyOptions & { useDefindexes: true }
+	): string;
+	stringify(
+		sku: string,
+		options: StringifyOptions & { useDefindexes: true }
+	): string;
+	stringify(
+		attributesOrSku: StrigifySKUAttributes | ItemAttributes | string,
 		options: StringifyOptions = {}
 	): string {
+		const attributes =
+			typeof attributesOrSku === 'string'
+				? parseSKU(attributesOrSku)
+				: attributesOrSku;
 		return stringify(this.schema, attributes, options);
 	}
 
