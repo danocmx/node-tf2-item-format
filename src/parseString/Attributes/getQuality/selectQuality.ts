@@ -23,7 +23,7 @@ export default function ({
 	otherQuality: string;
 	attributes: Attributes;
 }): StringQuality {
-	let quality: string | void;
+	let quality: string | void = '';
 	let elevated = false;
 
 	if (isVintage) quality = 'Vintage';
