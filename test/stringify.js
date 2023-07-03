@@ -550,13 +550,13 @@ describe('stringify from defindexes and numbers.', () => {
 	it('Case #32 - Red Rock Roscoe texture', () => {
 		const itemString = stringify({ name: 'Pistol', quality: 'Decorated Weapon', craftable: true, wear: 'Field-Tested', festivized: true, killstreak: 'Specialized Killstreak', texture: 0 });
 
-		assert.equal(itemString, 'Festivized Specialized Killstreak Red Rock Roscoe Pistol (Field-Tested)'); 
+		assert.equal(itemString, 'Festivized Specialized Killstreak Red Rock Roscoe Pistol (Field-Tested)');
 	});
 
 	it('Case #33 - Bat', () => {
 		const itemString = stringify({ defindex: 0, quality: 'Unique', craftable: true });
 
-		assert.equal(itemString, 'Bat'); 
+		assert.equal(itemString, 'Bat');
 	})
 
 	it('Case #34 - Bat output', () => {
@@ -605,3 +605,17 @@ describe('stringify from defindexes and numbers.', () => {
 		assert.deepEqual(itemString, "Haunted Kraken Rotation Sensation");
 	});
 });
+
+describe("stringify SKU", () => {
+	it("Case #1", () => {
+		const itemString = stringify("5050;6");
+
+		assert.equal(itemString, "Backpack Expander");
+	});
+
+	it("Case #2", () => {
+		const itemString = stringify("1071;11;kt-3");
+
+		assert.equal(itemString, "Strange Professional Killstreak Golden Frying Pan");
+	});
+})
