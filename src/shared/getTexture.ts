@@ -31,6 +31,7 @@ export default function (
 		}
 
 		if (texture === 'Haunted Ghosts' && skipHauntedFlag) {
+			// eslint-disable-next-line no-continue
 			continue;
 		}
 
