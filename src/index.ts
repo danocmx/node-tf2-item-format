@@ -121,11 +121,11 @@ export class Format {
 
 	stringify(
 		attributes: StrigifySKUAttributes | ItemAttributes,
-		options: StringifyOptions & { useDefindexes: true }
+		options?: StringifyOptions
 	): string;
 	stringify(
 		sku: string,
-		options: StringifyOptions & { useDefindexes: true }
+		options?: StringifyOptions
 	): string;
 	stringify(
 		attributesOrSku: StrigifySKUAttributes | ItemAttributes | string,
