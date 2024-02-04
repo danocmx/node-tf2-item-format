@@ -1,4 +1,4 @@
-name: Github pull request
+name: Github Pull Request
 
 on:
   pull_request:
@@ -8,10 +8,16 @@ jobs:
   test_pull_request:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
-      - run: npm ci
-      - run: npm run build
-      - run: npm run test
+          node-version: 20
+
+      - name: Install packages
+        run: npm ci
+
+      - name: Build TS into JS.
+        run: npm run build
+
+      - name: Test function outputs.
+        run: npm run test
