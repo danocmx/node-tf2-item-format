@@ -35,6 +35,13 @@ const DEFINDEXES: { [name: string]: number } = {
 	'Limited Late Summer Crate Key': 5762,
 	'Naughty Winter Crate Key 2014': 5791,
 	'Nice Winter Crate Key 2014': 5792,
+
+	"'Decorated War Hero' War Paint Civilian Grade Keyless Case": 18000,
+	"'Decorated War Hero' War Paint Freelance Grade Keyless Case": 18001,
+	"'Decorated War Hero' War Paint Mercenary Grade Keyless Case": 18002,
+	"'Contract Campaigner' War Paint Civilian Grade Keyless Case": 18003,
+	"'Contract Campaigner' War Paint Freelance Grade Keyless Case": 18004,
+	"'Contract Campaigner' War Paint Mercenary Grade Keyless Case": 18005,
 };
 
 const NAMES: { [defindex: number]: string } = {
@@ -57,6 +64,12 @@ const NAMES: { [defindex: number]: string } = {
 	5792: 'Nice Winter Crate Key 2014',
 	20000: 'Strangifier Chemistry Set',
 	20005: 'Chemistry Set',
+	18000: "'Decorated War Hero' War Paint Civilian Grade Keyless Case",
+	18001: "'Decorated War Hero' War Paint Freelance Grade Keyless Case",
+	18002: "'Decorated War Hero' War Paint Mercenary Grade Keyless Case",
+	18003: "'Contract Campaigner' War Paint Civilian Grade Keyless Case",
+	18004: "'Contract Campaigner' War Paint Freelance Grade Keyless Case",
+	18005: "'Contract Campaigner' War Paint Mercenary Grade Keyless Case",
 };
 
 /* TODO: Set boundaries between these.
@@ -265,7 +278,7 @@ export class Schema implements ISchema {
 		if (!this.itemsGame) this.loadItemsGame();
 
 		if (!isNumber(defindexOrName)) {
-			const defindex = this.getDefindex(defindexOrName);;
+			const defindex = this.getDefindex(defindexOrName);
 			if (!defindex) return 0;
 			defindexOrName = defindex;
 		}
@@ -274,7 +287,8 @@ export class Schema implements ISchema {
 		if (!item) return 0;
 
 		const crateSeries = parseInt(
-			(item.static_attrs && item.static_attrs['set supply crate series']) as string
+			(item.static_attrs &&
+				item.static_attrs['set supply crate series']) as string
 		);
 
 		return isNaN(crateSeries) ? 0 : crateSeries;

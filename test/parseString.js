@@ -1,6 +1,6 @@
 const { assert } = require('chai');
 
-const { parseString, schema, Schema } = require('../dist/static');
+const { parseString, Schema } = require('../dist/static');
 const { createFormat } = require('../dist');
 
 describe('parseString', () => {
@@ -608,6 +608,21 @@ describe('parseString', () => {
 			craftable: true,
 			quality: 'Unusual',
 			effect: 'Festivized Formation'
+		});
+	});
+
+	it("Case #49 -'Contract Campaigner' War Paint Freelance Grade Keyless Case #115", () => {
+		const itemObject = parseString(
+			"'Contract Campaigner' War Paint Freelance Grade Keyless Case #115",
+			false,
+			false,
+		);
+		
+		assert.deepEqual(itemObject, {
+			name: "'Contract Campaigner' War Paint Freelance Grade Keyless Case",
+			craftable: true,
+			quality: 'Unique',
+			itemNumber: { type: 'crate', value: 115 },
 		});
 	});
 });
@@ -1277,6 +1292,21 @@ describe('parseString with numbers', () => {
 			craftable: true,
 			quality: 5,
 			effect: 3108
+		});
+	});
+
+		it("Case #49 -'Contract Campaigner' War Paint Freelance Grade Keyless Case #115", () => {
+		const itemObject = parseString(
+			"'Contract Campaigner' War Paint Freelance Grade Keyless Case #115",
+			true,
+			false,
+		);
+		
+		assert.deepEqual(itemObject, {
+			name: "'Contract Campaigner' War Paint Freelance Grade Keyless Case",
+			craftable: true,
+			quality: 6,
+			itemNumber: { type: 'crate', value: 115 },
 		});
 	});
 });
@@ -2093,7 +2123,7 @@ describe('parseString with defindexes and numbers.', () => {
 		});
 	});
 
-	it('Case #46 - Haunted Kraken Rotation Sensation', () => {
+	it('Case #56 - Haunted Kraken Rotation Sensation', () => {
 		const itemObject = parseString('Haunted Kraken Rotation Sensation', true, true);
 
 		assert.deepEqual(itemObject, {
@@ -2105,7 +2135,7 @@ describe('parseString with defindexes and numbers.', () => {
 		});
 	});
 
-	it('Case #47 - Strange Health and Hell (Green) War Paint', () => {
+	it('Case #57 - Strange Health and Hell (Green) War Paint', () => {
 		const itemObject = parseString('Strange Health and Hell (Green) War Paint', true, true);
 
 		assert.deepEqual(itemObject, {
@@ -2117,7 +2147,7 @@ describe('parseString with defindexes and numbers.', () => {
 		});
 	});
 
-	it('Case #48 - Health and Hell (Green) Rocket Launcher', () => {
+	it('Case #58 - Health and Hell (Green) Rocket Launcher', () => {
 		const itemObject = parseString('Health and Hell (Green) Rocket Launcher', true, true);
 
 		assert.deepEqual(itemObject, {
@@ -2129,7 +2159,7 @@ describe('parseString with defindexes and numbers.', () => {
 		});
 	});
 
-	it('Case #49 - Health and Hell Iron Bomber', () => {
+	it('Case #59 - Health and Hell Iron Bomber', () => {
 		const itemObject = parseString('Health and Hell Iron Bomber', true, true);
 
 		assert.deepEqual(itemObject, {
@@ -2141,7 +2171,7 @@ describe('parseString with defindexes and numbers.', () => {
 		});
 	});
 
-	it('Case #50 - Frostbite Bonnet ', () => {
+	it('Case #60 - Frostbite Bonnet ', () => {
 		const itemObject = parseString('Frostbite Bonnet', true, true);
 
 		assert.deepEqual(itemObject, {
@@ -2152,7 +2182,7 @@ describe('parseString with defindexes and numbers.', () => {
 		});
 	});
 
-	it('Case #51 - Frostbite Bonnet ', () => {
+	it('Case #61 - Frostbite Bonnet ', () => {
 		const itemObject = parseString('Festivized Formation Taunt: Most Wanted', true, true);
 
 		assert.deepEqual(itemObject, {
@@ -2161,6 +2191,22 @@ describe('parseString with defindexes and numbers.', () => {
 			quality: 5,
 			defindex: 30614,
 			effect: 3108
+		});
+	});
+
+	it("Case #62 -'Contract Campaigner' War Paint Freelance Grade Keyless Case #115", () => {
+		const itemObject = parseString(
+			"'Contract Campaigner' War Paint Freelance Grade Keyless Case #115",
+			true,
+			true,
+		);
+		
+		assert.deepEqual(itemObject, {
+			name: "'Contract Campaigner' War Paint Freelance Grade Keyless Case",
+			craftable: true,
+			quality: 6,	
+			defindex: 18004,
+			itemNumber: { type: 'crate', value: 115 },
 		});
 	});
 });
