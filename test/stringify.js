@@ -740,8 +740,11 @@ describe('stringify from defindexes and numbers.', () => {
 			defindex: 18004,
 			itemNumber: { type: 'crate', value: 115 },
 		});
-[]
-		assert.deepEqual(itemString, "'Contract Campaigner' War Paint Freelance Grade Keyless Case #115");
+
+		assert.deepEqual(
+			itemString,
+			"'Contract Campaigner' War Paint Freelance Grade Keyless Case #115"
+		);
 	});
 });
 
