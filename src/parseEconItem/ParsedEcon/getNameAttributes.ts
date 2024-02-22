@@ -55,7 +55,13 @@ export default function (econ: ParsedEcon): NameAttributes {
  * @returns name
  */
 function getNameForItemNumber(econ: ParsedEcon) {
-	if (!hasBeenRenamed(econ)) return econ.item.name;
+	if (!hasBeenRenamed(econ)) {
+		if (econ.item.market_name.includes('Keyless Case Series')) {
+			return econ.item.market_name;
+		}
+
+		return econ.item.name;
+	}
 	if (!econ.options.itemNumberFromFraudWarning) return econ.itemName.getOrigin();
 	const warning = econ.item.fraudwarnings?.find((f) =>
 		f.startsWith('This item has been renamed.')

@@ -28,6 +28,8 @@ export default function (
 	} = attributes;
 	let itemName: string = name;
 
+	itemName = itemName.replace(/\n/g, ' '); // Some items include \n, that is shown as space on steam.
+
 	if (!craftable) itemName = itemName.replace('Non-Craftable ', '');
 	if (australium) itemName = itemName.replace('Australium ', '');
 	if (festivized) itemName = itemName.replace('Festivized ', '');
@@ -66,6 +68,10 @@ export default function (
 	itemName = itemName.replace(`${quality.value} `, '');
 	if (isUniqueHat) itemName = itemName.replace(/^The /, '');
 	if (quality.elevated) itemName = itemName.replace('Strange ', '');
+
+	if (itemName.includes('Keyless Case Series')) {
+		itemName = itemName.replace('Series ', '');
+	}
 
 	return itemName;
 }

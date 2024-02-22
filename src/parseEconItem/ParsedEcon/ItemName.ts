@@ -84,6 +84,8 @@ export default class ItemName {
 			itemNumber,
 		} = this.econ.getNameAttributes('', false, false);
 
+		name = name.replace(/\n/g, ' ');
+
 		if (isUniqueHat) {
 			name = name.replace('The ', '');
 		}
@@ -103,6 +105,10 @@ export default class ItemName {
 
 		if (this.shouldAddItemNumber(itemNumber)) {
 			name += ` #${itemNumber.value}`;
+			name = name.replace('Series ', '');
+		}
+
+		if (name.includes('Keyless Case Series')) {
 			name = name.replace('Series ', '');
 		}
 
