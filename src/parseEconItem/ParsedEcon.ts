@@ -157,6 +157,7 @@ export default class ParsedEcon {
 		if (inNumbers) {
 			const convertedAttributes = getConvertedIntAttributes(
 				this.schema,
+				name,
 				attrs
 			);
 

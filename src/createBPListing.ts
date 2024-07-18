@@ -10,6 +10,7 @@ import {
 	StrigifySKUAttributes,
 } from './types';
 import { ISchema } from './types/schema';
+import isTaunt from './util/isTaunt';
 
 const DEFAULT_OPTIONS: CreateBPListingOptions = {
 	unuSkinsToDecorated: true,
@@ -131,7 +132,14 @@ function getPriceindex(
 			(item.output && schema.getDefindex(item.output));
 	}
 
-	if (item.effect) return schema.getEffectEnum(item.effect);
+	if (item.effect) {
+		if (item.effect == "Treasure Trove") {
+			if (isTaunt(name)) return 3165;
+			else return 289;
+		}
+
+		return schema.getEffectEnum(item.effect);
+	}
 	if (item.itemNumber && isCrate(item.itemNumber))
 		return (item.itemNumber as ItemNumber).value;
 	if (isUnusualfierOrStrangifier(name)) return targetDefindex as number;

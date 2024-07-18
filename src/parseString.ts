@@ -61,7 +61,7 @@ function parseString(
 	};
 
 	if (inNumbers) {
-		const convertedAttributes = getConvertedIntAttributes(schema, {
+		const convertedAttributes = getConvertedIntAttributes(schema, itemName, {
 			killstreak: attributes.killstreak,
 			wear: attributes.wear,
 			effect: attributes.effect,
