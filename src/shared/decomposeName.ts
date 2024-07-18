@@ -28,8 +28,6 @@ export default function (
 	} = attributes;
 	let itemName: string = name;
 
-	itemName = itemName.replace(/\n/g, ' '); // Some items include \n, that is shown as space on steam.
-
 	if (!craftable) itemName = itemName.replace('Non-Craftable ', '');
 	if (australium) itemName = itemName.replace('Australium ', '');
 	if (festivized) itemName = itemName.replace('Festivized ', '');

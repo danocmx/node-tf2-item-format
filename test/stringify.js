@@ -734,7 +734,7 @@ describe('stringify from defindexes and numbers.', () => {
 
 	it('Case #47 - Haunted Kraken Rotation Sensation', () => {
 		const itemString = stringify({
-			name: "'Contract Campaigner' War Paint Freelance Grade Keyless Case",
+			name: "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case",
 			craftable: true,
 			quality: 6,
 			defindex: 18004,
@@ -743,7 +743,7 @@ describe('stringify from defindexes and numbers.', () => {
 
 		assert.deepEqual(
 			itemString,
-			"'Contract Campaigner' War Paint Freelance Grade Keyless Case #115"
+			"'Contract Campaigner' War Paint\nFreelance Grade Keyless Case #115"
 		);
 	});
 });

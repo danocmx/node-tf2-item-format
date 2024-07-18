@@ -1,6 +1,6 @@
 {
   "name": "tf2-item-format",
-  "version": "5.9.11",
+  "version": "5.9.12",
   "description": "Format's TF2 items like backpack.tf does",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -48,8 +48,8 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
     "mocha": "^10.0.0",
-    "nyc": "^15.1.0",
-    "semantic-release": "^23.0.0",
+    "nyc": "^17.0.0",
+    "semantic-release": "^24.0.0",
     "typescript": "^5.0.3"
   },
   "engines": {

@@ -611,15 +611,15 @@ describe('parseString', () => {
 		});
 	});
 
-	it("Case #49 -'Contract Campaigner' War Paint Freelance Grade Keyless Case #115", () => {
+	it("Case #49 -'Contract Campaigner' War Paint\nFreelance Grade Keyless Case #115", () => {
 		const itemObject = parseString(
-			"'Contract Campaigner' War Paint Freelance Grade Keyless Case #115",
+			"'Contract Campaigner' War Paint\nFreelance Grade Keyless Case #115",
 			false,
 			false,
 		);
 		
 		assert.deepEqual(itemObject, {
-			name: "'Contract Campaigner' War Paint Freelance Grade Keyless Case",
+			name: "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case",
 			craftable: true,
 			quality: 'Unique',
 			itemNumber: { type: 'crate', value: 115 },
@@ -1297,13 +1297,13 @@ describe('parseString with numbers', () => {
 
 	it("Case #49 -'Contract Campaigner' War Paint Freelance Grade Keyless Case #115", () => {
 		const itemObject = parseString(
-			"'Contract Campaigner' War Paint Freelance Grade Keyless Case #115",
+			"'Contract Campaigner' War Paint\nFreelance Grade Keyless Case #115",
 			true,
 			false,
 		);
 		
 		assert.deepEqual(itemObject, {
-			name: "'Contract Campaigner' War Paint Freelance Grade Keyless Case",
+			name: "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case",
 			craftable: true,
 			quality: 6,
 			itemNumber: { type: 'crate', value: 115 },
@@ -2224,15 +2224,15 @@ describe('parseString with defindexes and numbers.', () => {
 		});
 	});
 
-	it("Case #62 -'Contract Campaigner' War Paint Freelance Grade Keyless Case #115", () => {
+	it("Case #62 -'Contract Campaigner' War Paint\nFreelance Grade Keyless Case #115", () => {
 		const itemObject = parseString(
-			"'Contract Campaigner' War Paint Freelance Grade Keyless Case #115",
+			"'Contract Campaigner' War Paint\nFreelance Grade Keyless Case #115",
 			true,
 			true,
 		);
 		
 		assert.deepEqual(itemObject, {
-			name: "'Contract Campaigner' War Paint Freelance Grade Keyless Case",
+			name: "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case",
 			craftable: true,
 			quality: 6,	
 			defindex: 18004,

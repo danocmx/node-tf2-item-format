@@ -8341,9 +8341,9 @@ describe('Econ item with true defindex', () => {
 				commodity: true,
 				craftable: true,
 				fullName:
-					"'Contract Campaigner' War Paint Freelance Grade Keyless Case #115",
+					"'Contract Campaigner' War Paint\nFreelance Grade Keyless Case #115",
 				id: undefined,
-				name: "'Contract Campaigner' War Paint Freelance Grade Keyless Case",
+				name: "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case",
 				parts: [],
 				quality: 'Unique',
 				spells: [],

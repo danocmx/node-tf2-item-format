@@ -36,12 +36,12 @@ const DEFINDEXES: { [name: string]: number } = {
 	'Naughty Winter Crate Key 2014': 5791,
 	'Nice Winter Crate Key 2014': 5792,
 
-	"'Decorated War Hero' War Paint Civilian Grade Keyless Case": 18000,
-	"'Decorated War Hero' War Paint Freelance Grade Keyless Case": 18001,
-	"'Decorated War Hero' War Paint Mercenary Grade Keyless Case": 18002,
-	"'Contract Campaigner' War Paint Civilian Grade Keyless Case": 18003,
-	"'Contract Campaigner' War Paint Freelance Grade Keyless Case": 18004,
-	"'Contract Campaigner' War Paint Mercenary Grade Keyless Case": 18005,
+	// "'Decorated War Hero' War Paint Civilian Grade Keyless Case": 18000,
+	// "'Decorated War Hero' War Paint Freelance Grade Keyless Case": 18001,
+	// "'Decorated War Hero' War Paint Mercenary Grade Keyless Case": 18002,
+	// "'Contract Campaigner' War Paint\nCivilian Grade Keyless Case": 18003,
+	// "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case": 18004,
+	// "'Contract Campaigner' War Paint\nMercenary Grade Keyless Case": 18005,
 };
 
 const NAMES: { [defindex: number]: string } = {
@@ -64,12 +64,12 @@ const NAMES: { [defindex: number]: string } = {
 	5792: 'Nice Winter Crate Key 2014',
 	20000: 'Strangifier Chemistry Set',
 	20005: 'Chemistry Set',
-	18000: "'Decorated War Hero' War Paint Civilian Grade Keyless Case",
-	18001: "'Decorated War Hero' War Paint Freelance Grade Keyless Case",
-	18002: "'Decorated War Hero' War Paint Mercenary Grade Keyless Case",
-	18003: "'Contract Campaigner' War Paint Civilian Grade Keyless Case",
-	18004: "'Contract Campaigner' War Paint Freelance Grade Keyless Case",
-	18005: "'Contract Campaigner' War Paint Mercenary Grade Keyless Case",
+	// 18000: "'Decorated War Hero' War Paint\nCivilian Grade Keyless Case",
+	// 18001: "'Decorated War Hero' War Paint\nFreelance Grade Keyless Case",
+	// 18002: "'Decorated War Hero' War Paint\nMercenary Grade Keyless Case",
+	// 18003: "'Contract Campaigner' War Paint\nCivilian Grade Keyless Case",
+	// 18004: "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case",
+	// 18005: "'Contract Campaigner' War Paint\nMercenary Grade Keyless Case",
 };
 
 /* TODO: Set boundaries between these.
