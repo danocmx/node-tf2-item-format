@@ -349,4 +349,36 @@ describe('createBPListing', () => {
 			priceindex: 0,
 		});
 	});
+
+	it('Case #21 - Treasure Trove taunt', () => {
+		const listing = createBPListing({
+			name: "Taunt: The High Five!",
+			effect: "Treasure Trove",
+			quality: 5,
+			craftable: true,
+		});
+
+		assert.deepEqual(listing, {
+			quality: 5,
+			craftable: 1,
+			item_name: 'Taunt: The High Five!',
+			priceindex: 3165,
+		});
+	});
+
+	it('Case #22 - Treasure Trove hat', () => {
+		const listing = createBPListing({
+			name: "Class Crown",
+			effect: "Treasure Trove",
+			quality: 5,
+			craftable: true,
+		});
+
+		assert.deepEqual(listing, {
+			quality: 5,
+			craftable: 1,
+			item_name: 'Class Crown',
+			priceindex: 289,
+		});
+	});
 });

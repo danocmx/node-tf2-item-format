@@ -1295,7 +1295,7 @@ describe('parseString with numbers', () => {
 		});
 	});
 
-		it("Case #49 -'Contract Campaigner' War Paint Freelance Grade Keyless Case #115", () => {
+	it("Case #49 -'Contract Campaigner' War Paint Freelance Grade Keyless Case #115", () => {
 		const itemObject = parseString(
 			"'Contract Campaigner' War Paint Freelance Grade Keyless Case #115",
 			true,
@@ -1307,6 +1307,36 @@ describe('parseString with numbers', () => {
 			craftable: true,
 			quality: 6,
 			itemNumber: { type: 'crate', value: 115 },
+		});
+	});
+
+	it("Case #50 - Treasure Trove taunt", () => {
+		const itemObject = parseString(
+			"Treasure Trove Shred Alert",
+			true,
+			false,
+		);
+		
+		assert.deepEqual(itemObject, {
+			name: "Shred Alert",
+			craftable: true,
+			quality: 5,
+			effect: 3165
+		});
+	});
+
+	it("Case #50 - Treasure Trove hat", () => {
+		const itemObject = parseString(
+			"Treasure Trove Class Crown",
+			true,
+			false,
+		);
+		
+		assert.deepEqual(itemObject, {
+			name: "Class Crown",
+			craftable: true,
+			quality: 5,
+			effect: 289
 		});
 	});
 });
@@ -2207,6 +2237,38 @@ describe('parseString with defindexes and numbers.', () => {
 			quality: 6,	
 			defindex: 18004,
 			itemNumber: { type: 'crate', value: 115 },
+		});
+	});
+
+	it("Case #63 - Treasure Trove taunt", () => {
+		const itemObject = parseString(
+			"Treasure Trove Shred Alert",
+			true,
+			true,
+		);
+		
+		assert.deepEqual(itemObject, {
+			name: "Shred Alert",
+			craftable: true,
+			quality: 5,
+			effect: 3165,
+			defindex: 1015
+		});
+	});
+
+	it("Case #64 - Treasure Trove hat", () => {
+		const itemObject = parseString(
+			"Treasure Trove Class Crown",
+			true,
+			true,
+		);
+		
+		assert.deepEqual(itemObject, {
+			name: "Class Crown",
+			craftable: true,
+			quality: 5,
+			effect: 289,
+			defindex: 30808 
 		});
 	});
 });
