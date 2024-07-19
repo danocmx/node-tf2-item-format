@@ -2,7 +2,6 @@ import { hasDefindex } from './guards';
 
 import { ConvertableAttributes } from '../types';
 import { ISchema } from '../types/schema';
-import isTaunt from '../util/isTaunt';
 
 export default function (
 	schema: ISchema,
@@ -18,12 +17,7 @@ export default function (
 } {
 	let effect: number | undefined;
 	if (item.effect) {
-		if (item.effect == "Treasure Trove") {
-			if (isTaunt(name)) effect = 3165;
-			else effect = 289;
-		} else {
-			effect = schema.getEffectEnum(item.effect);
-		}
+		effect = schema.getEffectEnum(item.effect);
 	}
 
 	return {
