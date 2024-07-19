@@ -350,10 +350,10 @@ describe('createBPListing', () => {
 		});
 	});
 
-	it('Case #21 - Treasure Trove taunt', () => {
+	it('Case #21 - Bountiful Riches taunt', () => {
 		const listing = createBPListing({
 			name: "Taunt: The High Five!",
-			effect: "Treasure Trove",
+			effect: "Bountiful Riches",
 			quality: 5,
 			craftable: true,
 		});

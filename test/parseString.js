@@ -1310,9 +1310,9 @@ describe('parseString with numbers', () => {
 		});
 	});
 
-	it("Case #50 - Treasure Trove taunt", () => {
+	it("Case #50 - Bountiful Riches taunt", () => {
 		const itemObject = parseString(
-			"Treasure Trove Shred Alert",
+			"Bountiful Riches Shred Alert",
 			true,
 			false,
 		);
@@ -2240,9 +2240,9 @@ describe('parseString with defindexes and numbers.', () => {
 		});
 	});
 
-	it("Case #63 - Treasure Trove taunt", () => {
+	it("Case #63 - Bountiful Riches taunt", () => {
 		const itemObject = parseString(
-			"Treasure Trove Shred Alert",
+			"Bountiful Riches Shred Alert",
 			true,
 			true,
 		);
