@@ -46,7 +46,7 @@ const EXCEPTIONS = [
  * Only happens to hats with unique quality.
  */
 export default function (name: string, attributes?: Attributes): boolean {
-	if (!/^The /.test(name)) {
+	if (!name.startsWith('The ')) {
 		return false;
 	}
 

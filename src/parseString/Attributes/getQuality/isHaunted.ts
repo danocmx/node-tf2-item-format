@@ -6,8 +6,17 @@ export default function (name: string): boolean {
 	);
 }
 
+const HAUNTED_EXCEPTIONS = [
+	'Haunted Hat',
+	'Haunted Ghosts',
+	'Haunted Phantasm',
+	'Haunted Metal Scrap',
+	'Haunted Kraken',
+	'Haunted Forever',
+	'Haunted Wick',
+	'Haunted Cremation',
+];
+
 function isHauntedException(name: string): boolean {
-	return /(Haunted Hat)|(Haunted Ghosts)|(Haunted Phantasm)|(Haunted Metal Scrap)|(Haunted Kraken)|(Haunted Forever)|(Haunted Wick)|(Haunted Cremation)/.test(
-		name
-	);
+	return HAUNTED_EXCEPTIONS.some((exception) => name.includes(exception));
 }

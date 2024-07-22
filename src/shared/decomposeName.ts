@@ -51,10 +51,9 @@ export default function (
 		} else {
 			const toRemove = getUsableItemToRemove(attributes);
 
-			itemName = itemName.replace(
-				new RegExp(`(( ${toRemove})|(${toRemove} ))`),
-				''
-			);
+			itemName = itemName
+				.replace(` ${toRemove}`, '')
+				.replace(`${toRemove} `, '');
 		}
 	} else if (killstreak) itemName = itemName.replace(`${killstreak} `, ''); // Killstreak stat is kept
 
