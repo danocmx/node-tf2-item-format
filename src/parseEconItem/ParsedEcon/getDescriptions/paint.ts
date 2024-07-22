@@ -5,7 +5,7 @@ import { EconDescription } from '../../../types';
  */
 export function isPaint(description: EconDescription): boolean {
 	return (
-		/^Paint Color: /.test(description.value) &&
+		description.value.startsWith('Paint Color: ') &&
 		description.color === '756b5e'
 	);
 }

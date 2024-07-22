@@ -7,7 +7,7 @@ import { EconDescription } from '../../../types';
  */
 export function isSpell(description: EconDescription): boolean {
 	return (
-		/^Halloween: .*/.test(description.value) &&
+		description.value.startsWith('Halloween: ') &&
 		description.color === '7ea9d1'
 	);
 }

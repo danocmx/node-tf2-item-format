@@ -189,7 +189,7 @@ function canAddKillstreak(
 }
 
 function isKillstreakKitOrFabricator(name: string, target?: string): boolean {
-	return !!(target && (/ Kit/.test(name) || / Fabricator/.test(name))); // This checks for fabricator too.
+	return !!(target && (name.includes(' Kit') || name.includes(' Fabricator'))); // This checks for fabricator too.
 }
 
 function isUniqueHat(

@@ -48,11 +48,17 @@ export default function (name: string): Partial<TargetOutputItem> | null {
 }
 
 function isStrangifierChemistrySet(name: string): boolean {
-	return / Strangifier Chemistry Set/.test(name);
+	return name.includes(' Strangifier Chemistry Set');
 }
 
+const TARGET_EXCEPTIONS = [
+	"Killer's Kit",
+	"Coffin Kit",
+	"Summer Starter Kit"
+];
+
 function getItemIfTarget(name: string): string | void {
-	if (/(Killer's Kit|Coffin Kit|Summer Starter Kit)/.test(name)) return;
+	if (TARGET_EXCEPTIONS.some((exception) => name.includes(exception))) return;
 
 	// eslint-disable-next-line consistent-return
 	return (name.match(/ (Kit Fabricator|Kit|Strangifier|Unusualifier)/) ||
@@ -60,5 +66,5 @@ function getItemIfTarget(name: string): string | void {
 }
 
 function isChemistrySet(name: string): boolean {
-	return / Chemistry Set/.test(name);
+	return name.includes(' Chemistry Set') ;
 }
