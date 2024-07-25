@@ -625,6 +625,17 @@ describe('parseString', () => {
 			itemNumber: { type: 'crate', value: 115 },
 		});
 	});
+
+	it('Case #50 - Killer\'s Kit Strangifier', () => {
+		const itemObject = parseString('Killer\'s Kit Strangifier', false, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Strangifier',
+			craftable: true,
+			target: 'Killer\'s Kit',
+			quality: 'Unique',
+		});
+	});
 });
 
 describe('parseString with numbers', () => {
@@ -1337,6 +1348,17 @@ describe('parseString with numbers', () => {
 			craftable: true,
 			quality: 5,
 			effect: 289
+		});
+	});
+
+	it('Case #51 - Killer\'s Kit Strangifier', () => {
+		const itemObject = parseString('Killer\'s Kit Strangifier', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Strangifier',
+			craftable: true,
+			target: 'Killer\'s Kit',
+			quality: 6,
 		});
 	});
 });
@@ -2269,6 +2291,19 @@ describe('parseString with defindexes and numbers.', () => {
 			quality: 5,
 			effect: 289,
 			defindex: 30808 
+		});
+	});
+
+	it('Case #65 - Killer\'s Kit Strangifier', () => {
+		const itemObject = parseString('Killer\'s Kit Strangifier', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Strangifier',
+			defindex: 5661,
+			craftable: true,
+			target: 'Killer\'s Kit',
+			targetDefindex: 30339,
+			quality: 6,
 		});
 	});
 });
