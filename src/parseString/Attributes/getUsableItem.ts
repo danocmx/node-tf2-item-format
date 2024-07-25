@@ -51,18 +51,23 @@ function isStrangifierChemistrySet(name: string): boolean {
 	return name.includes(' Strangifier Chemistry Set');
 }
 
-const TARGET_EXCEPTIONS = [
+const KIT_EXCEPTIONS = [
 	"Killer's Kit",
 	"Coffin Kit",
 	"Summer Starter Kit"
 ];
 
 function getItemIfTarget(name: string): string | void {
-	if (TARGET_EXCEPTIONS.some((exception) => name.includes(exception))) return;
+	const match = name.match(/ (Kit Fabricator|Strangifier|Unusualifier)/);
+	if (match) {
+		return match[1];
+	}
 
-	// eslint-disable-next-line consistent-return
-	return (name.match(/ (Kit Fabricator|Kit|Strangifier|Unusualifier)/) ||
-		[])[1];
+	if (!name.includes(' Kit')) {
+		return;
+	}
+
+	return KIT_EXCEPTIONS.some((exception) => name.includes(exception)) ? undefined : 'Kit';
 }
 
 function isChemistrySet(name: string): boolean {
