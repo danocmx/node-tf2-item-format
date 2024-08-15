@@ -636,6 +636,17 @@ describe('parseString', () => {
 			quality: 'Unique',
 		});
 	});
+
+	it('Case #51 - Rainbow Reverie', () => {
+		const itemObject = parseString('Rainbow Reverie Frigid Fashion', false, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Frigid Fashion',
+			effect: 'Rainbow Reverie',
+			craftable: true,
+			quality: 'Unusual',
+		});
+	});
 });
 
 describe('parseString with numbers', () => {

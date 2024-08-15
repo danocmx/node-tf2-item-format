@@ -6,6 +6,10 @@ const TEXTURE_EXCEPTIONS = [
 	['Health and Hell', 'Health and Hell (Green)'],
 ];
 
+const TEXTURE_TO_EFFECT_EXCEPTIONS = [
+	['Rainbow', 'Rainbow Reverie'],
+]
+
 /**
  * Iterates over effects object to get matching effect.
  */
@@ -27,6 +31,10 @@ export default function (
 			continue;
 		}
 
+		if (isTextureToEffectException(name, texture)) {
+			continue;
+		}
+
 		for (let j = 0; j < TEXTURE_EXCEPTIONS.length; j++) {
 			const exception = TEXTURE_EXCEPTIONS[j];
 			if (texture === exception[0] && name.includes(`${exception[1]} `))
@@ -40,4 +48,14 @@ export default function (
 
 		return texture;
 	}
+}
+
+function isTextureToEffectException(name: string, texture: string): boolean {
+	for (let i = 0; i < TEXTURE_TO_EFFECT_EXCEPTIONS.length; i++) {
+		const exception = TEXTURE_TO_EFFECT_EXCEPTIONS[i];
+		if (texture === exception[0] && name.includes(`${exception[1]} `)) {
+			return true;
+		}
+	}
+	return false;
 }
