@@ -62,7 +62,7 @@ export default class ItemName {
 							target,
 							outputQuality: outputQuality as string,
 						},
-				  }
+					}
 				: {}),
 		});
 	}
@@ -113,7 +113,9 @@ export default class ItemName {
 		return name;
 	}
 
-	private shouldAddItemNumber(itemNumber?: ItemNumber): itemNumber is ItemNumber {
+	private shouldAddItemNumber(
+		itemNumber?: ItemNumber
+	): itemNumber is ItemNumber {
 		return !!itemNumber && !this.origin.endsWith(` #${itemNumber.value}`);
 	}
 }

@@ -128,7 +128,7 @@ export default function (
 					? getOutput(
 							schema.getName(output),
 							schema.getQualityName(outputQuality as number)
-					  )
+						)
 					: schema.getName(target as string)
 			} `;
 		}
@@ -189,7 +189,10 @@ function canAddKillstreak(
 }
 
 function isKillstreakKitOrFabricator(name: string, target?: string): boolean {
-	return !!(target && (name.includes(' Kit') || name.includes(' Fabricator'))); // This checks for fabricator too.
+	return !!(
+		target &&
+		(name.includes(' Kit') || name.includes(' Fabricator'))
+	); // This checks for fabricator too.
 }
 
 function isUniqueHat(

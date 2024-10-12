@@ -2,13 +2,9 @@ import isNumber from '../util/isNumber';
 
 import { ISchema } from '../types/schema';
 
-const TEXTURE_EXCEPTIONS = [
-	['Health and Hell', 'Health and Hell (Green)'],
-];
+const TEXTURE_EXCEPTIONS = [['Health and Hell', 'Health and Hell (Green)']];
 
-const TEXTURE_TO_EFFECT_EXCEPTIONS = [
-	['Rainbow', 'Rainbow Reverie'],
-]
+const TEXTURE_TO_EFFECT_EXCEPTIONS = [['Rainbow', 'Rainbow Reverie']];
 
 /**
  * Iterates over effects object to get matching effect.

@@ -26,7 +26,7 @@ export default function (name: string): ItemNumber | null {
 function getType(name: string): ItemNumber['type'] {
 	const [_, type] = (name.match(/\b(Medal|Crate|Case|Munition)\b/) || []) as [
 		any,
-		'Medal' | 'Crate' | 'Case' | 'Munition'
+		'Medal' | 'Crate' | 'Case' | 'Munition',
 	];
 
 	// Same thing, different name.

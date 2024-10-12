@@ -179,7 +179,7 @@ export default class ParsedEcon {
 							target: this.nameAttrs.target as string,
 							output: this.nameAttrs.output,
 							outputQuality: this.nameAttrs.outputQuality,
-					  }
+						}
 					: undefined
 			);
 
@@ -284,9 +284,9 @@ export default class ParsedEcon {
 									paintDefindex: this.schema.getDefindex(
 										this.descriptions.paint
 									),
-							  }
+								}
 							: {}),
-				  }
+					}
 				: {}),
 
 			parts: this.descriptions.parts,

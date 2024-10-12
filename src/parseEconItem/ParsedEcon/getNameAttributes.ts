@@ -40,7 +40,9 @@ export default function (econ: ParsedEcon): NameAttributes {
 	}
 
 	const usableItem = getUsableItem(
-		attributes.itemNumber ? removeItemNumber(name, attributes.itemNumber) : name
+		attributes.itemNumber
+			? removeItemNumber(name, attributes.itemNumber)
+			: name
 	);
 	if (usableItem) {
 		Object.assign(attributes, usableItem);
@@ -51,7 +53,7 @@ export default function (econ: ParsedEcon): NameAttributes {
 
 /**
  * Returns a string that can be used for retrieving item number.
- * @param econ 
+ * @param econ
  * @returns name
  */
 function getNameForItemNumber(econ: ParsedEcon) {
@@ -62,7 +64,8 @@ function getNameForItemNumber(econ: ParsedEcon) {
 
 		return econ.item.name;
 	}
-	if (!econ.options.itemNumberFromFraudWarning) return econ.itemName.getOrigin();
+	if (!econ.options.itemNumberFromFraudWarning)
+		return econ.itemName.getOrigin();
 	const warning = econ.item.fraudwarnings?.find((f) =>
 		f.startsWith('This item has been renamed.')
 	);
@@ -74,7 +77,7 @@ function getNameForItemNumber(econ: ParsedEcon) {
 
 /**
  * Checks if item has been renamed based on fraudwarnings and symbols.
- * @param econ 
+ * @param econ
  * @returns if it has been renamed
  */
 function hasBeenRenamed(econ: ParsedEcon) {
