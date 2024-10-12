@@ -1,8 +1,6 @@
 import { SKUAttributes } from '../types';
 
-export function hasTargetDefindex(
-	attributes: SKUAttributes
-): attributes is {
+export function hasTargetDefindex(attributes: SKUAttributes): attributes is {
 	targetDefindex: number;
 	defindex: number;
 	quality: number;
@@ -11,9 +9,7 @@ export function hasTargetDefindex(
 	return Object.prototype.hasOwnProperty.call(attributes, 'targetDefindex');
 }
 
-export function hasOutputDefindex(
-	attributes: SKUAttributes
-): attributes is {
+export function hasOutputDefindex(attributes: SKUAttributes): attributes is {
 	outputDefindex: number;
 	outputQuality: number;
 	defindex: number;
@@ -23,9 +19,7 @@ export function hasOutputDefindex(
 	return Object.prototype.hasOwnProperty.call(attributes, 'outputDefindex');
 }
 
-export function hasOutputQuality(
-	attributes: SKUAttributes
-): attributes is {
+export function hasOutputQuality(attributes: SKUAttributes): attributes is {
 	outputQuality: number;
 	defindex: number;
 	quality: number;

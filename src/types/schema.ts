@@ -1,7 +1,12 @@
 export type NameToDefindex = { [name: string]: number };
 export type DefindexToName = { [defindex: number]: string };
 export type SchemaEnum = NameToDefindex & DefindexToName;
-export type ItemsGame = { items: Record<string, { static_attrs?: { 'set supply crate series'?: string } }> }
+export type ItemsGame = {
+	items: Record<
+		string,
+		{ static_attrs?: { 'set supply crate series'?: string } }
+	>;
+};
 
 /**
  * Injectable schema interface.

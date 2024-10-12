@@ -123,10 +123,7 @@ export class Format {
 		attributes: StrigifySKUAttributes | ItemAttributes,
 		options?: StringifyOptions
 	): string;
-	stringify(
-		sku: string,
-		options?: StringifyOptions
-	): string;
+	stringify(sku: string, options?: StringifyOptions): string;
 	stringify(
 		attributesOrSku: StrigifySKUAttributes | ItemAttributes | string,
 		options: StringifyOptions = {}

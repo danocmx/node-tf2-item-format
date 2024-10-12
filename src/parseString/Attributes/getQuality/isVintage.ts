@@ -6,10 +6,7 @@ export default function (name: string): boolean {
 	);
 }
 
-const VINTAGE_EXCEPTIONS = [
-	'Vintage Merryweather',
-	'Vintage Tyrolean',
-];
+const VINTAGE_EXCEPTIONS = ['Vintage Merryweather', 'Vintage Tyrolean'];
 
 function isVintageException(name: string): boolean {
 	return VINTAGE_EXCEPTIONS.some((exception) => name.includes(exception));

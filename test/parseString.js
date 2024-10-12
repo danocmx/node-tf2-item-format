@@ -647,6 +647,16 @@ describe('parseString', () => {
 			quality: 'Unusual',
 		});
 	});
+
+	it('Case #52 - Chiromancer\'s Kit', () => {
+		const itemObject = parseString("Chiromancer's Kit", false, false);
+
+		assert.deepEqual(itemObject, {
+			name: "Chiromancer's Kit",
+			craftable: true,
+			quality: 'Unique'
+		});
+	})
 });
 
 describe('parseString with numbers', () => {

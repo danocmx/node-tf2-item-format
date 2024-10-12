@@ -61,15 +61,20 @@ function parseString(
 	};
 
 	if (inNumbers) {
-		const convertedAttributes = getConvertedIntAttributes(schema, itemName, {
-			killstreak: attributes.killstreak,
-			wear: attributes.wear,
-			effect: attributes.effect,
-			quality: attributes.quality.value,
-			outputQuality:
-				attributes.usableItem && attributes.usableItem.outputQuality,
-			texture: attributes.texture,
-		});
+		const convertedAttributes = getConvertedIntAttributes(
+			schema,
+			itemName,
+			{
+				killstreak: attributes.killstreak,
+				wear: attributes.wear,
+				effect: attributes.effect,
+				quality: attributes.quality.value,
+				outputQuality:
+					attributes.usableItem &&
+					attributes.usableItem.outputQuality,
+				texture: attributes.texture,
+			}
+		);
 
 		if (!convertedAttributes.killstreak)
 			delete convertedAttributes.killstreak;

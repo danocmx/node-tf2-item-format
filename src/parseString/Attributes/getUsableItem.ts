@@ -53,8 +53,9 @@ function isStrangifierChemistrySet(name: string): boolean {
 
 const KIT_EXCEPTIONS = [
 	"Killer's Kit",
-	"Coffin Kit",
-	"Summer Starter Kit"
+	'Coffin Kit',
+	'Summer Starter Kit',
+	"Chiromancer's Kit",
 ];
 
 function getItemIfTarget(name: string): string | void {
@@ -67,9 +68,11 @@ function getItemIfTarget(name: string): string | void {
 		return;
 	}
 
-	return KIT_EXCEPTIONS.some((exception) => name.includes(exception)) ? undefined : 'Kit';
+	return KIT_EXCEPTIONS.some((exception) => name.includes(exception))
+		? undefined
+		: 'Kit';
 }
 
 function isChemistrySet(name: string): boolean {
-	return name.includes(' Chemistry Set') ;
+	return name.includes(' Chemistry Set');
 }
