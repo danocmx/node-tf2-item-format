@@ -54,7 +54,8 @@ function isStrangifierChemistrySet(name: string): boolean {
 const KIT_EXCEPTIONS = [
 	"Killer's Kit",
 	"Coffin Kit",
-	"Summer Starter Kit"
+	"Summer Starter Kit",
+	"Chiromancer's Kit"
 ];
 
 function getItemIfTarget(name: string): string | void {
