@@ -19,16 +19,16 @@ export default function (name: string, attributes: Attributes): string | void {
 	for (let i = 0; i < effectsKeys.length; i++) {
 		let effect: string | number = effectsKeys[i];
 
+		if (!name.includes(`${effect} `)) {
+			continue;
+		}
+
 		// New type of exception
 		if (effect === 'Smoking' && name.includes('Smoking Smoking Skid Lid')) {
 			return 'Smoking';
 		}
 
-		if (
-			effect === 'Haunted Ghosts' &&
-			name.includes('Haunted Ghosts ') &&
-			attributes.wear
-		) {
+		if (isEffectTexture(attributes, effect)) {
 			continue;
 		}
 
@@ -38,11 +38,7 @@ export default function (name: string, attributes: Attributes): string | void {
 				return exception[1];
 		}
 
-		if (
-			!isNumber(effect) &&
-			name.includes(`${effect} `) &&
-			!isException(name, effect)
-		) {
+		if (!isNumber(effect) && !isHatNameException(name, effect)) {
 			return effect;
 		}
 	}
@@ -72,9 +68,20 @@ const HAT_NAME_EXCEPTIONS: [string, string][] = [
 	['Cool Warm Sweater', 'Cool'],
 ];
 
-function isException(name: string, effect: string): boolean {
+function isHatNameException(name: string, effect: string): boolean {
 	return HAT_NAME_EXCEPTIONS.some((exception) => {
 		const [exceptionName, exceptionEffect] = exception;
 		return name.includes(exceptionName) && effect === exceptionEffect;
 	});
+}
+
+export const TEXTURE_EFFECT_EXCEPTION: string[] = ['Haunted Ghosts', 'Pumpkin Patch'];
+
+function isEffectTexture(
+	attributes: Attributes,
+	effectOrTexture: string
+): boolean {
+	return !!(
+		TEXTURE_EFFECT_EXCEPTION.includes(effectOrTexture) && attributes.wear
+	);
 }

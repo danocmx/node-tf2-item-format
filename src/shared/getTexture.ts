@@ -1,6 +1,7 @@
 import isNumber from '../util/isNumber';
 
 import { ISchema } from '../types/schema';
+import { TEXTURE_EFFECT_EXCEPTION } from '../parseString/Attributes/getEffect';
 
 const TEXTURE_EXCEPTIONS = [['Health and Hell', 'Health and Hell (Green)']];
 
@@ -19,11 +20,11 @@ export default function (
 	for (let i = 0; i < textureKeys.length; i++) {
 		const texture: number | string = textureKeys[i];
 
-		if (
-			texture === 'Haunted Ghosts' &&
-			name.includes('Haunted Ghosts') &&
-			!attributes.wear
-		) {
+		if (!name.includes(`${texture} `)) {
+			continue;
+		}
+
+		if (isTextureEffect(attributes, texture)) {
 			continue;
 		}
 
@@ -54,4 +55,13 @@ function isTextureToEffectException(name: string, texture: string): boolean {
 		}
 	}
 	return false;
+}
+
+function isTextureEffect(
+	attributes: { wear: any | null },
+	effectOrTexture: string
+): boolean {
+	return !!(
+		TEXTURE_EFFECT_EXCEPTION.includes(effectOrTexture) && !attributes.wear
+	);
 }
