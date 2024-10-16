@@ -1382,6 +1382,29 @@ describe('parseString with numbers', () => {
 			quality: 6,
 		});
 	});
+
+	it('Case #52 - Pumpking Patch #1', () => {
+		const itemObject = parseString('Pumpkin Patch Taunt: Most Wanted', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Taunt: Most Wanted',
+			craftable: true,
+			effect: 3184,
+			quality: 5,
+		});
+	});
+
+	it('Case #52 - Pumpking Patch #1', () => {
+		const itemObject = parseString('Strange Pumpkin Patch Minigun (Factory New)', true, false);
+
+		assert.deepEqual(itemObject, {
+			name: 'Minigun',
+			craftable: true,
+			quality: 11,
+			wear: 1,
+			texture: 62
+		});
+	});
 });
 
 describe('parseString with defindexes and numbers.', () => {
