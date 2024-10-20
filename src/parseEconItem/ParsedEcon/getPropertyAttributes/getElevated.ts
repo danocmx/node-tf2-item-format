@@ -5,7 +5,7 @@ export default function (item: EconItem, tags: TagAttributes): boolean {
 }
 
 function isStrangeType({ type }: EconItem): boolean {
-	return /( - Kills: |- Points Scored: )\d+/.test(type);
+	return /( - Kills: |- Points Scored: |- Carnival Kills: )\d+/.test(type);
 }
 
 function isStrangeQuality({ quality }: TagAttributes): boolean {
