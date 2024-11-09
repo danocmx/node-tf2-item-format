@@ -2350,4 +2350,16 @@ describe('parseString with defindexes and numbers.', () => {
 			quality: 6,
 		});
 	});
+	
+	it('Case #66 - Stardust', () => {
+		const itemObject = parseString('Stardust Pathway Hat Outta Hell', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Hat Outta Hell',
+			defindex: 31216,
+			craftable: true,
+			quality: 5,
+			effect: 214
+		});
+	});
 });
