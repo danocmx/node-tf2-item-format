@@ -24,13 +24,13 @@ export default function (name: string): ItemNumber | null {
 }
 
 function getType(name: string): ItemNumber['type'] {
-	const [_, type] = (name.match(/\b(Medal|Crate|Case|Munition)\b/) || []) as [
+	const [_, type] = (name.match(/\b(Medal|Crate|Case|Munition|Cooler)\b/) || []) as [
 		any,
-		'Medal' | 'Crate' | 'Case' | 'Munition',
+		'Medal' | 'Crate' | 'Case' | 'Munition' | 'Cooler',
 	];
 
 	// Same thing, different name.
-	if (type === 'Case' || type === 'Munition') return 'crate';
+	if (type === 'Case' || type === 'Munition' || type == 'Cooler') return 'crate';
 
 	// Used for chemistry sets.
 	if (!type && name.includes('Series ')) return 'series';
