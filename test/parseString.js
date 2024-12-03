@@ -2362,4 +2362,41 @@ describe('parseString with defindexes and numbers.', () => {
 			effect: 214
 		});
 	});
+
+	it('Case #67 - Black Summer 2013 Cooler #69', () => {
+		const itemObject = parseString('Black Summer 2013 Cooler #69', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Black Summer 2013 Cooler',
+			defindex: 5656,
+			craftable: true,
+			quality: 6,
+			itemNumber: {
+				type: 'crate',
+				value: 69
+			}
+		});
+	})
+
+	it('Case #68 - Caffeine Cooler', () => {
+		const itemObject = parseString('Caffeine Cooler', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Caffeine Cooler',
+			defindex: 30083,
+			craftable: true,
+			quality: 6,
+		});
+	})
+
+	it('Case #69 - Red Summer 2013 Cooler Key', () => {
+		const itemObject = parseString('Red Summer 2013 Cooler Key', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Red Summer 2013 Cooler Key',
+			defindex: 5643,
+			craftable: true,
+			quality: 6,
+		});
+	})
 });
