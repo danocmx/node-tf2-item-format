@@ -2399,4 +2399,19 @@ describe('parseString with defindexes and numbers.', () => {
 			quality: 6,
 		});
 	})
+
+	it('Case #69 - Strongbox', () => {
+		const itemObject = parseString('Mann Co. Strongbox #81', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Mann Co. Strongbox',
+			defindex: 5719,
+			craftable: true,
+			quality: 6,
+			itemNumber: {
+				type: 'crate',
+				value: 81
+			}
+		});
+	})
 });
