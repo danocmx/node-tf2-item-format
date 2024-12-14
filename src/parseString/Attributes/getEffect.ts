@@ -66,6 +66,8 @@ const HAT_NAME_EXCEPTIONS: [string, string][] = [
 	['Taunt: The Hot Wheeler', 'Hot'],
 	['Frostbite Bonnet', 'Frostbite'],
 	['Cool Warm Sweater', 'Cool'],
+	['Frostbite Fit', 'Frostbite'],
+	['Hot Spaniel', 'Hot'],
 ];
 
 function isHatNameException(name: string, effect: string): boolean {
