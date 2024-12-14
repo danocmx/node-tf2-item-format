@@ -1344,13 +1344,13 @@ describe('parseString with numbers', () => {
 
 	it("Case #50 - Bountiful Riches taunt", () => {
 		const itemObject = parseString(
-			"Bountiful Riches Shred Alert",
+			"Bountiful Riches Taunt: The Shred Alert",
 			true,
 			false,
 		);
 		
 		assert.deepEqual(itemObject, {
-			name: "Shred Alert",
+			name: "Taunt: The Shred Alert",
 			craftable: true,
 			quality: 5,
 			effect: 3165
@@ -2308,13 +2308,13 @@ describe('parseString with defindexes and numbers.', () => {
 
 	it("Case #63 - Bountiful Riches taunt", () => {
 		const itemObject = parseString(
-			"Bountiful Riches Shred Alert",
+			"Bountiful Riches Taunt: The Shred Alert",
 			true,
 			true,
 		);
 		
 		assert.deepEqual(itemObject, {
-			name: "Shred Alert",
+			name: "Taunt: The Shred Alert",
 			craftable: true,
 			quality: 5,
 			effect: 3165,
