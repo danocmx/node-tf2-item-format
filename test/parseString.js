@@ -2414,4 +2414,16 @@ describe('parseString with defindexes and numbers.', () => {
 			}
 		});
 	})
+
+	it('Case #70 - Autumn Leaves effect', () => {
+		const itemObject = parseString('Autumn Leaves Taunt: The Skating Scorcher', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: 'Taunt: The Skating Scorcher',
+			defindex: 30919,
+			craftable: true,
+			quality: 5,
+			effect: 3126
+		});
+	})
 });

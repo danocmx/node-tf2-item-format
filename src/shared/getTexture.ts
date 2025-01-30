@@ -5,7 +5,7 @@ import { TEXTURE_EFFECT_EXCEPTION } from '../parseString/Attributes/getEffect';
 
 const TEXTURE_EXCEPTIONS = [['Health and Hell', 'Health and Hell (Green)']];
 
-const TEXTURE_TO_EFFECT_EXCEPTIONS = [['Rainbow', 'Rainbow Reverie'], ['Stardust', 'Stardust Pathway']];
+const TEXTURE_TO_EFFECT_EXCEPTIONS = [['Rainbow', 'Rainbow Reverie'], ['Stardust', 'Stardust Pathway'], ['Autumn', 'Autumn Leaves']];
 
 /**
  * Iterates over effects object to get matching effect.
