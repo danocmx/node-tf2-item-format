@@ -2351,7 +2351,7 @@ describe('parseString with defindexes and numbers.', () => {
 		});
 	});
 	
-	it('Case #66 - Stardust', () => {
+	it('Case #66 - Stardust Pathway effect', () => {
 		const itemObject = parseString('Stardust Pathway Hat Outta Hell', true, true);
 
 		assert.deepEqual(itemObject, {
@@ -2424,6 +2424,19 @@ describe('parseString with defindexes and numbers.', () => {
 			craftable: true,
 			quality: 5,
 			effect: 3126
+		});
+	})
+
+	it('Case #71 - Stardust texture', () => {
+		const itemObject = parseString('Strange Stardust War Paint (Minimal Wear)', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: "War Paint",
+			craftable: true,
+			quality: 11,
+			texture: 421,
+			wear: 2,
+			defindex: 9536
 		});
 	})
 });
