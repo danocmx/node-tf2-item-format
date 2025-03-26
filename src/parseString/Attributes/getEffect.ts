@@ -77,7 +77,7 @@ function isHatNameException(name: string, effect: string): boolean {
 	});
 }
 
-export const TEXTURE_EFFECT_EXCEPTION: string[] = ['Haunted Ghosts', 'Pumpkin Patch'];
+export const TEXTURE_EFFECT_EXCEPTION: string[] = ['Haunted Ghosts', 'Pumpkin Patch', 'Stardust'];
 
 function isEffectTexture(
 	attributes: Attributes,
