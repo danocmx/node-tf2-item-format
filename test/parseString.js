@@ -2439,4 +2439,16 @@ describe('parseString with defindexes and numbers.', () => {
 			defindex: 9536
 		});
 	})
+
+	it('Case #72 - Stardust effect', () => {
+		const itemObject = parseString('Stardust Throttlehead', true, true);
+
+		assert.deepEqual(itemObject, {
+			name: "Throttlehead",
+			craftable: true,
+			quality: 5,
+			effect: 249,
+			defindex: 31282
+		});
+	})
 });
