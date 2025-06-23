@@ -1,7 +1,7 @@
 import { EconDescription } from '../../../types';
 import { ISchema } from '../../../types/schema';
 
-const KILLSTREAKER_SHEEN_REGEX = /^\(Killstreaker: (.+), Sheen: (.+)\)$/
+const KILLSTREAKER_SHEEN_REGEX = /^\(Killstreaker: ([a-zA-Z0-9 \-]+), Sheen: ([a-zA-Z0-9 \-]+)\)$/
 
 /**
  * Handles killstreak actions
