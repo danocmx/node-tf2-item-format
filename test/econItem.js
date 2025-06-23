@@ -3006,6 +3006,378 @@ describe('parseEconItem', () => {
 			collection: 'Mayflower Cosmetics Collection',
 		});
 	});
+
+	it('Case #21', () => {
+		const econItem = parseEconItem(
+			{
+				appid: 440,
+				classid: '4075564961',
+				instanceid: '237513175',
+				currency: 0,
+				background_color: '3C352E',
+				icon_url:
+					'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEbfggXWAjxsTdNicTZBvuYN_IBid8K6ZFH3jMlklkiNbfkZjYwcF2aBKIMWqE891roUXBi7MQ2VdPko-NUfFjovYaUNq5sbo_LBg11eA',
+				icon_url_large:
+					'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEbfggXWAjxsTdNicTZBvuYN_IBid8K6ZFH3jMlklkiNbfkZjYwcF2aBKIMWqE891roUXBi7MQ2VdPko-NUfFjovYaUNq5sbo_LBg11eA',
+				descriptions: [
+					{
+						value: "This item has a set of inputs that, once fulfilled, will\nreward you with what's listed in its outputs.",
+						name: 'attribute',
+					},
+					{ value: ' ', name: 'attribute' },
+					{
+						value: 'The following are the inputs that must be fulfilled.',
+						name: 'attribute',
+					},
+					{
+						value: 'Unique Specialized Killstreak Item x 2',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{
+						value: 'Battle-Worn Robot Money Furnace x 10',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{
+						value: 'Battle-Worn Robot Taunt Processor x 6',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{
+						value: 'Reinforced Robot Emotion Detector x 4',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{
+						value: 'Reinforced Robot Humor Suppression Pump x 2',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{
+						value: 'Pristine Robot Currency Digester x 2',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{
+						value: 'Pristine Robot Brainstorm Bulb x 1',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{ value: ' ', name: 'attribute' },
+					{
+						value: 'You will receive all of the following outputs once all of the inputs are fulfilled.',
+						name: 'attribute',
+					},
+					{
+						value: 'Professional Killstreak Jag Kit',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{
+						value: '(Killstreaker: Hypno-Beam, Sheen: Manndarin)',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{ value: ' ', name: 'attribute' },
+					{
+						value: 'This is a limited use item. Uses: 1',
+						color: '00a000',
+						name: 'attribute',
+					},
+				],
+				tradable: 1,
+				actions: [
+					{
+						link: 'http://wiki.teamfortress.com/scripts/itemredirect.php?id=20003&lang=en_US',
+						name: 'Item Wiki Page...',
+					},
+				],
+				name: 'Professional Killstreak Jag Kit Fabricator',
+				name_color: '7D6D00',
+				type: 'Level 2 Recipe',
+				market_name: 'Professional Killstreak Jag Kit Fabricator',
+				market_hash_name: 'Professional Killstreak Jag Kit Fabricator',
+				commodity: 0,
+				market_tradable_restriction: 7,
+				market_marketable_restriction: 0,
+				marketable: 1,
+				tags: [
+					{
+						category: 'Quality',
+						internal_name: 'Unique',
+						localized_category_name: 'Quality',
+						localized_tag_name: 'Unique',
+						color: '7D6D00',
+					},
+					{
+						category: 'Type',
+						internal_name: 'TF_ItemDynamicRecipeTool',
+						localized_category_name: 'Type',
+						localized_tag_name: 'Recipe',
+					},
+				],
+			},
+			false,
+			false
+		);
+
+		assert.deepEqual(econItem, {
+			classes: [],
+			commodity: false,
+			craftable: true,
+			fullName: 'Professional Killstreak Jag Kit Fabricator',
+			id: undefined,
+			img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEbfggXWAjxsTdNicTZBvuYN_IBid8K6ZFH3jMlklkiNbfkZjYwcF2aBKIMWqE891roUXBi7MQ2VdPko-NUfFjovYaUNq5sbo_LBg11eA/',
+			killstreak: 'Professional Killstreak',
+			killstreaker: 'Hypno-Beam',
+			level: 2,
+			marketable: true,
+			name: 'Professional Killstreak Kit Fabricator',
+			parts: [],
+			quality: 'Unique',
+			sheen: 'Manndarin',
+			spells: [],
+			target: 'Jag',
+			tradable: true,
+			type: 'TF_ItemDynamicRecipeTool',
+		});
+	});
+
+	it('Case #22', () => {
+		const econItem = parseEconItem(
+			{
+				appid: 440,
+				classid: '832855820',
+				instanceid: '237183785',
+				currency: 0,
+				background_color: '3C352E',
+				icon_url:
+					'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEbfggXWAjxsTdNicTZBvuYN-wBid0wq8MNjzRtlQcrZeCwZm5mIlOUVaFfWaI8pgq7CyRhvJYwA9W1rusHfw3x9NyRDoHCqNM',
+				icon_url_large:
+					'fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEbfggXWAjxsTdNicTZBvuYN-wBid0wq8MNjzRtlQcrZeCwZm5mIlOUVaFfWaI8pgq7CyRhvJYwA9W1rusHfw3x9NyRDoHCqNM',
+				descriptions: [
+					{
+						value: "This item has a set of inputs that, once fulfilled, will\nreward you with what's listed in its outputs.",
+						name: 'attribute',
+					},
+					{ value: ' ', name: 'attribute' },
+					{
+						value: 'The following are the inputs that must be fulfilled.',
+						name: 'attribute',
+					},
+					{
+						value: 'Unique Killstreak Item x 1',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{
+						value: 'Battle-Worn Robot KB-808 x 8',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{
+						value: 'Battle-Worn Robot Taunt Processor x 13',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{
+						value: 'Battle-Worn Robot Money Furnace x 3',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{
+						value: 'Reinforced Robot Humor Suppression Pump x 3',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{
+						value: 'Reinforced Robot Emotion Detector x 2',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{ value: ' ', name: 'attribute' },
+					{
+						value: 'You will receive all of the following outputs once all of the inputs are fulfilled.',
+						name: 'attribute',
+					},
+					{
+						value: 'Specialized Killstreak Shovel Kit',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{
+						value: '(Sheen: Mean Green)',
+						color: '8b8989',
+						name: 'attribute',
+					},
+					{ value: ' ', name: 'attribute' },
+					{
+						value: 'This is a limited use item. Uses: 1',
+						color: '00a000',
+						name: 'attribute',
+					},
+				],
+				tradable: 1,
+				actions: [
+					{
+						link: 'http://wiki.teamfortress.com/scripts/itemredirect.php?id=20002&lang=en_US',
+						name: 'Item Wiki Page...',
+					},
+				],
+				name: 'Specialized Killstreak Shovel Kit Fabricator',
+				name_color: '7D6D00',
+				type: 'Level 5 Recipe',
+				market_name: 'Specialized Killstreak Shovel Kit Fabricator',
+				market_hash_name:
+					'Specialized Killstreak Shovel Kit Fabricator',
+				commodity: 0,
+				market_tradable_restriction: 7,
+				market_marketable_restriction: 0,
+				marketable: 1,
+				tags: [
+					{
+						category: 'Quality',
+						internal_name: 'Unique',
+						localized_category_name: 'Quality',
+						localized_tag_name: 'Unique',
+						color: '7D6D00',
+					},
+					{
+						category: 'Type',
+						internal_name: 'TF_ItemDynamicRecipeTool',
+						localized_category_name: 'Type',
+						localized_tag_name: 'Recipe',
+					},
+				],
+			},
+			false,
+			false
+		);
+
+		assert.deepEqual(econItem, {
+			classes: [],
+			commodity: false,
+			craftable: true,
+			fullName: 'Specialized Killstreak Shovel Kit Fabricator',
+			id: undefined,
+			img: 'https://steamcommunity-a.akamaihd.net/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZULUrsm1j-9xgEbfggXWAjxsTdNicTZBvuYN-wBid0wq8MNjzRtlQcrZeCwZm5mIlOUVaFfWaI8pgq7CyRhvJYwA9W1rusHfw3x9NyRDoHCqNM/',
+			killstreak: 'Specialized Killstreak',
+			level: 5,
+			marketable: true,
+			name: 'Specialized Killstreak Kit Fabricator',
+			parts: [],
+			quality: 'Unique',
+			sheen: 'Mean Green',
+			spells: [],
+			target: 'Shovel',
+			tradable: true,
+			type: 'TF_ItemDynamicRecipeTool',
+		});
+	});
+
+	it('Case #22', () => {
+		const econItem = parseEconItem(
+			{
+				appid: 440,
+				classid: '780985793',
+				instanceid: '191861032',
+				currency: 0,
+				background_color: '3C352E',
+				icon_url:
+					'IzMF03bi9WpSBq-S-ekoE33L-iLqGFHVaU25ZzQNQcXdEH9myp0du1AHE66AL6lNU5Fw_2yIWtaMjIpQmjATy1FSOCXHzXtgdupiB8fH0gL-7-fUGCymOWLCdiSOHQowTbFdPGver2bxse6QETzLELt_Sw0DeaEA9TJXfZfeKUtgg4ZkszXlxwovRkNue8hBITCjmylDf-t2nWcbKMxT9m3wK5THgVxifh83DbmIH73Pb5-imC8yDFonRvQXYI-Vrnyxr5qoOajYbud3Jq5h-taU3lkcTs0jWY87yoxDhIzzqQh8Z4kvHFtSQu19MW3TVP7hwXefXeuzPuIN58hUBQtOTUjsnXJ9B0546arYPwwU5GBmrPVK4PwXSQ',
+				icon_url_large:
+					'IzMF03bi9WpSBq-S-ekoE33L-iLqGFHVaU25ZzQNQcXdEH9myp0du1AHE66AL6lNU5Fw_2yIWtaMjIpQmjATy1FSOCXHzXtgdupiB8fH0gL-7-fUGCymOWLCdiSOHQowTbFdPGver2bxse6QETzLELt_Sw0DeaEA9TJXfZfeKUtgg4ZkszXlxwovRkNue8hBITCjmylDf-t2nWcbKMxT9m3wK5THgVxifh83DbmIH73Pb5-imC8yDFonRvQXYI-Vrnyxr5qoOajYbud3Jq5h-taU3lkcTs0jWY87yoxDhIzzqQh8Z4kvHFtSQu19MW3TVP7hwXefXeuzPuIN58hUBQtOTUjsnXJ9B0546arYPwwU5GBmrPVK4PwXSQ',
+				descriptions: [
+					{
+						value: 'Killstreaker: Incinerator',
+						color: '7ea9d1',
+						name: 'attribute',
+					},
+					{
+						value: 'Sheen: Villainous Violet',
+						color: '7ea9d1',
+						name: 'attribute',
+					},
+					{
+						value: 'Killstreaks Active',
+						color: '7ea9d1',
+						name: 'attribute',
+					},
+					{
+						value: 'Used to add killstreak properties and a cool sheen to an item.\nGives the user special effects when on a killstreak.\n\nKillstreak effects must be removed from an item via Restore button before a new kit can be applied.',
+						name: 'attribute',
+					},
+					{
+						value: 'This Killstreak Kit can be applied to a Pomson 6000.',
+						name: 'attribute',
+					},
+					{ value: ' ', name: 'attribute' },
+					{
+						value: 'This is a limited use item. Uses: 1',
+						color: '00a000',
+						name: 'attribute',
+					},
+					{ value: ' ', name: 'attribute' },
+					{ value: '( Not Usable in Crafting )', name: 'attribute' },
+				],
+				tradable: 1,
+				actions: [
+					{
+						link: 'http://wiki.teamfortress.com/scripts/itemredirect.php?id=6526&lang=en_US',
+						name: 'Item Wiki Page...',
+					},
+				],
+				name: 'Professional Killstreak Pomson 6000 Kit',
+				name_color: '7D6D00',
+				type: 'Level 5 Professional Killstreak Kit',
+				market_name: 'Professional Killstreak Pomson 6000 Kit',
+				market_hash_name: 'Professional Killstreak Pomson 6000 Kit',
+				commodity: 0,
+				market_tradable_restriction: 7,
+				market_marketable_restriction: 0,
+				marketable: 1,
+				tags: [
+					{
+						category: 'Quality',
+						internal_name: 'Unique',
+						localized_category_name: 'Quality',
+						localized_tag_name: 'Unique',
+						color: '7D6D00',
+					},
+					{
+						category: 'Type',
+						internal_name: 'TF_KillStreakifierToolC',
+						localized_category_name: 'Type',
+						localized_tag_name: 'Professional Killstreak Kit',
+					},
+				],
+			},
+			false,
+			false
+		);
+
+		assert.deepEqual(econItem, {
+			id: undefined,
+			classes: [],
+			commodity: false,
+			craftable: false,
+			fullName: 'Non-Craftable Professional Killstreak Pomson 6000 Kit',
+			img: 'https://steamcommunity-a.akamaihd.net/economy/image/IzMF03bi9WpSBq-S-ekoE33L-iLqGFHVaU25ZzQNQcXdEH9myp0du1AHE66AL6lNU5Fw_2yIWtaMjIpQmjATy1FSOCXHzXtgdupiB8fH0gL-7-fUGCymOWLCdiSOHQowTbFdPGver2bxse6QETzLELt_Sw0DeaEA9TJXfZfeKUtgg4ZkszXlxwovRkNue8hBITCjmylDf-t2nWcbKMxT9m3wK5THgVxifh83DbmIH73Pb5-imC8yDFonRvQXYI-Vrnyxr5qoOajYbud3Jq5h-taU3lkcTs0jWY87yoxDhIzzqQh8Z4kvHFtSQu19MW3TVP7hwXefXeuzPuIN58hUBQtOTUjsnXJ9B0546arYPwwU5GBmrPVK4PwXSQ/',
+			killstreak: 'Professional Killstreak',
+			killstreaker: 'Incinerator',
+			level: 5,
+			marketable: true,
+			name: 'Professional Killstreak Kit',
+			parts: [],
+			quality: 'Unique',
+			sheen: 'Villainous Violet',
+			spells: [],
+			target: 'Pomson 6000',
+			tradable: true,
+			type: 'TF_KillStreakifierToolC',
+		});
+	});
 });
 
 describe('Econ Item in Numbers', () => {

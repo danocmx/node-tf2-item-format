@@ -1,6 +1,8 @@
 import { EconDescription } from '../../../types';
 import { ISchema } from '../../../types/schema';
 
+const KILLSTREAKER_SHEEN_REGEX = /^\(Killstreaker: ([a-zA-Z0-9 \-]+), Sheen: ([a-zA-Z0-9 \-]+)\)$/
+
 /**
  * Handles killstreak actions
  */
@@ -25,6 +27,10 @@ export default class Killstreak {
 		this.value = value;
 	}
 
+	static isKillstreakerSheenDescription(description: EconDescription): boolean {
+		return KILLSTREAKER_SHEEN_REGEX.test(description.value)
+	}
+
 	/**
 	 * Checks if description includes killstreaker
 	 * Killstreaker is an `effect` from killstreak
@@ -44,6 +50,10 @@ export default class Killstreak {
 	 * @return {boolean}
 	 */
 	static isSheen(description: EconDescription): boolean {
+		if (description.value.startsWith('(Sheen: ') && description.value.endsWith(')')) {
+			return true;
+		}
+
 		return (
 			description.value.startsWith('Sheen: ') &&
 			description.color === '7ea9d1'
@@ -62,6 +72,19 @@ export default class Killstreak {
 		);
 	}
 
+	setKillstreakerSheen(description: EconDescription): void {
+		const match = description.value.match(KILLSTREAKER_SHEEN_REGEX)
+		if (match == null) {
+			throw new Error("Wrongly matched killstreaker for econ item, report this incident to github.");
+		}
+
+		const [_, killstreaker, sheen] = match;
+
+		this.sheen = sheen;
+		this.killstreaker = killstreaker;
+		this.killstreak = 'Professional Killstreak';
+	}
+
 	/**
 	 * Sets killstreaker from description
 	 * @param {object} description
@@ -78,7 +101,14 @@ export default class Killstreak {
 	 * @return {string}
 	 */
 	setSheen(description: EconDescription): void {
-		this.sheen = description.value.replace('Sheen: ', '');
+		if (description.value.startsWith('(')) {
+			this.sheen = description.value
+				.replace(/^\(Sheen: /, '')
+				.replace(/\)$/, '');
+		} else {
+			this.sheen = description.value.replace('Sheen: ', '');
+		}
+
 		this.killstreak = 'Specialized Killstreak';
 	}
 
