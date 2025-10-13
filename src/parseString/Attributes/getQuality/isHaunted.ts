@@ -15,6 +15,7 @@ const HAUNTED_EXCEPTIONS = [
 	'Haunted Forever',
 	'Haunted Wick',
 	'Haunted Cremation',
+	'Haunted Mist' // Effect
 ];
 
 function isHauntedException(name: string): boolean {
