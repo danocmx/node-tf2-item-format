@@ -317,6 +317,35 @@ export class Schema implements ISchema {
 
 		return correctItem;
 	}
+
+	public kitExceptions!: string[];
+
+	private getKitExceptions(): string[] {
+		if (this.kitExceptions) {
+			return this.kitExceptions;
+		}
+
+		if (!this.items) {
+			this.loadDefindexes();
+		}
+
+		this.kitExceptions = this.items
+			.filter((item) => {
+				return (
+					// Exclude killstreak kits
+					item.item_name !== 'Kit' && item.item_name.includes('Kit')
+				);
+			})
+			.map((item) => item.item_name);
+
+		return this.kitExceptions;
+	}
+
+	isKitException(name: string): boolean {
+		return this.getKitExceptions().some((exception) =>
+			name.includes(exception)
+		);
+	}
 }
 
 /**

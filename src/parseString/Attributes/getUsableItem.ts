@@ -1,6 +1,7 @@
 import getKillstreak from '../../shared/getKillstreak';
 
 import { TargetOutputItem } from '../../types';
+import { ISchema } from '../../types/schema';
 
 /**
  * Finds out which usable item it is
@@ -9,7 +10,10 @@ import { TargetOutputItem } from '../../types';
  * @param {string} name
  * @return {Object}
  */
-export default function (name: string): Partial<TargetOutputItem> | null {
+export default function getUsableItem(
+	schema: ISchema,
+	name: string
+): Partial<TargetOutputItem> | null {
 	// TODO: add series to itemNumber.
 	// For chemistry sets the quality is predefined
 	if (isStrangifierChemistrySet(name)) {
@@ -31,7 +35,7 @@ export default function (name: string): Partial<TargetOutputItem> | null {
 		};
 	}
 
-	const item = getItemIfTarget(name);
+	const item = getItemIfTarget(schema, name);
 	if (item) {
 		return {
 			target: name
@@ -58,7 +62,7 @@ const KIT_EXCEPTIONS = [
 	"Chiromancer's Kit",
 ];
 
-function getItemIfTarget(name: string): string | void {
+function getItemIfTarget(schema: ISchema, name: string): string | void {
 	const match = name.match(/ (Kit Fabricator|Strangifier|Unusualifier)/);
 	if (match) {
 		return match[1];
@@ -68,9 +72,15 @@ function getItemIfTarget(name: string): string | void {
 		return;
 	}
 
-	return KIT_EXCEPTIONS.some((exception) => name.includes(exception))
-		? undefined
-		: 'Kit';
+	if (
+		schema.isKitException
+			? schema.isKitException(name)
+			: KIT_EXCEPTIONS.some((exception) => name.includes(exception))
+	) {
+		return undefined;
+	}
+
+	return 'Kit';
 }
 
 function isChemistrySet(name: string): boolean {

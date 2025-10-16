@@ -40,6 +40,7 @@ export default function (econ: ParsedEcon): NameAttributes {
 	}
 
 	const usableItem = getUsableItem(
+		econ.schema,
 		attributes.itemNumber
 			? removeItemNumber(name, attributes.itemNumber)
 			: name

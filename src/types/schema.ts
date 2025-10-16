@@ -30,4 +30,10 @@ export type ISchema = {
 
 	isUniqueHat(nameOrDefindex: string | number): boolean;
 	getCrateNumber(defindex: string | number): number;
+
+	isQualityException?(quality: number | string, name: string): boolean;
+	isKitException?(name: string): boolean;
+	isEffectException?(): boolean;
+	isTextureException?(): boolean;
+	isUniqueHatException?(name: string): boolean;
 };
