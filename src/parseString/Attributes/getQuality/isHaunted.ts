@@ -1,8 +1,10 @@
-export default function (name: string): boolean {
+import { ISchema } from "../../../types/schema";
+
+export default function (schema: ISchema, name: string): boolean {
 	const hauntedCount = name.match(/Haunted /g);
 	return (
 		!!hauntedCount &&
-		(hauntedCount.length === 2 || !isHauntedException(name))
+		(hauntedCount.length === 2 || !isHauntedException(schema, name))
 	);
 }
 
@@ -18,6 +20,10 @@ const HAUNTED_EXCEPTIONS = [
 	'Haunted Mist' // Effect
 ];
 
-function isHauntedException(name: string): boolean {
+function isHauntedException(schema: ISchema, name: string): boolean {
+	if (schema.isQualityException) {
+		return schema.isQualityException("Haunted", name);
+	}
+
 	return HAUNTED_EXCEPTIONS.some((exception) => name.includes(exception));
 }

@@ -1,5 +1,7 @@
-export default function (name: string): boolean {
-	return name.includes('Strange ') && !isStrangeException(name);
+import { ISchema } from "../../../types/schema";
+
+export default function (schema: ISchema, name: string): boolean {
+	return name.includes('Strange ') && !isStrangeException(schema, name);
 }
 
 const STRANGE_EXCEPTIONS = [
@@ -10,6 +12,10 @@ const STRANGE_EXCEPTIONS = [
 	'Strange Cosmetic Part: ',
 ];
 
-function isStrangeException(name: string): boolean {
+function isStrangeException(schema: ISchema, name: string): boolean {
+	if (schema.isQualityException) {
+		return schema.isQualityException("Strange", name);
+	}
+
 	return STRANGE_EXCEPTIONS.some((exception) => name.includes(exception));
 }

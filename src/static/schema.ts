@@ -329,7 +329,23 @@ export class Schema implements ISchema {
 			this.loadDefindexes();
 		}
 
-		this.kitExceptions = this.items
+		if (!this.textures) {
+			this.loadTextures();
+		}
+
+		if (!this.effects) {
+			this.loadEffects();
+		}
+
+		const effectKitExceptions = Object.keys(this.effects).filter((effect) =>
+			effect.includes('Kit')
+		);
+
+		const textureKitExceptions = Object.keys(this.textures).filter(
+			(texture) => texture.includes('Kit')
+		);
+
+		const nameKitExceptions = this.items
 			.filter((item) => {
 				return (
 					// Exclude killstreak kits
@@ -337,6 +353,12 @@ export class Schema implements ISchema {
 				);
 			})
 			.map((item) => item.item_name);
+
+		this.kitExceptions = [
+			...effectKitExceptions,
+			...textureKitExceptions,
+			...nameKitExceptions,
+		];
 
 		return this.kitExceptions;
 	}
@@ -359,7 +381,7 @@ export class Schema implements ISchema {
 		}
 
 		this.uniqueHatExceptions = this.items
-			.filter((item) => item.item_name.startsWith("The "))
+			.filter((item) => item.item_name.startsWith('The '))
 			.map((item) => item.item_name);
 
 		return this.uniqueHatExceptions;
@@ -373,6 +395,54 @@ export class Schema implements ISchema {
 		}
 
 		return exceptions.includes(name);
+	}
+
+	public qualityExceptions: Record<string, string[]> = {};
+
+	private getQualityExceptions(quality: string): string[] {
+		if (this.qualityExceptions[quality]) {
+			return this.qualityExceptions[quality];
+		}
+
+		if (!this.items) {
+			this.loadDefindexes();
+		}
+
+		if (!this.textures) {
+			this.loadTextures();
+		}
+
+		if (!this.effects) {
+			this.loadEffects();
+		}
+
+		const effectExceptionsForQuality = Object.keys(this.effects).filter(
+			(effect) => effect.includes(quality)
+		);
+
+		const textureExceptionsForQuality = Object.keys(this.textures).filter(
+			(texture) => texture.includes(quality)
+		);
+
+		const nameExceptionsForQuality = this.items
+			.filter((item) => item.item_name.includes(`${quality} `))
+			.map((item) => item.item_name);
+
+		this.qualityExceptions[quality] = [
+			...effectExceptionsForQuality,
+			...textureExceptionsForQuality,
+			...nameExceptionsForQuality,
+		];
+
+		return this.qualityExceptions[quality];
+	}
+
+	isQualityException(quality: number | string, name: string): boolean {
+		const qualityName = this.getQualityName(quality);
+
+		return this.getQualityExceptions(qualityName).some((e) =>
+			name.includes(e)
+		);
 	}
 }
 
