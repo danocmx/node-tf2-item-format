@@ -55,7 +55,7 @@ function isStrangifierChemistrySet(name: string): boolean {
 	return name.includes(' Strangifier Chemistry Set');
 }
 
-const KIT_EXCEPTIONS = [
+const KIT_EXCEPTIONS = [ // Exceptions kept for backwards compatibility
 	"Killer's Kit",
 	'Coffin Kit',
 	'Summer Starter Kit',

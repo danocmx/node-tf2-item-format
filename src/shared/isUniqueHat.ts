@@ -1,4 +1,5 @@
 import Attributes from '../parseString/Attributes';
+import { ISchema } from '../types/schema';
 
 /**
  * These items keep 'The' in name.
@@ -45,9 +46,17 @@ const EXCEPTIONS = [
  * Signalizes if `The` is at the start of name.
  * Only happens to hats with unique quality.
  */
-export default function (name: string, attributes?: Attributes): boolean {
+export default function isUniqueHat(
+	schema: ISchema,
+	name: string,
+	attributes?: Attributes
+): boolean {
 	if (!name.startsWith('The ')) {
 		return false;
+	}
+
+	if (schema.isUniqueHatException) {
+		return !schema.isUniqueHatException(name, !attributes?.itemNumber);
 	}
 
 	if (attributes?.itemNumber) {

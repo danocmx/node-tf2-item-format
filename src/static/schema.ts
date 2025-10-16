@@ -346,6 +346,34 @@ export class Schema implements ISchema {
 			name.includes(exception)
 		);
 	}
+
+	public uniqueHatExceptions!: string[];
+
+	private getUniqueHatExceptions(): string[] {
+		if (this.uniqueHatExceptions) {
+			return this.uniqueHatExceptions;
+		}
+
+		if (!this.items) {
+			this.loadDefindexes();
+		}
+
+		this.uniqueHatExceptions = this.items
+			.filter((item) => item.item_name.startsWith("The "))
+			.map((item) => item.item_name);
+
+		return this.uniqueHatExceptions;
+	}
+
+	isUniqueHatException(name: string, exact: boolean): boolean {
+		const exceptions = this.getUniqueHatExceptions();
+
+		if (!exact) {
+			return exceptions.some((item) => name.startsWith(item));
+		}
+
+		return exceptions.includes(name);
+	}
 }
 
 /**

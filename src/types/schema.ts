@@ -35,5 +35,14 @@ export type ISchema = {
 	isKitException?(name: string): boolean;
 	isEffectException?(): boolean;
 	isTextureException?(): boolean;
-	isUniqueHatException?(name: string): boolean;
+
+	/**
+	 * Check if item is a unique hat excepception,
+	 * which that `The ` prefix is not supposed to be removed.
+	 * 
+	 * @param name Name of the item
+	 * @param exact If matching for exceptions should be exact or partial.
+	 * @return Item is a unique hat exception, `The ` should stay
+	 */
+	isUniqueHatException?(name: string, exact?: boolean): boolean;
 };
