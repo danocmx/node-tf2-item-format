@@ -488,7 +488,11 @@ export class Schema implements ISchema {
 				}
 
 				// It has to be distinct word in said effect
-				if (effect2.startsWith(`${effect1} `) || effect2.includes(` ${effect1} `) || effect2.endsWith(` ${effect1}`)) {
+				if (
+					effect2.startsWith(`${effect1} `) ||
+					effect2.includes(` ${effect1} `) ||
+					effect2.endsWith(` ${effect1}`)
+				) {
 					if (this.effectEffectExceptions[effect1]) {
 						this.effectEffectExceptions[effect1].push(effect2);
 					} else {
@@ -519,9 +523,6 @@ export class Schema implements ISchema {
 		}
 	}
 
-	// [true, "<replacement>"]
-	// [true]
-	// [false]
 	public isEffectException(
 		effect: string,
 		name: string,
@@ -564,7 +565,136 @@ export class Schema implements ISchema {
 		if (this.itemEffectExceptions[effect]) {
 			for (const item of this.itemEffectExceptions[effect]) {
 				if (name.includes(item)) {
+					// TODO: Maybe rather look for multiple occurences of `${effect} `
 					return [!name.includes(`${effect} ${effect} `), null];
+				}
+			}
+		}
+
+		return [false, null];
+	}
+
+	protected textureExceptionsLoaded = false;
+	public itemTextureExceptions: Record<string, string[]> = {};
+	public effectTextureExceptions: Record<string, string[]> = {};
+	public textureTextureExceptions: Record<string, string[]> = {};
+
+	private loadTextureExceptions() {
+		if (!this.items) {
+			this.loadDefindexes();
+		}
+
+		if (!this.textures) {
+			this.loadTextures();
+		}
+
+		if (!this.effects) {
+			this.loadEffects();
+		}
+
+		for (const textures of Object.keys(this.textures)) {
+			if (isNumber(textures)) {
+				continue;
+			}
+
+			const items = this.items
+				.filter((i) => i.item_name.includes(`${textures} `))
+				.map((i) => i.item_name);
+
+			if (items.length > 0) {
+				this.itemTextureExceptions[textures] = items;
+			}
+		}
+
+		for (const texture1 of Object.keys(this.textures)) {
+			if (isNumber(texture1)) {
+				continue;
+			}
+
+			for (const texture2 of Object.keys(this.textures)) {
+				if (isNumber(texture2)) {
+					continue;
+				}
+
+				// It has to be distinct word in said texture
+				if (
+					texture2.startsWith(`${texture1} `) ||
+					texture2.includes(` ${texture1} `) ||
+					texture2.endsWith(` ${texture1}`)
+				) {
+					if (this.textureTextureExceptions[texture1]) {
+						this.textureTextureExceptions[texture1].push(texture2);
+					} else {
+						this.textureTextureExceptions[texture1] = [texture2];
+					}
+				}
+			}
+		}
+
+		for (const texture of Object.keys(this.textures)) {
+			if (isNumber(texture)) {
+				continue;
+			}
+
+			for (const effect of Object.keys(this.effects)) {
+				if (isNumber(texture)) {
+					continue;
+				}
+
+				if (effect.includes(texture)) {
+					if (this.effectTextureExceptions[texture]) {
+						this.effectTextureExceptions[texture].push(effect);
+					} else {
+						this.effectTextureExceptions[texture] = [effect];
+					}
+				}
+			}
+		}
+	}
+
+	public isTextureException(
+		texture: string,
+		name: string,
+		hasWear: boolean
+	): [boolean, string | null] {
+		if (!this.textureExceptionsLoaded) {
+			this.loadTextureExceptions();
+
+			this.textureExceptionsLoaded = true;
+		}
+
+		if (this.textureTextureExceptions[texture]) {
+			for (const overlappingTexture of this.textureTextureExceptions[
+				texture
+			]) {
+				if (name.includes(`${overlappingTexture} `)) {
+					const [canUseOverlap, _] = this.isEffectException(
+						overlappingTexture,
+						name,
+						hasWear
+					);
+
+					if (canUseOverlap) {
+						return [true, null];
+					} else {
+						return [true, overlappingTexture];
+					}
+				}
+			}
+		}
+
+		if (this.effectTextureExceptions[texture] && !hasWear) {
+			for (const effect of this.effectTextureExceptions[texture]) {
+				if (name.includes(`${effect} `)) {
+					return [true, null];
+				}
+			}
+		}
+
+		if (this.itemTextureExceptions[texture]) {
+			for (const item of this.itemTextureExceptions[texture]) {
+				if (name.includes(item)) {
+					return [!name.includes(`${texture} ${texture} `), null];
 				}
 			}
 		}

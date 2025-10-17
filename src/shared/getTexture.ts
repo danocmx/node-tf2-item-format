@@ -19,9 +19,25 @@ export default function (
 	const textureKeys = Object.keys(textures);
 	for (let i = 0; i < textureKeys.length; i++) {
 		const texture: number | string = textureKeys[i];
+		if (isNumber(texture)) {
+			continue;
+		}
 
 		if (!name.includes(`${texture} `)) {
 			continue;
+		}
+
+		if (attributes.schema.isTextureException) {
+			const [exception, replacement] = attributes.schema.isTextureException(texture, name, !!attributes.wear);
+			if (exception) {
+				if (replacement) {
+					return replacement;
+				} else {
+					continue;
+				}
+			}
+
+			return texture;
 		}
 
 		if (isTextureEffect(attributes, texture)) {

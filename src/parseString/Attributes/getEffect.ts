@@ -1,4 +1,3 @@
-import schema from '../../static/schema';
 import isNumber from '../../util/isNumber';
 
 import Attributes from '../Attributes';
@@ -27,8 +26,8 @@ export default function (name: string, attributes: Attributes): string | void {
 			continue;
 		}
 
-		if (schema.isEffectException) {
-			const [exception, replacement] = schema.isEffectException(effect, name, !!attributes.wear);
+		if (attributes.schema.isEffectException) {
+			const [exception, replacement] = attributes.schema.isEffectException(effect, name, !!attributes.wear);
 			if (exception) {
 				if (replacement) {
 					return replacement;

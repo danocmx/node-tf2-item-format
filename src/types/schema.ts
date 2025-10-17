@@ -47,7 +47,10 @@ export type ISchema = {
 	 */
 	isEffectException?(effect: string, name: string, hasWear: boolean): [boolean, string | null];
 
-	isTextureException?(): [boolean, string | null];
+	/**
+	 * See isEffectException above
+	 */
+	isTextureException?(texture: string, name: string, hasWear: boolean): [boolean, string | null];
 
 	/**
 	 * Check if item is a unique hat excepception,
