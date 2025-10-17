@@ -33,8 +33,21 @@ export type ISchema = {
 
 	isQualityException?(quality: number | string, name: string): boolean;
 	isKitException?(name: string): boolean;
-	isEffectException?(): boolean;
-	isTextureException?(): boolean;
+
+	/**
+	 * Is `effect` an exceptions for said `name`,
+	 * if so, it might return a replacement for said effect to be more correct.
+	 * 
+	 * @param effect Effect we are checking on
+	 * @param name Item we are checking effect for
+	 * @param hasWear if wear is present, it might be a texture
+	 * 
+	 * @return Either first component is false, then second one can be discarded.
+	 *   Or first is true, then second component might be what it's supposed to be.
+	 */
+	isEffectException?(effect: string, name: string, hasWear: boolean): [boolean, string | null];
+
+	isTextureException?(): [boolean, string | null];
 
 	/**
 	 * Check if item is a unique hat excepception,

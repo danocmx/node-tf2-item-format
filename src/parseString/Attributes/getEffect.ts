@@ -1,3 +1,4 @@
+import schema from '../../static/schema';
 import isNumber from '../../util/isNumber';
 
 import Attributes from '../Attributes';
@@ -18,9 +19,25 @@ export default function (name: string, attributes: Attributes): string | void {
 	const effectsKeys = Object.keys(effects);
 	for (let i = 0; i < effectsKeys.length; i++) {
 		let effect: string | number = effectsKeys[i];
+		if (isNumber(effect)) {
+			continue;
+		}
 
 		if (!name.includes(`${effect} `)) {
 			continue;
+		}
+
+		if (schema.isEffectException) {
+			const [exception, replacement] = schema.isEffectException(effect, name, !!attributes.wear);
+			if (exception) {
+				if (replacement) {
+					return replacement;
+				} else {
+					continue;
+				}
+			}
+
+			return effect;
 		}
 
 		// New type of exception
@@ -38,7 +55,7 @@ export default function (name: string, attributes: Attributes): string | void {
 				return exception[1];
 		}
 
-		if (!isNumber(effect) && !isHatNameException(name, effect)) {
+		if (!isHatNameException(name, effect)) {
 			return effect;
 		}
 	}
