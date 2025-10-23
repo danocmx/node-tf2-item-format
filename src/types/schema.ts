@@ -8,6 +8,15 @@ export type ItemsGame = {
 	>;
 };
 
+export type SchemaItem = {
+	name: string;
+	defindex: number;
+	item_class: string;
+	item_type_name: string;
+	item_name: string;
+	proper_name: boolean | string | undefined;
+};
+
 /**
  * Injectable schema interface.
  */
@@ -27,6 +36,7 @@ export type ISchema = {
 
 	getTextures(): SchemaEnum;
 	getEffects(): SchemaEnum;
+	getItems(): SchemaItem[];
 
 	isUniqueHat(nameOrDefindex: string | number): boolean;
 	getCrateNumber(defindex: string | number): number;
@@ -48,11 +58,6 @@ export type ISchema = {
 	isEffectException?(effect: string, name: string, hasWear: boolean): [boolean, string | null];
 
 	/**
-	 * See isEffectException above
-	 */
-	isTextureException?(texture: string, name: string, hasWear: boolean): [boolean, string | null];
-
-	/**
 	 * Check if item is a unique hat excepception,
 	 * which that `The ` prefix is not supposed to be removed.
 	 * 
@@ -61,4 +66,6 @@ export type ISchema = {
 	 * @return Item is a unique hat exception, `The ` should stay
 	 */
 	isUniqueHatException?(name: string, exact?: boolean): boolean;
+
+	getVersion(): number;
 };
