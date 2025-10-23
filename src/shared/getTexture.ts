@@ -3,7 +3,7 @@ import isNumber from '../util/isNumber';
 import { ISchema } from '../types/schema';
 import { cache } from './schemaCache';
 
-type SchemaExceptions = {
+type SchemaTextureExceptions = {
 	item: Record<string, string[]>;
 	texture: Record<string, string[]>;
 	effect: Record<string, string[]>;
@@ -50,8 +50,8 @@ export default function (
 	}
 }
 
-function getTextureExceptions(schema: ISchema): SchemaExceptions {
-	let exceptions = cache.get<SchemaExceptions>(
+function getTextureExceptions(schema: ISchema): SchemaTextureExceptions {
+	let exceptions = cache.get<SchemaTextureExceptions>(
 		schema,
 		SCHEMA_CACHE_TEXTURE_KEY
 	);
@@ -110,7 +110,7 @@ function isTextureException(
 	return [false, null];
 }
 
-function findTextureExceptions(schema: ISchema): SchemaExceptions {
+function findTextureExceptions(schema: ISchema): SchemaTextureExceptions {
 	const items = schema.getItems();
 	const textures = schema.getTextures();
 	const effects = schema.getEffects();
