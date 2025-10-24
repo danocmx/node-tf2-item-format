@@ -42,29 +42,5 @@ export type ISchema = {
 	getCrateNumber(defindex: string | number): number;
 
 	isQualityException?(quality: number | string, name: string): boolean;
-
-	/**
-	 * Is `effect` an exceptions for said `name`,
-	 * if so, it might return a replacement for said effect to be more correct.
-	 * 
-	 * @param effect Effect we are checking on
-	 * @param name Item we are checking effect for
-	 * @param hasWear if wear is present, it might be a texture
-	 * 
-	 * @return Either first component is false, then second one can be discarded.
-	 *   Or first is true, then second component might be what it's supposed to be.
-	 */
-	isEffectException?(effect: string, name: string, hasWear: boolean): [boolean, string | null];
-
-	/**
-	 * Check if item is a unique hat excepception,
-	 * which that `The ` prefix is not supposed to be removed.
-	 * 
-	 * @param name Name of the item
-	 * @param exact If matching for exceptions should be exact or partial.
-	 * @return Item is a unique hat exception, `The ` should stay
-	 */
-	isUniqueHatException?(name: string, exact?: boolean): boolean;
-
 	getVersion(): number;
 };
