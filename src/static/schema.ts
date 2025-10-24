@@ -323,57 +323,6 @@ export class Schema implements ISchema {
 		return correctItem;
 	}
 
-	public kitExceptions!: string[];
-
-	private getKitExceptions(): string[] {
-		if (this.kitExceptions) {
-			return this.kitExceptions;
-		}
-
-		if (!this.items) {
-			this.loadDefindexes();
-		}
-
-		if (!this.textures) {
-			this.loadTextures();
-		}
-
-		if (!this.effects) {
-			this.loadEffects();
-		}
-
-		const effectKitExceptions = Object.keys(this.effects).filter((effect) =>
-			effect.includes('Kit')
-		);
-
-		const textureKitExceptions = Object.keys(this.textures).filter(
-			(texture) => texture.includes('Kit')
-		);
-
-		const nameKitExceptions = this.items
-			.filter((item) => {
-				return (
-					// Exclude killstreak kits
-					item.item_name !== 'Kit' && item.item_name.includes('Kit')
-				);
-			})
-			.map((item) => item.item_name);
-
-		this.kitExceptions = [
-			...effectKitExceptions,
-			...textureKitExceptions,
-			...nameKitExceptions,
-		];
-
-		return this.kitExceptions;
-	}
-
-	isKitException(name: string): boolean {
-		return this.getKitExceptions().some((exception) =>
-			name.includes(exception)
-		);
-	}
-
 	public uniqueHatExceptions!: string[];
 
 	private getUniqueHatExceptions(): string[] {

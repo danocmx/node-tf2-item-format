@@ -42,7 +42,6 @@ export type ISchema = {
 	getCrateNumber(defindex: string | number): number;
 
 	isQualityException?(quality: number | string, name: string): boolean;
-	isKitException?(name: string): boolean;
 
 	/**
 	 * Is `effect` an exceptions for said `name`,

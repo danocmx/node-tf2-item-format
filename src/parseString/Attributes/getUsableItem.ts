@@ -1,7 +1,10 @@
 import getKillstreak from '../../shared/getKillstreak';
+import { cache } from '../../shared/schemaCache';
 
 import { TargetOutputItem } from '../../types';
 import { ISchema } from '../../types/schema';
+
+const SCHEMA_CACHE_KILLSTREAK_EXCEPTIONS_KEY = 'killstreakExceptions';
 
 /**
  * Finds out which usable item it is
@@ -55,13 +58,6 @@ function isStrangifierChemistrySet(name: string): boolean {
 	return name.includes(' Strangifier Chemistry Set');
 }
 
-const KIT_EXCEPTIONS = [ // Exceptions kept for backwards compatibility
-	"Killer's Kit",
-	'Coffin Kit',
-	'Summer Starter Kit',
-	"Chiromancer's Kit",
-];
-
 function getItemIfTarget(schema: ISchema, name: string): string | void {
 	const match = name.match(/ (Kit Fabricator|Strangifier|Unusualifier)/);
 	if (match) {
@@ -72,11 +68,7 @@ function getItemIfTarget(schema: ISchema, name: string): string | void {
 		return;
 	}
 
-	if (
-		schema.isKitException
-			? schema.isKitException(name)
-			: KIT_EXCEPTIONS.some((exception) => name.includes(exception))
-	) {
+	if (isKitException(schema, name)) {
 		return undefined;
 	}
 
@@ -85,4 +77,53 @@ function getItemIfTarget(schema: ISchema, name: string): string | void {
 
 function isChemistrySet(name: string): boolean {
 	return name.includes(' Chemistry Set');
+}
+
+function isKitException(schema: ISchema, name: string): boolean {
+	return getKitExceptions(schema).some((exception) =>
+		name.includes(exception)
+	);
+}
+
+function getKitExceptions(schema: ISchema): string[] {
+	let exceptions = cache.get<string[]>(
+		schema,
+		SCHEMA_CACHE_KILLSTREAK_EXCEPTIONS_KEY
+	);
+	if (exceptions) {
+		return exceptions;
+	}
+
+	exceptions = findKitExceptions(schema);
+	cache.save(schema, SCHEMA_CACHE_KILLSTREAK_EXCEPTIONS_KEY, exceptions);
+	return exceptions;
+}
+
+function findKitExceptions(schema: ISchema) {
+	const items = schema.getItems();
+	const textures = schema.getTextures();
+	const effects = schema.getEffects();
+
+	const effectKitExceptions = Object.keys(effects).filter((effect) =>
+		effect.includes('Kit')
+	);
+
+	const textureKitExceptions = Object.keys(textures).filter((texture) =>
+		texture.includes('Kit')
+	);
+
+	const nameKitExceptions = items
+		.filter((item) => {
+			return (
+				// Exclude killstreak kits
+				item.item_name !== 'Kit' && item.item_name.includes('Kit')
+			);
+		})
+		.map((item) => item.item_name);
+
+	return [
+		...effectKitExceptions,
+		...textureKitExceptions,
+		...nameKitExceptions,
+	];
 }
