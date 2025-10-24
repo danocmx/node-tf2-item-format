@@ -50,7 +50,7 @@ export default function (
 	}
 }
 
-function getTextureExceptions(schema: ISchema): SchemaTextureExceptions {
+export function getTextureExceptions(schema: ISchema): SchemaTextureExceptions {
 	let exceptions = cache.get<SchemaTextureExceptions>(
 		schema,
 		SCHEMA_CACHE_TEXTURE_KEY
@@ -64,7 +64,7 @@ function getTextureExceptions(schema: ISchema): SchemaTextureExceptions {
 	return exceptions;
 }
 
-function isTextureException(
+export function isTextureException(
 	schema: ISchema,
 	name: string,
 	texture: string,
@@ -110,7 +110,9 @@ function isTextureException(
 	return [false, null];
 }
 
-function findTextureExceptions(schema: ISchema): SchemaTextureExceptions {
+export function findTextureExceptions(
+	schema: ISchema
+): SchemaTextureExceptions {
 	const items = schema.getItems();
 	const textures = schema.getTextures();
 	const effects = schema.getEffects();

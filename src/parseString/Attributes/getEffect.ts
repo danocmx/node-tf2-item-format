@@ -35,6 +35,7 @@ export default function (name: string, attributes: Attributes): string | void {
 			name,
 			!!attributes.wear
 		);
+
 		if (exception) {
 			if (replacement) {
 				return replacement;
@@ -47,7 +48,7 @@ export default function (name: string, attributes: Attributes): string | void {
 	}
 }
 
-function getEffectExceptions(schema: ISchema): SchemaEffectExceptions {
+export function getEffectExceptions(schema: ISchema): SchemaEffectExceptions {
 	let exceptions = cache.get<SchemaEffectExceptions>(
 		schema,
 		SCHEMA_CACHE_EFFECT_KEY
@@ -61,7 +62,7 @@ function getEffectExceptions(schema: ISchema): SchemaEffectExceptions {
 	return exceptions;
 }
 
-function isEffectException(
+export function isEffectException(
 	schema: ISchema,
 	effect: string,
 	name: string,
@@ -107,7 +108,7 @@ function isEffectException(
 	return [false, null];
 }
 
-function findEffectExceptions(schema: ISchema): SchemaEffectExceptions {
+export function findEffectExceptions(schema: ISchema): SchemaEffectExceptions {
 	const items = schema.getItems();
 	const textures = schema.getTextures();
 	const effects = schema.getEffects();

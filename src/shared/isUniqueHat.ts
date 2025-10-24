@@ -20,7 +20,7 @@ export default function isUniqueHat(
 	return !isUniqueHatException(schema, name, !attributes?.itemNumber);
 }
 
-function isUniqueHatException(
+export function isUniqueHatException(
 	schema: ISchema,
 	name: string,
 	exact: boolean
@@ -34,7 +34,7 @@ function isUniqueHatException(
 	return exceptions.includes(name);
 }
 
-function getUniqueHatExceptions(schema: ISchema): string[] {
+export function getUniqueHatExceptions(schema: ISchema): string[] {
 	let exceptions = cache.get<string[]>(
 		schema,
 		SCHEMA_CACHE_UNIQUE_HAT_EXCEPTIONS_KEY
@@ -48,7 +48,7 @@ function getUniqueHatExceptions(schema: ISchema): string[] {
 	return exceptions;
 }
 
-function findUniqueHatExceptions(schema: ISchema): string[] {
+export function findUniqueHatExceptions(schema: ISchema): string[] {
 	const items = schema.getItems();
 
 	return items

@@ -79,13 +79,13 @@ function isChemistrySet(name: string): boolean {
 	return name.includes(' Chemistry Set');
 }
 
-function isKitException(schema: ISchema, name: string): boolean {
+export function isKitException(schema: ISchema, name: string): boolean {
 	return getKitExceptions(schema).some((exception) =>
 		name.includes(exception)
 	);
 }
 
-function getKitExceptions(schema: ISchema): string[] {
+export function getKitExceptions(schema: ISchema): string[] {
 	let exceptions = cache.get<string[]>(
 		schema,
 		SCHEMA_CACHE_KILLSTREAK_EXCEPTIONS_KEY
@@ -99,7 +99,7 @@ function getKitExceptions(schema: ISchema): string[] {
 	return exceptions;
 }
 
-function findKitExceptions(schema: ISchema) {
+export function findKitExceptions(schema: ISchema) {
 	const items = schema.getItems();
 	const textures = schema.getTextures();
 	const effects = schema.getEffects();
