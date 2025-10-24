@@ -41,6 +41,5 @@ export type ISchema = {
 	isUniqueHat(nameOrDefindex: string | number): boolean;
 	getCrateNumber(defindex: string | number): number;
 
-	isQualityException?(quality: number | string, name: string): boolean;
 	getVersion(): number;
 };

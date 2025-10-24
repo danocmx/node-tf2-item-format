@@ -322,54 +322,6 @@ export class Schema implements ISchema {
 
 		return correctItem;
 	}
-
-	public qualityExceptions: Record<string, string[]> = {};
-
-	private getQualityExceptions(quality: string): string[] {
-		if (this.qualityExceptions[quality]) {
-			return this.qualityExceptions[quality];
-		}
-
-		if (!this.items) {
-			this.loadDefindexes();
-		}
-
-		if (!this.textures) {
-			this.loadTextures();
-		}
-
-		if (!this.effects) {
-			this.loadEffects();
-		}
-
-		const effectExceptionsForQuality = Object.keys(this.effects).filter(
-			(effect) => effect.includes(quality)
-		);
-
-		const textureExceptionsForQuality = Object.keys(this.textures).filter(
-			(texture) => texture.includes(quality)
-		);
-
-		const nameExceptionsForQuality = this.items
-			.filter((item) => item.item_name.includes(`${quality} `))
-			.map((item) => item.item_name);
-
-		this.qualityExceptions[quality] = [
-			...effectExceptionsForQuality,
-			...textureExceptionsForQuality,
-			...nameExceptionsForQuality,
-		];
-
-		return this.qualityExceptions[quality];
-	}
-
-	isQualityException(quality: number | string, name: string): boolean {
-		const qualityName = this.getQualityName(quality);
-
-		return this.getQualityExceptions(qualityName).some((e) =>
-			name.includes(e)
-		);
-	}
 }
 
 /**

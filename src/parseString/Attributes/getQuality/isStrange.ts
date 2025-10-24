@@ -1,21 +1,9 @@
-import { ISchema } from "../../../types/schema";
+import { ISchema } from '../../../types/schema';
+import { isQualityException } from './exceptions';
 
 export default function (schema: ISchema, name: string): boolean {
-	return name.includes('Strange ') && !isStrangeException(schema, name);
-}
-
-const STRANGE_EXCEPTIONS = [
-	'Strange Bacon Grease',
-	'Strange Filter: ',
-	'Strange Count Transfer Tool',
-	'Strange Part: ',
-	'Strange Cosmetic Part: ',
-];
-
-function isStrangeException(schema: ISchema, name: string): boolean {
-	if (schema.isQualityException) {
-		return schema.isQualityException("Strange", name);
-	}
-
-	return STRANGE_EXCEPTIONS.some((exception) => name.includes(exception));
+	return (
+		name.includes('Strange ') &&
+		!isQualityException(schema, 'Strange', name)
+	);
 }
