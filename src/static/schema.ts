@@ -1,12 +1,7 @@
-import {
-	requireStatic,
-	SchemaEnum,
-	DefindexToName,
-	SchemaItem,
-} from 'tf2-static-schema';
+import { requireStatic, SchemaEnum, DefindexToName } from 'tf2-static-schema';
 
 import isNumber from '../util/isNumber';
-import { ISchema, ItemsGame } from '../types/schema';
+import { ISchema, ItemsGame, SchemaItem } from '../types/schema';
 
 const DEFINDEXES: { [name: string]: number } = {
 	// Local naming
@@ -94,6 +89,10 @@ export class Schema implements ISchema {
 
 	constructor() {}
 
+	getVersion(): number {
+		return 1; // Never changes during runtime
+	}
+
 	getTextures() {
 		if (!this.textures) this.loadTextures();
 
@@ -104,6 +103,12 @@ export class Schema implements ISchema {
 		if (!this.effects) this.loadEffects();
 
 		return this.effects;
+	}
+
+	getItems(): SchemaItem[] {
+		if (!this.items) this.loadDefindexes();
+
+		return this.items;
 	}
 
 	loadEffects(): void {

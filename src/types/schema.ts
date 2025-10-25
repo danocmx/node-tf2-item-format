@@ -8,6 +8,15 @@ export type ItemsGame = {
 	>;
 };
 
+export type SchemaItem = {
+	name: string;
+	defindex: number;
+	item_class: string;
+	item_type_name: string;
+	item_name: string;
+	proper_name: boolean | string | undefined;
+};
+
 /**
  * Injectable schema interface.
  */
@@ -27,7 +36,10 @@ export type ISchema = {
 
 	getTextures(): SchemaEnum;
 	getEffects(): SchemaEnum;
+	getItems(): SchemaItem[];
 
 	isUniqueHat(nameOrDefindex: string | number): boolean;
 	getCrateNumber(defindex: string | number): number;
+
+	getVersion(): number;
 };
