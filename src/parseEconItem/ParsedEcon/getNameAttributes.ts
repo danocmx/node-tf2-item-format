@@ -22,7 +22,7 @@ export default function (econ: ParsedEcon): NameAttributes {
 	 */
 	const attributes: NameAttributes = {
 		australium: isAustralium(name),
-		isUniqueHat: isUniqueHat(name),
+		isUniqueHat: isUniqueHat(econ.schema, name),
 	};
 
 	if (!texture) {
@@ -40,6 +40,7 @@ export default function (econ: ParsedEcon): NameAttributes {
 	}
 
 	const usableItem = getUsableItem(
+		econ.schema,
 		attributes.itemNumber
 			? removeItemNumber(name, attributes.itemNumber)
 			: name

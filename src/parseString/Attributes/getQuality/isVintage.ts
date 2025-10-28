@@ -1,13 +1,11 @@
-export default function (name: string): boolean {
+import { ISchema } from '../../../types/schema';
+import { isQualityException } from './exceptions';
+
+export default function (schema: ISchema, name: string): boolean {
 	const vintageCount = name.match(/Vintage /g);
 	return (
 		!!vintageCount &&
-		(vintageCount.length === 2 || !isVintageException(name))
+		(vintageCount.length === 2 ||
+			!isQualityException(schema, 'Vintage', name))
 	);
-}
-
-const VINTAGE_EXCEPTIONS = ['Vintage Merryweather', 'Vintage Tyrolean'];
-
-function isVintageException(name: string): boolean {
-	return VINTAGE_EXCEPTIONS.some((exception) => name.includes(exception));
 }
