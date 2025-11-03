@@ -1,13 +1,16 @@
+import { cache } from '../../shared/schemaCache';
+import { ISchema } from '../../types/schema';
 import isNumber from '../../util/isNumber';
 
 import Attributes from '../Attributes';
 
-const EFFECT_EXCEPTIONS = [
-	['Orbiting Fire', 'Eerie Orbiting Fire'],
-	['Spellbound', 'Spellbound Aspect'],
-	['Haunted Phantasm', 'Haunted Phantasm Jr'],
-	['Ghastly Ghosts', 'Ghastly Ghosts Jr'],
-];
+type SchemaEffectExceptions = {
+	item: Record<string, string[]>;
+	texture: Record<string, string[]>;
+	effect: Record<string, string[]>;
+};
+
+const SCHEMA_CACHE_EFFECT_KEY = 'effectExceptions';
 
 /**
  * Iterates over effects object to get matching effect.
@@ -18,72 +21,163 @@ export default function (name: string, attributes: Attributes): string | void {
 	const effectsKeys = Object.keys(effects);
 	for (let i = 0; i < effectsKeys.length; i++) {
 		let effect: string | number = effectsKeys[i];
+		if (isNumber(effect)) {
+			continue;
+		}
 
 		if (!name.includes(`${effect} `)) {
 			continue;
 		}
 
-		// New type of exception
-		if (effect === 'Smoking' && name.includes('Smoking Smoking Skid Lid')) {
-			return 'Smoking';
+		const [exception, replacement] = isEffectException(
+			attributes.schema,
+			effect,
+			name,
+			!!attributes.wear
+		);
+
+		if (exception) {
+			if (replacement) {
+				return replacement;
+			} else {
+				continue;
+			}
 		}
 
-		if (isEffectTexture(attributes, effect)) {
-			continue;
-		}
-
-		for (let j = 0; j < EFFECT_EXCEPTIONS.length; j++) {
-			const exception = EFFECT_EXCEPTIONS[j];
-			if (effect === exception[0] && name.includes(`${exception[1]} `))
-				return exception[1];
-		}
-
-		if (!isNumber(effect) && !isHatNameException(name, effect)) {
-			return effect;
-		}
+		return effect;
 	}
 }
 
-/**
- * Which item and effect cannot exist together.
- */
-const HAT_NAME_EXCEPTIONS: [string, string][] = [
-	['Cool Breeze', 'Cool'],
-	['Cool Cat Cardigan', 'Cool'],
-	['Hot Heels', 'Hot'],
-	['Hot Case', 'Hot'],
-	['A Head Full of Hot Air', 'Hot'],
-	['Bonk Atomic Punch', 'Atomic'],
-	['Hot Hand', 'Hot'],
-	['Smoking Jacket', 'Smoking'],
-	['Smoking Skid Lid', 'Smoking'],
-	['Hot Huaraches', 'Hot'],
-	['Cool Capuchon', 'Cool'],
-	['Hot Dogger', 'Hot'],
-	['Atomic Accolade', 'Atomic'],
-	['Bonk! Atomic Punch', 'Atomic'],
-	['Accursed Apparition', 'Accursed'],
-	['Taunt: The Hot Wheeler', 'Hot'],
-	['Frostbite Bonnet', 'Frostbite'],
-	['Cool Warm Sweater', 'Cool'],
-	['Frostbite Fit', 'Frostbite'],
-	['Hot Spaniel', 'Hot'],
-];
+export function getEffectExceptions(schema: ISchema): SchemaEffectExceptions {
+	let exceptions = cache.get<SchemaEffectExceptions>(
+		schema,
+		SCHEMA_CACHE_EFFECT_KEY
+	);
+	if (exceptions) {
+		return exceptions;
+	}
 
-function isHatNameException(name: string, effect: string): boolean {
-	return HAT_NAME_EXCEPTIONS.some((exception) => {
-		const [exceptionName, exceptionEffect] = exception;
-		return name.includes(exceptionName) && effect === exceptionEffect;
-	});
+	exceptions = findEffectExceptions(schema);
+	cache.save(schema, SCHEMA_CACHE_EFFECT_KEY, exceptions);
+	return exceptions;
 }
 
-export const TEXTURE_EFFECT_EXCEPTION: string[] = ['Haunted Ghosts', 'Pumpkin Patch', 'Stardust'];
+export function isEffectException(
+	schema: ISchema,
+	effect: string,
+	name: string,
+	hasWear: boolean
+): [boolean, string | null] {
+	const exceptions = getEffectExceptions(schema);
+	if (exceptions.effect[effect]) {
+		for (const overlappingEffect of exceptions.effect[effect]) {
+			if (name.includes(`${overlappingEffect} `)) {
+				const [canUseOverlap, _] = isEffectException(
+					schema,
+					overlappingEffect,
+					name,
+					hasWear
+				);
 
-function isEffectTexture(
-	attributes: Attributes,
-	effectOrTexture: string
-): boolean {
-	return !!(
-		TEXTURE_EFFECT_EXCEPTION.includes(effectOrTexture) && attributes.wear
-	);
+				if (canUseOverlap) {
+					return [true, null];
+				} else {
+					return [true, overlappingEffect];
+				}
+			}
+		}
+	}
+
+	if (exceptions.texture[effect] && !!hasWear) {
+		for (const texture of exceptions.texture[effect]) {
+			if (name.includes(`${texture} `)) {
+				return [true, null];
+			}
+		}
+	}
+
+	if (exceptions.item[effect]) {
+		for (const item of exceptions.item[effect]) {
+			if (name.includes(item)) {
+				// TODO: Maybe rather look for multiple occurences of `${effect} `
+				return [!name.includes(`${effect} ${effect} `), null];
+			}
+		}
+	}
+
+	return [false, null];
+}
+
+export function findEffectExceptions(schema: ISchema): SchemaEffectExceptions {
+	const items = schema.getItems();
+	const textures = schema.getTextures();
+	const effects = schema.getEffects();
+
+	const itemEffectExceptions: Record<string, string[]> = {};
+	for (const effect of Object.keys(effects)) {
+		if (isNumber(effect)) {
+			continue;
+		}
+
+		const itemExceptions = items
+			.filter((i) => i.item_name.includes(`${effect} `))
+			.map((i) => i.item_name);
+
+		if (itemExceptions.length > 0) {
+			itemEffectExceptions[effect] = itemExceptions;
+		}
+	}
+
+	const effectEffectExceptions: Record<string, string[]> = {};
+	for (const effect1 of Object.keys(effects)) {
+		if (isNumber(effect1)) {
+			continue;
+		}
+
+		for (const effect2 of Object.keys(effects)) {
+			if (isNumber(effect2)) {
+				continue;
+			}
+
+			// It has to be distinct word in said effect
+			if (
+				effect2.startsWith(`${effect1} `) ||
+				effect2.includes(` ${effect1} `) ||
+				effect2.endsWith(` ${effect1}`)
+			) {
+				if (effectEffectExceptions[effect1]) {
+					effectEffectExceptions[effect1].push(effect2);
+				} else {
+					effectEffectExceptions[effect1] = [effect2];
+				}
+			}
+		}
+	}
+
+	const textureEffectExceptions: Record<string, string[]> = {};
+	for (const effect of Object.keys(effects)) {
+		if (isNumber(effect)) {
+			continue;
+		}
+
+		for (const texture of Object.keys(textures)) {
+			if (isNumber(texture)) {
+				continue;
+			}
+
+			if (texture.includes(effect)) {
+				if (textureEffectExceptions[effect]) {
+					textureEffectExceptions[effect].push(texture);
+				} else {
+					textureEffectExceptions[effect] = [texture];
+				}
+			}
+		}
+	}
+
+	return {
+		item: itemEffectExceptions,
+		effect: effectEffectExceptions,
+		texture: textureEffectExceptions,
+	};
 }

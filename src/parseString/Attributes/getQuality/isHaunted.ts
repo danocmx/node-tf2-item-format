@@ -1,23 +1,11 @@
-export default function (name: string): boolean {
+import { ISchema } from '../../../types/schema';
+import { isQualityException } from './exceptions';
+
+export default function (schema: ISchema, name: string): boolean {
 	const hauntedCount = name.match(/Haunted /g);
 	return (
 		!!hauntedCount &&
-		(hauntedCount.length === 2 || !isHauntedException(name))
+		(hauntedCount.length === 2 ||
+			!isQualityException(schema, 'Haunted', name))
 	);
-}
-
-const HAUNTED_EXCEPTIONS = [
-	'Haunted Hat',
-	'Haunted Ghosts',
-	'Haunted Phantasm',
-	'Haunted Metal Scrap',
-	'Haunted Kraken',
-	'Haunted Forever',
-	'Haunted Wick',
-	'Haunted Cremation',
-	'Haunted Mist' // Effect
-];
-
-function isHauntedException(name: string): boolean {
-	return HAUNTED_EXCEPTIONS.some((exception) => name.includes(exception));
 }

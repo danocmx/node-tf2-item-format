@@ -45,9 +45,9 @@ export default class Attributes {
 		this.texture = getTexture(name, this);
 
 		this.itemNumber = getItemNumber(name);
-		this.usableItem = getUsableItem(name);
+		this.usableItem = getUsableItem(schema, name);
 
-		this.isUniqueHat = isUniqueHat(name, this);
+		this.isUniqueHat = isUniqueHat(schema, name, this);
 		this.quality = getQuality(name, this);
 	}
 }

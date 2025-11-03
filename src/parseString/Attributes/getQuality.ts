@@ -22,9 +22,9 @@ export default function (name: string, attributes: Attributes): StringQuality {
 	}
 
 	return selectQuality({
-		isStrange: isStrange(name), // For elevated
-		isVintage: isVintage(name), // Because of exceptions
-		isHaunted: isHaunted(name),
+		isStrange: isStrange(attributes.schema, name), // For elevated
+		isVintage: isVintage(attributes.schema, name), // Because of exceptions
+		isHaunted: isHaunted(attributes.schema, name),
 		otherQuality: matchQuality(name), // Matches every other quality
 		attributes, // Current attributes
 	});

@@ -1,6 +1,10 @@
 import getKillstreak from '../../shared/getKillstreak';
+import { cache } from '../../shared/schemaCache';
 
 import { TargetOutputItem } from '../../types';
+import { ISchema } from '../../types/schema';
+
+const SCHEMA_CACHE_KILLSTREAK_EXCEPTIONS_KEY = 'killstreakExceptions';
 
 /**
  * Finds out which usable item it is
@@ -9,7 +13,10 @@ import { TargetOutputItem } from '../../types';
  * @param {string} name
  * @return {Object}
  */
-export default function (name: string): Partial<TargetOutputItem> | null {
+export default function getUsableItem(
+	schema: ISchema,
+	name: string
+): Partial<TargetOutputItem> | null {
 	// TODO: add series to itemNumber.
 	// For chemistry sets the quality is predefined
 	if (isStrangifierChemistrySet(name)) {
@@ -31,7 +38,7 @@ export default function (name: string): Partial<TargetOutputItem> | null {
 		};
 	}
 
-	const item = getItemIfTarget(name);
+	const item = getItemIfTarget(schema, name);
 	if (item) {
 		return {
 			target: name
@@ -51,14 +58,7 @@ function isStrangifierChemistrySet(name: string): boolean {
 	return name.includes(' Strangifier Chemistry Set');
 }
 
-const KIT_EXCEPTIONS = [
-	"Killer's Kit",
-	'Coffin Kit',
-	'Summer Starter Kit',
-	"Chiromancer's Kit",
-];
-
-function getItemIfTarget(name: string): string | void {
+function getItemIfTarget(schema: ISchema, name: string): string | void {
 	const match = name.match(/ (Kit Fabricator|Strangifier|Unusualifier)/);
 	if (match) {
 		return match[1];
@@ -68,11 +68,62 @@ function getItemIfTarget(name: string): string | void {
 		return;
 	}
 
-	return KIT_EXCEPTIONS.some((exception) => name.includes(exception))
-		? undefined
-		: 'Kit';
+	if (isKitException(schema, name)) {
+		return undefined;
+	}
+
+	return 'Kit';
 }
 
 function isChemistrySet(name: string): boolean {
 	return name.includes(' Chemistry Set');
+}
+
+export function isKitException(schema: ISchema, name: string): boolean {
+	return getKitExceptions(schema).some((exception) =>
+		name.includes(exception)
+	);
+}
+
+export function getKitExceptions(schema: ISchema): string[] {
+	let exceptions = cache.get<string[]>(
+		schema,
+		SCHEMA_CACHE_KILLSTREAK_EXCEPTIONS_KEY
+	);
+	if (exceptions) {
+		return exceptions;
+	}
+
+	exceptions = findKitExceptions(schema);
+	cache.save(schema, SCHEMA_CACHE_KILLSTREAK_EXCEPTIONS_KEY, exceptions);
+	return exceptions;
+}
+
+export function findKitExceptions(schema: ISchema) {
+	const items = schema.getItems();
+	const textures = schema.getTextures();
+	const effects = schema.getEffects();
+
+	const effectKitExceptions = Object.keys(effects).filter((effect) =>
+		effect.includes('Kit')
+	);
+
+	const textureKitExceptions = Object.keys(textures).filter((texture) =>
+		texture.includes('Kit')
+	);
+
+	const nameKitExceptions = items
+		.filter((item) => {
+			return (
+				// Exclude killstreak kits
+				item.item_name !== 'Kit' && item.item_name.includes('Kit')
+			);
+		})
+		.map((item) => item.item_name);
+
+	return [
+		...effectKitExceptions,
+		...textureKitExceptions,
+		...nameKitExceptions,
+	];
 }
