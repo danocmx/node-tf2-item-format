@@ -1,6 +1,5 @@
 import { cache } from '../../shared/schemaCache';
 import { ISchema } from '../../types/schema';
-import isNumber from '../../util/isNumber';
 
 import Attributes from '../Attributes';
 
@@ -17,14 +16,10 @@ const SCHEMA_CACHE_EFFECT_KEY = 'effectExceptions';
  */
 // eslint-disable-next-line consistent-return
 export default function (name: string, attributes: Attributes): string | void {
-	const effects = attributes.schema.getEffects();
+	const effects = attributes.schema.getEffectNames();
 	const effectsKeys = Object.keys(effects);
 	for (let i = 0; i < effectsKeys.length; i++) {
 		let effect: string | number = effectsKeys[i];
-		if (isNumber(effect)) {
-			continue;
-		}
-
 		if (!name.includes(`${effect} `)) {
 			continue;
 		}
@@ -110,15 +105,11 @@ export function isEffectException(
 
 export function findEffectExceptions(schema: ISchema): SchemaEffectExceptions {
 	const items = schema.getItems();
-	const textures = schema.getTextures();
-	const effects = schema.getEffects();
+	const textures = schema.getTextureNames();
+	const effects = schema.getEffectNames();
 
 	const itemEffectExceptions: Record<string, string[]> = {};
 	for (const effect of Object.keys(effects)) {
-		if (isNumber(effect)) {
-			continue;
-		}
-
 		const itemExceptions = items
 			.filter((i) => i.item_name.includes(`${effect} `))
 			.map((i) => i.item_name);
@@ -130,15 +121,7 @@ export function findEffectExceptions(schema: ISchema): SchemaEffectExceptions {
 
 	const effectEffectExceptions: Record<string, string[]> = {};
 	for (const effect1 of Object.keys(effects)) {
-		if (isNumber(effect1)) {
-			continue;
-		}
-
 		for (const effect2 of Object.keys(effects)) {
-			if (isNumber(effect2)) {
-				continue;
-			}
-
 			// It has to be distinct word in said effect
 			if (
 				effect2.startsWith(`${effect1} `) ||
@@ -156,15 +139,7 @@ export function findEffectExceptions(schema: ISchema): SchemaEffectExceptions {
 
 	const textureEffectExceptions: Record<string, string[]> = {};
 	for (const effect of Object.keys(effects)) {
-		if (isNumber(effect)) {
-			continue;
-		}
-
 		for (const texture of Object.keys(textures)) {
-			if (isNumber(texture)) {
-				continue;
-			}
-
 			if (texture.includes(effect)) {
 				if (textureEffectExceptions[effect]) {
 					textureEffectExceptions[effect].push(texture);
