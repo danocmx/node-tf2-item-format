@@ -101,8 +101,8 @@ export function getKitExceptions(schema: ISchema): string[] {
 
 export function findKitExceptions(schema: ISchema) {
 	const items = schema.getItems();
-	const textures = schema.getTextures();
-	const effects = schema.getEffects();
+	const textures = schema.getTextureNames();
+	const effects = schema.getEffectNames();
 
 	const effectKitExceptions = Object.keys(effects).filter((effect) =>
 		effect.includes('Kit')
