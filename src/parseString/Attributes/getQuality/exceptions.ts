@@ -28,8 +28,8 @@ export function getQualityExceptions(schema: ISchema, quality: string): string[]
 
 export function findQualityExceptions(schema: ISchema, quality: string): string[] {
 	const items = schema.getItems();
-	const effects = schema.getEffects();
-	const textures = schema.getTextures();
+	const effects = schema.getEffectNames();
+	const textures = schema.getTextureNames();
 
 	const effectExceptionsForQuality = Object.keys(effects).filter((effect) =>
 		effect.includes(quality)

@@ -1,7 +1,7 @@
 import { requireStatic, SchemaEnum, DefindexToName } from 'tf2-static-schema';
 
 import isNumber from '../util/isNumber';
-import { ISchema, ItemsGame, SchemaItem } from '../types/schema';
+import { ISchema, ItemsGame, NameToDefindex, SchemaItem } from '../types/schema';
 
 const DEFINDEXES: { [name: string]: number } = {
 	// Local naming
@@ -79,9 +79,11 @@ const NAMES: { [defindex: number]: string } = {
 
 export class Schema implements ISchema {
 	public effects!: SchemaEnum;
+	protected effectNames!: NameToDefindex;
 	public wears!: SchemaEnum;
 	public killstreaks!: SchemaEnum;
 	public textures!: SchemaEnum;
+	protected textureNames!: NameToDefindex;
 	public itemNames!: DefindexToName;
 	public items!: SchemaItem[];
 	public qualities!: SchemaEnum;
@@ -113,6 +115,15 @@ export class Schema implements ISchema {
 
 	loadEffects(): void {
 		this.effects = requireStatic('effects') as SchemaEnum;
+
+		this.effectNames = {}
+		for (const effect of Object.keys(this.effects)) {
+			if (isNumber(effect)) {
+				continue;
+			}
+
+			this.effectNames[effect] = this.effects[effect];
+		}
 	}
 
 	loadWears(): void {
@@ -125,6 +136,15 @@ export class Schema implements ISchema {
 
 	loadTextures(): void {
 		this.textures = requireStatic('paint-kits') as SchemaEnum;
+
+		this.textureNames = {}
+		for (const effect of Object.keys(this.textures)) {
+			if (isNumber(effect)) {
+				continue;
+			}
+
+			this.textureNames[effect] = this.textures[effect];
+		}
 	}
 
 	loadItemNames(): void {
@@ -321,6 +341,22 @@ export class Schema implements ISchema {
 		}
 
 		return correctItem;
+	}
+
+	public getTextureNames(): NameToDefindex {
+		if (!this.textures) {
+			this.loadTextures();
+		}
+
+		return this.textureNames;
+	}
+
+	public getEffectNames(): NameToDefindex {
+		if (!this.effects) {
+			this.loadEffects();
+		}
+
+		return this.effectNames;
 	}
 }
 
