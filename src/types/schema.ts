@@ -37,6 +37,8 @@ export type ISchema = {
 	getTextures(): SchemaEnum;
 	getEffects(): SchemaEnum;
 	getItems(): SchemaItem[];
+	getTextureNames(): NameToDefindex;
+	getEffectNames(): NameToDefindex;
 
 	isUniqueHat(nameOrDefindex: string | number): boolean;
 	getCrateNumber(defindex: string | number): number;
