@@ -19,10 +19,10 @@
     }
   },
   "scripts": {
-    "test": "mocha ./test",
+    "test": "mocha --extension ts ./test",
     "test:coverage": "nyc npm run test",
     "build": "npx tsc",
-    "format": "npx prettier --write \"src/**/*.ts\""
+    "format": "npx prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
   },
   "repository": {
     "type": "git",
@@ -43,6 +43,8 @@
   },
   "devDependencies": {
     "@semantic-release/git": "^10.0.1",
+    "@types/chai": "^5.2.3",
+    "@types/node": "^26.1.0",
     "chai": "^4.2.0",
     "eslint": "^8.32.0",
     "eslint-config-airbnb-base": "^15.0.0",

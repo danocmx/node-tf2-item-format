@@ -1,12 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-const { assert } = require('chai');
+import { assert } from 'chai';
+import { parseSKU, toSKU } from '../dist/static.js';
+import { readFixture } from './helpers.ts';
 
-const { parseSKU, toSKU } = require('../dist/static');
-
-const cases = JSON.parse(
-	fs.readFileSync(path.join(__dirname, './data/sku.json'), 'utf8')
-);
+const cases = readFixture<{
+	toSKU: { input: any; expected: any }[];
+	parseSKU: { input: any; expected: any }[];
+}>('sku.json');
 
 describe('sku data', () => {
 	describe('toSKU', () => {

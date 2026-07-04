@@ -1,13 +1,9 @@
-const fs = require('fs');
-const path = require('path');
-const { assert } = require('chai');
+import { assert } from 'chai';
+import { createFormat } from '../dist/index.js';
+import { Schema, parseEconItem } from '../dist/static.js';
+import { readFixture } from './helpers.ts';
 
-const { Schema, parseEconItem } = require('../dist/static');
-const { createFormat } = require('../dist');
-
-const cases = JSON.parse(
-	fs.readFileSync(path.join(__dirname, './data/econItem.json'), 'utf8')
-);
+const cases = readFixture<any[]>('econItem.json');
 
 describe('parseEconItem data', () => {
 	describe('Normal cases', () => {

@@ -1,13 +1,9 @@
-const fs = require('fs');
-const path = require('path');
-const { assert } = require('chai');
+import { assert } from 'chai';
+import { createFormat } from '../dist/index.js';
+import { Schema, parseString } from '../dist/static.js';
+import { readFixture } from './helpers.ts';
 
-const { Schema, parseString } = require('../dist/static');
-const { createFormat } = require('../dist');
-
-const cases = JSON.parse(
-	fs.readFileSync(path.join(__dirname, './data/parseString.json'), 'utf8')
-);
+const cases = readFixture<any[]>('parseString.json');
 
 describe('parseString data', () => {
 	describe('Normal cases', () => {
@@ -45,7 +41,7 @@ describe('parseString data', () => {
 
 		it('Special Case #2 - Bat output', () => {
 			class MockSchema extends Schema {
-				getDefindex(input) {
+				getDefindex(input: number | string) {
 					if (input === 'Bat') {
 						return 0;
 					}
@@ -74,7 +70,7 @@ describe('parseString data', () => {
 
 		it('Special Case #3 - Bat target', () => {
 			class MockSchema extends Schema {
-				getDefindex(input) {
+				getDefindex(input: number | string) {
 					if (input === 'Bat') {
 						return 0;
 					}
@@ -130,7 +126,7 @@ describe('parseString data', () => {
 	});
 });
 
-	/*
+/*
 	it('Case #3', () => {
 		const itemObject = parseString(
 			"Collector's Battalion's Backup Chemistry Set",
@@ -148,4 +144,3 @@ describe('parseString data', () => {
 		});
 	});
 	*/
-	

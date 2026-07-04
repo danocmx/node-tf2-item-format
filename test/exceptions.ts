@@ -1,26 +1,26 @@
-const { assert } = require('chai');
+import { assert } from 'chai';
 
-const { schema } = require('../dist/static');
-const {
+import { schema } from '../dist/static.js';
+import {
 	findKitExceptions,
 	isKitException,
-} = require('../dist/parseString/Attributes/getUsableItem');
-const {
+} from '../dist/parseString/Attributes/getUsableItem.js';
+import {
 	findUniqueHatExceptions,
 	isUniqueHatException,
-} = require('../dist/shared/isUniqueHat');
-const {
+} from '../dist/shared/isUniqueHat.js';
+import {
 	findQualityExceptions,
 	isQualityException,
-} = require('../dist/parseString/Attributes/getQuality/exceptions');
-const {
+} from '../dist/parseString/Attributes/getQuality/exceptions.js';
+import {
 	findEffectExceptions,
 	isEffectException,
-} = require('../dist/parseString/Attributes/getEffect');
-const {
+} from '../dist/parseString/Attributes/getEffect.js';
+import {
 	findTextureExceptions,
 	isTextureException,
-} = require('../dist/shared/getTexture');
+} from '../dist/shared/getTexture.js';
 
 describe('Exception Generation', () => {
 	describe('Kit Exceptions', () => {
@@ -99,12 +99,12 @@ describe('Exception Generation', () => {
 		describe('isUniqueHatException', () => {
 			it('Is a correct exception', () => {
 				assert.isTrue(
-					isUniqueHatException(schema, "The Emperor's Assortment")
+					isUniqueHatException(schema, "The Emperor's Assortment", false)
 				);
 			});
 
 			it('Is not an exception', () => {
-				assert.isFalse(isUniqueHatException(schema, 'The War Pig'));
+				assert.isFalse(isUniqueHatException(schema, 'The War Pig', false));
 			});
 		});
 	});
@@ -298,7 +298,7 @@ describe('Exception Generation', () => {
 
 					assert.isTrue(
 						false,
-						`Effect Exception: ${effect} -> ${hat} failed`
+						`Effect Exception: ${effect} failed`
 					);
 				}
 
