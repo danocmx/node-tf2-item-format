@@ -1,0 +1,2421 @@
+[
+  {
+    "input": {
+      "name": "Cool Killstreak Aqua Marine Rocket Launcher (Battle Scarred)",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Rocket Launcher",
+      "craftable": true,
+      "killstreak": "Killstreak",
+      "wear": "Battle Scarred",
+      "texture": "Aqua Marine",
+      "effect": "Cool",
+      "quality": "Unusual"
+    }
+  },
+  {
+    "input": {
+      "name": "Strange High Roller's Rocket Launcher (Factory New)",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Rocket Launcher",
+      "craftable": true,
+      "wear": "Factory New",
+      "texture": "High Roller's",
+      "quality": "Strange"
+    }
+  },
+  {
+    "input": {
+      "name": "Collector's Battalion's Backup Chemistry Set",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Chemistry Set",
+      "craftable": true,
+      "output": "Battalion's Backup",
+      "outputQuality": "Collector's",
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Festivized Professional Killstreak Australium Scattergun",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Scattergun",
+      "craftable": true,
+      "australium": true,
+      "festivized": true,
+      "killstreak": "Professional Killstreak",
+      "quality": "Strange"
+    }
+  },
+  {
+    "input": {
+      "name": "Demonflame Modest Pile of Hat",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Modest Pile of Hat",
+      "craftable": true,
+      "effect": "Demonflame",
+      "quality": "Unusual"
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Omniscient Orb Balloonihoodie",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Balloonihoodie",
+      "craftable": true,
+      "effect": "Omniscient Orb",
+      "quality": "Unusual",
+      "elevated": true
+    }
+  },
+  {
+    "input": {
+      "name": "Non-Craftable Specialized Killstreak Gunboats Kit Fabricator",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Specialized Killstreak Kit Fabricator",
+      "craftable": false,
+      "killstreak": "Specialized Killstreak",
+      "target": "Gunboats",
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "Archimedes Strangifier Chemistry Set",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Chemistry Set",
+      "craftable": true,
+      "target": "Archimedes",
+      "output": "Strangifier",
+      "outputQuality": "Unique",
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Backwards Ballcap",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Backwards Ballcap",
+      "craftable": true,
+      "quality": "Strange"
+    }
+  },
+  {
+    "input": {
+      "name": "Professional Killstreak Iron Curtain Kit Fabricator",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Professional Killstreak Kit Fabricator",
+      "craftable": true,
+      "killstreak": "Professional Killstreak",
+      "target": "Iron Curtain",
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Professional Killstreak Festive Grenade Launcher",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Festive Grenade Launcher",
+      "craftable": true,
+      "killstreak": "Professional Killstreak",
+      "quality": "Strange"
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Unique Sniper Rifle",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Sniper Rifle",
+      "craftable": true,
+      "quality": "Unique",
+      "elevated": true
+    }
+  },
+  {
+    "input": {
+      "name": "Australium Gold",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Australium Gold",
+      "craftable": true,
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "Blue Moon Case #118",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Blue Moon Case",
+      "craftable": true,
+      "itemNumber": {
+        "type": "crate",
+        "value": 118
+      },
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "Hat #25",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Hat",
+      "craftable": true,
+      "itemNumber": {
+        "type": "craft",
+        "value": 25
+      },
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "The Tartan Shade",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Tartan Shade",
+      "craftable": true,
+      "quality": "Unique",
+      "isUniqueHat": true
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Cool Breeze",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Cool Breeze",
+      "craftable": true,
+      "quality": "Strange"
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Hot Case",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Hot Case",
+      "craftable": true,
+      "quality": "Strange"
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Hot Heels",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Hot Heels",
+      "craftable": true,
+      "quality": "Strange"
+    }
+  },
+  {
+    "input": {
+      "name": "Strange A Head Full of Hot Air",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "A Head Full of Hot Air",
+      "craftable": true,
+      "quality": "Strange"
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Vintage Tyrolean",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Vintage Tyrolean",
+      "quality": "Strange",
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Vintage Vintage Tyrolean",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Vintage Tyrolean",
+      "quality": "Vintage",
+      "elevated": true,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Vintage Tyrolean",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Vintage Tyrolean",
+      "quality": "Unique",
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Vintage Vintage Tyrolean",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Vintage Tyrolean",
+      "quality": "Vintage",
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Haunted Hat",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Haunted Hat",
+      "quality": "Strange",
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Haunted Haunted Hat",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Haunted Hat",
+      "quality": "Haunted",
+      "elevated": true,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Hat",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Haunted Hat",
+      "quality": "Unique",
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Haunted Hat",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Haunted Hat",
+      "quality": "Haunted",
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Eerie Orbiting Fire Condor Cap",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Condor Cap",
+      "quality": "Unusual",
+      "effect": "Eerie Orbiting Fire",
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Ghosts War Paint (Battle Scarred)",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "War Paint",
+      "quality": "Decorated Weapon",
+      "texture": "Haunted Ghosts",
+      "craftable": true,
+      "wear": "Battle Scarred"
+    }
+  },
+  {
+    "input": {
+      "name": "Spellbound Aspect Taunt: Most Wanted",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Taunt: Most Wanted",
+      "quality": "Unusual",
+      "effect": "Spellbound Aspect",
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Phantasm Jr Bonk Boy",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Bonk Boy",
+      "quality": "Unusual",
+      "effect": "Haunted Phantasm Jr",
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Ghastly Ghosts Jr Bonk Boy",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Bonk Boy",
+      "quality": "Unusual",
+      "effect": "Ghastly Ghosts Jr",
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Ghosts Battle Boonie",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Battle Boonie",
+      "quality": "Unusual",
+      "effect": "Haunted Ghosts",
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Smoking Jacket",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Smoking Jacket",
+      "craftable": true,
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "Smoking Smoking Skid Lid",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Smoking Skid Lid",
+      "craftable": true,
+      "quality": "Unusual",
+      "effect": "Smoking"
+    }
+  },
+  {
+    "input": {
+      "name": "Purple Energy Smoking Skid Lid",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Smoking Skid Lid",
+      "craftable": true,
+      "quality": "Unusual",
+      "effect": "Purple Energy"
+    }
+  },
+  {
+    "input": {
+      "name": "Smoking Skid Lid",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Smoking Skid Lid",
+      "craftable": true,
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Cosmetic Part: Kills",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Strange Cosmetic Part: Kills",
+      "craftable": true,
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "The Value of Teamwork",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "The Value of Teamwork",
+      "craftable": true,
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "The Essential Accessories",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "The Essential Accessories",
+      "craftable": true,
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "Genuine Atomic Accolade",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Atomic Accolade",
+      "craftable": true,
+      "quality": "Genuine"
+    }
+  },
+  {
+    "input": {
+      "name": "Bonk! Atomic Punch",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Bonk! Atomic Punch",
+      "craftable": true,
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "The Concealed Killer Weapons Case #93",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "The Concealed Killer Weapons Case",
+      "craftable": true,
+      "quality": "Unique",
+      "itemNumber": {
+        "type": "crate",
+        "value": 93
+      }
+    }
+  },
+  {
+    "input": {
+      "name": "Non-Craftable Naughty Winter Crate Key 2014",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Naughty Winter Crate Key 2014",
+      "craftable": false,
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "Mann Co. Supply Munition #83",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Mann Co. Supply Munition",
+      "craftable": true,
+      "quality": "Unique",
+      "itemNumber": {
+        "value": 83,
+        "type": "crate"
+      }
+    }
+  },
+  {
+    "input": {
+      "name": "Taunt: The Hot Wheeler",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Taunt: The Hot Wheeler",
+      "craftable": true,
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Kraken Rotation Sensation",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Rotation Sensation",
+      "craftable": true,
+      "quality": "Unusual",
+      "effect": "Haunted Kraken"
+    }
+  },
+  {
+    "input": {
+      "name": "Frostbite Bonnet",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Frostbite Bonnet",
+      "craftable": true,
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "Festivized Formation Taunt: Most Wanted",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Taunt: Most Wanted",
+      "craftable": true,
+      "quality": "Unusual",
+      "effect": "Festivized Formation"
+    }
+  },
+  {
+    "input": {
+      "name": "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case #115",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case",
+      "craftable": true,
+      "quality": "Unique",
+      "itemNumber": {
+        "type": "crate",
+        "value": 115
+      }
+    }
+  },
+  {
+    "input": {
+      "name": "Killer's Kit Strangifier",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Strangifier",
+      "craftable": true,
+      "target": "Killer's Kit",
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "Rainbow Reverie Frigid Fashion",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Frigid Fashion",
+      "effect": "Rainbow Reverie",
+      "craftable": true,
+      "quality": "Unusual"
+    }
+  },
+  {
+    "input": {
+      "name": "Chiromancer's Kit",
+      "inNumbers": false,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Chiromancer's Kit",
+      "craftable": true,
+      "quality": "Unique"
+    }
+  },
+  {
+    "input": {
+      "name": "Cool Killstreak Aqua Marine Rocket Launcher (Battle Scarred)",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Rocket Launcher",
+      "craftable": true,
+      "killstreak": 1,
+      "wear": 5,
+      "texture": 57,
+      "effect": 703,
+      "quality": 5
+    }
+  },
+  {
+    "input": {
+      "name": "Strange High Roller's Rocket Launcher (Factory New)",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Rocket Launcher",
+      "craftable": true,
+      "wear": 1,
+      "texture": 79,
+      "quality": 11
+    }
+  },
+  {
+    "input": {
+      "name": "Collector's Battalion's Backup Chemistry Set",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Chemistry Set",
+      "craftable": true,
+      "output": "Battalion's Backup",
+      "outputQuality": 14,
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Festivized Professional Killstreak Australium Scattergun",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Scattergun",
+      "craftable": true,
+      "australium": true,
+      "festivized": true,
+      "killstreak": 3,
+      "quality": 11
+    }
+  },
+  {
+    "input": {
+      "name": "Demonflame Modest Pile of Hat",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Modest Pile of Hat",
+      "craftable": true,
+      "effect": 80,
+      "quality": 5
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Omniscient Orb Balloonihoodie",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Balloonihoodie",
+      "craftable": true,
+      "effect": 120,
+      "quality": 5,
+      "elevated": true
+    }
+  },
+  {
+    "input": {
+      "name": "Non-Craftable Specialized Killstreak Gunboats Kit Fabricator",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Specialized Killstreak Kit Fabricator",
+      "craftable": false,
+      "killstreak": 2,
+      "target": "Gunboats",
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "Archimedes Strangifier Chemistry Set",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Chemistry Set",
+      "craftable": true,
+      "target": "Archimedes",
+      "output": "Strangifier",
+      "outputQuality": 6,
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Backwards Ballcap",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Backwards Ballcap",
+      "craftable": true,
+      "quality": 11
+    }
+  },
+  {
+    "input": {
+      "name": "Professional Killstreak Iron Curtain Kit Fabricator",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Professional Killstreak Kit Fabricator",
+      "craftable": true,
+      "killstreak": 3,
+      "target": "Iron Curtain",
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Professional Killstreak Festive Grenade Launcher",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Festive Grenade Launcher",
+      "craftable": true,
+      "killstreak": 3,
+      "quality": 11
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Unique Sniper Rifle",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Sniper Rifle",
+      "craftable": true,
+      "quality": 6,
+      "elevated": true
+    }
+  },
+  {
+    "input": {
+      "name": "Australium Gold",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Australium Gold",
+      "craftable": true,
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "Blue Moon Case #118",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Blue Moon Case",
+      "craftable": true,
+      "itemNumber": {
+        "type": "crate",
+        "value": 118
+      },
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "Hat #25",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Hat",
+      "craftable": true,
+      "itemNumber": {
+        "type": "craft",
+        "value": 25
+      },
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "The Tartan Shade",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Tartan Shade",
+      "craftable": true,
+      "quality": 6,
+      "isUniqueHat": true
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Cool Breeze",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Cool Breeze",
+      "craftable": true,
+      "quality": 11
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Hot Case",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Hot Case",
+      "craftable": true,
+      "quality": 11
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Hot Heels",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Hot Heels",
+      "craftable": true,
+      "quality": 11
+    }
+  },
+  {
+    "input": {
+      "name": "Strange A Head Full of Hot Air",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "A Head Full of Hot Air",
+      "craftable": true,
+      "quality": 11
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Vintage Tyrolean",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Vintage Tyrolean",
+      "quality": 11,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Vintage Vintage Tyrolean",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Vintage Tyrolean",
+      "quality": 3,
+      "elevated": true,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Vintage Tyrolean",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Vintage Tyrolean",
+      "quality": 6,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Vintage Vintage Tyrolean",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Vintage Tyrolean",
+      "quality": 3,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Haunted Hat",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Haunted Hat",
+      "quality": 11,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Haunted Haunted Hat",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Haunted Hat",
+      "quality": 13,
+      "elevated": true,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Hat",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Haunted Hat",
+      "quality": 6,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Haunted Hat",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Haunted Hat",
+      "quality": 13,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Eerie Orbiting Fire Condor Cap",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Condor Cap",
+      "quality": 5,
+      "effect": 40,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Ghosts War Paint (Battle Scarred)",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "War Paint",
+      "quality": 15,
+      "texture": 236,
+      "craftable": true,
+      "wear": 5
+    }
+  },
+  {
+    "input": {
+      "name": "Spellbound Aspect Taunt: Most Wanted",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Taunt: Most Wanted",
+      "quality": 5,
+      "effect": 3043,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Phantasm Jr Bonk Boy",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Bonk Boy",
+      "quality": 5,
+      "effect": 86,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Ghastly Ghosts Jr Bonk Boy",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Bonk Boy",
+      "quality": 5,
+      "effect": 85,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Ghosts Battle Boonie",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Battle Boonie",
+      "quality": 5,
+      "effect": 8,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Smoking Jacket",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Smoking Jacket",
+      "craftable": true,
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "Smoking Smoking Skid Lid",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Smoking Skid Lid",
+      "craftable": true,
+      "quality": 5,
+      "effect": 35
+    }
+  },
+  {
+    "input": {
+      "name": "Purple Energy Smoking Skid Lid",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Smoking Skid Lid",
+      "craftable": true,
+      "quality": 5,
+      "effect": 10
+    }
+  },
+  {
+    "input": {
+      "name": "Smoking Skid Lid",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Smoking Skid Lid",
+      "craftable": true,
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Cosmetic Part: Kills",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Strange Cosmetic Part: Kills",
+      "craftable": true,
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "The Value of Teamwork",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "The Value of Teamwork",
+      "craftable": true,
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "The Essential Accessories",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "The Essential Accessories",
+      "craftable": true,
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "Genuine Atomic Accolade",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Atomic Accolade",
+      "craftable": true,
+      "quality": 1
+    }
+  },
+  {
+    "input": {
+      "name": "Bonk! Atomic Punch",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Bonk! Atomic Punch",
+      "craftable": true,
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "The Concealed Killer Weapons Case #93",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "The Concealed Killer Weapons Case",
+      "craftable": true,
+      "quality": 6,
+      "itemNumber": {
+        "type": "crate",
+        "value": 93
+      }
+    }
+  },
+  {
+    "input": {
+      "name": "Non-Craftable Naughty Winter Crate Key 2014",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Naughty Winter Crate Key 2014",
+      "craftable": false,
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "Mann Co. Supply Munition #83",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Mann Co. Supply Munition",
+      "craftable": true,
+      "quality": 6,
+      "itemNumber": {
+        "value": 83,
+        "type": "crate"
+      }
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Kraken Rotation Sensation",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Rotation Sensation",
+      "craftable": true,
+      "quality": 5,
+      "effect": 257
+    }
+  },
+  {
+    "input": {
+      "name": "Frostbite Bonnet",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Frostbite Bonnet",
+      "craftable": true,
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "Festivized Formation Taunt: Most Wanted",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Taunt: Most Wanted",
+      "craftable": true,
+      "quality": 5,
+      "effect": 3108
+    }
+  },
+  {
+    "input": {
+      "name": "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case #115",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case",
+      "craftable": true,
+      "quality": 6,
+      "itemNumber": {
+        "type": "crate",
+        "value": 115
+      }
+    }
+  },
+  {
+    "input": {
+      "name": "Bountiful Riches Taunt: The Shred Alert",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Taunt: The Shred Alert",
+      "craftable": true,
+      "quality": 5,
+      "effect": 3165
+    }
+  },
+  {
+    "input": {
+      "name": "Treasure Trove Class Crown",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Class Crown",
+      "craftable": true,
+      "quality": 5,
+      "effect": 289
+    }
+  },
+  {
+    "input": {
+      "name": "Killer's Kit Strangifier",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Strangifier",
+      "craftable": true,
+      "target": "Killer's Kit",
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "Pumpkin Patch Taunt: Most Wanted",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Taunt: Most Wanted",
+      "craftable": true,
+      "effect": 3184,
+      "quality": 5
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Pumpkin Patch Minigun (Factory New)",
+      "inNumbers": true,
+      "useDefindexes": false
+    },
+    "expected": {
+      "name": "Minigun",
+      "craftable": true,
+      "quality": 11,
+      "wear": 1,
+      "texture": 62
+    }
+  },
+  {
+    "input": {
+      "name": "Cool Killstreak Aqua Marine Rocket Launcher (Battle Scarred)",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Rocket Launcher",
+      "craftable": true,
+      "killstreak": 1,
+      "wear": 5,
+      "texture": 57,
+      "effect": 703,
+      "quality": 5,
+      "defindex": 205
+    }
+  },
+  {
+    "input": {
+      "name": "Strange High Roller's Rocket Launcher (Factory New)",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Rocket Launcher",
+      "craftable": true,
+      "wear": 1,
+      "texture": 79,
+      "quality": 11,
+      "defindex": 205
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Festivized Professional Killstreak Australium Scattergun",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Scattergun",
+      "craftable": true,
+      "australium": true,
+      "festivized": true,
+      "killstreak": 3,
+      "quality": 11,
+      "defindex": 200
+    }
+  },
+  {
+    "input": {
+      "name": "Demonflame Modest Pile of Hat",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Modest Pile of Hat",
+      "craftable": true,
+      "effect": 80,
+      "quality": 5,
+      "defindex": 139
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Omniscient Orb Balloonihoodie",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Balloonihoodie",
+      "craftable": true,
+      "effect": 120,
+      "quality": 5,
+      "elevated": true,
+      "defindex": 30928
+    }
+  },
+  {
+    "input": {
+      "name": "Non-Craftable Specialized Killstreak Gunboats Kit Fabricator",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Specialized Killstreak Kit Fabricator",
+      "defindex": 20002,
+      "craftable": false,
+      "killstreak": 2,
+      "target": "Gunboats",
+      "quality": 6,
+      "targetDefindex": 133
+    }
+  },
+  {
+    "input": {
+      "name": "Archimedes Strangifier Chemistry Set",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Chemistry Set",
+      "craftable": true,
+      "target": "Archimedes",
+      "output": "Strangifier",
+      "outputQuality": 6,
+      "quality": 6,
+      "targetDefindex": 828,
+      "outputDefindex": 5661,
+      "defindex": 20005
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Backwards Ballcap",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Backwards Ballcap",
+      "craftable": true,
+      "quality": 11,
+      "defindex": 617
+    }
+  },
+  {
+    "input": {
+      "name": "Professional Killstreak Iron Curtain Kit Fabricator",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Professional Killstreak Kit Fabricator",
+      "craftable": true,
+      "killstreak": 3,
+      "target": "Iron Curtain",
+      "quality": 6,
+      "targetDefindex": 298,
+      "defindex": 20003
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Professional Killstreak Festive Grenade Launcher",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Festive Grenade Launcher",
+      "craftable": true,
+      "killstreak": 3,
+      "quality": 11,
+      "defindex": 1007
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Unique Sniper Rifle",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Sniper Rifle",
+      "craftable": true,
+      "quality": 6,
+      "elevated": true,
+      "defindex": 201
+    }
+  },
+  {
+    "input": {
+      "name": "Australium Gold",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Australium Gold",
+      "craftable": true,
+      "quality": 6,
+      "defindex": 5037
+    }
+  },
+  {
+    "input": {
+      "name": "Blue Moon Case #118",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Blue Moon Case",
+      "craftable": true,
+      "itemNumber": {
+        "type": "crate",
+        "value": 118
+      },
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "The Tartan Shade",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Tartan Shade",
+      "craftable": true,
+      "quality": 6,
+      "isUniqueHat": true,
+      "defindex": 30064
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Cool Breeze",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Cool Breeze",
+      "craftable": true,
+      "quality": 11,
+      "defindex": 979
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Hot Case",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Hot Case",
+      "craftable": true,
+      "quality": 11,
+      "defindex": 30986
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Hot Heels",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Hot Heels",
+      "craftable": true,
+      "quality": 11,
+      "defindex": 30754
+    }
+  },
+  {
+    "input": {
+      "name": "Strange A Head Full of Hot Air",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "A Head Full of Hot Air",
+      "craftable": true,
+      "quality": 11,
+      "defindex": 30662
+    }
+  },
+  {
+    "input": {
+      "name": "Taunt: Kazotsky Kick Unusualifier",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Unusualifier",
+      "craftable": true,
+      "quality": 5,
+      "defindex": 9258,
+      "target": "Taunt: Kazotsky Kick",
+      "targetDefindex": 1157
+    }
+  },
+  {
+    "input": {
+      "name": "Ghostly Gibus Strangifier",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Strangifier",
+      "craftable": true,
+      "quality": 6,
+      "defindex": 5661,
+      "target": "Ghostly Gibus",
+      "targetDefindex": 940
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Bacon Grease",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Strange Bacon Grease",
+      "craftable": true,
+      "quality": 6,
+      "defindex": 5633
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Vintage Tyrolean",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Vintage Tyrolean",
+      "quality": 11,
+      "craftable": true,
+      "defindex": 101
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Vintage Vintage Tyrolean",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Vintage Tyrolean",
+      "quality": 3,
+      "elevated": true,
+      "craftable": true,
+      "defindex": 101
+    }
+  },
+  {
+    "input": {
+      "name": "Vintage Tyrolean",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Vintage Tyrolean",
+      "quality": 6,
+      "craftable": true,
+      "defindex": 101
+    }
+  },
+  {
+    "input": {
+      "name": "Vintage Vintage Tyrolean",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Vintage Tyrolean",
+      "quality": 3,
+      "craftable": true,
+      "defindex": 101
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Haunted Hat",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Haunted Hat",
+      "quality": 11,
+      "craftable": true,
+      "defindex": 30300
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Haunted Haunted Hat",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Haunted Hat",
+      "quality": 13,
+      "elevated": true,
+      "craftable": true,
+      "defindex": 30300
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Hat",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Haunted Hat",
+      "quality": 6,
+      "craftable": true,
+      "defindex": 30300
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Haunted Hat",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Haunted Hat",
+      "defindex": 30300,
+      "quality": 13,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Eerie Orbiting Fire Condor Cap",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Condor Cap",
+      "quality": 5,
+      "effect": 40,
+      "craftable": true,
+      "defindex": 30553
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Ghosts War Paint (Battle Scarred)",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "War Paint",
+      "quality": 15,
+      "texture": 236,
+      "craftable": true,
+      "wear": 5,
+      "defindex": 9536
+    }
+  },
+  {
+    "input": {
+      "name": "Spellbound Aspect Taunt: Most Wanted",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Taunt: Most Wanted",
+      "quality": 5,
+      "effect": 3043,
+      "craftable": true,
+      "defindex": 30614
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Phantasm Jr Bonk Boy",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Bonk Boy",
+      "quality": 5,
+      "effect": 86,
+      "craftable": true,
+      "defindex": 451
+    }
+  },
+  {
+    "input": {
+      "name": "Ghastly Ghosts Jr Bonk Boy",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Bonk Boy",
+      "defindex": 451,
+      "quality": 5,
+      "effect": 85,
+      "craftable": true
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Ghosts Battle Boonie",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Battle Boonie",
+      "quality": 5,
+      "effect": 8,
+      "craftable": true,
+      "defindex": 30907
+    }
+  },
+  {
+    "input": {
+      "name": "Smoking Jacket",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Smoking Jacket",
+      "craftable": true,
+      "quality": 6,
+      "defindex": 31124
+    }
+  },
+  {
+    "input": {
+      "name": "Smoking Smoking Skid Lid",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Smoking Skid Lid",
+      "craftable": true,
+      "quality": 5,
+      "effect": 35,
+      "defindex": 30399
+    }
+  },
+  {
+    "input": {
+      "name": "Purple Energy Smoking Skid Lid",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Smoking Skid Lid",
+      "craftable": true,
+      "quality": 5,
+      "effect": 10,
+      "defindex": 30399
+    }
+  },
+  {
+    "input": {
+      "name": "Smoking Skid Lid",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Smoking Skid Lid",
+      "craftable": true,
+      "quality": 6,
+      "defindex": 30399
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Cosmetic Part: Kills",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Strange Cosmetic Part: Kills",
+      "craftable": true,
+      "quality": 6,
+      "defindex": 6060
+    }
+  },
+  {
+    "input": {
+      "name": "The Value of Teamwork",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "The Value of Teamwork",
+      "craftable": true,
+      "quality": 6,
+      "defindex": 5064
+    }
+  },
+  {
+    "input": {
+      "name": "The Essential Accessories",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "The Essential Accessories",
+      "craftable": true,
+      "quality": 6,
+      "defindex": 347
+    }
+  },
+  {
+    "input": {
+      "name": "Genuine Atomic Accolade",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Atomic Accolade",
+      "defindex": 767,
+      "craftable": true,
+      "quality": 1
+    }
+  },
+  {
+    "input": {
+      "name": "Bonk! Atomic Punch",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Bonk! Atomic Punch",
+      "defindex": 46,
+      "craftable": true,
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "The Value of Teamwork",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "The Value of Teamwork",
+      "quality": 6,
+      "craftable": true,
+      "defindex": 5064
+    }
+  },
+  {
+    "input": {
+      "name": "The Bitter Taste of Defeat and Lime",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "The Bitter Taste of Defeat and Lime",
+      "quality": 6,
+      "craftable": true,
+      "defindex": 5054
+    }
+  },
+  {
+    "input": {
+      "name": "The Concealed Killer Weapons Case #93",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "The Concealed Killer Weapons Case",
+      "craftable": true,
+      "quality": 6,
+      "defindex": 5806,
+      "itemNumber": {
+        "type": "crate",
+        "value": 93
+      }
+    }
+  },
+  {
+    "input": {
+      "name": "Non-Craftable Naughty Winter Crate Key 2014",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Naughty Winter Crate Key 2014",
+      "craftable": false,
+      "quality": 6,
+      "defindex": 5791
+    }
+  },
+  {
+    "input": {
+      "name": "Mann Co. Supply Munition #83",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Mann Co. Supply Munition",
+      "defindex": 5734,
+      "craftable": true,
+      "quality": 6,
+      "itemNumber": {
+        "value": 83,
+        "type": "crate"
+      }
+    }
+  },
+  {
+    "input": {
+      "name": "Accursed Apparition",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Accursed Apparition",
+      "quality": 6,
+      "craftable": true,
+      "defindex": 30206
+    }
+  },
+  {
+    "input": {
+      "name": "Unusual Haunted Metal Scrap",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Haunted Metal Scrap",
+      "quality": 5,
+      "craftable": true,
+      "defindex": 267
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Normal Medi Gun",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Medi Gun",
+      "quality": 0,
+      "craftable": true,
+      "defindex": 211,
+      "elevated": true
+    }
+  },
+  {
+    "input": {
+      "name": "Haunted Kraken Rotation Sensation",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Rotation Sensation",
+      "defindex": 30623,
+      "craftable": true,
+      "quality": 5,
+      "effect": 257
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Health and Hell (Green) War Paint",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "War Paint",
+      "craftable": true,
+      "quality": 11,
+      "texture": 407,
+      "defindex": 9536
+    }
+  },
+  {
+    "input": {
+      "name": "Health and Hell (Green) Rocket Launcher",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Rocket Launcher",
+      "craftable": true,
+      "quality": 15,
+      "texture": 407,
+      "defindex": 205
+    }
+  },
+  {
+    "input": {
+      "name": "Health and Hell Iron Bomber",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Iron Bomber",
+      "craftable": true,
+      "quality": 15,
+      "texture": 406,
+      "defindex": 1151
+    }
+  },
+  {
+    "input": {
+      "name": "Frostbite Bonnet",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Frostbite Bonnet",
+      "craftable": true,
+      "quality": 6,
+      "defindex": 31337
+    }
+  },
+  {
+    "input": {
+      "name": "Festivized Formation Taunt: Most Wanted",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Taunt: Most Wanted",
+      "craftable": true,
+      "quality": 5,
+      "defindex": 30614,
+      "effect": 3108
+    }
+  },
+  {
+    "input": {
+      "name": "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case #115",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case",
+      "craftable": true,
+      "quality": 6,
+      "defindex": 18004,
+      "itemNumber": {
+        "type": "crate",
+        "value": 115
+      }
+    }
+  },
+  {
+    "input": {
+      "name": "Bountiful Riches Taunt: The Shred Alert",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Taunt: The Shred Alert",
+      "craftable": true,
+      "quality": 5,
+      "effect": 3165,
+      "defindex": 1015
+    }
+  },
+  {
+    "input": {
+      "name": "Treasure Trove Class Crown",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Class Crown",
+      "craftable": true,
+      "quality": 5,
+      "effect": 289,
+      "defindex": 30808
+    }
+  },
+  {
+    "input": {
+      "name": "Killer's Kit Strangifier",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Strangifier",
+      "defindex": 5661,
+      "craftable": true,
+      "target": "Killer's Kit",
+      "targetDefindex": 30339,
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "Stardust Pathway Hat Outta Hell",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Hat Outta Hell",
+      "defindex": 31216,
+      "craftable": true,
+      "quality": 5,
+      "effect": 214
+    }
+  },
+  {
+    "input": {
+      "name": "Black Summer 2013 Cooler #69",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Black Summer 2013 Cooler",
+      "defindex": 5656,
+      "craftable": true,
+      "quality": 6,
+      "itemNumber": {
+        "type": "crate",
+        "value": 69
+      }
+    }
+  },
+  {
+    "input": {
+      "name": "Caffeine Cooler",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Caffeine Cooler",
+      "defindex": 30083,
+      "craftable": true,
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "Red Summer 2013 Cooler Key",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Red Summer 2013 Cooler Key",
+      "defindex": 5643,
+      "craftable": true,
+      "quality": 6
+    }
+  },
+  {
+    "input": {
+      "name": "Mann Co. Strongbox #81",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Mann Co. Strongbox",
+      "defindex": 5719,
+      "craftable": true,
+      "quality": 6,
+      "itemNumber": {
+        "type": "crate",
+        "value": 81
+      }
+    }
+  },
+  {
+    "input": {
+      "name": "Autumn Leaves Taunt: The Skating Scorcher",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Taunt: The Skating Scorcher",
+      "defindex": 30919,
+      "craftable": true,
+      "quality": 5,
+      "effect": 3126
+    }
+  },
+  {
+    "input": {
+      "name": "Strange Stardust War Paint (Minimal Wear)",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "War Paint",
+      "craftable": true,
+      "quality": 11,
+      "texture": 421,
+      "wear": 2,
+      "defindex": 9536
+    }
+  },
+  {
+    "input": {
+      "name": "Stardust Throttlehead",
+      "inNumbers": true,
+      "useDefindexes": true
+    },
+    "expected": {
+      "name": "Throttlehead",
+      "craftable": true,
+      "quality": 5,
+      "effect": 249,
+      "defindex": 31282
+    }
+  }
+]
