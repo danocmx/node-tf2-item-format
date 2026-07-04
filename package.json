@@ -22,7 +22,7 @@
     "test": "mocha --extension ts ./test",
     "test:coverage": "nyc npm run test",
     "build": "npx tsc",
-    "format": "npx prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
+    "format": "npx prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"test/data/*.json\""
   },
   "repository": {
     "type": "git",

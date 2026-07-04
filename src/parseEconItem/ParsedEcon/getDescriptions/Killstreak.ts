@@ -1,7 +1,8 @@
 import { EconDescription } from '../../../types';
 import { ISchema } from '../../../types/schema';
 
-const KILLSTREAKER_SHEEN_REGEX = /^\(Killstreaker: ([a-zA-Z0-9 \-]+), Sheen: ([a-zA-Z0-9 \-]+)\)$/
+const KILLSTREAKER_SHEEN_REGEX =
+	/^\(Killstreaker: ([a-zA-Z0-9 \-]+), Sheen: ([a-zA-Z0-9 \-]+)\)$/;
 
 /**
  * Handles killstreak actions
@@ -27,8 +28,10 @@ export default class Killstreak {
 		this.value = value;
 	}
 
-	static isKillstreakerSheenDescription(description: EconDescription): boolean {
-		return KILLSTREAKER_SHEEN_REGEX.test(description.value)
+	static isKillstreakerSheenDescription(
+		description: EconDescription
+	): boolean {
+		return KILLSTREAKER_SHEEN_REGEX.test(description.value);
 	}
 
 	/**
@@ -50,7 +53,10 @@ export default class Killstreak {
 	 * @return {boolean}
 	 */
 	static isSheen(description: EconDescription): boolean {
-		if (description.value.startsWith('(Sheen: ') && description.value.endsWith(')')) {
+		if (
+			description.value.startsWith('(Sheen: ') &&
+			description.value.endsWith(')')
+		) {
 			return true;
 		}
 
@@ -73,9 +79,11 @@ export default class Killstreak {
 	}
 
 	setKillstreakerSheen(description: EconDescription): void {
-		const match = description.value.match(KILLSTREAKER_SHEEN_REGEX)
+		const match = description.value.match(KILLSTREAKER_SHEEN_REGEX);
 		if (match == null) {
-			throw new Error("Wrongly matched killstreaker for econ item, report this incident to github.");
+			throw new Error(
+				'Wrongly matched killstreaker for econ item, report this incident to github.'
+			);
 		}
 
 		const [_, killstreaker, sheen] = match;

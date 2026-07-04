@@ -1,30 +1,30 @@
 [
-  {
-    "input": "Strange Australium Festivized Professional Killstreak Scattergun",
-    "expected": "Strange Festivized Professional Killstreak Australium Scattergun"
-  },
-  {
-    "input": "Omniscient Orb Strange Balloonihoodie",
-    "expected": "Strange Omniscient Orb Balloonihoodie"
-  },
-  {
-    "input": "Collector's Battalion's Backup Chemistry Set",
-    "expected": "Collector's Battalion's Backup Chemistry Set"
-  },
-  {
-    "input": "Strange Festivized Professional Killstreak Australium Scattergun",
-    "expected": "Strange Festivized Professional Killstreak Australium Scattergun"
-  },
-  {
-    "input": "Strange Omniscient Orb Balloonihoodie",
-    "expected": "Strange Omniscient Orb Balloonihoodie"
-  },
-  {
-    "input": "Hat #25",
-    "expected": "Hat #25"
-  },
-  {
-    "input": "Strange Unique Sniper Rifle",
-    "expected": "Strange Unique Sniper Rifle"
-  }
+	{
+		"input": "Strange Australium Festivized Professional Killstreak Scattergun",
+		"expected": "Strange Festivized Professional Killstreak Australium Scattergun"
+	},
+	{
+		"input": "Omniscient Orb Strange Balloonihoodie",
+		"expected": "Strange Omniscient Orb Balloonihoodie"
+	},
+	{
+		"input": "Collector's Battalion's Backup Chemistry Set",
+		"expected": "Collector's Battalion's Backup Chemistry Set"
+	},
+	{
+		"input": "Strange Festivized Professional Killstreak Australium Scattergun",
+		"expected": "Strange Festivized Professional Killstreak Australium Scattergun"
+	},
+	{
+		"input": "Strange Omniscient Orb Balloonihoodie",
+		"expected": "Strange Omniscient Orb Balloonihoodie"
+	},
+	{
+		"input": "Hat #25",
+		"expected": "Hat #25"
+	},
+	{
+		"input": "Strange Unique Sniper Rifle",
+		"expected": "Strange Unique Sniper Rifle"
+	}
 ]

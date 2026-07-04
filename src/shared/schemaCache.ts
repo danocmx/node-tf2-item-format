@@ -1,11 +1,11 @@
 import { ISchema } from '../types/schema';
 
 export class SchemaCacheArticle<T> {
-    /**
-     * Versioning number of said schema to determine
-     * if we need to recalculate cached values in order
-     * to be able to work correctly.
-     */
+	/**
+	 * Versioning number of said schema to determine
+	 * if we need to recalculate cached values in order
+	 * to be able to work correctly.
+	 */
 	public version: number;
 	public value: T;
 
@@ -14,12 +14,12 @@ export class SchemaCacheArticle<T> {
 		this.value = value;
 	}
 
-    /**
-     * Is this article outdated and needs to be renewed?
-     * 
-     * @param version Of current schema
-     * @returns true, if outdated, otherwise false
-     */
+	/**
+	 * Is this article outdated and needs to be renewed?
+	 *
+	 * @param version Of current schema
+	 * @returns true, if outdated, otherwise false
+	 */
 	public isOutdated(version: number): boolean {
 		return this.version < version;
 	}

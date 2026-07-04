@@ -1,736 +1,736 @@
 [
-  {
-    "input": {
-      "item": {
-        "name": "Rocket Launcher",
-        "craftable": true,
-        "killstreak": "Killstreak",
-        "wear": "Battle Scarred",
-        "texture": "Aqua Marine",
-        "effect": "Cool",
-        "quality": "Unusual"
-      }
-    },
-    "expected": "Cool Killstreak Aqua Marine Rocket Launcher (Battle Scarred)"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Rocket Launcher",
-        "craftable": true,
-        "wear": "Factory New",
-        "texture": "High Roller's",
-        "quality": "Strange"
-      }
-    },
-    "expected": "Strange High Roller's Rocket Launcher (Factory New)"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Chemistry Set",
-        "craftable": true,
-        "output": "Battalion's Backup",
-        "outputQuality": "Collector's",
-        "quality": "Unique"
-      }
-    },
-    "expected": "Collector's Battalion's Backup Chemistry Set"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Scattergun",
-        "craftable": true,
-        "australium": true,
-        "festivized": true,
-        "killstreak": "Professional Killstreak",
-        "quality": "Strange"
-      }
-    },
-    "expected": "Strange Festivized Professional Killstreak Australium Scattergun"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Modest Pile of Hat",
-        "craftable": true,
-        "effect": "Demonflame",
-        "quality": "Unusual"
-      }
-    },
-    "expected": "Demonflame Modest Pile of Hat"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Balloonihoodie",
-        "craftable": true,
-        "effect": "Omniscient Orb",
-        "quality": "Unusual",
-        "elevated": true
-      }
-    },
-    "expected": "Strange Omniscient Orb Balloonihoodie"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Specialized Killstreak Kit Fabricator",
-        "craftable": false,
-        "killstreak": "Specialized Killstreak",
-        "target": "Gunboats",
-        "quality": "Unique"
-      }
-    },
-    "expected": "Non-Craftable Specialized Killstreak Gunboats Kit Fabricator"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Chemistry Set",
-        "craftable": true,
-        "target": "Archimedes",
-        "output": "Strangifier",
-        "outputQuality": "Unique",
-        "quality": "Unique"
-      }
-    },
-    "expected": "Archimedes Strangifier Chemistry Set"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Backwards Ballcap",
-        "craftable": true,
-        "quality": "Strange"
-      }
-    },
-    "expected": "Strange Backwards Ballcap"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Professional Killstreak Kit Fabricator",
-        "craftable": true,
-        "killstreak": "Professional Killstreak",
-        "target": "Iron Curtain",
-        "quality": "Unique"
-      }
-    },
-    "expected": "Professional Killstreak Iron Curtain Kit Fabricator"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Festive Grenade Launcher",
-        "craftable": true,
-        "killstreak": "Professional Killstreak",
-        "quality": "Strange"
-      }
-    },
-    "expected": "Strange Professional Killstreak Festive Grenade Launcher"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Sniper Rifle",
-        "craftable": true,
-        "quality": "Unique",
-        "elevated": true
-      }
-    },
-    "expected": "Strange Unique Sniper Rifle"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Australium Gold",
-        "craftable": true,
-        "quality": "Unique"
-      }
-    },
-    "expected": "Australium Gold"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Blue Moon Case",
-        "craftable": true,
-        "itemNumber": {
-          "type": "case",
-          "value": "118"
-        },
-        "quality": "Unique"
-      }
-    },
-    "expected": "Blue Moon Case #118"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Hat",
-        "craftable": true,
-        "itemNumber": {
-          "type": "craft",
-          "value": "25"
-        },
-        "quality": "Unique"
-      }
-    },
-    "expected": "Hat #25"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Tartan Shade",
-        "craftable": true,
-        "quality": "Unique",
-        "isUniqueHat": true
-      }
-    },
-    "expected": "The Tartan Shade"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Unusualifier",
-        "craftable": true,
-        "quality": "Unusual",
-        "target": "Taunt: Kazotsky Kick"
-      }
-    },
-    "expected": "Unusual Taunt: Kazotsky Kick Unusualifier"
-  },
-  {
-    "input": {
-      "item": {
-        "defindex": 20003,
-        "quality": 6,
-        "craftable": true,
-        "killstreak": 3,
-        "targetDefindex": 1151
-      }
-    },
-    "expected": "Professional Killstreak Iron Bomber Kit Fabricator"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Rocket Launcher",
-        "craftable": true,
-        "killstreak": 1,
-        "wear": 5,
-        "texture": 57,
-        "effect": 703,
-        "quality": 5,
-        "defindex": 205
-      }
-    },
-    "expected": "Cool Killstreak Aqua Marine Rocket Launcher (Battle Scarred)"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Rocket Launcher",
-        "craftable": true,
-        "wear": 1,
-        "texture": 79,
-        "quality": 11,
-        "defindex": 205
-      }
-    },
-    "expected": "Strange High Roller's Rocket Launcher (Factory New)"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Chemistry Set",
-        "craftable": true,
-        "output": "Battalion's Backup",
-        "outputQuality": 14,
-        "quality": 6,
-        "outputDefindex": 226,
-        "defindex": 20000
-      }
-    },
-    "expected": "Collector's Battalion's Backup Chemistry Set"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Scattergun",
-        "craftable": true,
-        "australium": true,
-        "festivized": true,
-        "killstreak": 3,
-        "quality": 11,
-        "defindex": 200
-      }
-    },
-    "expected": "Strange Festivized Professional Killstreak Australium Scattergun"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Modest Pile of Hat",
-        "craftable": true,
-        "effect": 80,
-        "quality": 5,
-        "defindex": 139
-      }
-    },
-    "expected": "Demonflame Modest Pile of Hat"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Balloonihoodie",
-        "craftable": true,
-        "effect": 120,
-        "quality": 5,
-        "elevated": true,
-        "defindex": 30928
-      }
-    },
-    "expected": "Strange Omniscient Orb Balloonihoodie"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Specialized Killstreak Kit Fabricator",
-        "defindex": 20002,
-        "craftable": false,
-        "killstreak": 2,
-        "target": "Gunboats",
-        "quality": 6,
-        "targetDefindex": 133
-      }
-    },
-    "expected": "Non-Craftable Specialized Killstreak Gunboats Kit Fabricator"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Chemistry Set",
-        "craftable": true,
-        "target": "Archimedes",
-        "output": "Strangifier",
-        "outputQuality": 6,
-        "defindex": 20000,
-        "quality": 6,
-        "targetDefindex": 828,
-        "outputDefindex": 5661
-      }
-    },
-    "expected": "Archimedes Strangifier Chemistry Set"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Backwards Ballcap",
-        "craftable": true,
-        "quality": 11,
-        "defindex": 617
-      }
-    },
-    "expected": "Strange Backwards Ballcap"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Professional Killstreak Kit Fabricator",
-        "craftable": true,
-        "killstreak": 3,
-        "target": "Iron Curtain",
-        "quality": 6,
-        "targetDefindex": 298,
-        "defindex": 20003
-      }
-    },
-    "expected": "Professional Killstreak Iron Curtain Kit Fabricator"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Festive Grenade Launcher",
-        "craftable": true,
-        "killstreak": 3,
-        "quality": 11,
-        "defindex": 1007
-      }
-    },
-    "expected": "Strange Professional Killstreak Festive Grenade Launcher"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Sniper Rifle",
-        "craftable": true,
-        "quality": 6,
-        "elevated": true,
-        "defindex": 201
-      }
-    },
-    "expected": "Strange Unique Sniper Rifle"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Australium Gold",
-        "craftable": true,
-        "quality": 6,
-        "defindex": 5037
-      }
-    },
-    "expected": "Australium Gold"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Blue Moon Case",
-        "craftable": true,
-        "itemNumber": {
-          "type": "crate",
-          "value": 118
-        },
-        "quality": 6
-      }
-    },
-    "expected": "Blue Moon Case #118"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Tartan Shade",
-        "craftable": true,
-        "quality": 6,
-        "isUniqueHat": true,
-        "defindex": 30064
-      }
-    },
-    "expected": "The Tartan Shade"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Hot Case",
-        "craftable": true,
-        "quality": 11,
-        "defindex": 30986
-      }
-    },
-    "expected": "Strange Hot Case"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Hot Heels",
-        "craftable": true,
-        "quality": 11,
-        "defindex": 30754
-      }
-    },
-    "expected": "Strange Hot Heels"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "A Head Full of Hot Air",
-        "craftable": true,
-        "quality": 11,
-        "defindex": 30662
-      }
-    },
-    "expected": "Strange A Head Full of Hot Air"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Unusualifier",
-        "craftable": true,
-        "quality": 5,
-        "defindex": 9258,
-        "target": "Taunt: Kazotsky Kick",
-        "targetDefindex": 1157
-      }
-    },
-    "expected": "Unusual Taunt: Kazotsky Kick Unusualifier"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Strangifier",
-        "craftable": true,
-        "quality": 6,
-        "defindex": 5661,
-        "target": "Ghostly Gibus",
-        "targetDefindex": 940
-      }
-    },
-    "expected": "Ghostly Gibus Strangifier"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Strange Bacon Grease",
-        "craftable": true,
-        "quality": 6,
-        "defindex": 5633
-      }
-    },
-    "expected": "Strange Bacon Grease"
-  },
-  {
-    "input": {
-      "item": {
-        "defindex": 30300,
-        "quality": 13,
-        "craftable": true
-      }
-    },
-    "expected": "Haunted Haunted Hat"
-  },
-  {
-    "input": {
-      "item": {
-        "defindex": 5791,
-        "quality": 6,
-        "craftable": false
-      }
-    },
-    "expected": "Non-Craftable Naughty Winter Crate Key 2014"
-  },
-  {
-    "input": {
-      "item": {
-        "defindex": 876,
-        "quality": 6,
-        "craftable": true
-      },
-      "options": {
-        "determineUniqueHat": true
-      }
-    },
-    "expected": "The K-9 Mane"
-  },
-  {
-    "input": {
-      "item": {
-        "defindex": 876,
-        "quality": 6,
-        "craftable": true
-      },
-      "options": {
-        "determineUniqueHat": false
-      }
-    },
-    "expected": "K-9 Mane"
-  },
-  {
-    "input": {
-      "item": {
-        "defindex": 876,
-        "quality": 6,
-        "craftable": false
-      },
-      "options": {
-        "determineUniqueHat": true
-      }
-    },
-    "expected": "Non-Craftable K-9 Mane"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "K-9 Mane",
-        "quality": 6,
-        "craftable": true
-      },
-      "options": {
-        "determineUniqueHat": true
-      }
-    },
-    "expected": "The K-9 Mane"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "K-9 Mane",
-        "quality": 6,
-        "craftable": true,
-        "elevated": true
-      },
-      "options": {
-        "determineUniqueHat": true
-      }
-    },
-    "expected": "Strange Unique K-9 Mane"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Surgeon's Stahlhelm",
-        "quality": 6,
-        "craftable": true,
-        "itemNumber": {
-          "type": "craft",
-          "value": 1
-        }
-      },
-      "options": {
-        "determineUniqueHat": true
-      }
-    },
-    "expected": "The Surgeon's Stahlhelm #1"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Gargoyle Case",
-        "quality": 6,
-        "craftable": true,
-        "itemNumber": {
-          "type": "crate",
-          "value": 98
-        }
-      },
-      "options": {
-        "determineUniqueHat": true
-      }
-    },
-    "expected": "Gargoyle Case #98"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "The Bitter Taste of Defeat and Lime",
-        "quality": 6,
-        "craftable": true
-      },
-      "options": {
-        "determineUniqueHat": true
-      }
-    },
-    "expected": "The Bitter Taste of Defeat and Lime"
-  },
-  {
-    "input": {
-      "item": {
-        "defindex": 211,
-        "quality": 0,
-        "craftable": true,
-        "elevated": true
-      }
-    },
-    "expected": "Strange Normal Medi Gun"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Medi Gun",
-        "quality": "Normal",
-        "craftable": true,
-        "elevated": true
-      }
-    },
-    "expected": "Strange Normal Medi Gun"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Pistol",
-        "quality": "Decorated Weapon",
-        "craftable": true,
-        "wear": "Field-Tested",
-        "festivized": true,
-        "killstreak": "Specialized Killstreak",
-        "texture": 0
-      }
-    },
-    "expected": "Festivized Specialized Killstreak Red Rock Roscoe Pistol (Field-Tested)"
-  },
-  {
-    "input": {
-      "item": {
-        "defindex": 0,
-        "quality": "Unique",
-        "craftable": true
-      }
-    },
-    "expected": "Bat"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Chemistry Set",
-        "craftable": true,
-        "outputDefindex": 0,
-        "outputQuality": "Collector's",
-        "quality": "Unique"
-      }
-    },
-    "expected": "Collector's Bat Chemistry Set"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Specialized Killstreak Kit Fabricator",
-        "craftable": false,
-        "killstreak": "Specialized Killstreak",
-        "targetDefindex": 0,
-        "quality": "Unique"
-      }
-    },
-    "expected": "Non-Craftable Specialized Killstreak Bat Kit Fabricator"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Haunted Metal Scrap",
-        "craftable": true,
-        "quality": "Unusual",
-        "effect": 0
-      }
-    },
-    "expected": "Unusual Haunted Metal Scrap"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "Rotation Sensation",
-        "craftable": true,
-        "quality": 5,
-        "effect": 257
-      }
-    },
-    "expected": "Haunted Kraken Rotation Sensation"
-  },
-  {
-    "input": {
-      "item": {
-        "name": "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case",
-        "craftable": true,
-        "quality": 6,
-        "defindex": 18004,
-        "itemNumber": {
-          "type": "crate",
-          "value": 115
-        }
-      }
-    },
-    "expected": "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case #115"
-  },
-  {
-    "input": {
-      "item": "5050;6"
-    },
-    "expected": "Backpack Expander"
-  },
-  {
-    "input": {
-      "item": "1071;11;kt-3"
-    },
-    "expected": "Strange Professional Killstreak Golden Frying Pan"
-  }
+	{
+		"input": {
+			"item": {
+				"name": "Rocket Launcher",
+				"craftable": true,
+				"killstreak": "Killstreak",
+				"wear": "Battle Scarred",
+				"texture": "Aqua Marine",
+				"effect": "Cool",
+				"quality": "Unusual"
+			}
+		},
+		"expected": "Cool Killstreak Aqua Marine Rocket Launcher (Battle Scarred)"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Rocket Launcher",
+				"craftable": true,
+				"wear": "Factory New",
+				"texture": "High Roller's",
+				"quality": "Strange"
+			}
+		},
+		"expected": "Strange High Roller's Rocket Launcher (Factory New)"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Chemistry Set",
+				"craftable": true,
+				"output": "Battalion's Backup",
+				"outputQuality": "Collector's",
+				"quality": "Unique"
+			}
+		},
+		"expected": "Collector's Battalion's Backup Chemistry Set"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Scattergun",
+				"craftable": true,
+				"australium": true,
+				"festivized": true,
+				"killstreak": "Professional Killstreak",
+				"quality": "Strange"
+			}
+		},
+		"expected": "Strange Festivized Professional Killstreak Australium Scattergun"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Modest Pile of Hat",
+				"craftable": true,
+				"effect": "Demonflame",
+				"quality": "Unusual"
+			}
+		},
+		"expected": "Demonflame Modest Pile of Hat"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Balloonihoodie",
+				"craftable": true,
+				"effect": "Omniscient Orb",
+				"quality": "Unusual",
+				"elevated": true
+			}
+		},
+		"expected": "Strange Omniscient Orb Balloonihoodie"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Specialized Killstreak Kit Fabricator",
+				"craftable": false,
+				"killstreak": "Specialized Killstreak",
+				"target": "Gunboats",
+				"quality": "Unique"
+			}
+		},
+		"expected": "Non-Craftable Specialized Killstreak Gunboats Kit Fabricator"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Chemistry Set",
+				"craftable": true,
+				"target": "Archimedes",
+				"output": "Strangifier",
+				"outputQuality": "Unique",
+				"quality": "Unique"
+			}
+		},
+		"expected": "Archimedes Strangifier Chemistry Set"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Backwards Ballcap",
+				"craftable": true,
+				"quality": "Strange"
+			}
+		},
+		"expected": "Strange Backwards Ballcap"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Professional Killstreak Kit Fabricator",
+				"craftable": true,
+				"killstreak": "Professional Killstreak",
+				"target": "Iron Curtain",
+				"quality": "Unique"
+			}
+		},
+		"expected": "Professional Killstreak Iron Curtain Kit Fabricator"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Festive Grenade Launcher",
+				"craftable": true,
+				"killstreak": "Professional Killstreak",
+				"quality": "Strange"
+			}
+		},
+		"expected": "Strange Professional Killstreak Festive Grenade Launcher"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Sniper Rifle",
+				"craftable": true,
+				"quality": "Unique",
+				"elevated": true
+			}
+		},
+		"expected": "Strange Unique Sniper Rifle"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Australium Gold",
+				"craftable": true,
+				"quality": "Unique"
+			}
+		},
+		"expected": "Australium Gold"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Blue Moon Case",
+				"craftable": true,
+				"itemNumber": {
+					"type": "case",
+					"value": "118"
+				},
+				"quality": "Unique"
+			}
+		},
+		"expected": "Blue Moon Case #118"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Hat",
+				"craftable": true,
+				"itemNumber": {
+					"type": "craft",
+					"value": "25"
+				},
+				"quality": "Unique"
+			}
+		},
+		"expected": "Hat #25"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Tartan Shade",
+				"craftable": true,
+				"quality": "Unique",
+				"isUniqueHat": true
+			}
+		},
+		"expected": "The Tartan Shade"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Unusualifier",
+				"craftable": true,
+				"quality": "Unusual",
+				"target": "Taunt: Kazotsky Kick"
+			}
+		},
+		"expected": "Unusual Taunt: Kazotsky Kick Unusualifier"
+	},
+	{
+		"input": {
+			"item": {
+				"defindex": 20003,
+				"quality": 6,
+				"craftable": true,
+				"killstreak": 3,
+				"targetDefindex": 1151
+			}
+		},
+		"expected": "Professional Killstreak Iron Bomber Kit Fabricator"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Rocket Launcher",
+				"craftable": true,
+				"killstreak": 1,
+				"wear": 5,
+				"texture": 57,
+				"effect": 703,
+				"quality": 5,
+				"defindex": 205
+			}
+		},
+		"expected": "Cool Killstreak Aqua Marine Rocket Launcher (Battle Scarred)"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Rocket Launcher",
+				"craftable": true,
+				"wear": 1,
+				"texture": 79,
+				"quality": 11,
+				"defindex": 205
+			}
+		},
+		"expected": "Strange High Roller's Rocket Launcher (Factory New)"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Chemistry Set",
+				"craftable": true,
+				"output": "Battalion's Backup",
+				"outputQuality": 14,
+				"quality": 6,
+				"outputDefindex": 226,
+				"defindex": 20000
+			}
+		},
+		"expected": "Collector's Battalion's Backup Chemistry Set"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Scattergun",
+				"craftable": true,
+				"australium": true,
+				"festivized": true,
+				"killstreak": 3,
+				"quality": 11,
+				"defindex": 200
+			}
+		},
+		"expected": "Strange Festivized Professional Killstreak Australium Scattergun"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Modest Pile of Hat",
+				"craftable": true,
+				"effect": 80,
+				"quality": 5,
+				"defindex": 139
+			}
+		},
+		"expected": "Demonflame Modest Pile of Hat"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Balloonihoodie",
+				"craftable": true,
+				"effect": 120,
+				"quality": 5,
+				"elevated": true,
+				"defindex": 30928
+			}
+		},
+		"expected": "Strange Omniscient Orb Balloonihoodie"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Specialized Killstreak Kit Fabricator",
+				"defindex": 20002,
+				"craftable": false,
+				"killstreak": 2,
+				"target": "Gunboats",
+				"quality": 6,
+				"targetDefindex": 133
+			}
+		},
+		"expected": "Non-Craftable Specialized Killstreak Gunboats Kit Fabricator"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Chemistry Set",
+				"craftable": true,
+				"target": "Archimedes",
+				"output": "Strangifier",
+				"outputQuality": 6,
+				"defindex": 20000,
+				"quality": 6,
+				"targetDefindex": 828,
+				"outputDefindex": 5661
+			}
+		},
+		"expected": "Archimedes Strangifier Chemistry Set"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Backwards Ballcap",
+				"craftable": true,
+				"quality": 11,
+				"defindex": 617
+			}
+		},
+		"expected": "Strange Backwards Ballcap"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Professional Killstreak Kit Fabricator",
+				"craftable": true,
+				"killstreak": 3,
+				"target": "Iron Curtain",
+				"quality": 6,
+				"targetDefindex": 298,
+				"defindex": 20003
+			}
+		},
+		"expected": "Professional Killstreak Iron Curtain Kit Fabricator"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Festive Grenade Launcher",
+				"craftable": true,
+				"killstreak": 3,
+				"quality": 11,
+				"defindex": 1007
+			}
+		},
+		"expected": "Strange Professional Killstreak Festive Grenade Launcher"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Sniper Rifle",
+				"craftable": true,
+				"quality": 6,
+				"elevated": true,
+				"defindex": 201
+			}
+		},
+		"expected": "Strange Unique Sniper Rifle"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Australium Gold",
+				"craftable": true,
+				"quality": 6,
+				"defindex": 5037
+			}
+		},
+		"expected": "Australium Gold"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Blue Moon Case",
+				"craftable": true,
+				"itemNumber": {
+					"type": "crate",
+					"value": 118
+				},
+				"quality": 6
+			}
+		},
+		"expected": "Blue Moon Case #118"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Tartan Shade",
+				"craftable": true,
+				"quality": 6,
+				"isUniqueHat": true,
+				"defindex": 30064
+			}
+		},
+		"expected": "The Tartan Shade"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Hot Case",
+				"craftable": true,
+				"quality": 11,
+				"defindex": 30986
+			}
+		},
+		"expected": "Strange Hot Case"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Hot Heels",
+				"craftable": true,
+				"quality": 11,
+				"defindex": 30754
+			}
+		},
+		"expected": "Strange Hot Heels"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "A Head Full of Hot Air",
+				"craftable": true,
+				"quality": 11,
+				"defindex": 30662
+			}
+		},
+		"expected": "Strange A Head Full of Hot Air"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Unusualifier",
+				"craftable": true,
+				"quality": 5,
+				"defindex": 9258,
+				"target": "Taunt: Kazotsky Kick",
+				"targetDefindex": 1157
+			}
+		},
+		"expected": "Unusual Taunt: Kazotsky Kick Unusualifier"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Strangifier",
+				"craftable": true,
+				"quality": 6,
+				"defindex": 5661,
+				"target": "Ghostly Gibus",
+				"targetDefindex": 940
+			}
+		},
+		"expected": "Ghostly Gibus Strangifier"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Strange Bacon Grease",
+				"craftable": true,
+				"quality": 6,
+				"defindex": 5633
+			}
+		},
+		"expected": "Strange Bacon Grease"
+	},
+	{
+		"input": {
+			"item": {
+				"defindex": 30300,
+				"quality": 13,
+				"craftable": true
+			}
+		},
+		"expected": "Haunted Haunted Hat"
+	},
+	{
+		"input": {
+			"item": {
+				"defindex": 5791,
+				"quality": 6,
+				"craftable": false
+			}
+		},
+		"expected": "Non-Craftable Naughty Winter Crate Key 2014"
+	},
+	{
+		"input": {
+			"item": {
+				"defindex": 876,
+				"quality": 6,
+				"craftable": true
+			},
+			"options": {
+				"determineUniqueHat": true
+			}
+		},
+		"expected": "The K-9 Mane"
+	},
+	{
+		"input": {
+			"item": {
+				"defindex": 876,
+				"quality": 6,
+				"craftable": true
+			},
+			"options": {
+				"determineUniqueHat": false
+			}
+		},
+		"expected": "K-9 Mane"
+	},
+	{
+		"input": {
+			"item": {
+				"defindex": 876,
+				"quality": 6,
+				"craftable": false
+			},
+			"options": {
+				"determineUniqueHat": true
+			}
+		},
+		"expected": "Non-Craftable K-9 Mane"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "K-9 Mane",
+				"quality": 6,
+				"craftable": true
+			},
+			"options": {
+				"determineUniqueHat": true
+			}
+		},
+		"expected": "The K-9 Mane"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "K-9 Mane",
+				"quality": 6,
+				"craftable": true,
+				"elevated": true
+			},
+			"options": {
+				"determineUniqueHat": true
+			}
+		},
+		"expected": "Strange Unique K-9 Mane"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Surgeon's Stahlhelm",
+				"quality": 6,
+				"craftable": true,
+				"itemNumber": {
+					"type": "craft",
+					"value": 1
+				}
+			},
+			"options": {
+				"determineUniqueHat": true
+			}
+		},
+		"expected": "The Surgeon's Stahlhelm #1"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Gargoyle Case",
+				"quality": 6,
+				"craftable": true,
+				"itemNumber": {
+					"type": "crate",
+					"value": 98
+				}
+			},
+			"options": {
+				"determineUniqueHat": true
+			}
+		},
+		"expected": "Gargoyle Case #98"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "The Bitter Taste of Defeat and Lime",
+				"quality": 6,
+				"craftable": true
+			},
+			"options": {
+				"determineUniqueHat": true
+			}
+		},
+		"expected": "The Bitter Taste of Defeat and Lime"
+	},
+	{
+		"input": {
+			"item": {
+				"defindex": 211,
+				"quality": 0,
+				"craftable": true,
+				"elevated": true
+			}
+		},
+		"expected": "Strange Normal Medi Gun"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Medi Gun",
+				"quality": "Normal",
+				"craftable": true,
+				"elevated": true
+			}
+		},
+		"expected": "Strange Normal Medi Gun"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Pistol",
+				"quality": "Decorated Weapon",
+				"craftable": true,
+				"wear": "Field-Tested",
+				"festivized": true,
+				"killstreak": "Specialized Killstreak",
+				"texture": 0
+			}
+		},
+		"expected": "Festivized Specialized Killstreak Red Rock Roscoe Pistol (Field-Tested)"
+	},
+	{
+		"input": {
+			"item": {
+				"defindex": 0,
+				"quality": "Unique",
+				"craftable": true
+			}
+		},
+		"expected": "Bat"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Chemistry Set",
+				"craftable": true,
+				"outputDefindex": 0,
+				"outputQuality": "Collector's",
+				"quality": "Unique"
+			}
+		},
+		"expected": "Collector's Bat Chemistry Set"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Specialized Killstreak Kit Fabricator",
+				"craftable": false,
+				"killstreak": "Specialized Killstreak",
+				"targetDefindex": 0,
+				"quality": "Unique"
+			}
+		},
+		"expected": "Non-Craftable Specialized Killstreak Bat Kit Fabricator"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Haunted Metal Scrap",
+				"craftable": true,
+				"quality": "Unusual",
+				"effect": 0
+			}
+		},
+		"expected": "Unusual Haunted Metal Scrap"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "Rotation Sensation",
+				"craftable": true,
+				"quality": 5,
+				"effect": 257
+			}
+		},
+		"expected": "Haunted Kraken Rotation Sensation"
+	},
+	{
+		"input": {
+			"item": {
+				"name": "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case",
+				"craftable": true,
+				"quality": 6,
+				"defindex": 18004,
+				"itemNumber": {
+					"type": "crate",
+					"value": 115
+				}
+			}
+		},
+		"expected": "'Contract Campaigner' War Paint\nFreelance Grade Keyless Case #115"
+	},
+	{
+		"input": {
+			"item": "5050;6"
+		},
+		"expected": "Backpack Expander"
+	},
+	{
+		"input": {
+			"item": "1071;11;kt-3"
+		},
+		"expected": "Strange Professional Killstreak Golden Frying Pan"
+	}
 ]

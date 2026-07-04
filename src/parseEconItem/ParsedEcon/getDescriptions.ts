@@ -60,7 +60,7 @@ export default function (econ: ParsedEcon): DescriptionAttributes {
 		else if (isSpell(description))
 			attributes.spells.push(getSpell(description));
 		else if (Killstreak.isKillstreakerSheenDescription(description))
-			killstreak.setKillstreakerSheen(description)
+			killstreak.setKillstreakerSheen(description);
 		else if (Killstreak.isKillstreaker(description))
 			killstreak.setKillstreaker(description);
 		else if (Killstreak.isSheen(description))

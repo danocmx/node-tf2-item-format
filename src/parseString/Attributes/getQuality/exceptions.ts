@@ -14,7 +14,10 @@ function getQualityCacheKey(quality: string): string {
 	return `${quality}Exceptions`;
 }
 
-export function getQualityExceptions(schema: ISchema, quality: string): string[] {
+export function getQualityExceptions(
+	schema: ISchema,
+	quality: string
+): string[] {
 	const cacheKey = getQualityCacheKey(quality);
 	let exceptions = cache.get<string[]>(schema, cacheKey);
 	if (exceptions) {
@@ -26,7 +29,10 @@ export function getQualityExceptions(schema: ISchema, quality: string): string[]
 	return exceptions;
 }
 
-export function findQualityExceptions(schema: ISchema, quality: string): string[] {
+export function findQualityExceptions(
+	schema: ISchema,
+	quality: string
+): string[] {
 	const items = schema.getItems();
 	const effects = schema.getEffects();
 	const textures = schema.getTextures();

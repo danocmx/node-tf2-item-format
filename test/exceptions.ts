@@ -99,12 +99,18 @@ describe('Exception Generation', () => {
 		describe('isUniqueHatException', () => {
 			it('Is a correct exception', () => {
 				assert.isTrue(
-					isUniqueHatException(schema, "The Emperor's Assortment", false)
+					isUniqueHatException(
+						schema,
+						"The Emperor's Assortment",
+						false
+					)
 				);
 			});
 
 			it('Is not an exception', () => {
-				assert.isFalse(isUniqueHatException(schema, 'The War Pig', false));
+				assert.isFalse(
+					isUniqueHatException(schema, 'The War Pig', false)
+				);
 			});
 		});
 	});
@@ -296,10 +302,7 @@ describe('Exception Generation', () => {
 						continue;
 					}
 
-					assert.isTrue(
-						false,
-						`Effect Exception: ${effect} failed`
-					);
+					assert.isTrue(false, `Effect Exception: ${effect} failed`);
 				}
 
 				for (const txtEffect of TEXTURE_EFFECT_EXCEPTION) {
