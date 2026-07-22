@@ -7,7 +7,7 @@ export function isQualityException(
 	name: string
 ): boolean {
 	const exceptions = getQualityExceptions(schema, quality);
-	return exceptions.some((e) => name.includes(e));
+	return exceptions.some((e) => name == e || name.includes(e + " ") || name.includes(" " + e));
 }
 
 function getQualityCacheKey(quality: string): string {
